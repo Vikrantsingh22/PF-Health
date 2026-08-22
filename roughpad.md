@@ -42,44 +42,44 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Mission 1 — Bootstrap the application harness
 
-**Status:** NEXT
+**Status:** COMPLETE
 
 **Goal:** Create a Docker-isolated, runnable, pinned Next.js/TypeScript harness without implementing product features or executing project tooling on the host.
 
 ### Actions
 
-- [ ] Verify Docker/Compose availability without changing unrelated services.
-- [ ] Add a minimal multi-stage `Dockerfile`, `compose.yaml`, and `.dockerignore`.
-- [ ] Configure a non-root application user, dedicated project network, named dependency/runtime volumes, and `127.0.0.1`-only port binding.
-- [ ] Verify no mount resolves outside `pf-health`; prohibit privileged mode, host namespaces, devices, added capabilities, and Docker socket access.
-- [ ] Inspect container-available Node/package-manager versions and choose pinned framework/tool versions.
-- [ ] Initialize Next.js with the App Router, `src/`, strict TypeScript, Tailwind CSS, and ESLint inside the container without overwriting repository documentation.
-- [ ] Add the package manifest and lockfile.
-- [ ] Configure strict TypeScript with no `any` escape hatch.
-- [ ] Configure unit testing for pure TypeScript modules.
-- [ ] Add `lint`, `typecheck`, `test`, `build`, and aggregate `check` scripts.
+- [x] Verify Docker/Compose availability without changing unrelated services (`Docker 29.5.3`; Compose `v5.1.4`).
+- [x] Add a minimal multi-stage `Dockerfile`, `compose.yaml`, and `.dockerignore`.
+- [x] Configure a non-root application user, dedicated project network, named dependency/runtime volumes, and `127.0.0.1`-only port binding.
+- [x] Verify no mount resolves outside `pf-health`; prohibit privileged mode, host namespaces, devices, added capabilities, and Docker socket access.
+- [x] Inspect container-available Node/package-manager versions and choose pinned framework/tool versions.
+- [x] Initialize Next.js with the App Router, `src/`, strict TypeScript, Tailwind CSS, and ESLint inside the container without overwriting repository documentation.
+- [x] Add the package manifest and lockfile.
+- [x] Configure strict TypeScript with no `any` escape hatch.
+- [x] Configure unit testing for pure TypeScript modules.
+- [x] Add `lint`, `typecheck`, `test`, `build`, and aggregate `check` scripts.
 - [x] Add a safe `.gitignore` for dependencies, generated output, local state, secrets, logs, and editor files.
-- [ ] Add `.env.example` containing names only, with no secrets.
-- [ ] Add minimal setup and command notes to `README.md`.
-- [ ] Run a clean image build, containerized dependency install, and all available checks.
-- [ ] Review the diff for accidental feature code, sensitive values, or documentation loss.
-- [ ] Update `project_state.md`, `CODEX_LOG.md`, and this roughpad with exact results.
+- [x] Add `.env.example` with no secrets; the current harness requires no environment variables.
+- [x] Add minimal setup and command notes to `README.md`.
+- [x] Run a clean image build, containerized dependency install, and all available checks.
+- [x] Review the diff for accidental feature code, sensitive values, or documentation loss.
+- [x] Update `project_state.md`, `CODEX_LOG.md`, and this roughpad with exact results.
 
 ### Exit criteria
 
-- [ ] `docker compose config` resolves and passes the isolation review.
-- [ ] A clean Docker image build and containerized install succeed from the repository root.
-- [ ] Containerized `npm run lint` passes.
-- [ ] Containerized `npm run typecheck` passes.
-- [ ] Containerized `npm run test` passes with a minimal harness test.
-- [ ] Containerized `npm run build` passes.
-- [ ] Containerized `npm run check` runs the required aggregate checks and passes.
-- [ ] No host `node_modules`, package-manager cache, application process, test runner, or build output is created.
-- [ ] No UI feature, PF rule, persistence, network adapter, or OpenAI integration has been added.
+- [x] `docker compose config` resolves and passes the isolation review.
+- [x] A clean Docker image build and containerized install succeed from the repository root.
+- [x] Containerized `npm run lint` passes with no warnings.
+- [x] Containerized `npm run typecheck` passes.
+- [x] Containerized `npm run test` passes with one minimal harness test.
+- [x] Containerized `npm run build` passes.
+- [x] Containerized `npm run check` runs the required aggregate checks and passes.
+- [x] No host `node_modules`, package-manager cache, application process, test runner, or build output is created.
+- [x] No UI feature, PF rule, persistence, network adapter, or OpenAI integration has been added.
 
 ## Mission 2 — Deterministic domain foundation
 
-**Status:** BLOCKED BY MISSION 1
+**Status:** NEXT
 
 **Goal:** Implement the full pure-domain oracle for Ravi before and after correction.
 
@@ -201,12 +201,12 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Immediate next action
 
-Start Mission 1 only: create and verify the Docker sandbox, then select pinned dependencies and initialize the non-feature application harness inside that sandbox while preserving all current documentation.
+Start Mission 2 only: implement the documented boundary schemas, immutable Ravi fixtures, deterministic checks, R001, issue registry, health engine, and golden tests inside the verified Docker sandbox.
 
 ## Active notes
 
 - The calendar schedule in the plan is a prioritization guide; milestone gates and verified dependencies control execution.
 - R001 is the only authorized PF workflow rule.
 - KYC, bank verification, extra personas, document extraction, Hindi, semantic routing, and real integrations remain deferred.
-- The repository currently has documentation but no initialized application or automated checks.
+- The repository has a verified Docker-isolated application harness and one environment test; product/domain behavior is not implemented yet.
 - Host-side work is limited to repository edits, repository Git operations, and PF Health-scoped Docker/Compose commands.

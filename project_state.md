@@ -20,9 +20,9 @@ The authoritative product journey is `DETECT → EXPLAIN → ASSIGN OWNER → RE
 
 Milestone 0 — documentation harness: **COMPLETE**
 
-Milestone 1 — Docker sandbox, project bootstrap, and deterministic domain: **PLANNED; DOCKER SANDBOX NEXT**
+Milestone 1 — Docker sandbox, project bootstrap, and deterministic domain: **IN PROGRESS; HARNESS COMPLETE, DOMAIN NEXT**
 
-The repository currently contains documentation only. No application package, source code, dependencies, scripts, fixtures, or automated tests have been initialized.
+The repository now contains a verified Docker-isolated Next.js/TypeScript application and test harness. Product domain modules, Ravi fixtures, deterministic rules, and application behavior have not yet been implemented.
 
 The repository now also contains `roughpad.md`, the working checklist used to track one active implementation mission at a time. It refines the ordered milestones without replacing the authoritative specifications.
 
@@ -65,22 +65,24 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - Repository-aligned revision of the complete hackathon plan DOCX
 - Actionable implementation checklist and working task tracker in `roughpad.md`
 - Safe repository `.gitignore` covering dependencies, build/test output, environment files, local state, logs, and editor artifacts
+- Digest-pinned, non-root, read-only Docker/Compose development sandbox with repository-only bind mounting, named dependency/build volumes, dedicated networking, and localhost-only port exposure
+- Pinned Next.js 16.3.2, React 19.2.8, TypeScript 6.0.3, Tailwind CSS 4.3.3, ESLint 9.39.5, and Vitest 4.1.11 application harness
+- Strict TypeScript, lint, unit-test, aggregate-check, and multi-stage production-build configuration
 
 ## Next mission
 
-Create and verify the Docker sandbox, then bootstrap a strict TypeScript/Next.js project and deterministic test harness inside it only.
+Implement the pure deterministic domain foundation for Ravi before and after correction inside the verified Docker sandbox.
 
 Expected output:
 
-- `Dockerfile`, `compose.yaml`, and `.dockerignore` with a non-root user and isolation controls;
-- verified Compose configuration with no mount outside `pf-health`, forbidden privileges/namespaces, Docker socket, or non-localhost port binding;
-- pinned package manifest and lockfile created through the containerized workflow;
-- strict TypeScript, lint, test, and build configuration;
-- containerized `npm run lint`, `npm run typecheck`, `npm run test`, and `npm run check`;
-- `.env.example` and safe `.gitignore`;
-- no UI feature implementation, persistence, OpenAI call, or additional PF rule yet.
+- Zod boundary schemas matching the documented data model;
+- immutable Ravi before/after fixtures and normalization behavior;
+- D001-D004 fixture-integrity checks and versioned `R001@1`;
+- closed issue-registry entry and deterministic health engine;
+- golden rule and health-assessment tests for the documented before/after outcomes;
+- no persistence, API, UI feature implementation, OpenAI call, or additional PF rule.
 
-The detailed bootstrap actions and exit criteria are tracked under Mission 1 in `roughpad.md`.
+The detailed domain actions and exit criteria are tracked under Mission 2 in `roughpad.md`.
 
 After bootstrap, implement domain schemas, Ravi before/after fixtures, normalizer, D001-D004, R001, issue registry, health engine, and golden tests in the sequence defined by `docs/exec-plans/ACTIVE.md`.
 
@@ -89,21 +91,22 @@ After bootstrap, implement domain schemas, Ravi before/after fixtures, normalize
 - Documentation files populated: yes
 - Local Markdown links checked: yes
 - Official evidence recorded for R001: yes
-- Application install: not available
-- Typecheck/lint/tests/build: not available
+- Application install: verified inside Docker with exact lockfile; 393 packages, 0 reported vulnerabilities
+- Typecheck/lint/tests/build: passing inside Docker
 - E2E demo: not implemented
 - Deployment: not configured
 - Implementation plan reconciled and roughpad initialized: yes
 - Verify-before-commit workflow recorded: yes
 - `.gitignore` rules verified with representative generated and secret paths: yes
 - Docker-only execution policy recorded: yes
-- Docker sandbox implemented and verified: no
+- Docker sandbox implemented and verified: yes
+- Compose runtime smoke test: HTTP 200 with expected harness content on `127.0.0.1:3000`
+- Host dependency/build artifacts created: no
 
 Never report an unavailable check as passing.
 
 ## Open implementation decisions
 
-- Exact Docker base-image digest and framework/package versions to pin during bootstrap
 - Local persistence implementation after the pure domain milestone
 - Deployment platform after the deterministic demo works locally
 - Whether optional AI work is approved after Milestone 3
@@ -117,6 +120,7 @@ These decisions do not block the next mission.
 - Demo fragility: deterministic fallback and reset must not depend on network access.
 - Documentation drift: behavior changes require updates to the relevant source docs and this file.
 - Sandbox escape: reject mounts or commands outside `pf-health`, host-native project execution, and Docker settings that can affect unrelated services.
+- Lint-tool migration: Next.js 16.3.2 transitive plugins currently constrain ESLint to the 9.x line; revisit ESLint 10 when the official toolchain supports it without peer overrides.
 
 ## Handoff update template
 

@@ -79,3 +79,13 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Human decisions:** Do not install dependencies, run application tooling, execute tests, build, seed/reset, or maintain runtime state directly on the host. Do not modify project files or resources outside `pf-health`, and do not change unrelated Docker services or resources.
 
 **Verification:** Documentation consistency, local-link validation, DOCX archive integrity, page-by-page DOCX render review, and staged-diff inspection. Docker configuration and application checks remain unavailable until the sandbox files are implemented in the next mission.
+
+## 2026-08-23 — Docker sandbox and application harness
+
+**Task:** Begin development by creating the Docker-isolated application/test harness required by Mission 1.
+
+**Codex contribution:** Added a digest-pinned multi-stage Node image, a repository-only Compose service with a non-root user, read-only root filesystem, dropped capabilities, dedicated bridge network, localhost-only port, named dependency/build volumes, and UID-owned temporary storage. Added an exact npm lockfile, strict Next.js/TypeScript/Tailwind harness, ESLint, Vitest, aggregate check script, neutral placeholder page, environment template, and container-only setup instructions. Corrected initial named-volume ownership and cache-size failures without elevating the application user.
+
+**Dependency decision:** Package activity and publication metadata were checked from disposable containers before installation. All selected packages have well above 5,000 weekly downloads. Latest compatible versions were pinned; TypeScript 6 and ESLint 9 are required by the current Next 16.3.2 transitive peer ranges, so incompatible newer majors were not forced. The sole pending install script, `unrs-resolver@1.12.2`, and its `napi-postinstall@0.3.4` helper were reviewed; only that exact version is approved to locate its platform-specific optional binary.
+
+**Verification:** `docker compose config` resolved with no mount outside `pf-health`, no Docker socket, no privileged/host namespaces, and only a `127.0.0.1:3000` port binding. The app ran as UID/GID 1000. `docker compose run --rm app npm run check` passed lint, strict typecheck, one Vitest harness test, and the Next production build. A clean multi-stage `production` image built successfully with `npm ci` and 0 reported vulnerabilities. The live Compose service returned HTTP 200 with expected content, then only the PF Health service/network were stopped. No host `node_modules`, `.next`, coverage, package cache, or application process was created.

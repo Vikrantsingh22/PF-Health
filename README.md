@@ -19,7 +19,7 @@ The hero scenario uses a fictional member, Ravi Sharma:
 
 ## Repository status
 
-The repository currently contains the documentation harness and implementation plan. Application code, tests, scripts, dependencies, and the Docker sandbox have not yet been initialized. Do not assume the expected commands work until the bootstrap milestone is complete.
+The repository contains the documentation harness, implementation plan, and a verified Docker-isolated Next.js/TypeScript application harness. Product domain behavior has not yet been implemented.
 
 All development, dependency installation, application execution, testing, and builds must run inside the repository-defined Docker environment. Do not run project package-manager or application commands directly on the host. Host access is limited to files inside this repository, repository-scoped Git operations, and PF Health-scoped Docker/Compose commands.
 
@@ -33,34 +33,40 @@ All development, dependency installation, application execution, testing, and bu
 - Active execution plan: [`docs/exec-plans/ACTIVE.md`](docs/exec-plans/ACTIVE.md)
 - Domain rule evidence: [`docs/domain/SOURCES.md`](docs/domain/SOURCES.md)
 
-## Intended stack
+## Pinned bootstrap stack
 
-- Next.js App Router and React
-- TypeScript in strict mode
-- Docker/Compose sandbox with a non-root application user and isolated network
-- Zod for boundary validation
-- Vitest and Testing Library for unit/component tests
-- Playwright for the hero-journey E2E test
-- A synthetic in-memory or local repository behind interfaces for the MVP
-- OpenAI integration only after the deterministic journey is complete
+- Node.js 24.19.0 from a digest-pinned official container image
+- Next.js 16.3.2 App Router and React 19.2.8
+- TypeScript 6.0.3 in strict mode
+- Tailwind CSS 4.3.3
+- Vitest 4.1.11
+- Docker/Compose sandbox with a non-root application user, read-only root filesystem, and isolated network
 
-Exact package versions must be selected and pinned during project initialization.
+Zod, Testing Library, Playwright, local persistence, and optional OpenAI integration remain deferred until the milestone that first requires each dependency.
 
-## Expected commands
+## Containerized development
 
-Once bootstrap is complete, invoke package scripts through the application container:
+Docker 29.5.3 and Docker Compose v5.1.4 were used to verify the bootstrap. From the `pf-health` repository root:
 
 ```bash
 docker compose build app
+docker compose run --rm app npm ci
 docker compose run --rm app npm run lint
 docker compose run --rm app npm run typecheck
 docker compose run --rm app npm run test
-docker compose run --rm app npm run test:e2e
-docker compose run --rm app npm run seed:demo
-docker compose run --rm app npm run reset:demo
 docker compose run --rm app npm run check
 docker compose up app
 ```
+
+Open `http://127.0.0.1:3000` after the app reports ready. Stop only this project with `docker compose down`. Dependencies and Next build output remain in PF Health-named Docker volumes; no host `node_modules` or `.next` directory is created.
+
+To verify the clean multi-stage production image:
+
+```bash
+docker build --target production --tag pf-health-production:local .
+```
+
+E2E, demo seed, and reset scripts will be introduced by the milestones that implement those behaviors. Do not invoke or claim them before they exist.
 
 ## Delivery order
 

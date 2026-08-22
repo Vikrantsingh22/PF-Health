@@ -1,0 +1,46 @@
+name: pf-health
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    command: npm run dev -- -H 0.0.0.0
+    init: true
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    environment:
+      HOME: /home/node
+      NEXT_TELEMETRY_DISABLED: "1"
+      NPM_CONFIG_CACHE: /home/node/.npm
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - type: bind
+        source: .
+        target: /workspace
+      - type: volume
+        source: node_modules
+        target: /workspace/node_modules
+      - type: volume
+        source: next_cache
+        target: /workspace/.next
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=128m,uid=1000,gid=1000
+      - /home/node/.npm:rw,noexec,nosuid,size=1g,uid=1000,gid=1000
+    networks:
+      - app_network
+
+volumes:
+  node_modules:
+    name: pf-health-node-modules
+  next_cache:
+    name: pf-health-next-cache
+networks:
+  app_network:
+    name: pf-health-network
+    driver: bridge
