@@ -1,0 +1,123 @@
+# PF Health Architecture
+
+## Architectural goal
+
+Build a small modular monolith in which deterministic PF health evaluation is independently testable and remains authoritative. Frameworks, persistence, AI, and synthetic integrations surround the domain rather than define it.
+
+```text
+UI / Route Handlers
+        |
+        v
+Application Services ---------------- Audit Log
+        |                                  |
+        +-----------+----------------------+
+        |           |                      |
+        v           v                      v
+ Health Engine  Resolution Engine     Repository Ports
+        |           |                      |
+        +-----------+                      v
+        |                           Local/Synthetic Storage
+        v
+Domain Model + Rule Registry
+        |
+        +--------------------+
+        v                    v
+Synthetic EPFO Adapter   Optional AI Gateway
+```
+
+## Dependency rule
+
+Dependencies point inward. Domain code knows only domain values and interfaces. Application services orchestrate use cases. Adapters implement external concerns. UI renders application responses and dispatches commands.
+
+## Proposed source layout
+
+```text
+src/
+  app/                    Next.js pages and route handlers
+  application/            use cases and orchestration
+  domain/
+    model/                member, employment, issue, assessment
+    rules/                pure health rules and registry
+    resolution/           ownership and action definitions
+  adapters/
+    epfo/                  MockEPFOAdapter only for MVP
+    persistence/           in-memory/local implementations
+    ai/                    validated model gateway
+  components/             presentational UI components
+  lib/                    boundary utilities, IDs, time abstractions
+tests/
+  fixtures/               deterministic synthetic records
+  domain/
+  application/
+  components/
+  e2e/
+```
+
+The exact folders may evolve during bootstrap, but the boundaries may not be collapsed without updating this document.
+
+## Domain layer
+
+Contains `MemberState`, `EmploymentRecord`, `HealthCheckResult`, `Issue`, `ResolutionAction`, `HealthAssessment`, rules, and workflow context.
+
+It must not import React, Next.js, OpenAI, network clients, environment variables, or database implementations. Rules are pure and deterministic. They return `PASS`, `FAIL`, or `UNKNOWN` with provenance.
+
+## Application layer
+
+Implements use cases such as:
+
+- load a synthetic member;
+- evaluate health;
+- retrieve issue details;
+- begin a resolution;
+- simulate an approved correction;
+- revalidate after mutation;
+- retrieve audit history;
+- request optional generated explanation or draft text.
+
+This layer owns sequencing and transaction boundaries. It is the only layer that may coordinate persistence, rule evaluation, auditing, and AI output.
+
+## Resolution engine
+
+Maps a known issue code to supported owners and resolution actions. It never infers government process from free text. A correction command must be validated against the issue's allowed actions and current state before the repository is changed.
+
+## Adapter boundaries
+
+`MemberRecordPort` provides member snapshots and accepts explicit synthetic correction commands. `MockEPFOAdapter` is the only MVP external-system implementation. It must perform no government network requests.
+
+Persistence starts local and replaceable. Domain records must not depend on storage-specific IDs or ORM decorators.
+
+## AI layer
+
+The optional AI gateway receives minimum necessary structured, synthetic facts and returns validated values. It cannot import repository implementations, run rules, mutate state, or provide authoritative status. The application must have deterministic fallback copy when AI is disabled or invalid.
+
+## Request flow
+
+```text
+load member → normalize snapshot → run all rules → build assessment
+     → map failures to issues → render summary
+     → select resolution → validate command → append audit event
+     → apply synthetic mutation → append audit event → rerun rules
+     → append revalidation event → render healthy state
+```
+
+## State and audit guarantees
+
+- Member snapshots are versioned.
+- Mutation uses an expected version to prevent stale writes.
+- Assessment results record rule ID, rule version, source IDs, and evaluation time.
+- Audit events are append-only and contain no secrets or raw documents.
+- Generated prose is not the source of truth and can be regenerated.
+- Time and ID generation are injectable in deterministic tests.
+
+## Error policy
+
+- Invalid input: structured `VALIDATION_ERROR`.
+- Missing member: `NOT_FOUND`.
+- Stale mutation: `CONFLICT`.
+- Missing evidence: a rule-level `UNKNOWN`, not a server error.
+- Unsupported action: `UNSUPPORTED_ACTION` or `REVIEW_REQUIRED`.
+- AI failure: deterministic fallback copy; health state is unchanged.
+
+## Deferred architecture
+
+The semantic router, multiple public services, real integrations, generalized workflow catalogs, and distributed services are intentionally deferred. The current `WorkflowContext` supports `GENERAL_HEALTH` and a narrow `TRANSFER` context only so future work is possible without building it now.

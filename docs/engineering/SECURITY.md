@@ -1,0 +1,88 @@
+# PF Health Security and Privacy
+
+## Security posture
+
+The MVP is a local/synthetic prototype. Its strongest privacy control is refusing to collect or integrate real data. Demo convenience never justifies credentials or broad access.
+
+## Data classification
+
+### Allowed
+
+- Clearly fictional names, employers, dates, identifiers, and documents
+- Rule IDs, source IDs, assessment results, and safe audit metadata
+- Local developer configuration without secrets
+
+### Prohibited
+
+- Real or plausible UAN, Aadhaar, PAN, bank account, phone, email, OTP, credential, claim, passbook, employer account, or identity document data
+- EPFO/member-portal sessions or cookies
+- Production API keys committed to Git
+- Scraped government records
+
+Fixtures use obvious synthetic prefixes and must be reviewed before commit.
+
+## Threats and controls
+
+### Accidental real-data entry
+
+- Do not provide fields for UAN/Aadhaar/PAN/bank data.
+- Display a synthetic-data notice near sample selection and drafting.
+- Use server-side allowlists and reject unexpected identifier-shaped fields.
+- Keep telemetry off by default for the demo.
+
+### Unauthorized or stale mutation
+
+- Mutations are limited to the known demo member and allowed actions.
+- Require expected snapshot version and explicit simulation confirmation.
+- Bind confirmation tokens to exact proposed changes; make them short-lived and single-use.
+- Append audit events atomically with mutation/revalidation where feasible.
+
+### Injection and model misuse
+
+- Treat model/document content as untrusted.
+- Use strict schemas, prompt separation, output limits, and deterministic fallback.
+- Never expose an open-ended model proxy or tool access from the product.
+- Never let model output select commands or database fields.
+
+### Web application risks
+
+- Validate all inputs server-side with strict schemas.
+- Encode output through React defaults; sanitize any future rich text.
+- Use secure headers and a restrictive content security policy compatible with the app.
+- Keep error responses generic and attach a request ID.
+- Prevent confirmation-token replay and apply rate limits to AI/mutation routes if network-accessible.
+- Do not use dynamic execution or unsafe HTML for generated text.
+
+### Dependency and secret risks
+
+- Pin dependencies with a lockfile and keep the dependency set small.
+- Review installation scripts and audit material vulnerabilities before submission.
+- Keep secrets in local environment files excluded from Git; provide `.env.example` with names only.
+- Client bundles must never contain server API keys.
+- Optional AI functionality must be disabled cleanly when no key exists.
+
+## Logging and audit
+
+Application logs may include request ID, route, status, duration, safe synthetic member ID, and error category. They must exclude full request bodies, authorization headers, cookies, prompts, generated drafts, documents, and credentials.
+
+Domain audit events are user-visible product history, not security logs. Their metadata is allowlisted and immutable after append.
+
+## Network and external systems
+
+The deterministic demo requires no external network. No adapter may contact EPFO or a government domain. Research links are rendered for humans only; the application does not crawl or automate them.
+
+Developer agents need repository write access and package registry access only when dependencies are intentionally installed. They do not need personal accounts, cloud admin, EPFO credentials, or unrestricted production access.
+
+## Security verification
+
+- Secret scan and prohibited-data fixture review
+- Input validation and malformed payload tests
+- Stale version, token replay, wrong-record, and unsupported-action tests
+- XSS-safe rendering tests for generated/plain text
+- AI-disabled and AI-failure paths
+- Dependency audit with findings triaged, not blindly auto-fixed
+- Manual inspection of browser network calls during the demo
+
+## Incident response for the prototype
+
+If real personal data or credentials enter the repository: stop work, do not reproduce the value in logs/chat, revoke exposed credentials if relevant, remove the data from working files and history using an approved recovery process, and document the incident without copying the secret.
