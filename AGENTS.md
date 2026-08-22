@@ -7,6 +7,26 @@
 - While writing code always prefer to use the tailwindcss
 - Never create the variable or type which is not required or kept unused
 
+## Workspace and execution boundary
+
+The only project filesystem in scope is this `pf-health` repository. Never create, edit, delete, move, or configure project files outside the repository root. Do not inspect or mutate sibling projects, parent-directory files, user configuration, global package state, or unrelated Docker resources.
+
+Host-side actions are limited to editing files inside `pf-health`, reading repository files, Git operations scoped to this repository, and Docker/Compose commands scoped to the PF Health project. All dependency installation, application execution, scripts, linting, typechecking, tests, builds, database/local-state commands, and development servers must run inside Docker containers—not directly on the host.
+
+The Docker sandbox must:
+
+- use a dedicated Compose project and isolated bridge network;
+- run application processes as a non-root user;
+- mount only paths inside the `pf-health` repository;
+- use container or named-volume storage for dependencies and runtime state;
+- publish ports to `127.0.0.1` only and only when required;
+- avoid privileged mode, host networking, host PID/IPC namespaces, device mounts, and Docker socket mounts;
+- avoid mounting the user home directory, parent directory, sibling repositories, or system paths;
+- scope start, stop, logs, and cleanup commands to PF Health services only;
+- never run global Docker cleanup commands such as `docker system prune`.
+
+If a required workflow cannot run within this boundary, stop and ask the human rather than weakening isolation.
+
 
 ## Mission
 
@@ -134,7 +154,7 @@ For a non-trivial task:
 3. State the implementation plan, affected files, assumptions, and ambiguities.
 4. Implement only the smallest complete change.
 5. Add or update tests that map to acceptance criteria.
-6. Run relevant tests, typecheck, lint, and build checks.
+6. Run relevant tests, typecheck, lint, and build checks inside the Docker sandbox.
 7. Inspect the resulting diff for scope and documentation drift.
 8. Update `CODEX_LOG.md` after a meaningful mission.
 9. Update `project_state.md` when current status, decisions, verification, risks, or next work changed.
@@ -148,21 +168,21 @@ Do not silently change architecture. If code and source-of-truth documentation c
 
 ## Expected commands
 
-These commands become mandatory once the application harness defines them:
+These package scripts become mandatory once the application harness defines them, but they must be invoked through the PF Health Docker/Compose service:
 
 ```bash
-npm install
-npm run dev
-npm run lint
-npm run typecheck
-npm run test
-npm run test:e2e
-npm run seed:demo
-npm run reset:demo
-npm run check
+docker compose build app
+docker compose run --rm app npm run lint
+docker compose run --rm app npm run typecheck
+docker compose run --rm app npm run test
+docker compose run --rm app npm run test:e2e
+docker compose run --rm app npm run seed:demo
+docker compose run --rm app npm run reset:demo
+docker compose run --rm app npm run check
+docker compose up app
 ```
 
-Do not claim a command works before the project scripts exist. `npm run check` must eventually run lint, typecheck, unit/integration tests, and a production build; E2E may be a separate CI stage if documented.
+Do not run project `node`, `npm`, `npx`, `pnpm`, framework, test, or build commands directly on the host. Do not claim a command works before the project scripts exist. `npm run check` must eventually run lint, typecheck, unit/integration tests, and a production build inside the container; E2E may be a separate containerized CI stage if documented.
 
 ## Definition of done
 

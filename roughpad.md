@@ -25,6 +25,9 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - Inspect the final diff, run all relevant checks, and commit each coherent verified mission with a focused message.
 - Record the commit hash in the completion report and continuity files when it changes the handoff state.
 - Never commit known-broken work or bundle unrelated user changes.
+- Never touch project files or resources outside `pf-health`.
+- Run all dependency installation, application execution, tests, checks, builds, and local state inside the PF Health Docker sandbox.
+- Scope Docker commands and cleanup to the PF Health Compose project; never change unrelated Docker services or resources.
 - Do not activate deferred rules, AI, real integrations, or extra personas without explicit approval.
 - Preserve unrelated user changes and inspect Git status before every mission.
 
@@ -41,12 +44,16 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 **Status:** NEXT
 
-**Goal:** Create a runnable, pinned Next.js/TypeScript harness without implementing product features.
+**Goal:** Create a Docker-isolated, runnable, pinned Next.js/TypeScript harness without implementing product features or executing project tooling on the host.
 
 ### Actions
 
-- [ ] Inspect available Node/package-manager versions and choose pinned framework/tool versions.
-- [ ] Initialize Next.js with the App Router, `src/`, strict TypeScript, and ESLint without overwriting repository documentation.
+- [ ] Verify Docker/Compose availability without changing unrelated services.
+- [ ] Add a minimal multi-stage `Dockerfile`, `compose.yaml`, and `.dockerignore`.
+- [ ] Configure a non-root application user, dedicated project network, named dependency/runtime volumes, and `127.0.0.1`-only port binding.
+- [ ] Verify no mount resolves outside `pf-health`; prohibit privileged mode, host namespaces, devices, added capabilities, and Docker socket access.
+- [ ] Inspect container-available Node/package-manager versions and choose pinned framework/tool versions.
+- [ ] Initialize Next.js with the App Router, `src/`, strict TypeScript, Tailwind CSS, and ESLint inside the container without overwriting repository documentation.
 - [ ] Add the package manifest and lockfile.
 - [ ] Configure strict TypeScript with no `any` escape hatch.
 - [ ] Configure unit testing for pure TypeScript modules.
@@ -54,18 +61,20 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [x] Add a safe `.gitignore` for dependencies, generated output, local state, secrets, logs, and editor files.
 - [ ] Add `.env.example` containing names only, with no secrets.
 - [ ] Add minimal setup and command notes to `README.md`.
-- [ ] Run a clean dependency install and all available checks.
+- [ ] Run a clean image build, containerized dependency install, and all available checks.
 - [ ] Review the diff for accidental feature code, sensitive values, or documentation loss.
 - [ ] Update `project_state.md`, `CODEX_LOG.md`, and this roughpad with exact results.
 
 ### Exit criteria
 
-- [ ] A clean install succeeds from the repository root.
-- [ ] `npm run lint` passes.
-- [ ] `npm run typecheck` passes.
-- [ ] `npm run test` passes with a minimal harness test.
-- [ ] `npm run build` passes.
-- [ ] `npm run check` runs the required aggregate checks and passes.
+- [ ] `docker compose config` resolves and passes the isolation review.
+- [ ] A clean Docker image build and containerized install succeed from the repository root.
+- [ ] Containerized `npm run lint` passes.
+- [ ] Containerized `npm run typecheck` passes.
+- [ ] Containerized `npm run test` passes with a minimal harness test.
+- [ ] Containerized `npm run build` passes.
+- [ ] Containerized `npm run check` runs the required aggregate checks and passes.
+- [ ] No host `node_modules`, package-manager cache, application process, test runner, or build output is created.
 - [ ] No UI feature, PF rule, persistence, network adapter, or OpenAI integration has been added.
 
 ## Mission 2 — Deterministic domain foundation
@@ -192,7 +201,7 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Immediate next action
 
-Start Mission 1 only: inspect the local runtime, select pinned dependencies, and initialize the non-feature application harness while preserving all current documentation.
+Start Mission 1 only: create and verify the Docker sandbox, then select pinned dependencies and initialize the non-feature application harness inside that sandbox while preserving all current documentation.
 
 ## Active notes
 
@@ -200,3 +209,4 @@ Start Mission 1 only: inspect the local runtime, select pinned dependencies, and
 - R001 is the only authorized PF workflow rule.
 - KYC, bank verification, extra personas, document extraction, Hindi, semantic routing, and real integrations remain deferred.
 - The repository currently has documentation but no initialized application or automated checks.
+- Host-side work is limited to repository edits, repository Git operations, and PF Health-scoped Docker/Compose commands.

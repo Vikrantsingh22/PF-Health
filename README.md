@@ -19,7 +19,9 @@ The hero scenario uses a fictional member, Ravi Sharma:
 
 ## Repository status
 
-The repository currently contains the documentation harness and implementation plan. Application code, tests, scripts, and dependencies have not yet been initialized. Do not assume the expected commands work until the bootstrap milestone is complete.
+The repository currently contains the documentation harness and implementation plan. Application code, tests, scripts, dependencies, and the Docker sandbox have not yet been initialized. Do not assume the expected commands work until the bootstrap milestone is complete.
+
+All development, dependency installation, application execution, testing, and builds must run inside the repository-defined Docker environment. Do not run project package-manager or application commands directly on the host. Host access is limited to files inside this repository, repository-scoped Git operations, and PF Health-scoped Docker/Compose commands.
 
 ## Start here
 
@@ -35,6 +37,7 @@ The repository currently contains the documentation harness and implementation p
 
 - Next.js App Router and React
 - TypeScript in strict mode
+- Docker/Compose sandbox with a non-root application user and isolated network
 - Zod for boundary validation
 - Vitest and Testing Library for unit/component tests
 - Playwright for the hero-journey E2E test
@@ -45,23 +48,23 @@ Exact package versions must be selected and pinned during project initialization
 
 ## Expected commands
 
-Once bootstrap is complete:
+Once bootstrap is complete, invoke package scripts through the application container:
 
 ```bash
-npm install
-npm run dev
-npm run lint
-npm run typecheck
-npm run test
-npm run test:e2e
-npm run seed:demo
-npm run reset:demo
-npm run check
+docker compose build app
+docker compose run --rm app npm run lint
+docker compose run --rm app npm run typecheck
+docker compose run --rm app npm run test
+docker compose run --rm app npm run test:e2e
+docker compose run --rm app npm run seed:demo
+docker compose run --rm app npm run reset:demo
+docker compose run --rm app npm run check
+docker compose up app
 ```
 
 ## Delivery order
 
-1. Repository and test harness
+1. Docker sandbox and repository/test harness
 2. Domain types and Ravi fixtures
 3. R001 and deterministic health engine
 4. Resolution, simulated correction, revalidation, and audit events

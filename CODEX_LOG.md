@@ -69,3 +69,13 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Codex contribution:** Added ignore rules for Node dependencies, Next.js and production output, test artifacts, tool caches, environment files, local application state, logs, deployment metadata, editor files, and local certificates. Preserved `.env.example` as a trackable template.
 
 **Verification:** Representative paths are checked with `git check-ignore`; the final diff is checked for whitespace errors before commit. Application checks remain unavailable because the harness is not initialized.
+
+## 2026-08-23 — Docker-only development boundary
+
+**Task:** Change the implementation plan so all development execution and testing occur in a Docker sandbox and no project files or resources outside `pf-health` are touched.
+
+**Codex contribution:** Updated the repository operating rules, architecture, security policy, testing contract, active execution plan, working roughpad, README, persistent state, and repository-aligned Word plan. Made Docker sandbox creation the first bootstrap gate and defined non-root execution, repository-only mounts, isolated networking, localhost-only ports, and project-scoped Docker operations.
+
+**Human decisions:** Do not install dependencies, run application tooling, execute tests, build, seed/reset, or maintain runtime state directly on the host. Do not modify project files or resources outside `pf-health`, and do not change unrelated Docker services or resources.
+
+**Verification:** Documentation consistency, local-link validation, DOCX archive integrity, page-by-page DOCX render review, and staged-diff inspection. Docker configuration and application checks remain unavailable until the sandbox files are implemented in the next mission.

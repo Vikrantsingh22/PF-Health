@@ -29,6 +29,19 @@ Synthetic EPFO Adapter   Optional AI Gateway
 
 Dependencies point inward. Domain code knows only domain values and interfaces. Application services orchestrate use cases. Adapters implement external concerns. UI renders application responses and dispatches commands.
 
+## Development execution boundary
+
+The development runtime is container-only. Docker/Compose is part of the application harness, not an optional deployment wrapper.
+
+- The host may edit repository files and run repository-scoped Git and PF Health-scoped Docker/Compose commands only.
+- Dependency installation, development servers, scripts, tests, typechecking, linting, builds, seed/reset operations, and local application state run inside containers.
+- The application container runs as a non-root user on a dedicated bridge network.
+- Bind mounts may reference only paths inside the `pf-health` repository. Dependencies and mutable runtime state use named volumes or container storage.
+- Published development ports bind to `127.0.0.1`; privileged mode, host networking, host PID/IPC, device mounts, and Docker socket mounts are prohibited.
+- Compose operations and cleanup target only the PF Health project; global Docker cleanup is prohibited.
+
+The initial bootstrap must create and verify this sandbox before initializing or running the application toolchain.
+
 ## Proposed source layout
 
 ```text

@@ -29,11 +29,14 @@ Documentation completeness and consistency checks. No code checks exist yet.
 
 ### Goal
 
-Create a runnable TypeScript application/test harness and implement the complete deterministic hero case without OpenAI or frontend polish.
+Create a Docker-isolated TypeScript application/test harness and implement the complete deterministic hero case without OpenAI or frontend polish. The Docker sandbox is a prerequisite: no project installation, execution, test, or build may run directly on the host.
 
 ### Task sequence
 
-- [ ] Initialize pinned Next.js/TypeScript project with strict settings
+- [ ] Add `Dockerfile`, `compose.yaml`, and `.dockerignore` before application initialization
+- [ ] Configure a non-root app user, dedicated bridge network, named dependency/runtime volumes, and localhost-only port binding
+- [ ] Verify there are no mounts outside `pf-health`, privileged/host namespaces, device mounts, Docker socket mounts, or unrelated cleanup commands
+- [ ] Initialize pinned Next.js/TypeScript project with strict settings inside the container
 - [ ] Add lint, typecheck, unit-test, build, and aggregate check scripts
 - [ ] Add `.env.example`, safe `.gitignore`, and setup notes
 - [ ] Implement boundary schemas and domain types
@@ -50,7 +53,7 @@ Given `raviBeforeCorrection`, the engine returns exactly five checks, four passe
 
 Given `raviAfterCorrection`, the engine returns five passes, zero issues, and `HEALTHY`.
 
-No OpenAI call, UI, database, or network is required. Lint, typecheck, unit tests, and build pass from a clean install.
+No OpenAI call, UI, database, or external network is required. The Docker image builds from a clean repository, the resolved Compose configuration passes the isolation review, and lint, typecheck, unit tests, and production build pass inside the container. No host-native project installation or execution is used.
 
 ## Milestone 2 — Deterministic resolution journey
 
@@ -101,6 +104,8 @@ No OpenAI call, UI, database, or network is required. Lint, typecheck, unit test
 ## Guardrails for every milestone
 
 - Prefer one focused engineering mission per change.
+- Run all project installation, execution, tests, and builds inside the PF Health Docker sandbox.
+- Never mount or modify files outside `pf-health`, and never mutate unrelated Docker resources.
 - Inspect and plan before non-trivial implementation.
 - Define acceptance criteria and “do not touch” boundaries.
 - Commit coherent missions separately.

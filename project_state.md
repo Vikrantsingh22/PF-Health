@@ -20,7 +20,7 @@ The authoritative product journey is `DETECT → EXPLAIN → ASSIGN OWNER → RE
 
 Milestone 0 — documentation harness: **COMPLETE**
 
-Milestone 1 — project bootstrap and deterministic domain: **PLANNED; BOOTSTRAP NEXT**
+Milestone 1 — Docker sandbox, project bootstrap, and deterministic domain: **PLANNED; DOCKER SANDBOX NEXT**
 
 The repository currently contains documentation only. No application package, source code, dependencies, scripts, fixtures, or automated tests have been initialized.
 
@@ -40,6 +40,9 @@ The repository now also contains `roughpad.md`, the working checklist used to tr
 - AI explanation and drafting are optional only after the deterministic UI journey and fallback copy are complete.
 - KYC identity mismatch, bank verification, additional personas, document extraction, Hindi, and semantic routing are deferred and require explicit approval.
 - Each coherent implementation mission must be verified before it is committed; unrelated changes must not be bundled into that commit.
+- All dependency installation, application execution, scripts, tests, builds, seed/reset operations, and local runtime state must run inside the PF Health Docker sandbox.
+- Host-side actions are limited to editing files inside `pf-health`, repository-scoped Git, and PF Health-scoped Docker/Compose commands.
+- Never mount, modify, or otherwise use project files outside `pf-health`; never use privileged/host namespaces, mount the Docker socket, or mutate unrelated Docker resources.
 
 ## Source-of-truth order
 
@@ -65,13 +68,15 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 
 ## Next mission
 
-Bootstrap a strict TypeScript/Next.js project and deterministic test harness only.
+Create and verify the Docker sandbox, then bootstrap a strict TypeScript/Next.js project and deterministic test harness inside it only.
 
 Expected output:
 
-- pinned package manifest and lockfile;
+- `Dockerfile`, `compose.yaml`, and `.dockerignore` with a non-root user and isolation controls;
+- verified Compose configuration with no mount outside `pf-health`, forbidden privileges/namespaces, Docker socket, or non-localhost port binding;
+- pinned package manifest and lockfile created through the containerized workflow;
 - strict TypeScript, lint, test, and build configuration;
-- `npm run lint`, `npm run typecheck`, `npm run test`, and `npm run check`;
+- containerized `npm run lint`, `npm run typecheck`, `npm run test`, and `npm run check`;
 - `.env.example` and safe `.gitignore`;
 - no UI feature implementation, persistence, OpenAI call, or additional PF rule yet.
 
@@ -91,12 +96,14 @@ After bootstrap, implement domain schemas, Ravi before/after fixtures, normalize
 - Implementation plan reconciled and roughpad initialized: yes
 - Verify-before-commit workflow recorded: yes
 - `.gitignore` rules verified with representative generated and secret paths: yes
+- Docker-only execution policy recorded: yes
+- Docker sandbox implemented and verified: no
 
 Never report an unavailable check as passing.
 
 ## Open implementation decisions
 
-- Exact framework/package versions to pin during bootstrap
+- Exact Docker base-image digest and framework/package versions to pin during bootstrap
 - Local persistence implementation after the pure domain milestone
 - Deployment platform after the deterministic demo works locally
 - Whether optional AI work is approved after Milestone 3
@@ -109,6 +116,7 @@ These decisions do not block the next mission.
 - Scope pressure: finish one reliable hero path before additional fixtures or features.
 - Demo fragility: deterministic fallback and reset must not depend on network access.
 - Documentation drift: behavior changes require updates to the relevant source docs and this file.
+- Sandbox escape: reject mounts or commands outside `pf-health`, host-native project execution, and Docker settings that can affect unrelated services.
 
 ## Handoff update template
 

@@ -4,19 +4,25 @@
 
 Give developers and coding agents a fast deterministic oracle. Tests prove domain behavior and the complete hero transition; visual inspection alone is insufficient.
 
+## Execution policy
+
+All test, lint, typecheck, build, seed/reset, and application commands run inside the PF Health Docker/Compose sandbox. Do not install dependencies or execute project tooling directly on the host. Test evidence must name the container command used.
+
+Before application tests exist, verify the sandbox itself: Compose configuration resolves, no mount escapes `pf-health`, no service is privileged or uses host namespaces, the application user is non-root, and any published port binds only to `127.0.0.1`.
+
 ## Expected commands
 
 After bootstrap:
 
 ```bash
-npm run lint
-npm run typecheck
-npm run test
-npm run test:e2e
-npm run check
+docker compose run --rm app npm run lint
+docker compose run --rm app npm run typecheck
+docker compose run --rm app npm run test
+docker compose run --rm app npm run test:e2e
+docker compose run --rm app npm run check
 ```
 
-`npm run check` should run lint, typecheck, unit/integration/component tests, and production build. CI may run E2E separately if setup cost requires it, but completion reports must state whether E2E ran.
+The containerized `npm run check` should run lint, typecheck, unit/integration/component tests, and production build. CI may run E2E in a separate container stage if setup cost requires it, but completion reports must state whether E2E ran.
 
 ## Test layers
 
@@ -115,4 +121,4 @@ Run at a mobile viewport at minimum. Add 768px and 1440px smoke coverage or visu
 
 ## Completion evidence
 
-Report exact commands, pass/fail counts when available, and any skipped checks. “Tests passed” is insufficient without naming the relevant suite and behavior. If scripts do not yet exist, say so rather than claiming verification.
+Report exact container commands, image/build identity where useful, pass/fail counts when available, and any skipped checks. “Tests passed” is insufficient without naming the relevant suite and behavior. If scripts or the Docker harness do not yet exist, say so rather than claiming verification. Host-native results do not satisfy completion criteria.

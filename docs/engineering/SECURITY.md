@@ -4,6 +4,21 @@
 
 The MVP is a local/synthetic prototype. Its strongest privacy control is refusing to collect or integrate real data. Demo convenience never justifies credentials or broad access.
 
+## Development sandbox boundary
+
+All development execution is isolated in Docker. No project dependency installation, application process, test runner, build, seed/reset command, or local datastore may run directly on the host.
+
+- Mount only files below the `pf-health` repository root.
+- Never mount the Docker socket, user home directory, parent/sibling repositories, system directories, devices, or credential stores.
+- Run as a non-root container user with no privileged mode or added capabilities unless a narrowly documented need is approved.
+- Use a dedicated bridge network; do not use host network, PID, or IPC namespaces.
+- Bind required ports to `127.0.0.1` only.
+- Keep dependency and mutable runtime state in named volumes or disposable container storage.
+- Scope Docker commands, logs, and cleanup to the PF Health Compose project. Never prune or stop unrelated images, containers, volumes, or networks.
+- Prefer a read-only container filesystem where practical, with explicit writable mounts for application needs.
+
+If Docker is unavailable or a task requires access outside this boundary, stop and request a human decision. Do not fall back to host-native execution.
+
 ## Data classification
 
 ### Allowed
@@ -71,7 +86,7 @@ Domain audit events are user-visible product history, not security logs. Their m
 
 The deterministic demo requires no external network. No adapter may contact EPFO or a government domain. Research links are rendered for humans only; the application does not crawl or automate them.
 
-Developer agents need repository write access and package registry access only when dependencies are intentionally installed. They do not need personal accounts, cloud admin, EPFO credentials, or unrestricted production access.
+Developer agents need write access only within `pf-health`. Package registry access is permitted only from the build or application container when dependencies are intentionally installed. They do not need personal accounts, cloud admin, EPFO credentials, unrestricted production access, or access to unrelated host services.
 
 ## Security verification
 
@@ -82,6 +97,8 @@ Developer agents need repository write access and package registry access only w
 - AI-disabled and AI-failure paths
 - Dependency audit with findings triaged, not blindly auto-fixed
 - Manual inspection of browser network calls during the demo
+- Compose configuration review for forbidden mounts, privileges, namespaces, capabilities, and non-localhost port bindings
+- Verification that install, lint, typecheck, tests, builds, seed/reset, and application execution occur inside containers
 
 ## Incident response for the prototype
 
