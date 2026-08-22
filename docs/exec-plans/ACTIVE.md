@@ -25,7 +25,7 @@ Documentation completeness and consistency checks. No code checks exist yet.
 
 ## Milestone 1 — Project bootstrap and deterministic domain
 
-**Status:** NEXT
+**Status:** COMPLETE
 
 ### Goal
 
@@ -33,19 +33,19 @@ Create a Docker-isolated TypeScript application/test harness and implement the c
 
 ### Task sequence
 
-- [ ] Add `Dockerfile`, `compose.yaml`, and `.dockerignore` before application initialization
-- [ ] Configure a non-root app user, dedicated bridge network, named dependency/runtime volumes, and localhost-only port binding
-- [ ] Verify there are no mounts outside `pf-health`, privileged/host namespaces, device mounts, Docker socket mounts, or unrelated cleanup commands
-- [ ] Initialize pinned Next.js/TypeScript project with strict settings inside the container
-- [ ] Add lint, typecheck, unit-test, build, and aggregate check scripts
-- [ ] Add `.env.example`, safe `.gitignore`, and setup notes
-- [ ] Implement boundary schemas and domain types
-- [ ] Add immutable Ravi before/after fixtures
-- [ ] Implement record normalizer
-- [ ] Implement D001–D004 demo-integrity checks
-- [ ] Implement R001 as a pure rule
-- [ ] Implement issue registry and health engine
-- [ ] Add unit tests for pass/fail/unknown and golden assessments
+- [x] Add `Dockerfile`, `compose.yaml`, and `.dockerignore` before application initialization
+- [x] Configure a non-root app user, dedicated bridge network, named dependency/runtime volumes, and localhost-only port binding
+- [x] Verify there are no mounts outside `pf-health`, privileged/host namespaces, device mounts, Docker socket mounts, or unrelated cleanup commands
+- [x] Initialize pinned Next.js/TypeScript project with strict settings inside the container
+- [x] Add lint, typecheck, unit-test, build, and aggregate check scripts
+- [x] Add `.env.example`, safe `.gitignore`, and setup notes
+- [x] Implement boundary schemas and domain types
+- [x] Add immutable Ravi before/after fixtures
+- [x] Implement record normalizer
+- [x] Implement D001–D004 demo-integrity checks
+- [x] Implement R001 as a pure rule
+- [x] Implement issue registry and health engine
+- [x] Add unit tests for pass/fail/unknown and golden assessments
 
 ### Exit criterion
 
@@ -57,7 +57,7 @@ No OpenAI call, UI, database, or external network is required. The Docker image 
 
 ## Milestone 2 — Deterministic resolution journey
 
-**Status:** PENDING
+**Status:** NEXT
 
 - [ ] Implement repository ports and local synthetic adapter
 - [ ] Implement resolution action validation and lifecycle

@@ -72,6 +72,8 @@ interface Issue {
   code: IssueCode;
   ruleId: "R001";
   ruleVersion: 1;
+  titleKey: string;
+  fallbackCopyKey: string;
   severity: Severity;
   defaultOwner: Owner;
   alternativeOwners: Owner[];

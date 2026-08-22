@@ -79,35 +79,35 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Mission 2 — Deterministic domain foundation
 
-**Status:** NEXT
+**Status:** COMPLETE
 
 **Goal:** Implement the full pure-domain oracle for Ravi before and after correction.
 
 ### Actions
 
-- [ ] Create framework-independent domain, schema, fixture, rule, and test modules.
-- [ ] Implement Zod boundary schemas matching `docs/engineering/DATA_MODEL.md`.
-- [ ] Implement explicit domain types and inject clock/ID providers where needed.
-- [ ] Add immutable `raviBeforeCorrection` and `raviAfterCorrection` fixtures.
-- [ ] Implement a normalizer that rejects unsupported fields and never invents exit data.
-- [ ] Implement D001-D004 as demo-integrity checks with `PASS`/`UNKNOWN` behavior.
-- [ ] Implement pure, versioned R001 with `PASS`/`FAIL`/`UNKNOWN` behavior and source provenance.
-- [ ] Implement the closed `MISSING_PREVIOUS_EMPLOYMENT_EXIT` issue registry entry.
-- [ ] Implement the health engine, stable check order, counts, status precedence, and issue aggregation.
-- [ ] Add the complete rule matrix and golden before/after assessment tests from `TESTING.md`.
-- [ ] Run all checks and record exact test evidence.
+- [x] Create framework-independent domain, schema, fixture, rule, and test modules.
+- [x] Implement Zod boundary schemas matching `docs/engineering/DATA_MODEL.md`.
+- [x] Implement explicit domain types and inject clock/ID providers where needed.
+- [x] Add immutable `raviBeforeCorrection` and `raviAfterCorrection` fixtures.
+- [x] Implement a normalizer that rejects unsupported fields and never invents exit data.
+- [x] Implement D001-D004 as demo-integrity checks with `PASS`/`UNKNOWN` behavior.
+- [x] Implement pure, versioned R001 with `PASS`/`FAIL`/`UNKNOWN` behavior and source provenance.
+- [x] Implement the closed `MISSING_PREVIOUS_EMPLOYMENT_EXIT` issue registry entry.
+- [x] Implement the health engine, stable check order, counts, status precedence, and issue aggregation.
+- [x] Add the complete rule matrix and golden before/after assessment tests from `TESTING.md`.
+- [x] Run all checks and record exact test evidence: 19 tests across four files passed in Docker.
 
 ### Exit criteria
 
-- [ ] Before fixture: exactly five checks, four pass, one R001 fail, zero unknown, one expected issue, and `NEEDS_ATTENTION`.
-- [ ] After fixture: exactly five passes, zero issues, and `HEALTHY`.
-- [ ] Unsupported or ambiguous evidence remains `UNKNOWN`/`REVIEW_REQUIRED`.
-- [ ] Domain code imports no React, Next.js, database, network, or OpenAI implementation.
-- [ ] Clean install, lint, typecheck, tests, and build pass.
+- [x] Before fixture: exactly five checks, four pass, one R001 fail, zero unknown, one expected issue, and `NEEDS_ATTENTION`.
+- [x] After fixture: exactly five passes, zero issues, and `HEALTHY`.
+- [x] Unsupported or ambiguous evidence remains `UNKNOWN`/`REVIEW_REQUIRED`.
+- [x] Domain code imports no React, Next.js, database, network, or OpenAI implementation.
+- [x] Clean install, lint, typecheck, tests, and build pass.
 
 ## Mission 3 — Deterministic resolution application
 
-**Status:** BLOCKED BY MISSION 2
+**Status:** NEXT
 
 **Goal:** Make reset → assess → confirm correction → mutate synthetic state → revalidate reproducible through application services.
 
@@ -201,12 +201,12 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Immediate next action
 
-Start Mission 2 only: implement the documented boundary schemas, immutable Ravi fixtures, deterministic checks, R001, issue registry, health engine, and golden tests inside the verified Docker sandbox.
+Start Mission 3 only: implement repository ports, the Ravi-only synthetic adapter, resolution lifecycle, confirmation/version checks, safe audit events, deterministic reset/seed, synthetic mutation, and automatic revalidation.
 
 ## Active notes
 
 - The calendar schedule in the plan is a prioritization guide; milestone gates and verified dependencies control execution.
 - R001 is the only authorized PF workflow rule.
 - KYC, bank verification, extra personas, document extraction, Hindi, semantic routing, and real integrations remain deferred.
-- The repository has a verified Docker-isolated application harness and one environment test; product/domain behavior is not implemented yet.
+- The pure domain oracle is implemented and verified with 19 tests; persistence, resolution/application behavior, APIs, and product UI are not implemented yet.
 - Host-side work is limited to repository edits, repository Git operations, and PF Health-scoped Docker/Compose commands.

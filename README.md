@@ -19,7 +19,7 @@ The hero scenario uses a fictional member, Ravi Sharma:
 
 ## Repository status
 
-The repository contains the documentation harness, implementation plan, and a verified Docker-isolated Next.js/TypeScript application harness. Product domain behavior has not yet been implemented.
+The repository contains the documentation harness, a verified Docker-isolated Next.js/TypeScript application harness, and the complete pure deterministic domain foundation for the Ravi before/after oracle. Resolution state, APIs, and the product UI have not yet been implemented.
 
 All development, dependency installation, application execution, testing, and builds must run inside the repository-defined Docker environment. Do not run project package-manager or application commands directly on the host. Host access is limited to files inside this repository, repository-scoped Git operations, and PF Health-scoped Docker/Compose commands.
 
@@ -40,9 +40,10 @@ All development, dependency installation, application execution, testing, and bu
 - TypeScript 6.0.3 in strict mode
 - Tailwind CSS 4.3.3
 - Vitest 4.1.11
+- Zod 4.4.3
 - Docker/Compose sandbox with a non-root application user, read-only root filesystem, and isolated network
 
-Zod, Testing Library, Playwright, local persistence, and optional OpenAI integration remain deferred until the milestone that first requires each dependency.
+Testing Library, Playwright, local persistence, and optional OpenAI integration remain deferred until the milestone that first requires each dependency.
 
 ## Containerized development
 
