@@ -61,6 +61,7 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - Official-source register for R001
 - Repository-aligned revision of the complete hackathon plan DOCX
 - Actionable implementation checklist and working task tracker in `roughpad.md`
+- Safe repository `.gitignore` covering dependencies, build/test output, environment files, local state, logs, and editor artifacts
 
 ## Next mission
 
@@ -89,6 +90,7 @@ After bootstrap, implement domain schemas, Ravi before/after fixtures, normalize
 - Deployment: not configured
 - Implementation plan reconciled and roughpad initialized: yes
 - Verify-before-commit workflow recorded: yes
+- `.gitignore` rules verified with representative generated and secret paths: yes
 
 Never report an unavailable check as passing.
 

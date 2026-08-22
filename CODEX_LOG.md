@@ -61,3 +61,11 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Human decisions:** Commit each coherent change after relevant verification succeeds. Do not commit known-broken work or combine unrelated changes.
 
 **Verification:** Documentation consistency, local-link validation, DOCX archive integrity, and staged-diff inspection are required before the initial documentation commit.
+
+## 2026-08-23 — Repository ignore policy
+
+**Task:** Add a safe `.gitignore` before application bootstrap.
+
+**Codex contribution:** Added ignore rules for Node dependencies, Next.js and production output, test artifacts, tool caches, environment files, local application state, logs, deployment metadata, editor files, and local certificates. Preserved `.env.example` as a trackable template.
+
+**Verification:** Representative paths are checked with `git check-ignore`; the final diff is checked for whitespace errors before commit. Application checks remain unavailable because the harness is not initialized.

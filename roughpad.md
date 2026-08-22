@@ -51,7 +51,8 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [ ] Configure strict TypeScript with no `any` escape hatch.
 - [ ] Configure unit testing for pure TypeScript modules.
 - [ ] Add `lint`, `typecheck`, `test`, `build`, and aggregate `check` scripts.
-- [ ] Add a safe `.gitignore` and `.env.example` containing names only, with no secrets.
+- [x] Add a safe `.gitignore` for dependencies, generated output, local state, secrets, logs, and editor files.
+- [ ] Add `.env.example` containing names only, with no secrets.
 - [ ] Add minimal setup and command notes to `README.md`.
 - [ ] Run a clean dependency install and all available checks.
 - [ ] Review the diff for accidental feature code, sensitive values, or documentation loss.
