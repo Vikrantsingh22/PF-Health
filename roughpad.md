@@ -107,33 +107,33 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Mission 3 — Deterministic resolution application
 
-**Status:** NEXT
+**Status:** COMPLETE
 
 **Goal:** Make reset → assess → confirm correction → mutate synthetic state → revalidate reproducible through application services.
 
 ### Actions
 
-- [ ] Define repository and adapter ports.
-- [ ] Implement the Ravi-only `MockEPFOAdapter` with no government network calls.
-- [ ] Implement local replaceable persistence only as needed for the demo lifecycle.
-- [ ] Implement resolution creation, allowed-action validation, and action selection.
-- [ ] Require explicit confirmation, expected snapshot version, and single-use protection.
-- [ ] Apply only the allowed synthetic exit update and increment the snapshot version once.
-- [ ] Append allowlisted audit events for each state transition.
-- [ ] Re-run the same health engine automatically after mutation.
-- [ ] Add deterministic `seed:demo` and `reset:demo` scripts.
-- [ ] Test stale versions, replay, invalid dates, wrong records, unsupported actions, and successful revalidation.
+- [x] Define repository and adapter ports.
+- [x] Implement the Ravi-only `MockEPFOAdapter` with no government network calls.
+- [x] Implement local replaceable persistence only as needed for the demo lifecycle.
+- [x] Implement resolution creation, allowed-action validation, and action selection.
+- [x] Require explicit confirmation, expected snapshot version, and single-use protection.
+- [x] Apply only the allowed synthetic exit update and increment the snapshot version once.
+- [x] Append allowlisted audit events for each state transition.
+- [x] Re-run the same health engine automatically after mutation.
+- [x] Add deterministic `seed:demo` and `reset:demo` scripts.
+- [x] Test stale versions, replay, invalid dates, wrong records, unsupported actions, and successful revalidation.
 
 ### Exit criteria
 
-- [ ] The complete deterministic application journey is reproducible without UI, network, database service, or AI.
-- [ ] Every mutation has confirmation, concurrency protection, and append-only audit evidence.
-- [ ] Reset restores the exact initial state after complete and partial journeys.
-- [ ] All required checks pass.
+- [x] The complete deterministic application journey is reproducible without UI, network, database service, or AI.
+- [x] Every mutation has confirmation, concurrency protection, and append-only audit evidence.
+- [x] Reset restores the exact initial state after complete and partial journeys.
+- [x] All required checks pass: 29 tests across five files passed in Docker.
 
 ## Mission 4 — Minimal mobile-first UI and E2E
 
-**Status:** BLOCKED BY MISSION 3
+**Status:** NEXT
 
 **Goal:** Expose the deterministic hero journey as one accessible, reliable demo flow.
 

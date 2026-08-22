@@ -57,21 +57,21 @@ No OpenAI call, UI, database, or external network is required. The Docker image 
 
 ## Milestone 2 — Deterministic resolution journey
 
-**Status:** NEXT
+**Status:** COMPLETE
 
-- [ ] Implement repository ports and local synthetic adapter
-- [ ] Implement resolution action validation and lifecycle
-- [ ] Implement explicit simulated correction with version check
-- [ ] Append safe audit events
-- [ ] Revalidate automatically after mutation
-- [ ] Add application and conflict/replay tests
-- [ ] Add deterministic reset/seed commands
+- [x] Implement repository ports and local synthetic adapter
+- [x] Implement resolution action validation and lifecycle
+- [x] Implement explicit simulated correction with version check
+- [x] Append safe audit events
+- [x] Revalidate automatically after mutation
+- [x] Add application and conflict/replay tests
+- [x] Add deterministic reset/seed commands
 
 **Exit criterion:** reset → assess → apply allowed synthetic correction → revalidate → healthy is reproducible through application services.
 
 ## Milestone 3 — Minimal UI and E2E
 
-**Status:** PENDING
+**Status:** NEXT
 
 - [ ] Welcome, loading, summary, issue, resolution, confirmation, revalidation, healthy, and timeline screens
 - [ ] Deterministic fallback copy and source disclosure

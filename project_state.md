@@ -22,9 +22,11 @@ Milestone 0 — documentation harness: **COMPLETE**
 
 Milestone 1 — Docker sandbox, project bootstrap, and deterministic domain: **COMPLETE**
 
-Milestone 2 — deterministic resolution journey: **PLANNED; NEXT**
+Milestone 2 — deterministic resolution journey: **COMPLETE**
 
-The repository now contains a verified Docker-isolated application harness and complete pure-domain oracle for Ravi before and after correction. Persistence, resolution/application services, API routes, audit storage, and product UI have not yet been implemented.
+Milestone 3 — minimal mobile-first UI and E2E: **PLANNED; NEXT**
+
+The repository now contains a verified Docker-isolated application harness, the pure-domain Ravi oracle, and the complete framework-independent reset → assess → confirm → synthetic correction → automatic revalidation lifecycle. API routes and the product UI have not yet been implemented.
 
 The repository now also contains `roughpad.md`, the working checklist used to track one active implementation mission at a time. It refines the ordered milestones without replacing the authoritative specifications.
 
@@ -74,30 +76,32 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - Zod-validated strict member boundary and immutable Ravi before/after fixtures
 - Framework-independent domain types, D001-D004 demo checks, pure `R001@1`, closed issue registry, and deterministic health engine
 - Golden 4/5 `NEEDS_ATTENTION` and 5/5 `HEALTHY` assessments with fixed clock/ID test providers
+- Replaceable member/workflow repository ports, Ravi-only `MockEPFOAdapter`, and process-local in-memory workflow repository
+- Resolution lifecycle with taxonomy action validation, explicit five-minute confirmation, exact command binding, stale-version protection, and single-use tokens
+- Synthetic exit mutation with one snapshot increment, allowlisted append-only audits, and automatic revalidation through the same health engine
+- Containerized deterministic `seed:demo` and `reset:demo` commands
 
 ## Next mission
 
-Implement the deterministic resolution application inside the verified Docker sandbox.
+Implement the minimal mobile-first product UI and API/application boundaries inside the verified Docker sandbox.
 
 Expected output:
 
-- repository and synthetic-adapter ports;
-- Ravi-only local replaceable persistence and deterministic reset/seed;
-- resolution opening, allowed-action selection, explicit confirmation, and version protection;
-- single-use synthetic correction, append-only safe audit events, and automatic revalidation;
-- tests for stale versions, replay, malformed commands, wrong records, unsupported actions, reset, and the successful complete journey;
-- no API route, product UI, OpenAI call, real integration, or additional PF rule.
+- route handlers and validated request/response boundaries over the existing application service;
+- welcome, summary, issue, resolution, confirmation, revalidation, healthy, timeline, and reset states;
+- deterministic fallback copy, synthetic/non-affiliation disclosure, and accessible mobile behavior;
+- loading, retry, empty, unknown, conflict, and stale-state handling;
+- Playwright coverage for the complete 375px hero journey and reset;
+- no OpenAI call, real integration, additional PF rule, or expanded persona.
 
-The detailed resolution actions and exit criteria are tracked under Mission 3 in `roughpad.md`.
-
-After bootstrap, implement domain schemas, Ravi before/after fixtures, normalizer, D001-D004, R001, issue registry, health engine, and golden tests in the sequence defined by `docs/exec-plans/ACTIVE.md`.
+The detailed UI actions and exit criteria are tracked under Mission 4 in `roughpad.md`.
 
 ## Verification state
 
 - Documentation files populated: yes
 - Local Markdown links checked: yes
 - Official evidence recorded for R001: yes
-- Application install: verified inside Docker with exact lockfile; 393 packages, 0 reported vulnerabilities
+- Application install: verified inside Docker with exact lockfile; 396 packages, 0 reported vulnerabilities
 - Typecheck/lint/tests/build: passing inside Docker
 - E2E demo: not implemented
 - Deployment: not configured
@@ -108,15 +112,17 @@ After bootstrap, implement domain schemas, Ravi before/after fixtures, normalize
 - Docker sandbox implemented and verified: yes
 - Compose runtime smoke test: HTTP 200 with expected harness content on `127.0.0.1:3000`
 - Host dependency/build artifacts created: no
-- Deterministic domain tests: 19 passing across harness, normalization, R001, and health-engine suites
+- Deterministic domain and application tests: 29 passing across five harness, normalization, R001, health-engine, and resolution-service suites
 - Ravi before oracle: verified 4 pass, 1 fail, 0 unknown, one issue, `NEEDS_ATTENTION`
 - Ravi after oracle: verified 5 pass, 0 fail, 0 unknown, no issues, `HEALTHY`
+- Resolution journey: verified confirmation, exact token binding, stale-version/replay/expiry rejection, one-version mutation, safe audit order, automatic 5/5 revalidation, and partial/complete reset
+- Demo commands: `seed:demo` and `reset:demo` both verified in Docker with snapshot 1 and 4/5 `NEEDS_ATTENTION`
+- Clean production image: built successfully from `npm ci` with image tag `pf-health-production:local`
 
 Never report an unavailable check as passing.
 
 ## Open implementation decisions
 
-- Local persistence implementation after the pure domain milestone
 - Deployment platform after the deterministic demo works locally
 - Whether optional AI work is approved after Milestone 3
 

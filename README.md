@@ -19,7 +19,7 @@ The hero scenario uses a fictional member, Ravi Sharma:
 
 ## Repository status
 
-The repository contains the documentation harness, a verified Docker-isolated Next.js/TypeScript application harness, and the complete pure deterministic domain foundation for the Ravi before/after oracle. Resolution state, APIs, and the product UI have not yet been implemented.
+The repository contains the documentation harness, a verified Docker-isolated Next.js/TypeScript application harness, the deterministic Ravi health engine, and the complete framework-independent resolution journey. API routes and the product UI have not yet been implemented.
 
 All development, dependency installation, application execution, testing, and builds must run inside the repository-defined Docker environment. Do not run project package-manager or application commands directly on the host. Host access is limited to files inside this repository, repository-scoped Git operations, and PF Health-scoped Docker/Compose commands.
 
@@ -67,7 +67,14 @@ To verify the clean multi-stage production image:
 docker build --target production --tag pf-health-production:local .
 ```
 
-E2E, demo seed, and reset scripts will be introduced by the milestones that implement those behaviors. Do not invoke or claim them before they exist.
+To verify deterministic fixture setup or reset in an isolated process:
+
+```bash
+docker compose run --rm app npm run seed:demo
+docker compose run --rm app npm run reset:demo
+```
+
+The current persistence adapters are intentionally process-local and replaceable. E2E will be introduced with the product UI milestone.
 
 ## Delivery order
 

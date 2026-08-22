@@ -156,6 +156,8 @@ interface SimulateExitUpdateCommand {
 
 The application validates that the employment is affected by the issue and that `SIMULATE_EXIT_UPDATE` is allowed. Successful mutation increments `snapshotVersion` exactly once.
 
+Before mutation, the application stores a short-lived confirmation record bound to the exact resolution, member, issue, employment, expected snapshot version, exit date, and exit reason. The opaque token has `expiresAt` and nullable `usedAt` timestamps. It is single-use and lives behind the workflow repository; it is not part of the public domain aggregate.
+
 ## Audit event
 
 ```ts

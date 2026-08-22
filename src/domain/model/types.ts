@@ -21,6 +21,22 @@ export type ResolutionActionCode =
   | "DRAFT_PREVIOUS_EMPLOYER_REQUEST"
   | "REQUEST_EPFO_REVIEW"
   | "SIMULATE_EXIT_UPDATE";
+export type ResolutionStatus =
+  | "OPEN"
+  | "ACTION_SELECTED"
+  | "SIMULATION_CONFIRMED"
+  | "APPLIED"
+  | "REVALIDATED";
+export type AuditEventType =
+  | "DEMO_RESET"
+  | "MEMBER_LOADED"
+  | "ASSESSMENT_COMPLETED"
+  | "ISSUE_VIEWED"
+  | "RESOLUTION_OPENED"
+  | "ACTION_SELECTED"
+  | "SIMULATION_CONFIRMED"
+  | "SYNTHETIC_CORRECTION_APPLIED"
+  | "REVALIDATION_COMPLETED";
 
 export interface EmploymentRecord {
   readonly employmentId: string;
@@ -83,4 +99,37 @@ export interface HealthAssessment {
   readonly checks: readonly HealthCheckResult[];
   readonly issues: readonly Issue[];
   readonly evaluatedAt: string;
+}
+
+export interface ResolutionCase {
+  readonly resolutionId: string;
+  readonly memberId: string;
+  readonly issueId: string;
+  readonly status: ResolutionStatus;
+  readonly selectedAction: ResolutionActionCode | null;
+  readonly expectedSnapshotVersion: number;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+}
+
+export interface SimulateExitUpdateCommand {
+  readonly memberId: string;
+  readonly resolutionId: string;
+  readonly employmentId: string;
+  readonly expectedSnapshotVersion: number;
+  readonly exitDate: string;
+  readonly exitReason: string;
+  readonly confirmationToken: string;
+}
+
+export interface AuditEvent {
+  readonly eventId: string;
+  readonly memberId: string;
+  readonly resolutionId?: string;
+  readonly type: AuditEventType;
+  readonly actor: "MEMBER" | "SYSTEM";
+  readonly occurredAt: string;
+  readonly fromSnapshotVersion?: number;
+  readonly toSnapshotVersion?: number;
+  readonly metadata: Readonly<Record<string, string | number | boolean>>;
 }
