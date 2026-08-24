@@ -115,7 +115,6 @@ function CheckRow({ check, index, changed }: { readonly check: HealthCheckResult
         {CHECK_LABELS[check.checkId]}
         <span className={styles.checkStatus}>{statusText(check.status)}</span>
       </span>
-      <ArrowIcon className={styles.chevron} />
     </li>
   );
 }

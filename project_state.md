@@ -93,12 +93,13 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - Submission brief, tested three-minute runbook, and accessible repo-native architecture SVG
 - Production-aware security headers and escaped direction-contract rendering with no unsafe HTML API
 - Deterministic `verify:submission` guard for sensitive-value patterns, visibly synthetic fixtures, required artifacts, and no external runtime fetches
+- Impeccable Case File repair with contained tab geometry, continuous paper ground, artifact-free check rows, unified 52px confirmation actions, and synchronized design context
 
 ## Active mission
 
 Complete the external release gate without adding optional AI.
 
-Local hardening is complete. Select a deployment platform/account, deploy the verified production image, confirm public/incognito access, capture a backup and release tag, and record final submission confirmation.
+The focused Impeccable UI repair is complete. Both file tabs are contained by their owning surfaces, the page ground is explicitly painted and clipped, non-interactive row chevrons were removed, and confirmation actions share exact dimensions across supported widths. The Record Sandbox concept is deferred. Deployment is again the next external gate.
 
 ## Verification state
 
@@ -137,6 +138,7 @@ Local hardening is complete. Select a deployment platform/account, deploy the ve
 - Manual release inspection: 4/5 case file, five rows, no horizontal overflow, no external runtime assets, and no browser warnings/errors
 - Demo rehearsal: complete UI path reached the activity timeline in 1.9 seconds of interaction time and was reset afterward; spoken delivery remains governed by the under-three-minute runbook
 - Source refresh: SRC-001 official PDF remained reachable; the dead direct FAQ link was replaced with EPFO's working Help page and its narrower role is documented
+- UI repair verification: Impeccable initially identified 24 design-scale drifts and the confirmation pass narrowed this to two compact metadata sizes, which were corrected; rendered geometry checks passed at 375px, 768px, and 1440px with zero browser warnings/errors
 
 Never report an unavailable check as passing.
 
@@ -144,6 +146,7 @@ Never report an unavailable check as passing.
 
 - Deployment platform after the deterministic demo works locally
 - Whether optional AI work is approved after Milestone 3
+- Whether to proceed later with the approved concept direction: keep Ravi as a guided tutorial and add an interactive synthetic PF Record Sandbox
 
 Deployment is the only blocker to closing and archiving the submission-hardening plan.
 

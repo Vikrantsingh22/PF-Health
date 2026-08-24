@@ -35,12 +35,16 @@
 }
 
 html {
+  min-height: 100%;
   background: var(--paper);
+  overscroll-behavior: none;
   scroll-behavior: smooth;
 }
 
 body {
+  min-height: 100%;
   min-width: 320px;
+  overflow-x: clip;
   margin: 0;
   background: var(--paper);
   color: var(--ink);

@@ -193,3 +193,11 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Source decision:** EPFO's official transfer-claims PDF remained reachable and directly supports R001. The old direct FAQ URL returned 404, so the secondary app link now points to EPFO's working Help page and is documented as source discovery/corroboration rather than independent rule authority.
 
 **Remaining external gate:** Public deployment/incognito verification, backup deployment, release tag, presentation recording, and submission confirmation require a selected platform/account. The active plan remains unarchived until that gate closes.
+
+## 2026-08-25 — Case File UI defect repair
+
+**Task:** Use Impeccable to repair visible defects in the current Case File experience before expanding the product.
+
+**Codex contribution:** Used the repository Impeccable audit-to-polish workflow to reproduce the reported defects and repair their shared causes. Contained the top and right tabs inside their surfaces, explicitly painted and horizontally clipped the warm-paper app ground, removed misleading non-interactive row chevrons, isolated check rows, normalized radii and typography to the documented design scale, and made primary/secondary confirmation actions exactly 52px with no stacked-margin drift. Synchronized `DESIGN.md` and its Impeccable sidecar. Product behavior and factual copy did not change; the Record Sandbox remains deferred.
+
+**Verification:** The initial Impeccable source audit reported 24 design-scale drifts; the bounded confirmation pass reduced this to two compact metadata font sizes, which were corrected. Rendered inspection confirmed top-tab alignment at `0/0`, the right-tab edge equal to the Case File edge, one icon and no title/tooltip on row 03, continuous warm-paper surface containment, zero horizontal overflow, and equal confirmation actions at 375px, 768px, and 1440px. Browser warnings/errors were zero. Docker Playwright passed all three tests, including new geometry and action-size assertions. The aggregate Docker check passed lint, strict typecheck, all 32 tests, and production build; `verify:submission` passed across 50 files.

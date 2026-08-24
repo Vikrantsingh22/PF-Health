@@ -209,7 +209,28 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Immediate next action
 
-Select a deployment platform/account, then verify the release in public/incognito access and capture the final tag/submission confirmation. Optional AI remains separately deferred.
+Return to deployment selection. Optional AI and the Record Sandbox remain separately deferred.
+
+## Mission 7 — Case File UI defect repair
+
+**Status:** COMPLETE
+
+**Goal:** Use a bounded Impeccable audit-to-polish pass to repair the existing Case File UI without changing product behavior, factual copy, or the approved visual world.
+
+### Actions
+
+- [x] Reproduce the reported right-tab overflow, page-background bleed, row-03 overlay, welcome-tab alignment, and confirmation-button size drift.
+- [x] Run the repository Impeccable detector and classify verified findings.
+- [x] Repair the defects at the narrowest shared CSS/component level.
+- [x] Verify welcome, assessment, confirmation, healthy, timeline, and reset states at 375px, 768px, and 1440px.
+- [x] Run Docker E2E, the full aggregate check, and the submission guard.
+- [x] Update continuity files and inspect the final diff; commit remains the final handoff action.
+
+### Boundaries
+
+- Do not implement the Record Sandbox in this mission.
+- Do not add AI, PF rules, personas, routes, dependencies, or external integrations.
+- Preserve the Calm Case File identity, one-primary-action flow, and deterministic behavior.
 
 ## Active notes
 

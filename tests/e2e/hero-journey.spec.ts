@@ -29,6 +29,16 @@ test("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
   await expect(page.getByText("2025-06-30")).toBeVisible();
   await expect(page.getByText("This changes only Ravi's sample record. Nothing will be sent to EPFO or an employer.")).toBeVisible();
 
+  const confirmationButtons = await page
+    .getByRole("main")
+    .getByRole("button")
+    .evaluateAll((buttons) => buttons.map((button) => {
+      const bounds = button.getBoundingClientRect();
+      return { height: bounds.height, width: bounds.width };
+    }));
+  expect(confirmationButtons).toHaveLength(2);
+  expect(confirmationButtons[0]).toEqual(confirmationButtons[1]);
+
   await page.getByRole("button", { name: "Apply simulated correction" }).click();
 
   await expect(page.getByRole("heading", { name: "5 of 5 checks look healthy" })).toBeVisible();
@@ -69,13 +79,30 @@ test("case file remains usable across submission widths and reduced motion", asy
     await page.getByRole("button", { name: "Load Ravi's sample record" }).click();
 
     await expect(page.getByRole("heading", { name: "4 of 5 checks look healthy" })).toBeVisible();
-    await expect(page.getByRole("list", { name: "Supported record checks" }).getByRole("listitem")).toHaveCount(5);
+    const checkRows = page.getByRole("list", { name: "Supported record checks" }).getByRole("listitem");
+    await expect(checkRows).toHaveCount(5);
+    await expect(checkRows.nth(2).locator("svg")).toHaveCount(1);
+    await expect(checkRows.nth(2)).not.toHaveAttribute("title");
     await expect(page.getByRole("heading", { name: "Your previous employment is missing exit information." })).toBeVisible();
 
     const hasHorizontalOverflow = await page.evaluate(
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
     );
     expect(hasHorizontalOverflow).toBe(false);
+
+    const caseFileGeometry = await page
+      .getByRole("region", { name: "4 of 5 checks look healthy" })
+      .evaluate((caseFile) => {
+        const bounds = caseFile.getBoundingClientRect();
+        const rightTab = getComputedStyle(caseFile, "::after");
+        return {
+          overflow: getComputedStyle(caseFile).overflow,
+          rightTabEdge: bounds.right - Number.parseFloat(rightTab.right),
+          surfaceEdge: bounds.right,
+        };
+      });
+    expect(caseFileGeometry.overflow).toBe("hidden");
+    expect(caseFileGeometry.rightTabEdge).toBe(caseFileGeometry.surfaceEdge);
 
     const transitionDuration = await page
       .getByRole("button", { name: "Review what to do next" })

@@ -113,3 +113,14 @@ No OpenAI call, UI, database, or external network is required. The Docker image 
 - Commit coherent missions separately.
 - Do not introduce new PF rules or scope without approval.
 - Update affected documentation and `CODEX_LOG.md`.
+
+## Active UI repair — Case File polish
+
+**Status:** COMPLETE
+
+- [x] Audit the reported geometry, surface, overlay, and control-size defects with Impeccable and the rendered route
+- [x] Repair verified defects without redesigning the Calm Case File or changing behavior
+- [x] Verify all journey states and three supported viewport widths
+- [x] Run Docker E2E, aggregate checks, and the submission guard; update state/log and commit
+
+The interactive PF Record Sandbox is a later approved direction, not part of this repair.

@@ -59,7 +59,7 @@ components:
     backgroundColor: "{colors.trustworthy-blue}"
     textColor: "{colors.on-accent}"
     rounded: "{rounded.control}"
-    padding: "14px 20px"
+    padding: "12px 18px"
     height: "52px"
   case-file:
     backgroundColor: "{colors.raised-paper}"
@@ -132,7 +132,7 @@ Cards and dossiers use practical 16px corners; buttons use 10px corners. Status 
 
 ### Case File
 
-The raised-paper summary contains the record name, health score, five fixed check rows, and a prominent deep-blue side tab. Check rows preserve stable order and pair icon, text, and semantic tint.
+The raised-paper summary contains the record name, health score, five fixed check rows, and a contained deep-blue side tab. Check rows preserve stable order and pair icon, text, and semantic tint. Both the top tab and side tab are clipped to the file silhouette so they cannot paint into the page ground.
 
 ### Issue Dossier
 
