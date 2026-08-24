@@ -9,9 +9,9 @@ const SOURCES = Object.freeze([
   }),
   Object.freeze({
     sourceId: "SRC-002" as const,
-    title: "EPFO FAQ",
-    url: "https://www.epfindia.gov.in/site_en/FAQ.php",
-    retrievedAt: "2026-08-22" as const,
+    title: "EPFO Help — transfer claims",
+    url: "https://www.epfindia.gov.in/site_en/Help.php",
+    retrievedAt: "2026-08-25" as const,
   }),
 ]);
 

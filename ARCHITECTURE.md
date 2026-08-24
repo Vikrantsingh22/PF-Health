@@ -4,6 +4,8 @@
 
 Build a small modular monolith in which deterministic PF health evaluation is independently testable and remains authoritative. Frameworks, persistence, AI, and synthetic integrations surround the domain rather than define it.
 
+The submission-ready visual is available at [`docs/finalist/architecture.svg`](docs/finalist/architecture.svg).
+
 ```text
 UI / Route Handlers
         |

@@ -23,11 +23,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   return (
     <html lang="en">
       <body>
-        <div
-          aria-hidden="true"
-          className="direction-contract"
-          dangerouslySetInnerHTML={{ __html: directionContract }}
-        />
+        <div aria-hidden="true" className="direction-contract">
+          {directionContract}
+        </div>
         {children}
       </body>
     </html>

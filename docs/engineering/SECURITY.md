@@ -68,6 +68,8 @@ Fixtures use obvious synthetic prefixes and must be reviewed before commit.
 - Prevent confirmation-token replay and apply rate limits to AI/mutation routes if network-accessible.
 - Do not use dynamic execution or unsafe HTML for generated text.
 
+The shipped app applies a same-origin CSP, blocks framing and MIME sniffing, suppresses referrer disclosure, isolates the top-level browsing context, and disables camera, microphone, geolocation, payment, and USB permissions. Next.js requires inline bootstrap scripts for hydration, so `script-src` permits inline scripts but no third-party origin; development alone also permits evaluation and WebSocket connections for hot reloading. Generated or user-controlled rich HTML is prohibited, and React's escaped rendering remains the content boundary.
+
 ### Dependency and secret risks
 
 - Pin dependencies with a lockfile and keep the dependency set small.
@@ -90,7 +92,7 @@ Developer agents need write access only within `pf-health`. Package registry acc
 
 ## Security verification
 
-- Secret scan and prohibited-data fixture review
+- `npm run verify:submission` secret-pattern scan and prohibited-data fixture review
 - Input validation and malformed payload tests
 - Stale version, token replay, wrong-record, and unsupported-action tests
 - XSS-safe rendering tests for generated/plain text
@@ -99,6 +101,8 @@ Developer agents need write access only within `pf-health`. Package registry acc
 - Manual inspection of browser network calls during the demo
 - Compose configuration review for forbidden mounts, privileges, namespaces, capabilities, and non-localhost port bindings
 - Verification that install, lint, typecheck, tests, builds, seed/reset, and application execution occur inside containers
+
+The automated scan is a release guard, not a substitute for human review or a dedicated secret scanner. It reports only finding category and file path so a discovered value is not copied into logs.
 
 ## Incident response for the prototype
 

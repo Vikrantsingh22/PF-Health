@@ -1,6 +1,6 @@
 # PF Health Working Roughpad
 
-Last updated: 2026-08-23
+Last updated: 2026-08-25
 
 ## Purpose
 
@@ -185,31 +185,31 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Mission 6 — Submission hardening
 
-**Status:** BLOCKED BY REQUIRED MVP MISSIONS
+**Status:** LOCAL HARDENING COMPLETE; DEPLOYMENT DECISION REQUIRED
 
 **Goal:** Freeze a credible, resettable submission and prepare the public demo package.
 
 ### Actions
 
-- [ ] Verify layouts at 375px, 768px, and 1440px.
-- [ ] Run security, privacy, source, domain, accessibility, and demo-fragility reviews.
-- [ ] Search fixtures, logs, screenshots, prompts, environment files, and Git history for sensitive data.
-- [ ] Verify a clean-clone setup and deterministic offline-capable fallback.
-- [ ] Deploy the stable build and verify public/incognito access.
-- [ ] Rehearse and record the under-three-minute demo.
-- [ ] Finalize architecture image, limitations, submission copy, and tested demo runbook.
-- [ ] Capture the exact release commit/tag, backup deployment, and submission confirmation.
-- [ ] Complete final state/log updates and archive the execution plan when appropriate.
+- [x] Verify layouts at 375px, 768px, and 1440px through Docker E2E and manual browser inspection.
+- [x] Run security, privacy, source, domain, accessibility, and demo-fragility reviews.
+- [x] Search fixtures, runtime source, environment example, and scoped Git history for sensitive-value patterns without printing matched values.
+- [x] Verify a fresh no-cache Docker install/build and deterministic network-independent fallback. A literal external clean clone is prohibited by the repository-only filesystem boundary.
+- [!] Deploy the stable build and verify public/incognito access; requires a selected platform/account.
+- [x] Rehearse the complete click path under three minutes and leave the UI reset. A presentation recording remains a deployment/final-submission task.
+- [x] Finalize architecture image, limitations, submission copy, and tested demo runbook.
+- [!] Capture the release tag, backup deployment, and submission confirmation after deployment is selected.
+- [x] Complete local-hardening state/log updates; keep the execution plan active until deployment is verified.
 
 ### Exit criteria
 
-- [ ] Every item in the documented definition of done is evidenced.
-- [ ] The demo resets in one command and completes reliably without privileged access.
-- [ ] Functional, simulated, optional, and unavailable capabilities are disclosed accurately.
+- [!] Every local item in the documented definition of done is evidenced; public deployment evidence remains pending.
+- [x] The demo resets in one command and completes reliably without privileged access.
+- [x] Functional, simulated, optional, and unavailable capabilities are disclosed accurately.
 
 ## Immediate next action
 
-Begin submission hardening unless the human explicitly approves optional bounded AI first.
+Select a deployment platform/account, then verify the release in public/incognito access and capture the final tag/submission confirmation. Optional AI remains separately deferred.
 
 ## Active notes
 
@@ -219,3 +219,4 @@ Begin submission hardening unless the human explicitly approves optional bounded
 - The deterministic domain, validated API, Calm Case File UI, Docker-only Playwright E2E, Impeccable audit/polish, and independent finish review are complete.
 - Impeccable is installed project-scoped for Codex. Its hook is enabled through a Docker-wrapped project manifest; user trust in Codex Settings remains required.
 - Host-side work is limited to repository edits, repository Git operations, and PF Health-scoped Docker/Compose commands.
+- Local submission hardening added security headers, prohibited-data verification, three-width E2E, a clean production smoke test, refreshed official-source metadata, and final submission/architecture artifacts.

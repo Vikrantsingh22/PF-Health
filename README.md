@@ -19,7 +19,7 @@ The hero scenario uses a fictional member, Ravi Sharma:
 
 ## Repository status
 
-The repository contains the documentation harness, a verified Docker-isolated Next.js/TypeScript application harness, the deterministic Ravi health engine, and the complete framework-independent resolution journey. API routes and the product UI have not yet been implemented.
+The repository contains the complete deterministic hackathon demo: a Docker-isolated Next.js/TypeScript application, strict `/api/v1` routes, the Ravi health and resolution engines, the polished Calm Case File UI, audit history, and Docker-only unit/API/E2E verification. Optional AI and real EPFO integration are intentionally not included.
 
 All development, dependency installation, application execution, testing, and builds must run inside the repository-defined Docker environment. Do not run project package-manager or application commands directly on the host. Host access is limited to files inside this repository, repository-scoped Git operations, and PF Health-scoped Docker/Compose commands.
 
@@ -32,6 +32,8 @@ All development, dependency installation, application execution, testing, and bu
 - Architecture: [`ARCHITECTURE.md`](ARCHITECTURE.md)
 - Active execution plan: [`docs/exec-plans/ACTIVE.md`](docs/exec-plans/ACTIVE.md)
 - Domain rule evidence: [`docs/domain/SOURCES.md`](docs/domain/SOURCES.md)
+- Submission brief: [`docs/product/SUBMISSION.md`](docs/product/SUBMISSION.md)
+- Architecture visual: [`docs/finalist/architecture.svg`](docs/finalist/architecture.svg)
 
 ## Pinned bootstrap stack
 
@@ -73,18 +75,20 @@ To verify deterministic fixture setup or reset in an isolated process:
 ```bash
 docker compose run --rm app npm run seed:demo
 docker compose run --rm app npm run reset:demo
+docker compose run --rm app npm run verify:submission
 ```
 
 The current persistence adapters are intentionally process-local and replaceable. The `e2e` service uses a digest-pinned Playwright image, the private Compose network, the shared dependency volume, a read-only repository mount, and no published port.
 
-## Delivery order
+## Delivered milestones
 
 1. Docker sandbox and repository/test harness
 2. Domain types and Ravi fixtures
 3. R001 and deterministic health engine
 4. Resolution, simulated correction, revalidation, and audit events
-5. Minimal end-to-end UI
-6. Optional bounded AI explanation and drafting
-7. Accessibility, responsive polish, and adversarial review
+5. Validated API and polished end-to-end Case File UI
+6. Accessibility, responsive, privacy, security, and submission hardening
+
+Optional bounded AI remains deferred because it is not needed for the complete deterministic journey. Public deployment is platform-specific and is not configured in this repository.
 
 See [`docs/product/DEMO.md`](docs/product/DEMO.md) for the three-minute presentation path.

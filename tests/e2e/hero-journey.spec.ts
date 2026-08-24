@@ -1,7 +1,13 @@
 import { expect, test } from "@playwright/test";
 
 test("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
-  await page.goto("/");
+  const response = await page.goto("/");
+  expect(response).not.toBeNull();
+  expect(response?.headers()["content-security-policy"]).toContain("default-src 'self'");
+  expect(response?.headers()["permissions-policy"]).toContain("camera=()");
+  expect(response?.headers()["referrer-policy"]).toBe("no-referrer");
+  expect(response?.headers()["x-content-type-options"]).toBe("nosniff");
+  expect(response?.headers()["x-frame-options"]).toBe("DENY");
 
   await expect(page.getByRole("heading", { name: "Check a synthetic PF record before it becomes a problem." })).toBeVisible();
   await expect(page.getByText("Synthetic sample · No EPFO connection")).toBeVisible();
@@ -48,4 +54,32 @@ test("hero controls remain keyboard reachable at 375px", async ({ page }) => {
   await page.keyboard.press("Enter");
   await expect(page.getByRole("heading", { name: "4 of 5 checks look healthy" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Review what to do next" })).toBeEnabled();
+});
+
+test("case file remains usable across submission widths and reduced motion", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+
+  for (const viewport of [
+    { width: 375, height: 812 },
+    { width: 768, height: 900 },
+    { width: 1440, height: 1000 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.goto("/");
+    await page.getByRole("button", { name: "Load Ravi's sample record" }).click();
+
+    await expect(page.getByRole("heading", { name: "4 of 5 checks look healthy" })).toBeVisible();
+    await expect(page.getByRole("list", { name: "Supported record checks" }).getByRole("listitem")).toHaveCount(5);
+    await expect(page.getByRole("heading", { name: "Your previous employment is missing exit information." })).toBeVisible();
+
+    const hasHorizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+    );
+    expect(hasHorizontalOverflow).toBe(false);
+
+    const transitionDuration = await page
+      .getByRole("button", { name: "Review what to do next" })
+      .evaluate((button) => getComputedStyle(button).transitionDuration);
+    expect(transitionDuration).toBe("0s");
+  }
 });

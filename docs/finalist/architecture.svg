@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title description">
+  <title id="title">PF Health submission architecture</title>
+  <desc id="description">A layered modular monolith. The Case File UI calls strict API routes, which call deterministic application services. Services use the health engine, resolution lifecycle and audit history. Those depend on the domain model and R001. A Ravi-only synthetic adapter sits behind a port. EPFO and optional AI are outside the runtime boundary.</desc>
+  <defs>
+    <style>
+      .heading { font: 700 38px 'Noto Sans', Arial, sans-serif; fill: #102033; }
+      .subheading { font: 500 19px 'Noto Sans', Arial, sans-serif; fill: #5b6878; }
+      .label { font: 700 22px 'Noto Sans', Arial, sans-serif; fill: #102033; }
+      .copy { font: 500 17px 'Noto Sans', Arial, sans-serif; fill: #5b6878; }
+      .small { font: 650 15px 'Noto Sans', Arial, sans-serif; fill: #5b6878; letter-spacing: .04em; }
+      .box { fill: #fffdf8; stroke: #a9c1dd; stroke-width: 2; rx: 16; }
+      .domain { fill: #edf7ef; stroke: #237a42; stroke-width: 2; rx: 16; }
+      .synthetic { fill: #fff7e8; stroke: #a55e00; stroke-width: 2; rx: 16; }
+      .outside { fill: #f1eee7; stroke: #8a8175; stroke-width: 2; stroke-dasharray: 9 9; rx: 16; }
+      .arrow { fill: none; stroke: #0c4b91; stroke-width: 3; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0c4b91"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="900" fill="#f7f4ed"/>
+  <text x="90" y="80" class="heading">PF Health · deterministic case-file architecture</text>
+  <text x="90" y="116" class="subheading">Dependencies point inward; synthetic and optional systems cannot own health status.</text>
+
+  <rect x="90" y="170" width="1260" height="116" class="box"/>
+  <text x="130" y="215" class="small">PRESENTATION</text>
+  <text x="130" y="252" class="label">Calm Case File UI</text>
+  <text x="490" y="252" class="copy">Next.js pages · accessible states · synthetic disclosure · source links</text>
+
+  <path d="M720 286 V330" class="arrow"/>
+  <rect x="90" y="330" width="1260" height="116" class="box"/>
+  <text x="130" y="375" class="small">BOUNDARY</text>
+  <text x="130" y="412" class="label">Strict /api/v1 routes</text>
+  <text x="490" y="412" class="copy">Zod validation · stable errors · no-store state responses · security headers</text>
+
+  <path d="M720 446 V490" class="arrow"/>
+  <rect x="90" y="490" width="1260" height="116" class="box"/>
+  <text x="130" y="535" class="small">APPLICATION</text>
+  <text x="130" y="572" class="label">Assessment · resolution · audit</text>
+  <text x="590" y="572" class="copy">Confirmation · version checks · synthetic mutation · automatic revalidation</text>
+
+  <path d="M470 606 V650" class="arrow"/>
+  <path d="M970 606 V650" class="arrow"/>
+  <rect x="90" y="650" width="770" height="126" class="domain"/>
+  <text x="130" y="696" class="small">AUTHORITATIVE CORE</text>
+  <text x="130" y="735" class="label">Domain model · health engine · R001@1</text>
+  <text x="130" y="764" class="copy">Pure, versioned, source-backed, framework-independent</text>
+
+  <rect x="900" y="650" width="450" height="126" class="synthetic"/>
+  <text x="940" y="696" class="small">REPLACEABLE ADAPTER</text>
+  <text x="940" y="735" class="label">Ravi-only synthetic record</text>
+  <text x="940" y="764" class="copy">Process-local · no government requests</text>
+
+  <rect x="90" y="815" width="1260" height="58" class="outside"/>
+  <text x="130" y="852" class="small">OUTSIDE RUNTIME: EPFO LOGIN / SCRAPING / SUBMISSION · REAL MEMBER DATA · OPTIONAL AI (NOT INCLUDED)</text>
+</svg>

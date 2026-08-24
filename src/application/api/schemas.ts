@@ -7,6 +7,7 @@ const positiveIntegerSchema = z.number().int().positive();
 const isoTimestampSchema = z.string().refine((value) => !Number.isNaN(Date.parse(value)), {
   message: "Expected an ISO timestamp",
 });
+const isoDateSchema = z.iso.date();
 
 export const demoMemberIdSchema = z.literal("demo_ravi");
 
@@ -217,7 +218,7 @@ export const issueDetailResponseSchema = z
           sourceId: z.enum(["SRC-001", "SRC-002"]),
           title: nonBlankStringSchema,
           url: z.string().url(),
-          retrievedAt: z.literal("2026-08-22"),
+          retrievedAt: isoDateSchema,
         })
         .strict(),
     ),

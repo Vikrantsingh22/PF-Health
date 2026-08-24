@@ -92,14 +92,16 @@ No OpenAI call, UI, database, or external network is required. The Docker image 
 
 ## Milestone 5 — Submission hardening
 
-**Status:** NEXT unless optional AI is explicitly approved
+**Status:** LOCAL HARDENING COMPLETE; deployment decision required; optional AI deferred
 
-- [ ] Review 375px, 768px, and 1440px layouts
-- [ ] Run security, privacy, domain, UX, and demo-fragility reviews
-- [ ] Fix confirmed high-value findings only
-- [ ] Verify clean-clone setup and offline deterministic demo
-- [ ] Complete Codex log and final runbook
-- [ ] Archive this plan under `completed/` and create the next plan
+- [x] Review 375px, 768px, and 1440px layouts
+- [x] Run security, privacy, domain, UX, and demo-fragility reviews
+- [x] Fix confirmed high-value findings only
+- [x] Verify fresh no-cache Docker setup and offline deterministic demo
+- [x] Complete Codex log, submission brief, architecture visual, and final runbook
+- [ ] Select deployment platform/account and verify public/incognito access
+- [ ] Capture release tag, backup deployment, and submission confirmation
+- [ ] Archive this plan under `completed/` after the external release gate closes
 
 ## Guardrails for every milestone
 

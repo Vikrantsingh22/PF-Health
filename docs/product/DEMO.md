@@ -8,9 +8,11 @@ Demonstrate one trustworthy transition in under three minutes:
 
 ## Pre-demo checklist
 
-- Run the full verification command once it exists.
-- Run `npm run reset:demo` and confirm the expected initial assessment.
-- Disable or verify graceful fallback for optional AI/network calls.
+- Run `docker compose run --rm app npm run verify:submission`.
+- Run `docker compose run --rm --no-deps app npm run check`.
+- Run `docker compose run --rm app npm run reset:demo` and confirm the expected initial assessment.
+- Run `docker compose run --rm e2e` after any UI change.
+- Confirm the app makes no optional AI or government-system calls.
 - Open the app at the welcome screen.
 - Confirm 375px and presentation-width layouts.
 - Keep a recorded or screenshot fallback only as presentation backup.
@@ -21,7 +23,7 @@ Demonstrate one trustworthy transition in under three minutes:
 
 “PF issues are often discovered when someone is already trying to transfer or claim. PF Health checks a synthetic record earlier and explains supported concerns in plain language.”
 
-Click **Check Ravi's sample record**.
+Click **Load Ravi's sample record**.
 
 ### 0:25–0:55 — Detect
 
@@ -35,7 +37,7 @@ Show what needs attention, the narrow online-transfer impact, the next actor/pat
 
 ### 1:35–2:05 — Resolve
 
-Show the correction-request draft or deterministic template. Continue to the simulation notice and confirm that only local synthetic data changes.
+Show the exact proposed synthetic change and the simulation notice. Confirm that only Ravi's process-local sample changes; nothing is sent to EPFO or an employer.
 
 ### 2:05–2:35 — Revalidate
 
@@ -43,7 +45,7 @@ Apply the simulated correction. Let automatic revalidation complete. Show **5 of
 
 ### 2:35–3:00 — Trust
 
-Open the audit timeline. Close with: deterministic status, optional bounded AI copy, official-source provenance, and no real EPFO data or integration.
+Open the audit timeline. Close with: deterministic status and copy, official-source provenance, no real EPFO data, no government integration, and no outcome guarantee.
 
 ## Expected oracle
 
@@ -71,7 +73,7 @@ After correction:
 
 ## Recovery plan
 
-- If AI fails: use deterministic copy and say the core product does not depend on AI.
+- If a network is unavailable: continue normally; the product flow has no runtime dependency on external services.
 - If local state is wrong: run or use **Reset demo**.
 - If animation or navigation fails: use direct routes only if those routes are part of the tested build.
 - If network is unavailable: the complete hero flow must still work.

@@ -181,3 +181,15 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Workflow note:** The shipped Impeccable documenter stalled after deleting the seed file and was stopped. The documented degraded inline documenter procedure restored and refreshed `DESIGN.md` and created the valid schemaVersion 2 sidecar; the independent reviewer accepted both artifacts.
 
 **Remaining risks:** Runtime state remains intentionally process-local and deployment is not configured. Optional AI still requires explicit human approval; additional PF rules, personas, real identifiers, and government integrations remain out of scope.
+
+## 2026-08-25 — Local submission hardening
+
+**Task:** Freeze and verify the deterministic PF Health submission package before any optional AI work.
+
+**Codex contribution:** Added production-aware security headers, removed the unsafe HTML insertion API, generalized strict source-date validation, refreshed the user-facing EPFO source link, and documented source-link health. Added a deterministic submission verifier, response-header and three-width/reduced-motion E2E coverage, a judge-facing submission brief, an accessible architecture SVG, corrected demo/user-journey copy, and current repository instructions. Kept optional AI, real identifiers, government integration, and platform deployment out of scope.
+
+**Verification:** `verify:submission` passed across 50 runtime, test, public, environment, prompt, and provenance files, visibly synthetic fixtures, required artifacts, and runtime-network boundaries. The scoped Git-history scan found no sensitive-value patterns, and `npm audit --audit-level=high` reported zero vulnerabilities. The full Docker check passed lint, strict typecheck, all 32 tests, and production build. Three Docker Playwright tests passed the complete hero journey, keyboard flow, response headers, reduced motion, no-overflow checks, and 375×812, 768×900, and 1440×1000 layouts. Manual browser inspection found no external runtime assets or browser warnings/errors. A no-cache production image completed fresh `npm ci` and build, then returned HTTP 200 while running non-root with a read-only root filesystem, all capabilities dropped, and `no-new-privileges`; production headers kept the release CSP and omitted development-only evaluation/WebSocket allowances. The full UI rehearsal reached the timeline in 1.9 seconds of interaction time and was reset afterward.
+
+**Source decision:** EPFO's official transfer-claims PDF remained reachable and directly supports R001. The old direct FAQ URL returned 404, so the secondary app link now points to EPFO's working Help page and is documented as source discovery/corroboration rather than independent rule authority.
+
+**Remaining external gate:** Public deployment/incognito verification, backup deployment, release tag, presentation recording, and submission confirmation require a selected platform/account. The active plan remains unarchived until that gate closes.

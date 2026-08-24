@@ -18,7 +18,7 @@ Ravi Sharma is a fictional salaried employee who recently changed jobs. He wants
 
 ### 1. Welcome
 
-Ravi sees the independent-prototype disclaimer and a single action: **Check Ravi's sample record**. No login, identifier, OTP, or data entry is requested.
+Ravi sees the independent-prototype disclaimer and a single action: **Load Ravi's sample record**. No login, identifier, OTP, or data entry is requested.
 
 ### 2. Loading and evaluation
 

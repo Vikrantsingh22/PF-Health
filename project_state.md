@@ -26,6 +26,8 @@ Milestone 2 — deterministic resolution journey: **COMPLETE**
 
 Milestone 3 — minimal mobile-first UI and E2E: **COMPLETE**
 
+Milestone 4 — local submission hardening: **COMPLETE; PUBLIC DEPLOYMENT PENDING**
+
 The repository now contains a verified Docker-isolated application harness, the pure-domain Ravi oracle, the complete framework-independent reset → assess → confirm → synthetic correction → automatic revalidation lifecycle, its validated `/api/v1` boundary, and the polished Calm Case File UI with Docker-only browser E2E coverage.
 
 The repository now also contains `roughpad.md`, the working checklist used to track one active implementation mission at a time. It refines the ordered milestones without replacing the authoritative specifications.
@@ -88,12 +90,15 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - Noto Sans Variable typography, semantic color tokens, authored route/owner/evidence icons, visible file geometry, and a solid check-to-dossier bridge
 - Digest-pinned, non-root Playwright 1.62.1 E2E service with read-only repository mounting and private-network access to the app
 - Scan-mode root `DESIGN.md` and `.impeccable/design.json` documenting the shipped visual system
+- Submission brief, tested three-minute runbook, and accessible repo-native architecture SVG
+- Production-aware security headers and escaped direction-contract rendering with no unsafe HTML API
+- Deterministic `verify:submission` guard for sensitive-value patterns, visibly synthetic fixtures, required artifacts, and no external runtime fetches
 
-## Next mission
+## Active mission
 
-Begin submission hardening unless optional bounded AI is explicitly approved first.
+Complete the external release gate without adding optional AI.
 
-Submission hardening should review privacy/security, prohibited synthetic data, deterministic reset behavior, clean-clone setup, responsive layouts, and the under-three-minute demo runbook. Optional AI remains gated by explicit human approval and must not delay the deterministic submission path.
+Local hardening is complete. Select a deployment platform/account, deploy the verified production image, confirm public/incognito access, capture a backup and release tag, and record final submission confirmation.
 
 ## Verification state
 
@@ -102,7 +107,7 @@ Submission hardening should review privacy/security, prohibited synthetic data, 
 - Official evidence recorded for R001: yes
 - Application install: verified inside Docker with exact lockfile; 443 packages, 0 reported vulnerabilities
 - Typecheck/lint/tests/build: passing inside Docker
-- E2E demo: two Playwright tests passing in the dedicated Docker service at 375×812
+- E2E demo: three Playwright tests passing in the dedicated Docker service, covering 375×812, 768×900, 1440×1000, keyboard flow, reduced motion, security headers, no horizontal overflow, and the complete hero path
 - Deployment: not configured
 - Implementation plan reconciled and roughpad initialized: yes
 - Verify-before-commit workflow recorded: yes
@@ -116,7 +121,9 @@ Submission hardening should review privacy/security, prohibited synthetic data, 
 - Ravi after oracle: verified 5 pass, 0 fail, 0 unknown, no issues, `HEALTHY`
 - Resolution journey: verified confirmation, exact token binding, stale-version/replay/expiry rejection, one-version mutation, safe audit order, automatic 5/5 revalidation, and partial/complete reset
 - Demo commands: `seed:demo` and `reset:demo` both verified in Docker with snapshot 1 and 4/5 `NEEDS_ATTENTION`
-- Clean production image: built successfully from `npm ci` with image tag `pf-health-production:local`
+- Submission guard: 50 runtime/test/public/environment/prompt-provenance files scanned; synthetic fixture and runtime-network boundaries passed
+- Dependency and history hygiene: `npm audit --audit-level=high` reported zero vulnerabilities; scoped Git history scan found no sensitive-value patterns
+- Clean production image: no-cache `npm ci` and build succeeded as `pf-health-production:submission`; runtime smoke returned HTTP 200 as non-root with read-only root, all capabilities dropped, and `no-new-privileges`; production headers retained the release CSP while omitting development-only evaluation/WebSocket allowances
 - Impeccable integration: project-scoped files installed; hook enabled and adapted to execute through Docker; Codex hook trust remains a user action
 - Impeccable final detector: no findings across `src/app` and `src/components`
 - Impeccable product context: confirmed and recorded in root `PRODUCT.md`
@@ -127,6 +134,9 @@ Submission hardening should review privacy/security, prohibited synthetic data, 
 - API boundary: nine dynamic Next.js routes build successfully with strict bodies/responses, `no-store` state headers, stable request IDs/errors, and full 4/5 → 5/5 acceptance coverage
 - Responsive visual checks: approved Case File result inspected at 375px, 768px, and 1440px; exact 852×1846 hero comparison checkpoint saved under the ignored review directory
 - E2E harness: official Playwright image pinned to `v1.62.1-noble@sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e`; internal hostname avoids `.app` HSTS upgrading
+- Manual release inspection: 4/5 case file, five rows, no horizontal overflow, no external runtime assets, and no browser warnings/errors
+- Demo rehearsal: complete UI path reached the activity timeline in 1.9 seconds of interaction time and was reset afterward; spoken delivery remains governed by the under-three-minute runbook
+- Source refresh: SRC-001 official PDF remained reachable; the dead direct FAQ link was replaced with EPFO's working Help page and its narrower role is documented
 
 Never report an unavailable check as passing.
 
@@ -135,7 +145,7 @@ Never report an unavailable check as passing.
 - Deployment platform after the deterministic demo works locally
 - Whether optional AI work is approved after Milestone 3
 
-These decisions do not block the next mission.
+Deployment is the only blocker to closing and archiving the submission-hardening plan.
 
 ## Risks to carry forward
 
@@ -146,6 +156,7 @@ These decisions do not block the next mission.
 - Optional-AI drift: do not start model integration without explicit human approval; the deterministic demo is complete without it.
 - Sandbox escape: reject mounts or commands outside `pf-health`, host-native project execution, and Docker settings that can affect unrelated services.
 - Lint-tool migration: Next.js 16.3.2 transitive plugins currently constrain ESLint to the 9.x line; revisit ESLint 10 when the official toolchain supports it without peer overrides.
+- CSP compatibility: Next.js hydration requires inline bootstrap scripts; the policy permits inline same-origin scripts but no third-party script origin, and generated/user-controlled rich HTML remains prohibited.
 
 ## Handoff update template
 

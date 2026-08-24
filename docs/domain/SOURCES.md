@@ -4,14 +4,14 @@
 
 Use official EPFO or other directly responsible government sources for authoritative domain rules. Secondary articles may help discovery but cannot authorize a rule. Record the retrieval date, exact use, interpretation, and limitation. Recheck sources before production use or when policy may have changed.
 
-Retrieved dates below use `2026-08-22`.
+The active R001 sources were rechecked on `2026-08-25`. Retrieval dates are recorded per source.
 
 ## SRC-001 — EPFO FAQ: transfer claims
 
 **Title:** FAQ — Transfer Claims
 **Publisher:** Employees' Provident Fund Organisation
 **Official URL:** https://www.epfindia.gov.in/site_docs/PDFs/Circulars/Y2020-2021/faq_transfer_claim.pdf
-**Retrieved:** 2026-08-22
+**Retrieved:** 2026-08-22; direct URL rechecked 2026-08-25
 **Used by:** `R001`
 
 **Relevant evidence:** The FAQ states that the previous employment's date of exit is mandatory for applying for an online transfer. It describes timing and Aadhaar/OTP prerequisites for the member mark-exit facility and provides the member-portal steps.
@@ -20,19 +20,19 @@ Retrieved dates below use `2026-08-22`.
 
 **Limitations:** This does not establish that every missing exit field blocks every transfer route, claim, or settlement. It does not prove that a particular member can use self-service or that a submitted correction will be accepted.
 
-## SRC-002 — EPFO frequently asked questions
+## SRC-002 — EPFO Help: transfer claims
 
-**Title:** EPFO FAQ
+**Title:** EPFO Help
 **Publisher:** Employees' Provident Fund Organisation
-**Official URL:** https://www.epfindia.gov.in/site_en/FAQ.php
-**Retrieved:** 2026-08-22
-**Used by:** `R001`; future KYC research
+**Official URL:** https://www.epfindia.gov.in/site_en/Help.php
+**Retrieved:** 2026-08-25
+**Used by:** `R001` source discovery and user-facing corroboration
 
-**Relevant evidence:** Current FAQ entries describe prerequisites for online PF transfer, including entered previous-employment exit date, and repeat the member mark-exit process. Other entries describe KYC and correction paths.
+**Relevant evidence:** The Help page lists the official “Transfer Claims for Employees” FAQ. The linked transfer-claims PDF is the direct rule authority recorded as SRC-001.
 
-**PF Health interpretation:** Use as the current web corroboration for R001 and its resolution copy. If the page and older PDF differ, do not silently choose; mark review-required and update this register.
+**PF Health interpretation:** Use this page to help a reviewer find EPFO's transfer-claim materials. Do not treat the listing itself as independent authority for R001.
 
-**Limitations:** The FAQ is broad and can change. Individual answers apply to their stated scenarios and must not be generalized into claim eligibility.
+**Limitations:** EPFO's previously recorded direct FAQ URL returned `404` when rechecked on 2026-08-25, despite current search indexing of the FAQ content. The app therefore links to the working Help page and the directly reachable SRC-001 PDF. Recheck link routing and rule content before any use beyond this prototype.
 
 ## SRC-003 — Joint Declaration SOP
 
