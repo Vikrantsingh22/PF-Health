@@ -81,10 +81,11 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - Synthetic exit mutation with one snapshot increment, allowlisted append-only audits, and automatic revalidation through the same health engine
 - Containerized deterministic `seed:demo` and `reset:demo` commands
 - Project-scoped Impeccable skill and Docker-wrapped Codex design-detector hooks for Mission 4 UI work
+- Confirmed root `PRODUCT.md` and seed `DESIGN.md` context for the comp-first Mission 4 design workflow
 
 ## Next mission
 
-Complete Impeccable product/direction context, then implement the minimal mobile-first product UI and API/application boundaries inside the verified Docker sandbox.
+Select one of three grounded Impeccable mobile composition directions, record its surface brief, then implement the minimal mobile-first product UI and API/application boundaries inside the verified Docker sandbox.
 
 Expected output:
 
@@ -121,12 +122,16 @@ The detailed UI actions and exit criteria are tracked under Mission 4 in `roughp
 - Clean production image: built successfully from `npm ci` with image tag `pf-health-production:local`
 - Impeccable integration: project-scoped files installed; hook enabled and adapted to execute through Docker; Codex hook trust remains a user action
 - Impeccable baseline detector: one expected placeholder finding (`Arial`); no ignore added because Mission 4 will replace the placeholder typography
+- Impeccable product context: confirmed and recorded in root `PRODUCT.md`
+- Impeccable visual context: seed `DESIGN.md` consolidated from the approved PF Health design sources; implementation tokens and sidecar remain intentionally deferred until scan mode after UI implementation
+- Latest full Docker check: lint, strict typecheck, all 29 tests, and production build passed after Mission 4 context setup
 
 Never report an unavailable check as passing.
 
 ## Open implementation decisions
 
 - Deployment platform after the deterministic demo works locally
+- Mission 4 mobile composition direction from the three comp-first options
 - Whether optional AI work is approved after Milestone 3
 
 These decisions do not block the next mission.

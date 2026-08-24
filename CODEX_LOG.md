@@ -121,3 +121,15 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Verification:** Project-scope path inspection found generated assets only under `.agents`, `.codex`, `.impeccable`, and repository-local Git excludes. `hook-admin.mjs status` reports the design hook enabled with no ignores, and the exact Docker-wrapped hook command exits successfully. `npm run check` passed lint, strict typecheck, all 29 tests, and the application production build. A clean production image built from `npm ci` with 438 packages and zero reported vulnerabilities. The Impeccable baseline scan found only the placeholder's Arial font; no ignore was added because Mission 4 will replace it.
 
 **Remaining risks:** Codex must still trust the project `PostToolUse` and `Stop` hooks in Settings. Impeccable requires a confirmed `PRODUCT.md` and direction/build-path decision before the new UI surface is implemented.
+
+## 2026-08-24 — Mission 4 product and visual context
+
+**Task:** Begin the comp-first Mission 4 design process using Impeccable before changing the application UI.
+
+**Codex contribution:** Recorded the confirmed product purpose, audience, scope, trust boundaries, accessibility commitments, and anti-references in root `PRODUCT.md`. Set Impeccable's build path to `comp`. Consolidated the approved repository design direction into a root seed `DESIGN.md` using the canonical format and the existing PF Health design, component, and copy documents as authority.
+
+**Human decisions:** Use Impeccable for the UI phase and use a comp-first workflow. Preserve the existing calm, trustworthy, mobile-first PF Health product direction.
+
+**Verification:** Compared the root contexts against `docs/design/DESIGN.md`, `DESIGN_SYSTEM.md`, `COMPONENTS.md`, `COPY.md`, and the Mission 4 constraints. Impeccable's containerized context resolver recognized root `PRODUCT.md`, root `DESIGN.md`, and the `comp` build path. The full Docker check passed lint, strict typecheck, all 29 tests, and the Next.js production build. No UI implementation or application behavior changed in this step.
+
+**Remaining risks:** A mobile composition direction has not yet been selected. Exact implementation color and font tokens, component examples, and `.impeccable/design.json` remain intentionally deferred until the implemented UI can be scanned without fabricating tokens.
