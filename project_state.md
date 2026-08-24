@@ -82,10 +82,11 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - Containerized deterministic `seed:demo` and `reset:demo` commands
 - Project-scoped Impeccable skill and Docker-wrapped Codex design-detector hooks for Mission 4 UI work
 - Confirmed root `PRODUCT.md` and seed `DESIGN.md` context for the comp-first Mission 4 design workflow
+- User-approved Calm Case File composition with refined check-to-dossier bridge, guidance icons, embedded generation provenance, and route surface brief
 
 ## Next mission
 
-Select one of three grounded Impeccable mobile composition directions, record its surface brief, then implement the minimal mobile-first product UI and API/application boundaries inside the verified Docker sandbox.
+Implement the minimal mobile-first product UI and API/application boundaries inside the verified Docker sandbox using the approved Calm Case File comp as the spatial contract.
 
 Expected output:
 
@@ -125,13 +126,13 @@ The detailed UI actions and exit criteria are tracked under Mission 4 in `roughp
 - Impeccable product context: confirmed and recorded in root `PRODUCT.md`
 - Impeccable visual context: seed `DESIGN.md` consolidated from the approved PF Health design sources; implementation tokens and sidecar remain intentionally deferred until scan mode after UI implementation
 - Latest full Docker check: lint, strict typecheck, all 29 tests, and production build passed after Mission 4 context setup
+- Approved Mission 4 comp: `.impeccable/mocks/approved/pf-health-case-file.png`, with embedded prompt provenance and approval sidecar
 
 Never report an unavailable check as passing.
 
 ## Open implementation decisions
 
 - Deployment platform after the deterministic demo works locally
-- Mission 4 mobile composition direction from the three comp-first options
 - Whether optional AI work is approved after Milestone 3
 
 These decisions do not block the next mission.

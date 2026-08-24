@@ -1,0 +1,33 @@
+Use case: ui-mockup
+Asset type: selected mobile product direction refinement
+Input image: Image 1 is the edit target and approved PF Health "Calm Case File" composition.
+Primary request: Polish the existing composition while preserving its content, information order, palette, and case-file identity.
+
+Make these targeted changes:
+1. Replace the awkward vertical dashed amber connector between check 05 and the issue card. Create a smooth, deliberate continuation: the active fifth row should flow directly into the issue dossier through a short solid amber side rail and a softly curved or stepped file-tab bridge. The transition should feel like opening the selected record entry, with no dangling line and no large empty gap.
+2. Add compact meaningful outline icons in pale neutral/amber icon tiles to the LEFT of each guidance section:
+   - "Why this matters": a route/transfer-path or directional sign icon.
+   - "Who needs to act": a person/owner icon.
+   - "Why we're saying this": a document-with-check or evidence icon.
+   Keep the heading and paragraph aligned in a clean content column beside each icon.
+3. Increase overall polish: harmonize border weights, make the file tabs more subtle, refine the hierarchy between score, check rows, and issue title, improve vertical rhythm, tighten excessive empty areas, align icons and text precisely, and give the primary button a refined focus-ready appearance. Keep surfaces flat and avoid decorative shadow.
+4. Preserve the warm paper background, near-black slate text, restrained deep blue, green healthy states, amber attention state, rounded practical shapes, and accessible large controls.
+
+Text and domain invariants—preserve these exactly and do not add other checks:
+- "PF Health"
+- "Independent prototype"
+- "Synthetic sample · No EPFO connection"
+- "Ravi's sample record"
+- "4 of 5 checks look healthy"
+- "One item needs attention before the supported online-transfer scenario."
+- Five checks only: Sample record format — Healthy; Member profile present — Healthy; Current employment present — Healthy; Previous employment start information — Healthy; Previous employment exit information — Needs attention.
+- "Your previous employment is missing exit information."
+- "Why this matters"
+- "Exit information is required for the supported online-transfer scenario."
+- "Who needs to act"
+- "Ravi may be able to use the supported member update path. Employer help or EPFO review may be needed."
+- "Why we're saying this"
+- "Review what to do next"
+- "This does not guarantee a transfer or claim outcome."
+
+Constraints: Keep portrait mobile web-page framing near 375px proportions. Preserve all five textual status signals, not color alone. No Aadhaar, KYC, bank, contact details, pension, settlement, real identifiers, extra checks, government branding, chatbot styling, gradients, neon, glassmorphism, charts, illustrations, confetti, or decorative shadows. All visible text must be spelled correctly and implementable in semantic React/CSS.

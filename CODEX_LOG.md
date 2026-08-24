@@ -133,3 +133,15 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Verification:** Compared the root contexts against `docs/design/DESIGN.md`, `DESIGN_SYSTEM.md`, `COMPONENTS.md`, `COPY.md`, and the Mission 4 constraints. Impeccable's containerized context resolver recognized root `PRODUCT.md`, root `DESIGN.md`, and the `comp` build path. The full Docker check passed lint, strict typecheck, all 29 tests, and the Next.js production build. No UI implementation or application behavior changed in this step.
 
 **Remaining risks:** A mobile composition direction has not yet been selected. Exact implementation color and font tokens, component examples, and `.impeccable/design.json` remain intentionally deferred until the implemented UI can be scanned without fabricating tokens.
+
+## 2026-08-24 — Calm Case File direction selected
+
+**Task:** Select and polish the Mission 4 mobile composition before implementation.
+
+**Codex contribution:** Presented three grounded mobile compositions. After the human selected the Calm Case File, refined its active-check continuation into a solid file-tab bridge, added route, owner, and evidence icons to the guidance rows, tightened spacing and hierarchy, and preserved the exact authorized five-check scope and limitation copy. Saved the approved comp under `.impeccable/mocks/approved/`, embedded the exact generation prompt, added an approval/provenance sidecar, and prepared the route surface brief.
+
+**Human decisions:** Use the Calm Case File theme. Replace the dashed continuation, add left-aligned guidance icons, and raise the overall polish level.
+
+**Verification:** Visually inspected the refined 375px portrait comp for structure, copy, five-check scope, status redundancy, guidance icons, action hierarchy, and prohibited content. Impeccable recorded the selected assigned direction for seed `9188a955`, recovered the embedded prompt exactly, reported one approved raster with zero missing provenance, and resolved the route surface brief. The full Docker check passed lint, strict typecheck, all 29 tests, and the Next.js production build.
+
+**Remaining risks:** The approved comp is not yet implemented. The first build must reproduce its first viewport before continuing to interactions and responsive states.

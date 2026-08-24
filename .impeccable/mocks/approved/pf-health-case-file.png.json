@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "approved": true,
+  "approvedAt": "2026-08-24",
+  "generatedWith": "Codex built-in image_gen",
+  "sourceComp": "exec-06ba65da-0339-4fc0-a8d1-64fe1cd5f7c6.png",
+  "promptEmbedded": true,
+  "promptFile": "pf-health-case-file.prompt.txt",
+  "approvalNote": "The user selected the Calm Case File direction and requested a smoother check-to-dossier continuation, guidance icons, and additional polish."
+}

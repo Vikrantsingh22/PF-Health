@@ -141,8 +141,8 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 - [x] Confirm the Impeccable comp-first build path and durable product constraints.
 - [x] Create root product and visual-world context for Impeccable from the approved PF Health documentation.
-- [ ] Generate and present three grounded mobile composition directions before implementing UI code.
-- [ ] Record the selected direction and surface brief.
+- [x] Generate and present three grounded mobile composition directions before implementing UI code.
+- [x] Record the selected Calm Case File direction, refined approved comp, provenance, and surface brief.
 - [ ] Implement the six grouped screen states defined in the plan and design documents.
 - [ ] Add synthetic-data and non-affiliation disclosure before loading Ravi.
 - [ ] Render welcome, loading, summary, issue, resolution, confirmation, revalidation, healthy, timeline, and reset states.
@@ -205,7 +205,7 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Immediate next action
 
-Generate the three Impeccable mobile composition directions, obtain direction selection, and record the surface brief before implementing Mission 4's validated API boundaries and mobile-first hero flow.
+Implement Mission 4's validated API boundaries and approved Calm Case File mobile-first hero flow, beginning with the first-viewport reproduction checkpoint.
 
 ## Active notes
 
