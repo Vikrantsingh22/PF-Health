@@ -243,3 +243,10 @@ export const apiErrorSchema = z
       .strict(),
   })
   .strict();
+
+export type ResetResponse = z.infer<typeof resetResponseSchema>;
+export type IssueDetailResponse = z.infer<typeof issueDetailResponseSchema>;
+export type ConfirmationResponse = z.infer<typeof confirmationResponseSchema>;
+export type AppliedSimulationResponse = z.infer<typeof appliedSimulationResponseSchema>;
+export type AuditResponse = z.infer<typeof auditResponseSchema>;
+export type ApiErrorResponse = z.infer<typeof apiErrorSchema>;

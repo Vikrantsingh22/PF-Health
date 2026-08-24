@@ -133,7 +133,7 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Mission 4 — Minimal mobile-first UI and E2E
 
-**Status:** IN PROGRESS
+**Status:** COMPLETE
 
 **Goal:** Expose the deterministic hero journey as one accessible, reliable demo flow.
 
@@ -144,25 +144,25 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [x] Generate and present three grounded mobile composition directions before implementing UI code.
 - [x] Record the selected Calm Case File direction, refined approved comp, provenance, and surface brief.
 - [x] Implement strict `/api/v1` request/response schemas, stable error envelopes, no-store state routes, and the complete deterministic resolution boundary.
-- [ ] Implement the six grouped screen states defined in the plan and design documents.
-- [ ] Add synthetic-data and non-affiliation disclosure before loading Ravi.
-- [ ] Render welcome, loading, summary, issue, resolution, confirmation, revalidation, healthy, timeline, and reset states.
-- [ ] Keep one primary action per screen and show impact, owner, evidence, limitation, and next step.
-- [ ] Provide deterministic explanation and correction-request fallback copy.
-- [ ] Keep `UNKNOWN` and `REVIEW_REQUIRED` visibly distinct from healthy and needs-attention.
-- [ ] Add loading, recoverable error, empty, retry, conflict, and stale-state behavior.
-- [ ] Verify semantic HTML, keyboard flow, focus behavior, touch targets, and status text independent of color.
-- [ ] Add Playwright coverage for the complete mobile hero journey and reset.
-- [ ] Run `/impeccable audit` on the functionally complete hero path and resolve measurable accessibility, responsive, performance, and interaction defects.
-- [ ] Run `/impeccable polish` only after audit and E2E pass; refine alignment, typography, token usage, state coverage, motion, copy, and cleanup without redesigning the approved Case File direction.
+- [x] Implement the six grouped screen states defined in the plan and design documents.
+- [x] Add synthetic-data and non-affiliation disclosure before loading Ravi.
+- [x] Render welcome, loading, summary, issue, resolution, confirmation, revalidation, healthy, timeline, and reset states.
+- [x] Keep one primary action per screen and show impact, owner, evidence, limitation, and next step.
+- [x] Provide deterministic explanation and correction-request fallback copy.
+- [x] Keep `UNKNOWN` and `REVIEW_REQUIRED` visibly distinct from healthy and needs-attention.
+- [x] Add loading, recoverable error/retry, conflict, and stale-state behavior; the fixed five-check fixture has no separate data-empty state.
+- [x] Verify semantic HTML, keyboard flow, focus behavior, touch targets, and status text independent of color.
+- [x] Add Playwright coverage for the complete mobile hero journey and reset.
+- [x] Run `/impeccable audit` on the functionally complete hero path and resolve measurable accessibility, responsive, performance, and interaction defects.
+- [x] Run `/impeccable polish` only after audit and E2E pass; refine alignment, typography, token usage, state coverage, motion, copy, and cleanup without redesigning the approved Case File direction.
 
 ### Exit criteria
 
-- [ ] The journey passes at a 375px viewport without network or AI.
-- [ ] A user can complete the hero flow without developer guidance.
-- [ ] E2E proves 4/5 → correction → automatic revalidation → 5/5 → reset.
-- [ ] Impeccable audit precedes the final polish pass, and polish leaves no known broken, unfinished, or placeholder state.
-- [ ] Lint, typecheck, unit/integration/component tests, build, and E2E pass.
+- [x] The journey passes at a 375px viewport without network or AI.
+- [x] A user can complete the hero flow without developer guidance.
+- [x] E2E proves 4/5 → correction → automatic revalidation → 5/5 → reset.
+- [x] Impeccable audit precedes the final polish pass, and polish leaves no known broken, unfinished, or placeholder state.
+- [x] Lint, typecheck, 32 unit/integration tests, build, and two E2E tests pass.
 
 ## Mission 5 — Optional bounded AI
 
@@ -209,13 +209,13 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Immediate next action
 
-Reproduce the approved Calm Case File first viewport over the validated API boundary and save the required hero comparison capture before implementing later interaction states.
+Begin submission hardening unless the human explicitly approves optional bounded AI first.
 
 ## Active notes
 
 - The calendar schedule in the plan is a prioritization guide; milestone gates and verified dependencies control execution.
 - R001 is the only authorized PF workflow rule.
 - KYC, bank verification, extra personas, document extraction, Hindi, semantic routing, and real integrations remain deferred.
-- The deterministic domain, resolution journey, and validated API boundary are implemented and verified with 32 tests; the product UI is not implemented yet.
+- The deterministic domain, validated API, Calm Case File UI, Docker-only Playwright E2E, Impeccable audit/polish, and independent finish review are complete.
 - Impeccable is installed project-scoped for Codex. Its hook is enabled through a Docker-wrapped project manifest; user trust in Codex Settings remains required.
 - Host-side work is limited to repository edits, repository Git operations, and PF Health-scoped Docker/Compose commands.

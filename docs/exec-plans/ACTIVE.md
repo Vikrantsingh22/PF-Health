@@ -71,13 +71,13 @@ No OpenAI call, UI, database, or external network is required. The Docker image 
 
 ## Milestone 3 — Minimal UI and E2E
 
-**Status:** NEXT
+**Status:** COMPLETE
 
-- [ ] Welcome, loading, summary, issue, resolution, confirmation, revalidation, healthy, and timeline screens
-- [ ] Deterministic fallback copy and source disclosure
-- [ ] Loading/error/empty/unknown states
-- [ ] Mobile accessibility and keyboard behavior
-- [ ] Hero-flow Playwright test
+- [x] Welcome, loading, summary, issue, resolution, confirmation, revalidation, healthy, and timeline screens
+- [x] Deterministic fallback copy and source disclosure
+- [x] Loading/error/retry/unknown-safe states appropriate to the fixed synthetic fixture
+- [x] Mobile accessibility and keyboard behavior
+- [x] Hero-flow Playwright test in the dedicated Docker E2E service
 
 **Exit criterion:** the complete demo path works at 375px without network access and passes E2E.
 
@@ -92,7 +92,7 @@ No OpenAI call, UI, database, or external network is required. The Docker image 
 
 ## Milestone 5 — Submission hardening
 
-**Status:** PENDING
+**Status:** NEXT unless optional AI is explicitly approved
 
 - [ ] Review 375px, 768px, and 1440px layouts
 - [ ] Run security, privacy, domain, UX, and demo-fragility reviews

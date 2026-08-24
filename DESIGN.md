@@ -1,7 +1,71 @@
-<!-- SEED: established with the user before implementation; re-run $impeccable document once there's code to capture the actual tokens and components. -->
 ---
 name: PF Health
-description: A calm, trustworthy record-checking experience for a synthetic PF journey.
+description: A calm, trustworthy case-file experience for a synthetic PF record journey.
+colors:
+  warm-paper: "#f7f4ed"
+  raised-paper: "#fffdf8"
+  slate-ink: "#102033"
+  muted-slate: "#5b6878"
+  quiet-line: "#c9c3b8"
+  trustworthy-blue: "#0c4b91"
+  deep-blue: "#07386d"
+  blue-wash: "#eaf2fb"
+  healthy-green: "#237a42"
+  healthy-wash: "#edf7ef"
+  attention-amber: "#a55e00"
+  attention-wash: "#fff7e8"
+  review-violet: "#5d4b76"
+  review-wash: "#f2eff8"
+  danger: "#a33a31"
+  focus-blue: "#006bd6"
+  on-accent: "#fff"
+typography:
+  display:
+    fontFamily: "Noto Sans Variable, Noto Sans, sans-serif"
+    fontSize: "clamp(2.2rem, 9vw, 3.65rem)"
+    fontWeight: 740
+    lineHeight: 1.06
+    letterSpacing: "-0.04em"
+  headline:
+    fontFamily: "Noto Sans Variable, Noto Sans, sans-serif"
+    fontSize: "clamp(1.5rem, 6.5vw, 2.25rem)"
+    fontWeight: 720
+    lineHeight: 1.12
+    letterSpacing: "-0.03em"
+  body:
+    fontFamily: "Noto Sans Variable, Noto Sans, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  label:
+    fontFamily: "Noto Sans Variable, Noto Sans, sans-serif"
+    fontSize: "0.82rem"
+    fontWeight: 650
+    lineHeight: 1.35
+rounded:
+  control: "10px"
+  card: "16px"
+spacing:
+  xs: "4px"
+  sm: "8px"
+  md: "12px"
+  lg: "16px"
+  xl: "24px"
+  2xl: "32px"
+  3xl: "48px"
+  4xl: "64px"
+components:
+  button-primary:
+    backgroundColor: "{colors.trustworthy-blue}"
+    textColor: "{colors.on-accent}"
+    rounded: "{rounded.control}"
+    padding: "14px 20px"
+    height: "52px"
+  case-file:
+    backgroundColor: "{colors.raised-paper}"
+    textColor: "{colors.slate-ink}"
+    rounded: "{rounded.card}"
+    padding: "52px 24px 26px"
 ---
 
 # Design System: PF Health
@@ -10,87 +74,86 @@ description: A calm, trustworthy record-checking experience for a synthetic PF j
 
 **Creative North Star: "The Calm Case File"**
 
-PF Health should feel like a well-organized personal case file: clear enough to scan quickly, careful enough to trust, and restrained enough that evidence remains more important than decoration. The interface is contemporary and consumer-friendly without imitating an official government portal.
-
-The visual rhythm is deliberate and operational. One issue, one owner, one next action, and the supporting evidence are revealed in that order. Status changes remain comparable in place, especially the transition from four healthy checks to five. The system rejects dashboard density, chatbot styling, neon technology aesthetics, and celebratory gamification.
+PF Health feels like a carefully organized personal record: warm, legible, and operational rather than official or bureaucratic. The interface reveals one result, one issue, its owner, and its evidence in that order. It stays consumer-friendly without imitating EPFO or a government portal.
 
 **Key Characteristics:**
 
-- Warm, quiet surfaces with a single trustworthy accent.
-- Mobile-first, single-column reading with evidence disclosed progressively.
-- Plain-language status reinforced by icon and shape, never color alone.
-- Stable layouts that make before-and-after changes easy to compare.
-- Restrained motion and no decorative data visualization.
+- Warm paper surfaces with deep-blue file geometry.
+- Stable before-and-after layouts for direct 4/5 to 5/5 comparison.
+- Plain-language status paired with authored outline icons and text.
+- Progressive evidence disclosure and one primary decision per state.
 
 ## Colors
 
-Use a warm neutral foundation, near-black slate text, quiet borders, and one deep blue accent. Semantic status tints support meaning but never carry it alone. Exact accessible values will be resolved during implementation and captured by the first scan-mode documentation pass.
+The palette uses warm neutrals as the ground, near-black slate for legibility, and a scarce deep blue for trust and orientation. Green, amber, violet, and red are semantic only; every status also has text and an icon.
 
-### Primary
+**The Evidence Before Accent Rule.** Color guides attention, but source-backed language establishes meaning.
 
-- **Trustworthy Deep Blue** ([to be resolved during implementation]): Primary actions, active focus, and selective orientation cues.
-
-### Neutral
-
-- **Warm Paper** ([to be resolved during implementation]): Main page surface.
-- **Quiet Wash** ([to be resolved during implementation]): Grouped or secondary surfaces.
-- **Near-Black Slate** ([to be resolved during implementation]): Primary text.
-- **Accessible Mid-Slate** ([to be resolved during implementation]): Secondary text.
-- **Quiet Border** ([to be resolved during implementation]): Structural separation.
-
-### Named Rules
-
-**The Evidence Before Accent Rule.** Color may guide attention, but hierarchy and source-backed language must establish meaning first.
-
-**The Status Has Two Signals Rule.** Every status pairs text with an icon or shape; color is always supplementary.
+**The Status Has Two Signals Rule.** Never communicate health, attention, or review state by color alone.
 
 ## Typography
 
-Use one highly legible humanist sans-serif family with open forms and Indian-language support. The exact locally available or bundled family will be resolved during implementation; avoid generic Arial, fashionable display faces, and mixed-family ornament.
+**Display and Body Font:** Noto Sans Variable, with Noto Sans and generic sans-serif fallbacks.
+
+**Character:** Open, highly legible forms support dense record language and future Indian-language expansion without changing visual voice.
 
 ### Hierarchy
 
-- **Display** (650–700, 28/34 mobile and 32/38 desktop): Page-level result and the main health count.
-- **Headline** (600–650, 20/28): Section and step headings.
-- **Title** (600, 17/24 mobile and 18/26 desktop): Card and issue titles.
-- **Body** (400, 16/24): Core explanation and instructions; keep lines within a comfortable reading measure.
-- **Secondary** (400, 14/20): Supporting context and limitations.
-- **Label** (600, 13/18): Compact status, owner, and field labels in sentence case.
+- **Display** (740, responsive 2.2–3.65rem, 1.06): health score and primary result.
+- **Headline** (720, responsive 1.5–2.25rem, 1.12): issue and state headings.
+- **Body** (400, 1rem, 1.5): explanations and instructions, generally constrained to 48–61 characters.
+- **Label** (650, 0.82rem, 1.35): check status, field labels, and compact metadata.
 
-### Named Rules
-
-**The Plain Language First Rule.** Explain the record in everyday language before introducing administrative terms or evidence details.
+**The Plain Language First Rule.** Explain the record in everyday language before introducing rule identifiers or evidence metadata.
 
 ## Layout
 
-The complete journey is a single-column flow at 375px. Use a centered workflow measure of 640–760px, with page padding of 16px on mobile, 24px on tablet, and 32px on desktop. At 1024px and above, an optional 280–320px evidence rail may accompany the workflow when it improves comparison; it must collapse into the main reading order on smaller screens.
-
-Spacing follows a 4px base rhythm with preferred steps of 4, 8, 12, 16, 24, 32, 48, and 64px. Keep actions close to the content they affect. Avoid persistent sidebars, dashboard grids, and card-wrapping every paragraph.
+The journey is a centered single column. The shell uses 16px horizontal padding on mobile, 24px from 640px, and 32px from 1024px; its readable maximum is 860px. Spacing follows a 4px rhythm with preferred steps of 4, 8, 12, 16, 24, 32, 48, and 64px. The layout remains single-column at 375px, 768px, and 1440px so the before-and-after comparison never changes mental model.
 
 **The One Active Decision Rule.** Each screen or action region presents one unmistakable primary action.
 
 ## Elevation & Depth
 
-PF Health is flat by default. Tonal surfaces, borders, spacing, and disclosure establish depth. Shadows are reserved for temporary overlays and remain subtle.
+Persistent surfaces are flat and use tonal contrast, one-pixel borders, spacing, and overlapping file geometry instead of shadows. The deep-blue right tab, top file tab, and solid stepped bridge create structural depth without making content float.
 
-**The Flat Record Rule.** Persistent content does not float; hierarchy comes from structure, not stacked shadows.
+**The Flat Record Rule.** Shadows are not used for persistent content; structure comes from borders, layers, and silhouette.
 
 ## Shapes
 
-The form language is gently rounded and practical: 16px for cards and dialogs, 10px for buttons and inputs, 8px for small controls, and pill shapes only for compact status badges. A quiet 1px border separates persistent surfaces.
+Cards and dossiers use practical 16px corners; buttons use 10px corners. Status icons are circular, guidance icons sit in softly squared 48px tiles, and the case-file silhouette combines a rounded top tab, a deep-blue right tab, and a solid stepped connector into the issue dossier.
+
+## Components
+
+### Buttons
+
+- **Primary:** full-width trustworthy blue, white text, 52px minimum height, and 14px by 20px padding.
+- **Secondary / Ghost:** bordered or transparent deep-blue alternatives, never competing with the primary action.
+- **States:** color and small-position transitions use the established 180ms ease-out curve; focus uses a visible 3px focus-blue outline. Reduced motion removes transitions and hover translation while preserving immediate state change.
+
+### Case File
+
+The raised-paper summary contains the record name, health score, five fixed check rows, and a prominent deep-blue side tab. Check rows preserve stable order and pair icon, text, and semantic tint.
+
+### Issue Dossier
+
+The dossier uses an amber border, solid stepped bridge, issue dot, route and owner guidance tiles, and a native details disclosure for evidence. The healthy variant keeps the structure and changes the semantic treatment to green.
+
+### Status Panels and Timeline
+
+Loading, confirmation, revalidation, error, and timeline states reuse one bordered raised-paper panel. The timeline is append-only in reading order and uses a restrained line-and-dot sequence.
 
 ## Do's and Don'ts
 
 ### Do:
 
-- **Do** preserve the same information architecture before and after revalidation so the changed check is obvious.
-- **Do** keep touch targets at least 44×44px where practical and expose visible keyboard focus.
-- **Do** use progressive disclosure for evidence, rule identifiers, and limitations.
-- **Do** use calm, direct, specific copy for Ravi's synthetic sample record.
+- **Do** preserve the same five-row information architecture before and after revalidation.
+- **Do** pair every status color with text and an authored icon.
+- **Do** keep evidence, limitations, and synthetic/non-affiliation disclosure visible in the journey.
+- **Do** maintain 44px minimum interactive targets, visible focus, and targeted reduced-motion alternatives.
 
 ### Don't:
 
 - **Don't** imitate an EPFO or government portal or imply official affiliation.
-- **Don't** use chatbot bubbles, open-ended prompt boxes, crypto-dashboard styling, neon gradients, or decorative charts.
-- **Don't** celebrate a healthy state with confetti, gamification, or exaggerated motion.
-- **Don't** present unknown or review-required states as healthy.
+- **Don't** add dashboard density, chatbot bubbles, decorative charts, gradients, shadows, or celebratory gamification.
+- **Don't** present unknown or review-required outcomes as healthy.
+- **Don't** replace the solid file-to-dossier bridge with a dashed connector.

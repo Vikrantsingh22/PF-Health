@@ -2,11 +2,90 @@
 
 :root {
   color-scheme: light;
+  --paper: #f7f4ed;
+  --paper-raised: #fffdf8;
+  --paper-muted: #f1eee7;
+  --ink: #102033;
+  --ink-muted: #5b6878;
+  --line: #c9c3b8;
+  --line-blue: #a9c1dd;
+  --blue: #0c4b91;
+  --blue-deep: #07386d;
+  --blue-soft: #eaf2fb;
+  --green: #237a42;
+  --green-line: #bfd8c5;
+  --green-soft: #edf7ef;
+  --amber: #a55e00;
+  --amber-line: #decbaa;
+  --amber-soft: #fff7e8;
+  --unknown: #5d4b76;
+  --unknown-soft: #f2eff8;
+  --danger: #a33a31;
+  --focus: #006bd6;
+  --on-accent: #fff;
+  --selection: #bcd8f5;
+  --radius-card: 16px;
+  --radius-control: 10px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  scroll-behavior: smooth;
 }
 
 body {
+  min-width: 320px;
   margin: 0;
-  background: #f8fafc;
-  color: #0f172a;
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Sans Variable", "Noto Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+summary {
+  font: inherit;
+}
+
+button,
+a,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+a {
+  color: var(--blue-deep);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.2em;
+}
+
+::selection {
+  background: var(--selection);
+  color: var(--ink);
+}
+
+.direction-contract {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

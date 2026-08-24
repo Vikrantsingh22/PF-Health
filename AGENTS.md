@@ -175,7 +175,7 @@ docker compose build app
 docker compose run --rm app npm run lint
 docker compose run --rm app npm run typecheck
 docker compose run --rm app npm run test
-docker compose run --rm app npm run test:e2e
+docker compose run --rm e2e
 docker compose run --rm app npm run seed:demo
 docker compose run --rm app npm run reset:demo
 docker compose run --rm app npm run check

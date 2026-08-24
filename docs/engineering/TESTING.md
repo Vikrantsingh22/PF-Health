@@ -18,11 +18,11 @@ After bootstrap:
 docker compose run --rm app npm run lint
 docker compose run --rm app npm run typecheck
 docker compose run --rm app npm run test
-docker compose run --rm app npm run test:e2e
+docker compose run --rm e2e
 docker compose run --rm app npm run check
 ```
 
-The containerized `npm run check` should run lint, typecheck, unit/integration/component tests, and production build. CI may run E2E in a separate container stage if setup cost requires it, but completion reports must state whether E2E ran.
+The containerized `npm run check` runs lint, typecheck, unit/integration tests, and the production build. E2E runs separately in the digest-pinned, non-root `e2e` service so browser binaries never need to be installed in the application image. Completion reports must state whether both stages ran.
 
 ## Test layers
 

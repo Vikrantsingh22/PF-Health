@@ -1,6 +1,6 @@
 # PF Health Project State
 
-Last updated: 2026-08-24
+Last updated: 2026-08-25
 
 ## Purpose
 
@@ -24,9 +24,9 @@ Milestone 1 — Docker sandbox, project bootstrap, and deterministic domain: **C
 
 Milestone 2 — deterministic resolution journey: **COMPLETE**
 
-Milestone 3 — minimal mobile-first UI and E2E: **IN PROGRESS**
+Milestone 3 — minimal mobile-first UI and E2E: **COMPLETE**
 
-The repository now contains a verified Docker-isolated application harness, the pure-domain Ravi oracle, the complete framework-independent reset → assess → confirm → synthetic correction → automatic revalidation lifecycle, and its validated `/api/v1` boundary. The product UI has not yet been implemented.
+The repository now contains a verified Docker-isolated application harness, the pure-domain Ravi oracle, the complete framework-independent reset → assess → confirm → synthetic correction → automatic revalidation lifecycle, its validated `/api/v1` boundary, and the polished Calm Case File UI with Docker-only browser E2E coverage.
 
 The repository now also contains `roughpad.md`, the working checklist used to track one active implementation mission at a time. It refines the ordered milestones without replacing the authoritative specifications.
 
@@ -84,30 +84,25 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - Confirmed root `PRODUCT.md` and seed `DESIGN.md` context for the comp-first Mission 4 design workflow
 - User-approved Calm Case File composition with refined check-to-dossier bridge, guidance icons, embedded generation provenance, and route surface brief
 - Strict Zod-validated `/api/v1` route handlers for member/reset, assessments, issue detail, resolution selection/confirmation/application, and safe audit retrieval
+- Mobile-first Calm Case File UI covering welcome, loading, 4/5 summary, issue guidance/evidence, exact synthetic confirmation, revalidation, 5/5 healthy result, audit timeline, reset, and safe retry
+- Noto Sans Variable typography, semantic color tokens, authored route/owner/evidence icons, visible file geometry, and a solid check-to-dossier bridge
+- Digest-pinned, non-root Playwright 1.62.1 E2E service with read-only repository mounting and private-network access to the app
+- Scan-mode root `DESIGN.md` and `.impeccable/design.json` documenting the shipped visual system
 
 ## Next mission
 
-Implement the minimal mobile-first product UI inside the verified Docker sandbox using the approved Calm Case File comp and validated API boundary as contracts.
+Begin submission hardening unless optional bounded AI is explicitly approved first.
 
-Expected output:
-
-- route handlers and validated request/response boundaries over the existing application service;
-- welcome, summary, issue, resolution, confirmation, revalidation, healthy, timeline, and reset states;
-- deterministic fallback copy, synthetic/non-affiliation disclosure, and accessible mobile behavior;
-- loading, retry, empty, unknown, conflict, and stale-state handling;
-- Playwright coverage for the complete 375px hero journey and reset;
-- no OpenAI call, real integration, additional PF rule, or expanded persona.
-
-The detailed UI actions and exit criteria are tracked under Mission 4 in `roughpad.md`.
+Submission hardening should review privacy/security, prohibited synthetic data, deterministic reset behavior, clean-clone setup, responsive layouts, and the under-three-minute demo runbook. Optional AI remains gated by explicit human approval and must not delay the deterministic submission path.
 
 ## Verification state
 
 - Documentation files populated: yes
 - Local Markdown links checked: yes
 - Official evidence recorded for R001: yes
-- Application install: verified inside Docker with exact lockfile; 438 packages, 0 reported vulnerabilities
+- Application install: verified inside Docker with exact lockfile; 443 packages, 0 reported vulnerabilities
 - Typecheck/lint/tests/build: passing inside Docker
-- E2E demo: not implemented
+- E2E demo: two Playwright tests passing in the dedicated Docker service at 375×812
 - Deployment: not configured
 - Implementation plan reconciled and roughpad initialized: yes
 - Verify-before-commit workflow recorded: yes
@@ -123,13 +118,15 @@ The detailed UI actions and exit criteria are tracked under Mission 4 in `roughp
 - Demo commands: `seed:demo` and `reset:demo` both verified in Docker with snapshot 1 and 4/5 `NEEDS_ATTENTION`
 - Clean production image: built successfully from `npm ci` with image tag `pf-health-production:local`
 - Impeccable integration: project-scoped files installed; hook enabled and adapted to execute through Docker; Codex hook trust remains a user action
-- Impeccable baseline detector: one expected placeholder finding (`Arial`); no ignore added because Mission 4 will replace the placeholder typography
+- Impeccable final detector: no findings across `src/app` and `src/components`
 - Impeccable product context: confirmed and recorded in root `PRODUCT.md`
-- Impeccable visual context: seed `DESIGN.md` consolidated from the approved PF Health design sources; implementation tokens and sidecar remain intentionally deferred until scan mode after UI implementation
-- Latest full Docker check: lint, strict typecheck, all 29 tests, and production build passed after Mission 4 context setup
+- Impeccable visual context: root `DESIGN.md` and `.impeccable/design.json` now record the shipped tokens, components, motion, breakpoints, and Calm Case File rules
+- Latest full Docker check: lint, strict typecheck, all 32 tests, and production build passed on the polished source tree
 - Approved Mission 4 comp: `.impeccable/mocks/approved/pf-health-case-file.png`, with embedded prompt provenance and approval sidecar
-- Mission 4 finish gate: run Impeccable audit after the full hero path and E2E are functionally complete, then run `/impeccable polish` as the final non-redesign refinement pass
+- Mission 4 finish gate: audit completed before polish; lowest measured text contrast was 4.69:1, browser logs were clean, reduced-motion handling was corrected, and the independent reviewer returned `ship` after scoring all three fix items resolved
 - API boundary: nine dynamic Next.js routes build successfully with strict bodies/responses, `no-store` state headers, stable request IDs/errors, and full 4/5 → 5/5 acceptance coverage
+- Responsive visual checks: approved Case File result inspected at 375px, 768px, and 1440px; exact 852×1846 hero comparison checkpoint saved under the ignored review directory
+- E2E harness: official Playwright image pinned to `v1.62.1-noble@sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e`; internal hostname avoids `.app` HSTS upgrading
 
 Never report an unavailable check as passing.
 
@@ -146,7 +143,7 @@ These decisions do not block the next mission.
 - Scope pressure: finish one reliable hero path before additional fixtures or features.
 - Demo fragility: deterministic fallback and reset must not depend on network access.
 - Documentation drift: behavior changes require updates to the relevant source docs and this file.
-- Premature polish: do not run `/impeccable polish` against the placeholder or incomplete flow; audit first after functional completion, then polish the complete path.
+- Optional-AI drift: do not start model integration without explicit human approval; the deterministic demo is complete without it.
 - Sandbox escape: reject mounts or commands outside `pf-health`, host-native project execution, and Docker settings that can affect unrelated services.
 - Lint-tool migration: Next.js 16.3.2 transitive plugins currently constrain ESLint to the 9.x line; revisit ESLint 10 when the official toolchain supports it without peer overrides.
 

@@ -43,7 +43,7 @@ All development, dependency installation, application execution, testing, and bu
 - Zod 4.4.3
 - Docker/Compose sandbox with a non-root application user, read-only root filesystem, and isolated network
 
-Testing Library, Playwright, local persistence, and optional OpenAI integration remain deferred until the milestone that first requires each dependency.
+Testing Library, durable persistence, and optional OpenAI integration remain deferred until the milestone that first requires each dependency. Playwright is present only in the dedicated E2E service.
 
 ## Containerized development
 
@@ -56,6 +56,7 @@ docker compose run --rm app npm run lint
 docker compose run --rm app npm run typecheck
 docker compose run --rm app npm run test
 docker compose run --rm app npm run check
+docker compose run --rm e2e
 docker compose up app
 ```
 
@@ -74,7 +75,7 @@ docker compose run --rm app npm run seed:demo
 docker compose run --rm app npm run reset:demo
 ```
 
-The current persistence adapters are intentionally process-local and replaceable. E2E will be introduced with the product UI milestone.
+The current persistence adapters are intentionally process-local and replaceable. The `e2e` service uses a digest-pinned Playwright image, the private Compose network, the shared dependency volume, a read-only repository mount, and no published port.
 
 ## Delivery order
 

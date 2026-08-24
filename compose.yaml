@@ -33,6 +33,53 @@ services:
       - /tmp:rw,noexec,nosuid,size=128m,uid=1000,gid=1000
       - /home/node/.npm:rw,noexec,nosuid,size=1g,uid=1000,gid=1000
     networks:
+      app_network:
+        aliases:
+          - pf-health-web
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:3000').then((response)=>{if(!response.ok)process.exit(1)}).catch(()=>process.exit(1))
+      interval: 2s
+      timeout: 2s
+      retries: 30
+      start_period: 5s
+
+  e2e:
+    image: mcr.microsoft.com/playwright:v1.62.1-noble@sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e
+    command: npm run test:e2e
+    init: true
+    user: pwuser
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    environment:
+      CI: "1"
+      HOME: /home/pwuser
+      NO_PROXY: pf-health-web,localhost,127.0.0.1
+      PLAYWRIGHT_BASE_URL: http://pf-health-web:3000
+      no_proxy: pf-health-web,localhost,127.0.0.1
+    depends_on:
+      app:
+        condition: service_healthy
+    volumes:
+      - type: bind
+        source: .
+        target: /workspace
+        read_only: true
+      - type: volume
+        source: node_modules
+        target: /workspace/node_modules
+        read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=256m,uid=1001,gid=1001
+      - /home/pwuser:rw,nosuid,size=128m,uid=1001,gid=1001
+    working_dir: /workspace
+    networks:
       - app_network
 
 volumes:

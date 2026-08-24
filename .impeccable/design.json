@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-25T00:00:00+05:30",
+  "title": "Design System: PF Health",
+  "extensions": {
+    "colorMeta": {
+      "trustworthy-blue": {
+        "role": "primary",
+        "displayName": "Trustworthy Blue",
+        "tonalRamp": ["#031326", "#05284e", "#07386d", "#0c4b91", "#4d78ab", "#8da9ca", "#c7d7e8", "#eaf2fb"]
+      },
+      "warm-paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "tonalRamp": ["#282721", "#504e45", "#77746a", "#9f9b90", "#c6c2b8", "#dedbd2", "#eeeae2", "#f7f4ed"]
+      },
+      "healthy-green": {
+        "role": "semantic",
+        "displayName": "Healthy Green",
+        "tonalRamp": ["#0b2815", "#124326", "#1a5d33", "#237a42", "#5a9b6d", "#91bea0", "#c4ddca", "#edf7ef"]
+      },
+      "attention-amber": {
+        "role": "semantic",
+        "displayName": "Attention Amber",
+        "tonalRamp": ["#321b00", "#573100", "#7d4700", "#a55e00", "#c48635", "#dda968", "#f0ce9e", "#fff7e8"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Health Result", "purpose": "The 4/5 and 5/5 comparison." },
+      "headline": { "displayName": "Issue Heading", "purpose": "Issue, confirmation, and state headings." },
+      "body": { "displayName": "Record Body", "purpose": "Plain-language explanations and instructions." },
+      "label": { "displayName": "Status Label", "purpose": "Check results and compact metadata." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-out", "value": "180ms cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Button color, small translation, and disclosure-chevron transitions." },
+      { "name": "reduced-motion", "value": "none", "purpose": "Removes transitions and hover translation while preserving immediate state changes." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "375px" },
+      { "name": "tablet", "value": "640px" },
+      { "name": "wide", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single active decision in an action region.",
+      "html": "<button class=\"ds-primary-button\">Review what to do next <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"m9 5 7 7-7 7\"/></svg></button>",
+      "css": ".ds-primary-button{display:flex;width:100%;min-height:52px;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border:1px solid #0c4b91;border-radius:10px;background:#0c4b91;color:#fff;font:690 16px/1.5 'Noto Sans',sans-serif;transition:background-color 180ms cubic-bezier(.16,1,.3,1),transform 180ms cubic-bezier(.16,1,.3,1)}.ds-primary-button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.ds-primary-button:hover{background:#07386d;transform:translateY(-1px)}.ds-primary-button:focus-visible{outline:3px solid #006bd6;outline-offset:3px}"
+    },
+    {
+      "name": "Case File",
+      "kind": "card",
+      "refersTo": "case-file",
+      "description": "Stable summary frame for the five deterministic checks.",
+      "html": "<section class=\"ds-case-file\"><span class=\"ds-file-tab\"></span><p>Ravi's sample record</p><h2>4 of 5 checks look healthy</h2><div class=\"ds-check\">05 · Previous employment exit information — Needs attention</div></section>",
+      "css": ".ds-case-file{position:relative;padding:52px 24px 0;border:1px solid #0c4b91;border-radius:16px 16px 4px 4px;background:#fffdf8;color:#102033;font-family:'Noto Sans',sans-serif}.ds-case-file:after{position:absolute;top:48px;right:-12px;bottom:-1px;width:20px;border-radius:0 12px 10px 0;background:#07386d;content:''}.ds-file-tab{position:absolute;top:-1px;left:-1px;width:148px;height:24px;border-radius:15px 18px 0 0;background:#07386d}.ds-case-file h2{max-width:15ch;margin:10px 0 24px;font-size:42px;line-height:1.06;letter-spacing:-.04em}.ds-check{margin:0 -24px;padding:18px 24px;border-top:1px solid #c9c3b8;background:#fff7e8;color:#a55e00}"
+    },
+    {
+      "name": "Guidance Tile",
+      "kind": "custom",
+      "description": "A route or owner cue inside the issue dossier.",
+      "html": "<div class=\"ds-guidance\"><span class=\"ds-guidance-icon\"><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"M5 7h10.5M13 4.5 15.5 7 13 9.5M19 17H8.5\"/></svg></span><div><strong>Why this matters</strong><p>Exit information is required for the supported scenario.</p></div></div>",
+      "css": ".ds-guidance{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;padding:18px 0;border-top:1px solid #c9c3b8;color:#102033;font-family:'Noto Sans',sans-serif}.ds-guidance-icon{display:grid;width:48px;height:48px;place-items:center;border:1px solid #decbaa;border-radius:12px;background:#fff7e8;color:#a55e00}.ds-guidance-icon svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.ds-guidance p{margin:4px 0 0;color:#5b6878;font-size:14px;line-height:1.55}"
+    },
+    {
+      "name": "Evidence Disclosure",
+      "kind": "custom",
+      "description": "Progressively reveals rule provenance and official sources.",
+      "html": "<details class=\"ds-evidence\"><summary>Why we're saying this</summary><p>Rule R001 version 1 · Deterministic fallback explanation</p></details>",
+      "css": ".ds-evidence{border-top:1px solid #c9c3b8;color:#102033;font-family:'Noto Sans',sans-serif}.ds-evidence summary{min-height:64px;padding:20px;cursor:pointer;font-weight:680}.ds-evidence summary:focus-visible{outline:3px solid #006bd6;outline-offset:3px}.ds-evidence p{padding:0 20px 20px;margin:0;color:#5b6878;font-size:14px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Calm Case File",
+    "overview": "PF Health feels like a carefully organized personal record: warm, legible, and operational rather than official or bureaucratic. The interface reveals one result, one issue, its owner, and its evidence in that order.",
+    "keyCharacteristics": [
+      "Warm paper surfaces with deep-blue file geometry.",
+      "Stable before-and-after layouts for direct 4/5 to 5/5 comparison.",
+      "Plain-language status paired with authored outline icons and text.",
+      "Progressive evidence disclosure and one primary decision per state."
+    ],
+    "rules": [
+      { "name": "Evidence Before Accent", "body": "Color guides attention, but source-backed language establishes meaning.", "section": "colors" },
+      { "name": "Status Has Two Signals", "body": "Never communicate health, attention, or review state by color alone.", "section": "colors" },
+      { "name": "Plain Language First", "body": "Explain the record in everyday language before introducing rule identifiers or evidence metadata.", "section": "typography" },
+      { "name": "One Active Decision", "body": "Each screen or action region presents one unmistakable primary action.", "section": "layout" },
+      { "name": "Flat Record", "body": "Shadows are not used for persistent content; structure comes from borders, layers, and silhouette.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do preserve the same five-row information architecture before and after revalidation.",
+      "Do pair every status color with text and an authored icon.",
+      "Do keep evidence, limitations, and synthetic/non-affiliation disclosure visible in the journey."
+    ],
+    "donts": [
+      "Don't imitate an EPFO or government portal or imply official affiliation.",
+      "Don't add dashboard density, chatbot bubbles, decorative charts, gradients, shadows, or celebratory gamification.",
+      "Don't replace the solid file-to-dossier bridge with a dashed connector."
+    ]
+  }
+}
