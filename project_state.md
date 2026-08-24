@@ -1,6 +1,6 @@
 # PF Health Project State
 
-Last updated: 2026-08-23
+Last updated: 2026-08-24
 
 ## Purpose
 
@@ -24,7 +24,7 @@ Milestone 1 — Docker sandbox, project bootstrap, and deterministic domain: **C
 
 Milestone 2 — deterministic resolution journey: **COMPLETE**
 
-Milestone 3 — minimal mobile-first UI and E2E: **PLANNED; NEXT**
+Milestone 3 — minimal mobile-first UI and E2E: **IN PROGRESS**
 
 The repository now contains a verified Docker-isolated application harness, the pure-domain Ravi oracle, and the complete framework-independent reset → assess → confirm → synthetic correction → automatic revalidation lifecycle. API routes and the product UI have not yet been implemented.
 
@@ -80,10 +80,11 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - Resolution lifecycle with taxonomy action validation, explicit five-minute confirmation, exact command binding, stale-version protection, and single-use tokens
 - Synthetic exit mutation with one snapshot increment, allowlisted append-only audits, and automatic revalidation through the same health engine
 - Containerized deterministic `seed:demo` and `reset:demo` commands
+- Project-scoped Impeccable skill and Docker-wrapped Codex design-detector hooks for Mission 4 UI work
 
 ## Next mission
 
-Implement the minimal mobile-first product UI and API/application boundaries inside the verified Docker sandbox.
+Complete Impeccable product/direction context, then implement the minimal mobile-first product UI and API/application boundaries inside the verified Docker sandbox.
 
 Expected output:
 
@@ -101,7 +102,7 @@ The detailed UI actions and exit criteria are tracked under Mission 4 in `roughp
 - Documentation files populated: yes
 - Local Markdown links checked: yes
 - Official evidence recorded for R001: yes
-- Application install: verified inside Docker with exact lockfile; 396 packages, 0 reported vulnerabilities
+- Application install: verified inside Docker with exact lockfile; 438 packages, 0 reported vulnerabilities
 - Typecheck/lint/tests/build: passing inside Docker
 - E2E demo: not implemented
 - Deployment: not configured
@@ -118,6 +119,8 @@ The detailed UI actions and exit criteria are tracked under Mission 4 in `roughp
 - Resolution journey: verified confirmation, exact token binding, stale-version/replay/expiry rejection, one-version mutation, safe audit order, automatic 5/5 revalidation, and partial/complete reset
 - Demo commands: `seed:demo` and `reset:demo` both verified in Docker with snapshot 1 and 4/5 `NEEDS_ATTENTION`
 - Clean production image: built successfully from `npm ci` with image tag `pf-health-production:local`
+- Impeccable integration: project-scoped files installed; hook enabled and adapted to execute through Docker; Codex hook trust remains a user action
+- Impeccable baseline detector: one expected placeholder finding (`Arial`); no ignore added because Mission 4 will replace the placeholder typography
 
 Never report an unavailable check as passing.
 

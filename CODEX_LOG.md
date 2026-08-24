@@ -109,3 +109,15 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Verification:** `docker compose run --rm app npm run check` passed lint, strict typecheck, all 29 tests across five files, and the production application build. The 10 application tests cover action-only non-mutation, unsupported actions, missing confirmation, stale versions, invalid dates, wrong records/members, exact token binding, expiry, replay, complete revalidation, safe audit metadata, and reset after partial/complete journeys. `seed:demo` and `reset:demo` each returned Ravi at snapshot 1 with 4/5 checks and `NEEDS_ATTENTION`. A clean multi-stage `pf-health-production:local` image built successfully from `npm ci` with 396 packages and zero reported vulnerabilities. npm reported no unreviewed install scripts.
 
 **Remaining risks:** Persistence is intentionally process-local until the API/UI composition root is implemented. API schema/error mapping, browser state, accessibility, and E2E coverage remain for Mission 4. No AI, government network, database service, or real identifier was introduced.
+
+## 2026-08-24 — Impeccable project integration
+
+**Task:** Start Mission 4 using Impeccable for UI direction, anti-pattern detection, and Codex edit hooks without weakening the Docker boundary.
+
+**Codex contribution:** Reviewed Impeccable's design, context, installation, and hook guidance; classified the PF Health product flow as an `Operate` surface; installed the Codex skill and hook manifests at project scope; enabled the project hook; and replaced generated host-Node hook commands with PF Health-scoped Docker Compose execution. Kept local hook consent/cache ignored and left the optional Puppeteer install script unapproved because source scanning does not require a downloaded browser.
+
+**Dependency decision:** Added exact `impeccable@3.6.0` after verifying npm metadata: published 10 days earlier with 126,542 weekly downloads. The installer downloaded the current project skill pack, which reports skill version 4.1.1.
+
+**Verification:** Project-scope path inspection found generated assets only under `.agents`, `.codex`, `.impeccable`, and repository-local Git excludes. `hook-admin.mjs status` reports the design hook enabled with no ignores, and the exact Docker-wrapped hook command exits successfully. `npm run check` passed lint, strict typecheck, all 29 tests, and the application production build. A clean production image built from `npm ci` with 438 packages and zero reported vulnerabilities. The Impeccable baseline scan found only the placeholder's Arial font; no ignore was added because Mission 4 will replace it.
+
+**Remaining risks:** Codex must still trust the project `PostToolUse` and `Stop` hooks in Settings. Impeccable requires a confirmed `PRODUCT.md` and direction/build-path decision before the new UI surface is implemented.

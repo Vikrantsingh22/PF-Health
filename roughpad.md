@@ -133,7 +133,7 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Mission 4 — Minimal mobile-first UI and E2E
 
-**Status:** NEXT
+**Status:** IN PROGRESS
 
 **Goal:** Expose the deterministic hero journey as one accessible, reliable demo flow.
 
@@ -201,12 +201,13 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Immediate next action
 
-Start Mission 3 only: implement repository ports, the Ravi-only synthetic adapter, resolution lifecycle, confirmation/version checks, safe audit events, deterministic reset/seed, synthetic mutation, and automatic revalidation.
+Complete Impeccable product context and direction selection, then implement Mission 4's validated API boundaries and mobile-first hero flow.
 
 ## Active notes
 
 - The calendar schedule in the plan is a prioritization guide; milestone gates and verified dependencies control execution.
 - R001 is the only authorized PF workflow rule.
 - KYC, bank verification, extra personas, document extraction, Hindi, semantic routing, and real integrations remain deferred.
-- The pure domain oracle is implemented and verified with 19 tests; persistence, resolution/application behavior, APIs, and product UI are not implemented yet.
+- The deterministic domain and resolution journey are implemented and verified with 29 tests; APIs and product UI are not implemented yet.
+- Impeccable is installed project-scoped for Codex. Its hook is enabled through a Docker-wrapped project manifest; user trust in Codex Settings remains required.
 - Host-side work is limited to repository edits, repository Git operations, and PF Health-scoped Docker/Compose commands.

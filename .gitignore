@@ -20,6 +20,10 @@ blob-report/
 .cache/
 .eslintcache
 *.tsbuildinfo
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/hook.pending.json
+.impeccable/review/
 
 # Environment files and secrets
 .env
