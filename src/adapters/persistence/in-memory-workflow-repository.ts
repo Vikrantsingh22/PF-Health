@@ -29,6 +29,10 @@ export class InMemoryWorkflowRepository implements WorkflowRepository {
     this.latestAssessmentIds.set(assessment.memberId, assessment.assessmentId);
   }
 
+  getAssessment(assessmentId: string): HealthAssessment | null {
+    return this.assessments.get(assessmentId) ?? null;
+  }
+
   getLatestAssessment(memberId: string): HealthAssessment | null {
     const assessmentId = this.latestAssessmentIds.get(memberId);
     return assessmentId === undefined ? null : (this.assessments.get(assessmentId) ?? null);

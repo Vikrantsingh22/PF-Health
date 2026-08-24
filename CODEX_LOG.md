@@ -157,3 +157,13 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Verification:** Impeccable context resolved `PRODUCT.md`, seed `DESIGN.md`, the approved route surface brief, and the comp-first path. Direct source inspection confirmed `src/app/page.tsx` still contains placeholder copy and `roughpad.md` records APIs and product UI as not implemented. The full Docker check passed lint, strict typecheck, all 29 tests, and the Next.js production build before commit.
 
 **Remaining risks:** Polish remains gated until the complete hero journey, interaction states, and E2E pass are functionally complete. Per Impeccable, `/impeccable audit` must run first.
+
+## 2026-08-24 — Validated deterministic API boundary
+
+**Task:** Begin Mission 4 implementation with route handlers over the existing deterministic application service.
+
+**Codex contribution:** Added strict Zod schemas for requests and responses, stable no-stack error mapping with request IDs, `Cache-Control: no-store`, and a process-local synthetic application runtime. Implemented member/reset, assessment create/read, issue detail with deterministic fallback copy and registered sources, resolution open/select/confirm/apply, and safe audit routes. Extended the repository/service only with read methods required by the documented contracts; route handlers remain thin and do not recreate domain rules.
+
+**Verification:** `docker compose run --rm app npm run check` passed lint, strict typecheck, 32 tests across six files, and the Next.js production build. API acceptance tests prove strict unknown-field rejection, no stack exposure, 404/409/422 mapping, stored-assessment reads, registered issue sources, the complete confirmed 4/5 → 5/5 journey, audit completion, and reset restoration. The production route manifest includes all nine dynamic `/api/v1` routes.
+
+**Remaining risks:** Runtime persistence is intentionally process-local and suitable only for the single-process demo. The approved UI, browser interaction states, and E2E coverage remain unimplemented.

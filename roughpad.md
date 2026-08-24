@@ -143,6 +143,7 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [x] Create root product and visual-world context for Impeccable from the approved PF Health documentation.
 - [x] Generate and present three grounded mobile composition directions before implementing UI code.
 - [x] Record the selected Calm Case File direction, refined approved comp, provenance, and surface brief.
+- [x] Implement strict `/api/v1` request/response schemas, stable error envelopes, no-store state routes, and the complete deterministic resolution boundary.
 - [ ] Implement the six grouped screen states defined in the plan and design documents.
 - [ ] Add synthetic-data and non-affiliation disclosure before loading Ravi.
 - [ ] Render welcome, loading, summary, issue, resolution, confirmation, revalidation, healthy, timeline, and reset states.
@@ -208,13 +209,13 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Immediate next action
 
-Implement Mission 4's validated API boundaries and approved Calm Case File mobile-first hero flow, beginning with the first-viewport reproduction checkpoint.
+Reproduce the approved Calm Case File first viewport over the validated API boundary and save the required hero comparison capture before implementing later interaction states.
 
 ## Active notes
 
 - The calendar schedule in the plan is a prioritization guide; milestone gates and verified dependencies control execution.
 - R001 is the only authorized PF workflow rule.
 - KYC, bank verification, extra personas, document extraction, Hindi, semantic routing, and real integrations remain deferred.
-- The deterministic domain and resolution journey are implemented and verified with 29 tests; APIs and product UI are not implemented yet.
+- The deterministic domain, resolution journey, and validated API boundary are implemented and verified with 32 tests; the product UI is not implemented yet.
 - Impeccable is installed project-scoped for Codex. Its hook is enabled through a Docker-wrapped project manifest; user trust in Codex Settings remains required.
 - Host-side work is limited to repository edits, repository Git operations, and PF Health-scoped Docker/Compose commands.

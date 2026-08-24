@@ -98,6 +98,23 @@ export class DemoResolutionService {
     return this.assessMember(member, workflowType, true);
   }
 
+  getAssessment(assessmentId: string): HealthAssessment {
+    const assessment = this.workflow.getAssessment(assessmentId);
+    if (assessment === null) {
+      throw new ApplicationError("NOT_FOUND", "Assessment was not found");
+    }
+    return assessment;
+  }
+
+  getIssue(issueId: string): Issue {
+    const assessment = this.workflow.findAssessmentContainingIssue(issueId);
+    const issue = assessment?.issues.find((item) => item.issueId === issueId);
+    if (issue === undefined) {
+      throw new ApplicationError("NOT_FOUND", "Issue was not found");
+    }
+    return issue;
+  }
+
   openResolution(input: {
     readonly memberId: string;
     readonly issueId: string;

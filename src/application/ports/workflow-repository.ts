@@ -20,6 +20,7 @@ export interface SimulationConfirmation {
 export interface WorkflowRepository {
   reset(): void;
   saveAssessment(assessment: HealthAssessment): void;
+  getAssessment(assessmentId: string): HealthAssessment | null;
   getLatestAssessment(memberId: string): HealthAssessment | null;
   findAssessmentContainingIssue(issueId: string): HealthAssessment | null;
   saveResolution(resolution: ResolutionCase): void;

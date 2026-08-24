@@ -26,7 +26,7 @@ Milestone 2 — deterministic resolution journey: **COMPLETE**
 
 Milestone 3 — minimal mobile-first UI and E2E: **IN PROGRESS**
 
-The repository now contains a verified Docker-isolated application harness, the pure-domain Ravi oracle, and the complete framework-independent reset → assess → confirm → synthetic correction → automatic revalidation lifecycle. API routes and the product UI have not yet been implemented.
+The repository now contains a verified Docker-isolated application harness, the pure-domain Ravi oracle, the complete framework-independent reset → assess → confirm → synthetic correction → automatic revalidation lifecycle, and its validated `/api/v1` boundary. The product UI has not yet been implemented.
 
 The repository now also contains `roughpad.md`, the working checklist used to track one active implementation mission at a time. It refines the ordered milestones without replacing the authoritative specifications.
 
@@ -83,10 +83,11 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - Project-scoped Impeccable skill and Docker-wrapped Codex design-detector hooks for Mission 4 UI work
 - Confirmed root `PRODUCT.md` and seed `DESIGN.md` context for the comp-first Mission 4 design workflow
 - User-approved Calm Case File composition with refined check-to-dossier bridge, guidance icons, embedded generation provenance, and route surface brief
+- Strict Zod-validated `/api/v1` route handlers for member/reset, assessments, issue detail, resolution selection/confirmation/application, and safe audit retrieval
 
 ## Next mission
 
-Implement the minimal mobile-first product UI and API/application boundaries inside the verified Docker sandbox using the approved Calm Case File comp as the spatial contract.
+Implement the minimal mobile-first product UI inside the verified Docker sandbox using the approved Calm Case File comp and validated API boundary as contracts.
 
 Expected output:
 
@@ -115,7 +116,7 @@ The detailed UI actions and exit criteria are tracked under Mission 4 in `roughp
 - Docker sandbox implemented and verified: yes
 - Compose runtime smoke test: HTTP 200 with expected harness content on `127.0.0.1:3000`
 - Host dependency/build artifacts created: no
-- Deterministic domain and application tests: 29 passing across five harness, normalization, R001, health-engine, and resolution-service suites
+- Deterministic domain, application, and API tests: 32 passing across six harness, normalization, R001, health-engine, resolution-service, and API suites
 - Ravi before oracle: verified 4 pass, 1 fail, 0 unknown, one issue, `NEEDS_ATTENTION`
 - Ravi after oracle: verified 5 pass, 0 fail, 0 unknown, no issues, `HEALTHY`
 - Resolution journey: verified confirmation, exact token binding, stale-version/replay/expiry rejection, one-version mutation, safe audit order, automatic 5/5 revalidation, and partial/complete reset
@@ -128,6 +129,7 @@ The detailed UI actions and exit criteria are tracked under Mission 4 in `roughp
 - Latest full Docker check: lint, strict typecheck, all 29 tests, and production build passed after Mission 4 context setup
 - Approved Mission 4 comp: `.impeccable/mocks/approved/pf-health-case-file.png`, with embedded prompt provenance and approval sidecar
 - Mission 4 finish gate: run Impeccable audit after the full hero path and E2E are functionally complete, then run `/impeccable polish` as the final non-redesign refinement pass
+- API boundary: nine dynamic Next.js routes build successfully with strict bodies/responses, `no-store` state headers, stable request IDs/errors, and full 4/5 → 5/5 acceptance coverage
 
 Never report an unavailable check as passing.
 
