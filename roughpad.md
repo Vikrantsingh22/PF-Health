@@ -152,12 +152,15 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [ ] Add loading, recoverable error, empty, retry, conflict, and stale-state behavior.
 - [ ] Verify semantic HTML, keyboard flow, focus behavior, touch targets, and status text independent of color.
 - [ ] Add Playwright coverage for the complete mobile hero journey and reset.
+- [ ] Run `/impeccable audit` on the functionally complete hero path and resolve measurable accessibility, responsive, performance, and interaction defects.
+- [ ] Run `/impeccable polish` only after audit and E2E pass; refine alignment, typography, token usage, state coverage, motion, copy, and cleanup without redesigning the approved Case File direction.
 
 ### Exit criteria
 
 - [ ] The journey passes at a 375px viewport without network or AI.
 - [ ] A user can complete the hero flow without developer guidance.
 - [ ] E2E proves 4/5 → correction → automatic revalidation → 5/5 → reset.
+- [ ] Impeccable audit precedes the final polish pass, and polish leaves no known broken, unfinished, or placeholder state.
 - [ ] Lint, typecheck, unit/integration/component tests, build, and E2E pass.
 
 ## Mission 5 — Optional bounded AI

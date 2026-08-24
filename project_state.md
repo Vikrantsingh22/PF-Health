@@ -127,6 +127,7 @@ The detailed UI actions and exit criteria are tracked under Mission 4 in `roughp
 - Impeccable visual context: seed `DESIGN.md` consolidated from the approved PF Health design sources; implementation tokens and sidecar remain intentionally deferred until scan mode after UI implementation
 - Latest full Docker check: lint, strict typecheck, all 29 tests, and production build passed after Mission 4 context setup
 - Approved Mission 4 comp: `.impeccable/mocks/approved/pf-health-case-file.png`, with embedded prompt provenance and approval sidecar
+- Mission 4 finish gate: run Impeccable audit after the full hero path and E2E are functionally complete, then run `/impeccable polish` as the final non-redesign refinement pass
 
 Never report an unavailable check as passing.
 
@@ -143,6 +144,7 @@ These decisions do not block the next mission.
 - Scope pressure: finish one reliable hero path before additional fixtures or features.
 - Demo fragility: deterministic fallback and reset must not depend on network access.
 - Documentation drift: behavior changes require updates to the relevant source docs and this file.
+- Premature polish: do not run `/impeccable polish` against the placeholder or incomplete flow; audit first after functional completion, then polish the complete path.
 - Sandbox escape: reject mounts or commands outside `pf-health`, host-native project execution, and Docker settings that can affect unrelated services.
 - Lint-tool migration: Next.js 16.3.2 transitive plugins currently constrain ESLint to the 9.x line; revisit ESLint 10 when the official toolchain supports it without peer overrides.
 

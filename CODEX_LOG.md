@@ -145,3 +145,15 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Verification:** Visually inspected the refined 375px portrait comp for structure, copy, five-check scope, status redundancy, guidance icons, action hierarchy, and prohibited content. Impeccable recorded the selected assigned direction for seed `9188a955`, recovered the embedded prompt exactly, reported one approved raster with zero missing provenance, and resolved the route surface brief. The full Docker check passed lint, strict typecheck, all 29 tests, and the Next.js production build.
 
 **Remaining risks:** The approved comp is not yet implemented. The first build must reproduce its first viewport before continuing to interactions and responsive states.
+
+## 2026-08-24 — Impeccable polish finish gate
+
+**Task:** Use `/impeccable polish` for the PF Health UI phase.
+
+**Codex contribution:** Checked the current official polish guidance and the installed Impeccable 4.1.1 workflow against the repository state. Confirmed the live route is still the application-harness placeholder and the Mission 4 API/UI/E2E path is unfinished. Added an explicit audit-then-polish sequence to the Mission 4 tracker and persistent state instead of applying a misleading cosmetic pass to incomplete work.
+
+**Human decisions:** Use `/impeccable polish` for PF Health.
+
+**Verification:** Impeccable context resolved `PRODUCT.md`, seed `DESIGN.md`, the approved route surface brief, and the comp-first path. Direct source inspection confirmed `src/app/page.tsx` still contains placeholder copy and `roughpad.md` records APIs and product UI as not implemented. The full Docker check passed lint, strict typecheck, all 29 tests, and the Next.js production build before commit.
+
+**Remaining risks:** Polish remains gated until the complete hero journey, interaction states, and E2E pass are functionally complete. Per Impeccable, `/impeccable audit` must run first.
