@@ -83,27 +83,44 @@ test("case file remains usable across submission widths and reduced motion", asy
         const bounds = welcome.getBoundingClientRect();
         const topTab = welcome.querySelector<HTMLElement>("[data-case-file-decoration='top-tab']");
         const sideTab = welcome.querySelector<HTMLElement>("[data-case-file-decoration='side-tab']");
-        if (!topTab || !sideTab) throw new Error("Welcome Case File decorations are missing.");
+        const sideRail = welcome.querySelector<HTMLElement>("[data-case-file-decoration='side-rail']");
+        if (!topTab || !sideTab || !sideRail) throw new Error("Welcome Case File decorations are missing.");
         const topTabBounds = topTab.getBoundingClientRect();
         const sideTabBounds = sideTab.getBoundingClientRect();
+        const sideRailBounds = sideRail.getBoundingClientRect();
         return {
+          borderBottomRightRadius: getComputedStyle(welcome).borderBottomRightRadius,
           borderTopLeftRadius: getComputedStyle(welcome).borderTopLeftRadius,
+          horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
           overflow: getComputedStyle(welcome).overflow,
+          sideRailBottom: sideRailBounds.bottom,
+          sideRailLeft: sideRailBounds.left,
+          sideRailRight: sideRailBounds.right,
+          sideRailTop: sideRailBounds.top,
+          sideTabBottom: sideTabBounds.bottom,
           sideTabLeft: sideTabBounds.left,
           sideTabRight: sideTabBounds.right,
+          surfaceBottom: bounds.bottom,
           surfaceTop: bounds.top,
           surfaceRight: bounds.right,
           topTabBottom: topTabBounds.bottom,
           topTabTop: topTabBounds.top,
         };
       });
-    await expect(page.locator("[data-case-file-decoration='top-tab'] path")).toHaveAttribute("d", /C.+L/);
+    await expect(page.locator("[data-case-file-decoration='top-tab'] path")).toHaveAttribute("d", "M0 26L10 7C12 2.5 16.5 0 22 0H116C125 0 132 4 137 13L145 26H0Z");
+    await expect(page.locator("[data-case-file-decoration='side-tab'] path")).toHaveAttribute("d", "M0 0H8C13.5 0 18 4.5 18 10V116L14 136H4L0 116Z");
+    expect(welcomeGeometry.borderBottomRightRadius).toBe("0px");
     expect(welcomeGeometry.borderTopLeftRadius).toBe("0px");
+    expect(welcomeGeometry.horizontalOverflow).toBe(false);
     expect(welcomeGeometry.overflow).toBe("visible");
     expect(welcomeGeometry.topTabTop).toBeLessThan(welcomeGeometry.surfaceTop);
     expect(welcomeGeometry.topTabBottom).toBeGreaterThanOrEqual(welcomeGeometry.surfaceTop);
     expect(welcomeGeometry.sideTabLeft).toBeLessThanOrEqual(welcomeGeometry.surfaceRight);
     expect(welcomeGeometry.sideTabRight).toBeGreaterThan(welcomeGeometry.surfaceRight);
+    expect(welcomeGeometry.sideTabBottom).toBeGreaterThan(welcomeGeometry.sideRailTop);
+    expect(welcomeGeometry.sideRailLeft).toBeLessThanOrEqual(welcomeGeometry.surfaceRight);
+    expect(welcomeGeometry.sideRailRight).toBeGreaterThan(welcomeGeometry.surfaceRight);
+    expect(welcomeGeometry.sideRailBottom).toBeGreaterThanOrEqual(welcomeGeometry.surfaceBottom);
 
     await page.getByRole("button", { name: "Load Ravi's sample record" }).click();
 

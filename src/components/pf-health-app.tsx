@@ -277,10 +277,15 @@ export function PFHealthApp() {
       <section aria-labelledby="welcome-title" className={styles.welcome}>
         <span aria-hidden="true" className={styles.welcomeTopTab} data-case-file-decoration="top-tab">
           <svg preserveAspectRatio="none" viewBox="0 0 148 26">
-            <path d="M0 26V16C0 7.2 7.2 0 16 0H116C125 0 132 4 137 13L145 26H0Z" />
+            <path d="M0 26L10 7C12 2.5 16.5 0 22 0H116C125 0 132 4 137 13L145 26H0Z" />
           </svg>
         </span>
-        <span aria-hidden="true" className={styles.welcomeSideTab} data-case-file-decoration="side-tab" />
+        <span aria-hidden="true" className={styles.welcomeSideTab} data-case-file-decoration="side-tab">
+          <svg preserveAspectRatio="none" viewBox="0 0 18 136">
+            <path d="M0 0H8C13.5 0 18 4.5 18 10V116L14 136H4L0 116Z" />
+          </svg>
+        </span>
+        <span aria-hidden="true" className={styles.welcomeSideRail} data-case-file-decoration="side-rail" />
         <h1 id="welcome-title">Check a synthetic PF record before it becomes a problem.</h1>
         <p>PF Health explains five supported checks using Ravi&apos;s fictional sample record. Nothing is sent to EPFO, an employer, or any government service.</p>
         <PrimaryButton onClick={loadSample}>Load Ravi&apos;s sample record</PrimaryButton>

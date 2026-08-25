@@ -255,6 +255,15 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - [x] Run Docker E2E and the aggregate check.
 - [x] Update continuity records and commit the verified second refinement.
 
+### Current action — join the rear tab layer
+
+- [x] Give the welcome top tab opposing diagonal sides while preserving its rounded top shoulders.
+- [x] Square the welcome card's bottom-right corner.
+- [x] Reshape the protruding right tab with diagonal lower shoulders and join it to a thin deep-blue lower rail.
+- [x] Inspect the rendered silhouette at phone, intermediate, and wide widths.
+- [x] Pass the three-width Docker E2E geometry coverage with no welcome-state horizontal overflow.
+- [x] Run the aggregate Docker check, finalize continuity records, and commit the verified refinement.
+
 ### Boundaries
 
 - Do not change product behavior, copy, routes, rules, dependencies, or the subsequent Case File states.

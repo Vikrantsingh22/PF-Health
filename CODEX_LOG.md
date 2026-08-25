@@ -217,3 +217,11 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Implementation:** Replaced the limited top-tab pseudo-element with an accessibility-hidden authored SVG silhouette, squared the card join below it, added a dedicated side-tab layer, and extended responsive geometry coverage. Product behavior and copy are unchanged.
 
 **Verification:** Rendered inspection at 375×812 and 770×781 confirmed the square upper-left join, curved trapezoid shoulder, protruding right tab, no horizontal overflow, and zero browser warnings/errors. Docker Playwright passed all three tests, including geometry assertions at 375px, 768px, and 1440px. The aggregate Docker check passed lint, strict typecheck, all 32 tests, and production build. The app service was restored healthy for manual testing.
+
+## 2026-08-25 — Joined welcome Case File rear layer
+
+**Task:** Refine the supplied Case File silhouette by making both top-tab sides diagonal, squaring the welcome card's lower-right corner, tapering the right tab at its bottom, and joining it to a thin deep-blue lower rail.
+
+**Implementation:** Updated the two authored decorative SVG paths, added an accessibility-hidden lower rail, and extended the responsive geometry contract to cover the new corner, overlap, path, and welcome-state overflow requirements. Updated the durable Welcome Card design rule and continuity records. Product behavior, copy, and subsequent screens are unchanged; the unrelated generated `next-env.d.ts` change remains excluded.
+
+**Verification:** Rendered inspection at phone, 643px, and 1230px widths confirmed the requested joined silhouette without clipping or background bleed. Docker Playwright passed all three tests at 375px, 768px, and 1440px. The aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build.

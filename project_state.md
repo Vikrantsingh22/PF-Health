@@ -97,7 +97,7 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 
 ## Active mission
 
-The two human-requested welcome-screen Case File refinements are complete: the card has a square upper-left join beneath an authored rounded trapezoid/file-tab shoulder, and a separate deep-blue side tab protrudes behind the right edge as shown in the approved reference.
+The welcome-screen Case File now uses a joined rear-layer silhouette: the square upper-left card join sits beneath an authored tab with opposing diagonal sides, while a bottom-tapered right tab overlaps a thin deep-blue rail that reaches the card's square lower-right corner.
 
 This remained a visual-only Impeccable refinement. Product behavior, factual copy, deterministic rules, routes, dependencies, subsequent screens, optional AI, and the Record Sandbox are unchanged. The existing generated `next-env.d.ts` worktree change is unrelated and must not be included in the mission commit.
 
@@ -141,6 +141,7 @@ This remained a visual-only Impeccable refinement. Product behavior, factual cop
 - UI repair verification: Impeccable initially identified 24 design-scale drifts and the confirmation pass narrowed this to two compact metadata sizes, which were corrected; rendered geometry checks passed at 375px, 768px, and 1440px with zero browser warnings/errors
 - Welcome top-tab verification: rendered inspection passed at 375px and 1230px with no horizontal overflow; Docker E2E passed all three tests including the new 375px, 768px, and 1440px geometry assertion; the aggregate check passed lint, typecheck, all 32 tests, and production build
 - Welcome silhouette verification: rendered inspection at 375×812 and 770×781 confirmed a 0px upper-left card radius, curved authored top-tab path, protruding right tab, no horizontal overflow, and zero browser warnings/errors; Docker E2E passed all three tests at 375px, 768px, and 1440px, and the aggregate check passed lint, typecheck, all 32 tests, and production build
+- Joined welcome rear-layer verification: rendered inspection at phone, 643px, and 1230px widths confirmed opposing top-tab diagonals, a square lower-right corner, a bottom-tapered right tab, and a connected thin lower rail with no visible clipping or background bleed; Docker E2E passed all three tests, including exact decorative-path, overlap, corner-radius, and welcome-overflow assertions at 375px, 768px, and 1440px; the aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build
 
 Never report an unavailable check as passing.
 
