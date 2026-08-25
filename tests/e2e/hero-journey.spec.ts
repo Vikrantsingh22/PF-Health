@@ -19,6 +19,10 @@ test("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
   await expect(page.getByText("Previous employment exit information")).toBeVisible();
   await expect(page.getByText("Needs attention", { exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Your previous employment is missing exit information." })).toBeVisible();
+  const issueDossierConnector = await page
+    .getByRole("region", { name: "Your previous employment is missing exit information." })
+    .evaluate((dossier) => ({ after: getComputedStyle(dossier, "::after").content, before: getComputedStyle(dossier, "::before").content }));
+  expect(issueDossierConnector).toEqual({ after: "none", before: "none" });
 
   await page.getByText("Why we're saying this").click();
   await expect(page.getByText("Rule R001 version 1 · Deterministic fallback explanation")).toBeVisible();
@@ -47,6 +51,10 @@ test("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
   await expect(page.getByText("No known blockers were detected by the checks supported in this prototype.")).toBeVisible();
   await expect(page.getByText("Ravi's exit information is now complete in the sample.")).toBeVisible();
   await expect(page.getByText("The same R001 check now passes. No generated text changed this result.")).toBeVisible();
+  const healthyDossierConnector = await page
+    .getByRole("region", { name: "Ravi's exit information is now complete in the sample." })
+    .evaluate((dossier) => ({ after: getComputedStyle(dossier, "::after").content, before: getComputedStyle(dossier, "::before").content }));
+  expect(healthyDossierConnector).toEqual({ after: "none", before: "none" });
 
   await page.getByRole("button", { name: "View activity timeline" }).click();
   await expect(page.getByRole("heading", { name: "Activity timeline" })).toBeVisible();
@@ -139,6 +147,10 @@ test("case file remains usable across submission widths and reduced motion", asy
     await expect(checkRows.nth(2).locator("svg")).toHaveCount(1);
     await expect(checkRows.nth(2)).not.toHaveAttribute("title");
     await expect(page.getByRole("heading", { name: "Your previous employment is missing exit information." })).toBeVisible();
+    const dossierConnector = await page
+      .getByRole("region", { name: "Your previous employment is missing exit information." })
+      .evaluate((dossier) => ({ after: getComputedStyle(dossier, "::after").content, before: getComputedStyle(dossier, "::before").content }));
+    expect(dossierConnector).toEqual({ after: "none", before: "none" });
 
     const hasHorizontalOverflow = await page.evaluate(
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth,

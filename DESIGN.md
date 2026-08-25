@@ -114,13 +114,13 @@ The journey is a centered single column. The shell uses 16px horizontal padding 
 
 ## Elevation & Depth
 
-Persistent surfaces are flat and use tonal contrast, one-pixel borders, spacing, and overlapping file geometry instead of shadows. The deep-blue right tab, top file tab, and solid stepped bridge create structural depth without making content float.
+Persistent surfaces are flat and use tonal contrast, one-pixel borders, spacing, and overlapping file geometry instead of shadows. The deep-blue right tab and top file tab create structural depth, while a clean gap separates the record from its dossier.
 
 **The Flat Record Rule.** Shadows are not used for persistent content; structure comes from borders, layers, and silhouette.
 
 ## Shapes
 
-Cards and dossiers use practical 16px corners; buttons use 10px corners. Status icons are circular, guidance icons sit in softly squared 48px tiles, and the case-file silhouette combines a rounded top tab, a deep-blue right tab, and a solid stepped connector into the issue dossier.
+Cards and dossiers use practical 16px corners; buttons use 10px corners. Status icons are circular, guidance icons sit in softly squared 48px tiles, and the case-file silhouette combines an authored top tab with a deep-blue right tab and rail. The issue dossier remains a separate rounded surface.
 
 ## Components
 
@@ -140,7 +140,7 @@ The raised-paper summary contains the record name, health score, and five fixed 
 
 ### Issue Dossier
 
-The dossier uses an amber border, solid stepped bridge, issue dot, route and owner guidance tiles, and a native details disclosure for evidence. The healthy variant keeps the structure and changes the semantic treatment to green.
+The dossier uses an amber border, issue dot, route and owner guidance tiles, and a native details disclosure for evidence. It sits below the Case File with a deliberate 28px gap and no connector line or upper tab. The healthy variant keeps the structure and changes the semantic treatment to green.
 
 ### Status Panels and Timeline
 
@@ -160,4 +160,4 @@ Loading, confirmation, revalidation, error, and timeline states reuse one border
 - **Don't** imitate an EPFO or government portal or imply official affiliation.
 - **Don't** add dashboard density, chatbot bubbles, decorative charts, gradients, shadows, or celebratory gamification.
 - **Don't** present unknown or review-required outcomes as healthy.
-- **Don't** replace the solid file-to-dossier bridge with a dashed connector.
+- **Don't** add a line, bridge, or raised tab between the Case File and dossier.

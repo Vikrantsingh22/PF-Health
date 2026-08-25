@@ -308,3 +308,23 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 
 - Do not change product behavior, copy, check order, issue disclosure, rules, dependencies, or later screens.
 - Preserve the unrelated generated `next-env.d.ts` worktree change and exclude it from this mission's commit.
+
+## Mission 10 — Dossier separation cleanup
+
+**Status:** COMPLETE
+
+**Goal:** Remove the connector line and raised upper tab between the record Case File and dossier in both the 4/5 issue and 5/5 healthy states.
+
+### Actions
+
+- [x] Remove the shared dossier connector pseudo-elements.
+- [x] Preserve a consistent 28px gap and complete rounded dossier border.
+- [x] Inspect the amber 4/5 and green 5/5 dossier states at the reported 703px width.
+- [x] Assert that neither dossier state generates connector pseudo-content.
+- [x] Pass Docker E2E coverage at 375px, 768px, and 1440px.
+- [x] Run the aggregate Docker check, finalize continuity records, and commit the verified refinement.
+
+### Boundaries
+
+- Do not change product behavior, copy, check order, guidance content, rules, dependencies, or later screens.
+- Preserve the unrelated generated `next-env.d.ts` worktree change and exclude it from this mission's commit.

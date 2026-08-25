@@ -241,3 +241,11 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Implementation:** Extracted the authored top tab, side tab, and rail into one shared decorative component used by welcome and record states. Wrapped the record summary and checks in a clipped inner surface so the rear-layer tabs can protrude while row backgrounds remain contained. Added record-specific responsive geometry assertions and retained the exact check order, issue dossier, copy, and behavior. The unrelated generated `next-env.d.ts` change remains excluded.
 
 **Verification:** Rendered inspection at 634px and 991px confirmed the raised opposing-diagonal top tab, single-diagonal right tab, connected thin rail, square joined corners, and contained check rows. Docker Playwright passed all three tests at 375px, 768px, and 1440px and verified decoration presence after revalidation to 5/5. The aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build.
+
+## 2026-08-25 — Connector-free dossier separation
+
+**Task:** Remove the line and raised upper tab between the record Case File and dossier in both the 4/5 issue state and 5/5 healthy state.
+
+**Implementation:** Removed the shared dossier connector pseudo-elements while preserving the 28px spacing and complete rounded dossier border. Updated the durable design rules and route surface brief to treat the dossier as an independent surface related through order, alignment, copy, and semantic color. Added regression assertions that both amber and green dossiers generate no connector pseudo-content. Product behavior and copy remain unchanged; the unrelated generated `next-env.d.ts` change remains excluded.
+
+**Verification:** Rendered inspection of both dossier states at 703px confirmed a clean gap with no line or upper tab. Docker Playwright passed all three tests at 375px, 768px, and 1440px. The aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build.

@@ -97,7 +97,7 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 
 ## Active mission
 
-The welcome and reusable record Case Files now share one precisely aligned rear-layer silhouette: the authored top tab sits at `left: -2px`, while the right tab keeps a straight inner edge and one outer lower diagonal that meets a thin rail directly. Only the rail's outer bottom-right corner is rounded, and record rows remain clipped inside a separate inner surface.
+The welcome and reusable record Case Files share one precisely aligned rear-layer silhouette. Issue and healthy dossiers now sit below the record as independent rounded surfaces with a deliberate 28px gap and no connector line or raised upper tab.
 
 This remained a visual-only Impeccable refinement. Product behavior, factual copy, deterministic rules, routes, dependencies, subsequent screens, optional AI, and the Record Sandbox are unchanged. The existing generated `next-env.d.ts` worktree change is unrelated and must not be included in the mission commit.
 
@@ -144,6 +144,7 @@ This remained a visual-only Impeccable refinement. Product behavior, factual cop
 - Joined welcome rear-layer verification: rendered inspection at phone, 643px, and 1230px widths confirmed opposing top-tab diagonals, a square lower-right corner, a bottom-tapered right tab, and a connected thin lower rail with no visible clipping or background bleed; Docker E2E passed all three tests, including exact decorative-path, overlap, corner-radius, and welcome-overflow assertions at 375px, 768px, and 1440px; the aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build
 - Welcome join-alignment verification: rendered inspection at 375px and the reported 991px width confirmed the `-2px` top-tab alignment, single outer side-tab diagonal, direct tab-to-rail join, and single rounded rail corner with no clipping or background bleed; Docker E2E passed all three tests, including computed offset, exact path, one-pixel join, corner-radius, and overflow assertions at 375px, 768px, and 1440px; the aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build
 - Assessment silhouette-parity verification: rendered inspection of the 4/5 record at 634px and 991px confirmed the shared raised top tab, protruding side tab, connected rail, square joined corners, and contained rows; Docker E2E passed all three tests, including exact record-decoration paths and geometry at 375px, 768px, and 1440px plus decoration presence in the 5/5 state; the aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build
+- Dossier-separation verification: rendered inspection of the amber 4/5 and green 5/5 states at 703px confirmed complete rounded dossier borders and a clean 28px gap with no connecting line or upper tab; Docker E2E passed all three tests, including absent pseudo-content in both dossier states and responsive coverage at 375px, 768px, and 1440px; the aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build
 
 Never report an unavailable check as passing.
 
