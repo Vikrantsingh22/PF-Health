@@ -81,19 +81,29 @@ test("case file remains usable across submission widths and reduced motion", asy
       .getByRole("region", { name: "Check a synthetic PF record before it becomes a problem." })
       .evaluate((welcome) => {
         const bounds = welcome.getBoundingClientRect();
-        const topTab = getComputedStyle(welcome, "::before");
-        const tabTop = bounds.top + Number.parseFloat(topTab.top);
-        const tabBottom = tabTop + Number.parseFloat(topTab.height);
+        const topTab = welcome.querySelector<HTMLElement>("[data-case-file-decoration='top-tab']");
+        const sideTab = welcome.querySelector<HTMLElement>("[data-case-file-decoration='side-tab']");
+        if (!topTab || !sideTab) throw new Error("Welcome Case File decorations are missing.");
+        const topTabBounds = topTab.getBoundingClientRect();
+        const sideTabBounds = sideTab.getBoundingClientRect();
         return {
+          borderTopLeftRadius: getComputedStyle(welcome).borderTopLeftRadius,
           overflow: getComputedStyle(welcome).overflow,
+          sideTabLeft: sideTabBounds.left,
+          sideTabRight: sideTabBounds.right,
           surfaceTop: bounds.top,
-          tabBottom,
-          tabTop,
+          surfaceRight: bounds.right,
+          topTabBottom: topTabBounds.bottom,
+          topTabTop: topTabBounds.top,
         };
       });
+    await expect(page.locator("[data-case-file-decoration='top-tab'] path")).toHaveAttribute("d", /C.+L/);
+    expect(welcomeGeometry.borderTopLeftRadius).toBe("0px");
     expect(welcomeGeometry.overflow).toBe("visible");
-    expect(welcomeGeometry.tabTop).toBeLessThan(welcomeGeometry.surfaceTop);
-    expect(welcomeGeometry.tabBottom).toBeGreaterThan(welcomeGeometry.surfaceTop);
+    expect(welcomeGeometry.topTabTop).toBeLessThan(welcomeGeometry.surfaceTop);
+    expect(welcomeGeometry.topTabBottom).toBeGreaterThanOrEqual(welcomeGeometry.surfaceTop);
+    expect(welcomeGeometry.sideTabLeft).toBeLessThanOrEqual(welcomeGeometry.surfaceRight);
+    expect(welcomeGeometry.sideTabRight).toBeGreaterThan(welcomeGeometry.surfaceRight);
 
     await page.getByRole("button", { name: "Load Ravi's sample record" }).click();
 

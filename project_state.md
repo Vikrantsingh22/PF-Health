@@ -97,9 +97,9 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 
 ## Active mission
 
-The first of two human-requested welcome-screen Case File refinements is complete: the deep-blue top-left tab now protrudes 16px above the welcome-card border and overlaps the surface by 8px. The requested right-side welcome tab is explicitly deferred to the next run.
+The two human-requested welcome-screen Case File refinements are complete: the card has a square upper-left join beneath an authored rounded trapezoid/file-tab shoulder, and a separate deep-blue side tab protrudes behind the right edge as shown in the approved reference.
 
-This is a visual-only Impeccable refinement. Product behavior, factual copy, deterministic rules, routes, dependencies, subsequent screens, optional AI, and the Record Sandbox remain unchanged. The existing generated `next-env.d.ts` worktree change is unrelated and must not be included in the mission commit.
+This remained a visual-only Impeccable refinement. Product behavior, factual copy, deterministic rules, routes, dependencies, subsequent screens, optional AI, and the Record Sandbox are unchanged. The existing generated `next-env.d.ts` worktree change is unrelated and must not be included in the mission commit.
 
 ## Verification state
 
@@ -140,6 +140,7 @@ This is a visual-only Impeccable refinement. Product behavior, factual copy, det
 - Source refresh: SRC-001 official PDF remained reachable; the dead direct FAQ link was replaced with EPFO's working Help page and its narrower role is documented
 - UI repair verification: Impeccable initially identified 24 design-scale drifts and the confirmation pass narrowed this to two compact metadata sizes, which were corrected; rendered geometry checks passed at 375px, 768px, and 1440px with zero browser warnings/errors
 - Welcome top-tab verification: rendered inspection passed at 375px and 1230px with no horizontal overflow; Docker E2E passed all three tests including the new 375px, 768px, and 1440px geometry assertion; the aggregate check passed lint, typecheck, all 32 tests, and production build
+- Welcome silhouette verification: rendered inspection at 375×812 and 770×781 confirmed a 0px upper-left card radius, curved authored top-tab path, protruding right tab, no horizontal overflow, and zero browser warnings/errors; Docker E2E passed all three tests at 375px, 768px, and 1440px, and the aggregate check passed lint, typecheck, all 32 tests, and production build
 
 Never report an unavailable check as passing.
 

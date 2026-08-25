@@ -126,7 +126,7 @@ Cards and dossiers use practical 16px corners; buttons use 10px corners. Status 
 
 ### Welcome Card
 
-The welcome surface introduces the Case File silhouette before Ravi is loaded. Its deep-blue top-left tab protrudes 16px above the card border and overlaps the raised-paper surface by 8px, so it reads as a physical file tab rather than an inset decoration.
+The welcome surface introduces the Case File silhouette before Ravi is loaded. Its upper-left card corner is square beneath a deep-blue tab with a rounded leading corner and a curved, sloping shoulder. A separate deep-blue side tab protrudes from behind the right edge. Together they read as one physical file silhouette rather than inset decoration.
 
 ### Buttons
 

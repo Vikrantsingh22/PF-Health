@@ -273,7 +273,19 @@ export function PFHealthApp() {
 
   let content: ReactNode;
   if (screen === "welcome") {
-    content = <section aria-labelledby="welcome-title" className={styles.welcome}><h1 id="welcome-title">Check a synthetic PF record before it becomes a problem.</h1><p>PF Health explains five supported checks using Ravi&apos;s fictional sample record. Nothing is sent to EPFO, an employer, or any government service.</p><PrimaryButton onClick={loadSample}>Load Ravi&apos;s sample record</PrimaryButton></section>;
+    content = (
+      <section aria-labelledby="welcome-title" className={styles.welcome}>
+        <span aria-hidden="true" className={styles.welcomeTopTab} data-case-file-decoration="top-tab">
+          <svg preserveAspectRatio="none" viewBox="0 0 148 26">
+            <path d="M0 26V16C0 7.2 7.2 0 16 0H116C125 0 132 4 137 13L145 26H0Z" />
+          </svg>
+        </span>
+        <span aria-hidden="true" className={styles.welcomeSideTab} data-case-file-decoration="side-tab" />
+        <h1 id="welcome-title">Check a synthetic PF record before it becomes a problem.</h1>
+        <p>PF Health explains five supported checks using Ravi&apos;s fictional sample record. Nothing is sent to EPFO, an employer, or any government service.</p>
+        <PrimaryButton onClick={loadSample}>Load Ravi&apos;s sample record</PrimaryButton>
+      </section>
+    );
   } else if (screen === "loading") {
     content = <section aria-live="polite" className={styles.statusPanel}><h1>Checking Ravi&apos;s sample record…</h1><p>Loading the synthetic snapshot and running five deterministic checks.</p><div className={styles.progress}><span className={styles.progressItem} data-active="true"><ClockIcon /> Reading sample record</span><span className={styles.progressItem}><ClockIcon /> Preparing supported checks</span></div></section>;
   } else if (screen === "summary" && demo) {

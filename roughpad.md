@@ -234,7 +234,7 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 
 ## Mission 8 — Sequential welcome Case File refinements
 
-**Status:** COMPLETE — FIRST REFINEMENT
+**Status:** COMPLETE
 
 **Goal:** Apply the human-reported welcome-screen Case File refinements one at a time, preserving the approved visual world and behavior.
 
@@ -246,13 +246,17 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - [x] Run Docker E2E and the aggregate check.
 - [x] Update continuity records and commit only this first refinement.
 
-### Deferred to the next run
+### Current action — complete welcome silhouette
 
-- [ ] Add the requested deep-blue right-side welcome-card tab.
+- [x] Square the welcome card's top-left corner beneath the tab.
+- [x] Replace the rounded rectangle tab with a curved trapezoid/file-tab silhouette.
+- [x] Add the requested protruding deep-blue right-side welcome tab.
+- [x] Extend responsive geometry coverage and inspect all supported widths.
+- [x] Run Docker E2E and the aggregate check.
+- [x] Update continuity records and commit the verified second refinement.
 
 ### Boundaries
 
-- Do not implement the right-side tab in this run.
 - Do not change product behavior, copy, routes, rules, dependencies, or the subsequent Case File states.
 - Preserve the unrelated generated `next-env.d.ts` worktree change and exclude it from this mission's commit.
 

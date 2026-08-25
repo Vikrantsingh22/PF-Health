@@ -209,3 +209,11 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Implementation:** Separated the welcome and assessment top-tab positioning, allowed the welcome tab to protrude 16px above its surface with an 8px overlap, added responsive E2E geometry assertions, and recorded the resulting Welcome Card rule in `DESIGN.md`. Product behavior and copy are unchanged; the requested right-side welcome tab remains deferred to the next run.
 
 **Verification:** Rendered inspection at 375×812 and 1230×781 confirmed the tab begins 16px above the surface, overlaps it by 8px, and creates no horizontal overflow. Docker Playwright passed all three tests, including the new geometry assertion at 375px, 768px, and 1440px. The aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build. The PF Health app service was restored healthy on `127.0.0.1:3000` for manual testing.
+
+## 2026-08-25 — Welcome Case File silhouette refinement
+
+**Task:** Match the approved Case File reference more closely by squaring the welcome card beneath the top tab, reshaping the tab with a rounded sloping shoulder, and adding the missing protruding right-side tab.
+
+**Implementation:** Replaced the limited top-tab pseudo-element with an accessibility-hidden authored SVG silhouette, squared the card join below it, added a dedicated side-tab layer, and extended responsive geometry coverage. Product behavior and copy are unchanged.
+
+**Verification:** Rendered inspection at 375×812 and 770×781 confirmed the square upper-left join, curved trapezoid shoulder, protruding right tab, no horizontal overflow, and zero browser warnings/errors. Docker Playwright passed all three tests, including geometry assertions at 375px, 768px, and 1440px. The aggregate Docker check passed lint, strict typecheck, all 32 tests, and production build. The app service was restored healthy for manual testing.
