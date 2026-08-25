@@ -1,6 +1,6 @@
 # PF Health Working Roughpad
 
-Last updated: 2026-08-25
+Last updated: 2026-08-26
 
 ## Purpose
 
@@ -39,6 +39,21 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [x] Convert the plan into ordered implementation missions below.
 - [x] Record the start of implementation planning in `project_state.md` and `CODEX_LOG.md`.
 - [x] Adopt verify-before-commit as the repository workflow.
+
+## Mission 11 — PF Record Laboratory
+
+**Status:** IN PROGRESS
+
+**Goal:** Add a deterministic synthetic PF record laboratory while preserving Guided Ravi unchanged.
+
+- [x] Define strict versioned scenario, session, assessment, evidence, actor-plan, and audit contracts.
+- [x] Implement `PF_LAB@1` rules R001–R003 with required outcome precedence.
+- [x] Add five presets, process-local sessions, optimistic versions, confirmed simulations, reset, import, and export-safe scenario documents.
+- [x] Add the seven laboratory API route groups.
+- [x] Verify the core in Docker: lint, typecheck, 44 tests, and production build pass.
+- [-] Build `/`, `/guided-ravi`, and `/laboratory` experiences.
+- [ ] Add laboratory and preserved-Ravi Docker E2E coverage.
+- [ ] Complete responsive/a11y review, docs, final Docker checks, and focused commits.
 
 ## Mission 1 — Bootstrap the application harness
 

@@ -180,3 +180,6 @@ After a meaningful mission, update:
 - `Risks to carry forward`
 
 Also add a factual entry to `CODEX_LOG.md`. Do not paste chat transcripts or repeat full specifications here.
+# Active phase — PF Record Laboratory (2026-08-26)
+
+The approved synthetic digital-twin phase is in progress. A separate strict `PF_LAB@1` model, five presets, deterministic R001–R003 evaluator, evidence graph, actor plan, process-local session service, optimistic version checks, confirmed simulations, import/reset behavior, and laboratory APIs are implemented. Guided Ravi's existing model and five-check engine are unchanged. First Docker gate passed lint, typecheck, 44 tests, and production build. Next: landing, `/guided-ravi`, laboratory UI, E2E, documentation, and final hardening. The unrelated `next-env.d.ts` worktree change remains excluded.
