@@ -136,7 +136,7 @@ The welcome surface introduces the Case File silhouette before Ravi is loaded. I
 
 ### Case File
 
-The raised-paper summary contains the record name, health score, five fixed check rows, and a contained deep-blue side tab. Check rows preserve stable order and pair icon, text, and semantic tint. Both the top tab and side tab are clipped to the file silhouette so they cannot paint into the page ground.
+The raised-paper summary contains the record name, health score, and five fixed check rows inside a clipped inner surface. Around that surface, the same authored rear layer used by the welcome card supplies the opposing-diagonal top tab, the single-diagonal right tab, and the thin rail with one rounded outer bottom corner. Check rows preserve stable order and pair icon, text, and semantic tint; the outer wrapper allows the tabs to protrude without letting row backgrounds escape the card corners.
 
 ### Issue Dossier
 

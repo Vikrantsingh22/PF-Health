@@ -139,25 +139,46 @@ function Limitation() {
   return <p className={styles.limitation}><ShieldIcon /><span>This does not guarantee a transfer or claim outcome.</span></p>;
 }
 
+function FileDecorations({ prefix = "" }: { readonly prefix?: string }) {
+  return (
+    <>
+      <span aria-hidden="true" className={styles.fileTopTab} data-case-file-decoration={`${prefix}top-tab`}>
+        <svg preserveAspectRatio="none" viewBox="0 0 148 26">
+          <path d="M0 26L10 7C12 2.5 16.5 0 22 0H116C125 0 132 4 137 13L145 26H0Z" />
+        </svg>
+      </span>
+      <span aria-hidden="true" className={styles.fileSideTab} data-case-file-decoration={`${prefix}side-tab`}>
+        <svg preserveAspectRatio="none" viewBox="0 0 18 136">
+          <path d="M0 0H8C13.5 0 18 4.5 18 10V116L11 136H0Z" />
+        </svg>
+      </span>
+      <span aria-hidden="true" className={styles.fileSideRail} data-case-file-decoration={`${prefix}side-rail`} />
+    </>
+  );
+}
+
 function CaseFile({ assessment, issueDetail, changed = false, children }: { readonly assessment: HealthAssessment; readonly issueDetail?: IssueDetailResponse; readonly changed?: boolean; readonly children?: ReactNode }) {
   const healthy = assessment.status === "HEALTHY";
   return (
     <>
       <section aria-labelledby="health-result" className={styles.caseFile}>
-        <div className={styles.fileSummary}>
-          <p className={styles.recordName}>Ravi&apos;s sample record</p>
-          <h1 className={styles.score} id="health-result">{assessment.passedChecks} of {assessment.totalChecks} checks look healthy</h1>
-          <p className={styles.summaryCopy}>
-            {healthy
-              ? "No known blockers were detected by the checks supported in this prototype."
-              : assessment.status === "REVIEW_REQUIRED"
-                ? "We could not confirm every supported check from the available sample data."
-                : "One item needs attention before the supported online-transfer scenario."}
-          </p>
+        <FileDecorations prefix="record-" />
+        <div className={styles.caseFileSurface} data-case-file-surface="record">
+          <div className={styles.fileSummary}>
+            <p className={styles.recordName}>Ravi&apos;s sample record</p>
+            <h1 className={styles.score} id="health-result">{assessment.passedChecks} of {assessment.totalChecks} checks look healthy</h1>
+            <p className={styles.summaryCopy}>
+              {healthy
+                ? "No known blockers were detected by the checks supported in this prototype."
+                : assessment.status === "REVIEW_REQUIRED"
+                  ? "We could not confirm every supported check from the available sample data."
+                  : "One item needs attention before the supported online-transfer scenario."}
+            </p>
+          </div>
+          <ol aria-label="Supported record checks" className={styles.checks}>
+            {assessment.checks.map((check, index) => <CheckRow changed={changed && check.checkId === "R001"} check={check} index={index} key={check.checkId} />)}
+          </ol>
         </div>
-        <ol aria-label="Supported record checks" className={styles.checks}>
-          {assessment.checks.map((check, index) => <CheckRow changed={changed && check.checkId === "R001"} check={check} index={index} key={check.checkId} />)}
-        </ol>
       </section>
       {issueDetail ? <IssueDossier detail={issueDetail} /> : null}
       {children}
@@ -275,17 +296,7 @@ export function PFHealthApp() {
   if (screen === "welcome") {
     content = (
       <section aria-labelledby="welcome-title" className={styles.welcome}>
-        <span aria-hidden="true" className={styles.welcomeTopTab} data-case-file-decoration="top-tab">
-          <svg preserveAspectRatio="none" viewBox="0 0 148 26">
-            <path d="M0 26L10 7C12 2.5 16.5 0 22 0H116C125 0 132 4 137 13L145 26H0Z" />
-          </svg>
-        </span>
-        <span aria-hidden="true" className={styles.welcomeSideTab} data-case-file-decoration="side-tab">
-          <svg preserveAspectRatio="none" viewBox="0 0 18 136">
-            <path d="M0 0H8C13.5 0 18 4.5 18 10V116L11 136H0Z" />
-          </svg>
-        </span>
-        <span aria-hidden="true" className={styles.welcomeSideRail} data-case-file-decoration="side-rail" />
+        <FileDecorations />
         <h1 id="welcome-title">Check a synthetic PF record before it becomes a problem.</h1>
         <p>PF Health explains five supported checks using Ravi&apos;s fictional sample record. Nothing is sent to EPFO, an employer, or any government service.</p>
         <PrimaryButton onClick={loadSample}>Load Ravi&apos;s sample record</PrimaryButton>

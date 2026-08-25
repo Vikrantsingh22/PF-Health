@@ -287,3 +287,24 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - Impeccable is installed project-scoped for Codex. Its hook is enabled through a Docker-wrapped project manifest; user trust in Codex Settings remains required.
 - Host-side work is limited to repository edits, repository Git operations, and PF Health-scoped Docker/Compose commands.
 - Local submission hardening added security headers, prohibited-data verification, three-width E2E, a clean production smoke test, refreshed official-source metadata, and final submission/architecture artifacts.
+
+## Mission 9 — Assessment Case File silhouette parity
+
+**Status:** COMPLETE
+
+**Goal:** Apply the verified welcome Case File rear-layer geometry to the reusable 4/5 and 5/5 record surfaces without changing their content or behavior.
+
+### Actions
+
+- [x] Extract one shared authored top-tab, side-tab, and rail decoration component.
+- [x] Place the assessment content in a clipped inner surface so rows retain correct corner containment.
+- [x] Give the assessment surface square joined corners and the same protruding rear-layer geometry as welcome.
+- [x] Inspect the 4/5 assessment at 634px and 991px.
+- [x] Verify the shared decorations remain present in the 5/5 state.
+- [x] Pass Docker E2E geometry coverage at 375px, 768px, and 1440px.
+- [x] Run the aggregate Docker check, finalize continuity records, and commit the verified refinement.
+
+### Boundaries
+
+- Do not change product behavior, copy, check order, issue disclosure, rules, dependencies, or later screens.
+- Preserve the unrelated generated `next-env.d.ts` worktree change and exclude it from this mission's commit.

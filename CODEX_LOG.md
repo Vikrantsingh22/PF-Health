@@ -233,3 +233,11 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Implementation:** Adjusted the welcome tab positioning, simplified the side-tab SVG path to one lower diagonal, moved the rail to a one-pixel overlap at the path endpoint, and removed the rail's lower-left radius. Extended the responsive geometry contract to assert the computed offset, exact path, direct join, asymmetric radii, and absence of welcome-state overflow. Product behavior and copy remain unchanged; the unrelated generated `next-env.d.ts` change remains excluded.
 
 **Verification:** Rendered inspection at 375px and 991px confirmed the requested alignment and continuous join without clipping or background bleed. Docker Playwright passed all three tests at 375px, 768px, and 1440px. The aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build.
+
+## 2026-08-25 — Assessment Case File silhouette parity
+
+**Task:** Apply the completed welcome Case File tab and rail geometry to Ravi's reusable 4/5 and 5/5 record surfaces.
+
+**Implementation:** Extracted the authored top tab, side tab, and rail into one shared decorative component used by welcome and record states. Wrapped the record summary and checks in a clipped inner surface so the rear-layer tabs can protrude while row backgrounds remain contained. Added record-specific responsive geometry assertions and retained the exact check order, issue dossier, copy, and behavior. The unrelated generated `next-env.d.ts` change remains excluded.
+
+**Verification:** Rendered inspection at 634px and 991px confirmed the raised opposing-diagonal top tab, single-diagonal right tab, connected thin rail, square joined corners, and contained check rows. Docker Playwright passed all three tests at 375px, 768px, and 1440px and verified decoration presence after revalidation to 5/5. The aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build.

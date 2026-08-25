@@ -42,6 +42,8 @@ test("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
   await page.getByRole("button", { name: "Apply simulated correction" }).click();
 
   await expect(page.getByRole("heading", { name: "5 of 5 checks look healthy" })).toBeVisible();
+  await expect(page.locator("[data-case-file-decoration='record-top-tab']")).toBeVisible();
+  await expect(page.locator("[data-case-file-decoration='record-side-rail']")).toBeVisible();
   await expect(page.getByText("No known blockers were detected by the checks supported in this prototype.")).toBeVisible();
   await expect(page.getByText("Ravi's exit information is now complete in the sample.")).toBeVisible();
   await expect(page.getByText("The same R001 check now passes. No generated text changed this result.")).toBeVisible();
@@ -146,16 +148,51 @@ test("case file remains usable across submission widths and reduced motion", asy
     const caseFileGeometry = await page
       .getByRole("region", { name: "4 of 5 checks look healthy" })
       .evaluate((caseFile) => {
-        const bounds = caseFile.getBoundingClientRect();
-        const rightTab = getComputedStyle(caseFile, "::after");
+        const surface = caseFile.querySelector<HTMLElement>("[data-case-file-surface='record']");
+        const topTab = caseFile.querySelector<HTMLElement>("[data-case-file-decoration='record-top-tab']");
+        const sideTab = caseFile.querySelector<HTMLElement>("[data-case-file-decoration='record-side-tab']");
+        const sideRail = caseFile.querySelector<HTMLElement>("[data-case-file-decoration='record-side-rail']");
+        if (!surface || !topTab || !sideTab || !sideRail) throw new Error("Record Case File decorations are missing.");
+        const surfaceBounds = surface.getBoundingClientRect();
+        const topTabBounds = topTab.getBoundingClientRect();
+        const sideTabBounds = sideTab.getBoundingClientRect();
+        const sideRailBounds = sideRail.getBoundingClientRect();
         return {
           overflow: getComputedStyle(caseFile).overflow,
-          rightTabEdge: bounds.right - Number.parseFloat(rightTab.right),
-          surfaceEdge: bounds.right,
+          sideRailBottom: sideRailBounds.bottom,
+          sideRailBottomLeftRadius: getComputedStyle(sideRail).borderBottomLeftRadius,
+          sideRailBottomRightRadius: getComputedStyle(sideRail).borderBottomRightRadius,
+          sideRailRight: sideRailBounds.right,
+          sideRailTop: sideRailBounds.top,
+          sideTabBottom: sideTabBounds.bottom,
+          sideTabRight: sideTabBounds.right,
+          surfaceBottom: surfaceBounds.bottom,
+          surfaceBottomRightRadius: getComputedStyle(surface).borderBottomRightRadius,
+          surfaceOverflow: getComputedStyle(surface).overflow,
+          surfaceRight: surfaceBounds.right,
+          surfaceTop: surfaceBounds.top,
+          surfaceTopLeftRadius: getComputedStyle(surface).borderTopLeftRadius,
+          topTabBottom: topTabBounds.bottom,
+          topTabLeftOffset: getComputedStyle(topTab).left,
+          topTabTop: topTabBounds.top,
         };
       });
-    expect(caseFileGeometry.overflow).toBe("hidden");
-    expect(caseFileGeometry.rightTabEdge).toBe(caseFileGeometry.surfaceEdge);
+    await expect(page.locator("[data-case-file-decoration='record-top-tab'] path")).toHaveAttribute("d", "M0 26L10 7C12 2.5 16.5 0 22 0H116C125 0 132 4 137 13L145 26H0Z");
+    await expect(page.locator("[data-case-file-decoration='record-side-tab'] path")).toHaveAttribute("d", "M0 0H8C13.5 0 18 4.5 18 10V116L11 136H0Z");
+    expect(caseFileGeometry.overflow).toBe("visible");
+    expect(caseFileGeometry.surfaceOverflow).toBe("hidden");
+    expect(caseFileGeometry.surfaceTopLeftRadius).toBe("0px");
+    expect(caseFileGeometry.surfaceBottomRightRadius).toBe("0px");
+    expect(caseFileGeometry.topTabLeftOffset).toBe("-2px");
+    expect(caseFileGeometry.topTabTop).toBeLessThan(caseFileGeometry.surfaceTop);
+    expect(caseFileGeometry.topTabBottom).toBeGreaterThanOrEqual(caseFileGeometry.surfaceTop);
+    expect(caseFileGeometry.sideTabRight).toBeGreaterThan(caseFileGeometry.surfaceRight);
+    expect(caseFileGeometry.sideTabBottom - caseFileGeometry.sideRailTop).toBeGreaterThanOrEqual(0);
+    expect(caseFileGeometry.sideTabBottom - caseFileGeometry.sideRailTop).toBeLessThanOrEqual(1);
+    expect(caseFileGeometry.sideRailRight).toBeGreaterThan(caseFileGeometry.surfaceRight);
+    expect(caseFileGeometry.sideRailBottom).toBeGreaterThanOrEqual(caseFileGeometry.surfaceBottom);
+    expect(caseFileGeometry.sideRailBottomLeftRadius).toBe("0px");
+    expect(caseFileGeometry.sideRailBottomRightRadius).not.toBe("0px");
 
     const transitionDuration = await page
       .getByRole("button", { name: "Review what to do next" })
