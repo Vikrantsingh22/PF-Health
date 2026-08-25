@@ -1,5 +1,6 @@
-import { PFHealthApp } from "@/components/pf-health-app";
+import Link from "next/link";
+import styles from "@/components/laboratory.module.css";
 
 export default function Home() {
-  return <PFHealthApp />;
+  return <div className={styles.site}><header className={styles.header}><Link href="/" className={styles.brand}>PF Health</Link><span>Independent prototype</span></header><div className={styles.notice}>Synthetic records only · No EPFO connection</div><main className={styles.landing} id="main-content"><section className={styles.landingIntro}><h1>Choose how you want to inspect the record.</h1><p>Start with Ravi’s guided case file, or open the laboratory to alter a fictional employment history and watch the evidence change.</p></section><div className={styles.pathGrid}><Link className={styles.path} href="/guided-ravi"><h2>Follow Ravi’s guided case</h2><p>Learn the complete 4 of 5 → correction → 5 of 5 journey.</p><strong>Open Guided Ravi →</strong></Link><Link className={`${styles.path} ${styles.labPath}`} href="/laboratory"><h2>Build a synthetic PF history</h2><p>Edit employments, trigger deterministic outcomes, inspect evidence, and simulate supported corrections.</p><strong>Enter PF Record Laboratory →</strong></Link></div><p className={styles.boundary}>No UAN, Aadhaar, bank details, credentials, personal names, or real employer information are accepted.</p></main></div>;
 }

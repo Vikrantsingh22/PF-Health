@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
-  const response = await page.goto("/");
+  const response = await page.goto("/guided-ravi");
   expect(response).not.toBeNull();
   expect(response?.headers()["content-security-policy"]).toContain("default-src 'self'");
   expect(response?.headers()["permissions-policy"]).toContain("camera=()");
@@ -66,7 +66,7 @@ test("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
 });
 
 test("hero controls remain keyboard reachable at 375px", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/guided-ravi");
   await page.keyboard.press("Tab");
   await expect(page.getByRole("link", { name: "Skip to main content" })).toBeFocused();
   await page.keyboard.press("Tab");
@@ -85,7 +85,7 @@ test("case file remains usable across submission widths and reduced motion", asy
     { width: 1440, height: 1000 },
   ]) {
     await page.setViewportSize(viewport);
-    await page.goto("/");
+    await page.goto("/guided-ravi");
 
     const welcomeGeometry = await page
       .getByRole("region", { name: "Check a synthetic PF record before it becomes a problem." })
