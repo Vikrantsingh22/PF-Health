@@ -264,6 +264,15 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - [x] Pass the three-width Docker E2E geometry coverage with no welcome-state horizontal overflow.
 - [x] Run the aggregate Docker check, finalize continuity records, and commit the verified refinement.
 
+### Current action — align the welcome tab joins
+
+- [x] Shift the authored top tab to `left: -2px` against the welcome card at every viewport.
+- [x] Remove the right tab's lower-left diagonal while retaining its outer lower diagonal.
+- [x] Join the remaining diagonal directly to the thin rail and keep only the rail's outer bottom-right corner rounded.
+- [x] Inspect the result at 375px and the reported 991px desktop width.
+- [x] Pass Docker E2E coverage at 375px, 768px, and 1440px.
+- [x] Run the aggregate Docker check, finalize continuity records, and commit the verified refinement.
+
 ### Boundaries
 
 - Do not change product behavior, copy, routes, rules, dependencies, or the subsequent Case File states.

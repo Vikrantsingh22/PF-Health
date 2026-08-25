@@ -225,3 +225,11 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 **Implementation:** Updated the two authored decorative SVG paths, added an accessibility-hidden lower rail, and extended the responsive geometry contract to cover the new corner, overlap, path, and welcome-state overflow requirements. Updated the durable Welcome Card design rule and continuity records. Product behavior, copy, and subsequent screens are unchanged; the unrelated generated `next-env.d.ts` change remains excluded.
 
 **Verification:** Rendered inspection at phone, 643px, and 1230px widths confirmed the requested joined silhouette without clipping or background bleed. Docker Playwright passed all three tests at 375px, 768px, and 1440px. The aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build.
+
+## 2026-08-25 — Welcome tab join alignment
+
+**Task:** Apply the human-reported welcome alignment refinements: move the top tab to `left: -2px`, remove the right tab's lower-left diagonal, connect its remaining outer diagonal smoothly to the rail, and round only the rail's bottom-right corner.
+
+**Implementation:** Adjusted the welcome tab positioning, simplified the side-tab SVG path to one lower diagonal, moved the rail to a one-pixel overlap at the path endpoint, and removed the rail's lower-left radius. Extended the responsive geometry contract to assert the computed offset, exact path, direct join, asymmetric radii, and absence of welcome-state overflow. Product behavior and copy remain unchanged; the unrelated generated `next-env.d.ts` change remains excluded.
+
+**Verification:** Rendered inspection at 375px and 991px confirmed the requested alignment and continuous join without clipping or background bleed. Docker Playwright passed all three tests at 375px, 768px, and 1440px. The aggregate Docker check passed lint, strict typecheck, all 32 tests, and the production build.

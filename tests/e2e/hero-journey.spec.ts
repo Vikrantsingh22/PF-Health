@@ -93,6 +93,8 @@ test("case file remains usable across submission widths and reduced motion", asy
           borderTopLeftRadius: getComputedStyle(welcome).borderTopLeftRadius,
           horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
           overflow: getComputedStyle(welcome).overflow,
+          sideRailBottomLeftRadius: getComputedStyle(sideRail).borderBottomLeftRadius,
+          sideRailBottomRightRadius: getComputedStyle(sideRail).borderBottomRightRadius,
           sideRailBottom: sideRailBounds.bottom,
           sideRailLeft: sideRailBounds.left,
           sideRailRight: sideRailBounds.right,
@@ -104,23 +106,28 @@ test("case file remains usable across submission widths and reduced motion", asy
           surfaceTop: bounds.top,
           surfaceRight: bounds.right,
           topTabBottom: topTabBounds.bottom,
+          topTabLeftOffset: getComputedStyle(topTab).left,
           topTabTop: topTabBounds.top,
         };
       });
     await expect(page.locator("[data-case-file-decoration='top-tab'] path")).toHaveAttribute("d", "M0 26L10 7C12 2.5 16.5 0 22 0H116C125 0 132 4 137 13L145 26H0Z");
-    await expect(page.locator("[data-case-file-decoration='side-tab'] path")).toHaveAttribute("d", "M0 0H8C13.5 0 18 4.5 18 10V116L14 136H4L0 116Z");
+    await expect(page.locator("[data-case-file-decoration='side-tab'] path")).toHaveAttribute("d", "M0 0H8C13.5 0 18 4.5 18 10V116L11 136H0Z");
     expect(welcomeGeometry.borderBottomRightRadius).toBe("0px");
     expect(welcomeGeometry.borderTopLeftRadius).toBe("0px");
     expect(welcomeGeometry.horizontalOverflow).toBe(false);
     expect(welcomeGeometry.overflow).toBe("visible");
     expect(welcomeGeometry.topTabTop).toBeLessThan(welcomeGeometry.surfaceTop);
     expect(welcomeGeometry.topTabBottom).toBeGreaterThanOrEqual(welcomeGeometry.surfaceTop);
+    expect(welcomeGeometry.topTabLeftOffset).toBe("-2px");
     expect(welcomeGeometry.sideTabLeft).toBeLessThanOrEqual(welcomeGeometry.surfaceRight);
     expect(welcomeGeometry.sideTabRight).toBeGreaterThan(welcomeGeometry.surfaceRight);
-    expect(welcomeGeometry.sideTabBottom).toBeGreaterThan(welcomeGeometry.sideRailTop);
+    expect(welcomeGeometry.sideTabBottom - welcomeGeometry.sideRailTop).toBeGreaterThanOrEqual(0);
+    expect(welcomeGeometry.sideTabBottom - welcomeGeometry.sideRailTop).toBeLessThanOrEqual(1);
     expect(welcomeGeometry.sideRailLeft).toBeLessThanOrEqual(welcomeGeometry.surfaceRight);
     expect(welcomeGeometry.sideRailRight).toBeGreaterThan(welcomeGeometry.surfaceRight);
     expect(welcomeGeometry.sideRailBottom).toBeGreaterThanOrEqual(welcomeGeometry.surfaceBottom);
+    expect(welcomeGeometry.sideRailBottomLeftRadius).toBe("0px");
+    expect(welcomeGeometry.sideRailBottomRightRadius).not.toBe("0px");
 
     await page.getByRole("button", { name: "Load Ravi's sample record" }).click();
 

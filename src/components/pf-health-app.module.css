@@ -7,11 +7,11 @@
 .notice svg { width: 24px; height: 24px; flex: 0 0 auto; }
 .main { position: relative; isolation: isolate; }
 .welcome { position: relative; overflow: visible; padding: 36px 24px 28px; border: 1px solid var(--blue); border-radius: 0 var(--radius-card) 0 var(--radius-card); background: var(--paper-raised); isolation: isolate; }
-.welcomeTopTab { position: absolute; z-index: 0; top: -25px; left: -1px; display: block; width: 148px; height: 26px; pointer-events: none; }
+.welcomeTopTab { position: absolute; z-index: 0; top: -25px; left: -2px; display: block; width: 148px; height: 26px; pointer-events: none; }
 .welcomeTopTab svg { display: block; width: 100%; height: 100%; fill: var(--blue-deep); }
 .welcomeSideTab { position: absolute; z-index: -1; top: 52px; right: -16px; display: block; width: 18px; height: 136px; pointer-events: none; }
 .welcomeSideTab svg { display: block; width: 100%; height: 100%; fill: var(--blue-deep); }
-.welcomeSideRail { position: absolute; z-index: -1; top: 174px; right: -9px; bottom: -1px; display: block; width: 10px; border-radius: 0 0 var(--radius-control) var(--radius-control); background: var(--blue-deep); pointer-events: none; }
+.welcomeSideRail { position: absolute; z-index: -1; top: 187px; right: -9px; bottom: -1px; display: block; width: 10px; border-radius: 0 0 var(--radius-control) 0; background: var(--blue-deep); pointer-events: none; }
 .caseFile::before { position: absolute; z-index: 0; top: 0; left: 0; width: 148px; height: 24px; border-radius: var(--radius-card) var(--radius-card) var(--radius-control) 0; background: var(--blue-deep); content: ""; }
 .welcome > :not(.welcomeTopTab, .welcomeSideTab, .welcomeSideRail), .caseFile > * { position: relative; z-index: 1; }
 .welcome h1 { max-width: 13ch; margin: 24px 0 16px; font-size: clamp(2.2rem, 9vw, 3.65rem); font-weight: 740; letter-spacing: -0.04em; line-height: 1.06; text-wrap: balance; }

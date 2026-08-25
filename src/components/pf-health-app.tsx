@@ -282,7 +282,7 @@ export function PFHealthApp() {
         </span>
         <span aria-hidden="true" className={styles.welcomeSideTab} data-case-file-decoration="side-tab">
           <svg preserveAspectRatio="none" viewBox="0 0 18 136">
-            <path d="M0 0H8C13.5 0 18 4.5 18 10V116L14 136H4L0 116Z" />
+            <path d="M0 0H8C13.5 0 18 4.5 18 10V116L11 136H0Z" />
           </svg>
         </span>
         <span aria-hidden="true" className={styles.welcomeSideRail} data-case-file-decoration="side-rail" />
