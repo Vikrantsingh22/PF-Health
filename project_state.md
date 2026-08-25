@@ -1,6 +1,6 @@
 # PF Health Project State
 
-Last updated: 2026-08-25
+Last updated: 2026-08-26
 
 ## Purpose
 
@@ -27,6 +27,8 @@ Milestone 2 — deterministic resolution journey: **COMPLETE**
 Milestone 3 — minimal mobile-first UI and E2E: **COMPLETE**
 
 Milestone 4 — local submission hardening: **COMPLETE; PUBLIC DEPLOYMENT PENDING**
+
+Milestone 5 — PF Record Laboratory and interaction hardening: **COMPLETE**
 
 The repository now contains a verified Docker-isolated application harness, the pure-domain Ravi oracle, the complete framework-independent reset → assess → confirm → synthetic correction → automatic revalidation lifecycle, its validated `/api/v1` boundary, and the polished Calm Case File UI with Docker-only browser E2E coverage.
 
@@ -87,6 +89,7 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - User-approved Calm Case File composition with refined check-to-dossier bridge, guidance icons, embedded generation provenance, and route surface brief
 - Strict Zod-validated `/api/v1` route handlers for member/reset, assessments, issue detail, resolution selection/confirmation/application, and safe audit retrieval
 - Mobile-first Calm Case File UI covering welcome, loading, 4/5 summary, issue guidance/evidence, exact synthetic confirmation, revalidation, 5/5 healthy result, audit timeline, reset, and safe retry
+- Hardened PF Record Laboratory with editable bounded fictional labels, one issue/action per missing employment, complete compound-rule reporting, chronology-derived exit proposals, explicit reason confirmation, and authored workbench tab geometry
 - Noto Sans Variable typography, semantic color tokens, authored route/owner/evidence icons, visible file geometry, and a solid check-to-dossier bridge
 - Digest-pinned, non-root Playwright 1.62.1 E2E service with read-only repository mounting and private-network access to the app
 - Scan-mode root `DESIGN.md` and `.impeccable/design.json` documenting the shipped visual system

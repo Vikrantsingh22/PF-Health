@@ -41,9 +41,40 @@ test("judge edits a record, inspects evidence, and applies a supported fix", asy
   await page.getByText("Read the textual evidence trace").click();
   await expect(page.getByText(/R001 read/)).toBeVisible();
   await page.getByRole("button", { name: "Prepare simulated exit update" }).click();
+  await expect(page.getByLabel("Exit date", { exact: true }).last()).toHaveValue("2021-03-31");
+  await page.getByRole("combobox", { name: "Confirmed exit reason" }).selectOption("RESIGNATION");
   await page.getByRole("button", { name: "Apply simulated change" }).click();
   await expect(page.getByText("HEALTHY", { exact: true })).toBeVisible();
   await expect(page.getByText("No correction plan is needed.")).toBeVisible();
+});
+
+test("laboratory supports editable fictional labels and has no duplicate control", async ({ page }) => {
+  await page.goto("/laboratory");
+  await expect(page.getByRole("button", { name: "Duplicate" })).toHaveCount(0);
+  const labels = page.getByLabel("Fictional employer label");
+  await labels.first().fill("Fictional Workshop North");
+  await page.getByRole("button", { name: "Run assessment" }).click();
+  await expect(page.getByText("Fictional Workshop North", { exact: true }).first()).toBeVisible();
+});
+
+test("missing-exit confirmation follows edited chronology and requires a reason", async ({ page }) => {
+  await page.goto("/laboratory");
+  await page.getByRole("combobox", { name: "Load preset" }).selectOption({ label: "Missing exit" });
+  await page.getByLabel("Start date").last().fill("2021-02-02");
+  await page.getByRole("button", { name: "Run assessment" }).click();
+  await page.getByRole("button", { name: "Prepare simulated exit update" }).click();
+  await expect(page.getByLabel("Exit date", { exact: true }).last()).toHaveValue("2021-02-01");
+  await expect(page.getByRole("button", { name: "Apply simulated change" })).toBeDisabled();
+});
+
+test("workspace cards use the authored case-file tab geometry", async ({ page }) => {
+  await page.goto("/laboratory");
+  const tabPath = "M1 25L10 8C12 3.5 16.5 1 22 1H116C125 1 132 5 137 14L144 25H1Z";
+  for (const name of ["editor", "results"]) {
+    const tab = page.locator(`[data-workspace-tab="${name}"]`);
+    await expect(tab.locator("path")).toHaveAttribute("d", tabPath);
+    expect(await tab.locator("path").evaluate((path) => getComputedStyle(path).fill)).toBe("rgb(7, 56, 109)");
+  }
 });
 
 test("laboratory has no horizontal overflow at target widths", async ({ page }) => {

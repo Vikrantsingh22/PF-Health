@@ -1,9 +1,14 @@
 import { z } from "zod";
 
 const date = z.iso.date();
+const fictionalEmployerLabel = z.string()
+  .trim()
+  .min(2, "Enter a fictional employer label")
+  .max(60, "Fictional employer labels are limited to 60 characters")
+  .regex(/^[\p{L}\p{N} .,'&()\-]+$/u, "Use letters, numbers, spaces, and basic punctuation only");
 const employment = z.object({
   employmentId: z.string().regex(/^lab_emp[-_][a-z0-9-]+$/),
-  employerLabel: z.enum(["Synthetic Employer A", "Synthetic Employer B", "Synthetic Employer C", "Synthetic Employer D", "Synthetic Employer E", "Synthetic Employer F"]),
+  employerLabel: fictionalEmployerLabel,
   status: z.enum(["CURRENT", "PREVIOUS"]),
   startDate: date,
   exitDate: date.nullable(),

@@ -17,6 +17,21 @@ describe("LaboratoryService", () => {
     expect(() => service.run(created.sessionId, created.draftVersion + 1)).toThrow(/changed/);
   });
 
+  it("revalidates all rules and keeps unrelated compound violations visible", () => {
+    const service = new LaboratoryService();
+    const created = service.create({ presetId: "compound-case" });
+    const run = service.run(created.sessionId, created.draftVersion);
+    const fixed = service.simulateExit(created.sessionId, {
+      expectedDraftVersion: run.draftVersion,
+      expectedSnapshotVersion: run.snapshotVersion,
+      employmentId: "lab_emp-a",
+      exitDate: "2021-03-31",
+      exitReason: "RESIGNATION",
+    });
+    expect(fixed.assessment?.outcome).toBe("BLOCKED");
+    expect(fixed.assessment?.issues.map(({ ruleId }) => ruleId)).toEqual(["R003"]);
+  });
+
   it("exports and imports scenario data without runtime state", () => {
     const service = new LaboratoryService(); const created = service.create({ presetId: "overlap" });
     const imported = service.create({ scenario: JSON.parse(JSON.stringify(created.draft)) });

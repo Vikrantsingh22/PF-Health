@@ -68,6 +68,20 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [x] Add E2E assertions for the exact path, fill, and stroke.
 - [x] Remove the obsolete pseudo-tab rule and normalize the remaining radius token.
 
+## Mission 13 — Laboratory interaction and compound-rule hardening
+
+**Status:** COMPLETE
+
+- [x] Replace fixed missing-exit values with chronology-derived confirmation fields.
+- [x] Report each affected employment and preserve all compound rule violations.
+- [x] Remove duplicate controls and allow bounded fictional employer-label editing.
+- [x] Apply the authored case-file tab geometry and requested spacing to both workbench panels.
+- [x] Remove the mobile sticky-action overlap found during rendered inspection.
+- [x] Verify domain, API, UI, responsive layout, and Guided Ravi regression in Docker.
+- [x] Update persistent state and Codex log, inspect the diff, and commit the verified change.
+
+**Verification:** Docker `npm run check` passed lint, strict typecheck, 51 tests across nine files, and the production build. The dedicated Docker Playwright service passed all 10 browser journeys, including the unchanged Ravi oracle, dynamic chronology proposal, editable labels, tab geometry, and 375px/768px/1440px overflow checks. Impeccable source detection passed after aligning helper copy to the documented type ramp; rendered URL detection was unavailable in the app image because it intentionally has no Chrome binary, so the bounded desktop/mobile browser inspection and dedicated Playwright container supplied rendered verification instead.
+
 ## Mission 1 — Bootstrap the application harness
 
 **Status:** COMPLETE

@@ -260,3 +260,9 @@ Moved the unchanged Ravi journey to `/guided-ravi`, added a two-path root, and b
 # 2026-08-26 — Landing path-tab geometry
 
 Replaced both root path-card pseudo-tabs with the established authored case-file SVG silhouette. The Guided Ravi tab is solid deep blue; the laboratory tab uses raised paper with a deep-blue stroke inset within the path. Confirmed the joined geometry at desktop and mobile sizes, added exact path/fill/stroke E2E assertions, and removed the obsolete rounded pseudo-tab CSS.
+
+# 2026-08-26 — Laboratory interaction and compound-rule hardening
+
+Removed the redundant Duplicate controls and added bounded editable fictional employer labels. Replaced the fixed missing-exit correction with a chronology-derived date, an editable confirmation date, and a required explicit exit-reason choice. R001 now emits one issue and actor action per affected previous employment; the results surface lists every issue, and revalidation preserves unrelated R002/R003 violations in compound cases. Applied the established opposing-diagonal case-file tab to both workbench panels, improved intro/workflow spacing, and removed the mobile Run-action overlay found during rendered inspection.
+
+Docker `npm run check` passed lint, strict typecheck, 51 tests, and the production build. The isolated Playwright service passed all 10 E2E journeys, including Guided Ravi, all presets, dynamic proposal behavior, editable labels, exact tab geometry, and responsive overflow checks. Impeccable source detection passed; rendered inspection at desktop and 375px showed clean tab geometry and no horizontal overflow.
