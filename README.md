@@ -92,3 +92,8 @@ The current persistence adapters are intentionally process-local and replaceable
 Optional bounded AI remains deferred because it is not needed for the complete deterministic journey. Public deployment is platform-specific and is not configured in this repository.
 
 See [`docs/product/DEMO.md`](docs/product/DEMO.md) for the three-minute presentation path.
+# Product routes
+
+- `/` — choose Guided Ravi or PF Record Laboratory.
+- `/guided-ravi` — frozen deterministic 4/5 → 5/5 tutorial.
+- `/laboratory` — construct and assess strict synthetic PF histories.

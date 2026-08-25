@@ -5,14 +5,14 @@ primary_target: "src/app/page.tsx"
 related_targets: []
 ---
 
-# PF Health hero journey
+# PF Health path selection
 
-- **Scope and mode:** Mobile-first `/` product workflow; Operate.
-- **Audience and job:** A salaried employee uses Ravi's synthetic record to understand one supported PF-record issue and complete a safe simulated correction.
-- **Primary task:** Review the five deterministic checks, open the missing-exit issue, understand impact and ownership, then continue to resolution.
-- **Proof and constraints:** Exact 4/5 → 5/5 oracle, source-backed R001 limitation, synthetic/non-affiliation notice, one action per stage, WCAG 2.2 AA, no real identifiers or unsupported checks.
+- **Scope and mode:** Two-path `/` entry; Persuade toward one of two safe product experiences.
+- **Audience and job:** A judge chooses a guided demonstration or a hands-on synthetic PF record laboratory.
+- **Primary task:** Understand the difference and enter the appropriate path immediately.
+- **Proof and constraints:** Guided Ravi stays frozen; the laboratory is deterministic and synthetic; no real identifiers or connectivity.
 - **Chosen direction:** The Calm Case File, selected from seed `9188a955`. Approved comp: `.impeccable/mocks/approved/pf-health-case-file.png`.
-- **Memorable moment:** Check 05 leads into a clearly separated issue dossier whose route, owner, and evidence guidance each carries a meaningful outline icon.
+- **Memorable moment:** Two physical case-file choices make tutorial versus laboratory scope unmistakable.
 - **Unresolved decisions:** Exact local font package and final accessible token values are resolved during implementation and documented from the built surface.
 
 ## Comp grammar

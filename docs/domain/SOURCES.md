@@ -71,3 +71,7 @@ When a rule changes or a source is refreshed:
 3. review rule condition, owner, actions, copy, tests, and API examples;
 4. prefer `UNKNOWN`/`REVIEW_REQUIRED` while evidence conflicts;
 5. never copy personal examples or identifiers from source material into fixtures.
+# Laboratory source additions
+
+- `SRC-003`: EPFO auto-transfer conditions, including previous Date of Exit not later than present Date of Joining: https://www.epfindia.gov.in/site_docs/PDFs/Circulars/Y2017-2018/IS_AccAutoTransfer_UnPr_2715.pdf
+- `SRC-004`: EPFO FAQ transfer limitation where previous and present employment are associated with different UANs: https://www.epfindia.gov.in/site_en/FAQ.php

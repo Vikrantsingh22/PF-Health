@@ -124,3 +124,6 @@ No OpenAI call, UI, database, or external network is required. The Docker image 
 - [x] Run Docker E2E, aggregate checks, and the submission guard; update state/log and commit
 
 The interactive PF Record Sandbox is a later approved direction, not part of this repair.
+# Completed: PF Record Laboratory
+
+The approved synthetic digital-twin plan is complete. The frozen Ravi tutorial is available at `/guided-ravi`; the root selects between that tutorial and `/laboratory`. `PF_LAB@1`, five presets, strict scenario JSON, process-local versioned sessions, evidence and actor registries, confirmed simulations, APIs, UI, Docker unit/API/build gates, and seven Docker E2E journeys are implemented. Future AI or real integration work remains separately gated.

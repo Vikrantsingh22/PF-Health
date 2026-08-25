@@ -42,7 +42,7 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Mission 11 — PF Record Laboratory
 
-**Status:** IN PROGRESS
+**Status:** COMPLETE
 
 **Goal:** Add a deterministic synthetic PF record laboratory while preserving Guided Ravi unchanged.
 
@@ -51,9 +51,11 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [x] Add five presets, process-local sessions, optimistic versions, confirmed simulations, reset, import, and export-safe scenario documents.
 - [x] Add the seven laboratory API route groups.
 - [x] Verify the core in Docker: lint, typecheck, 44 tests, and production build pass.
-- [-] Build `/`, `/guided-ravi`, and `/laboratory` experiences.
-- [ ] Add laboratory and preserved-Ravi Docker E2E coverage.
-- [ ] Complete responsive/a11y review, docs, final Docker checks, and focused commits.
+- [x] Build `/`, `/guided-ravi`, and `/laboratory` experiences.
+- [x] Add laboratory and preserved-Ravi Docker E2E coverage.
+- [x] Complete responsive/a11y review, docs, final Docker checks, and focused commits.
+
+**Verification:** Docker `npm run check` passed with 47 tests across nine files and a production build. Docker Playwright passed seven journeys. Impeccable’s six-fix verdict pass scored every item resolved and returned `ship`. Core commit: `7fc79b4`; UI/E2E commit: `436b78c`.
 
 ## Mission 1 — Bootstrap the application harness
 

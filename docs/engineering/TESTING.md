@@ -122,3 +122,6 @@ Run at a mobile viewport at minimum. Add 768px and 1440px smoke coverage or visu
 ## Completion evidence
 
 Report exact container commands, image/build identity where useful, pass/fail counts when available, and any skipped checks. “Tests passed” is insufficient without naming the relevant suite and behavior. If scripts or the Docker harness do not yet exist, say so rather than claiming verification. Host-native results do not satisfy completion criteria.
+# Laboratory verification oracle
+
+The five presets must resolve to `HEALTHY`, `NEEDS_ATTENTION`, `REVIEW_REQUIRED`, `BLOCKED`, and compound `BLOCKED`. Tests cover chronology equality/overlap, transfer-only account blocking, strict unknown-field and count rejection, graph referential integrity, stale versions, confirmed mutation/revalidation, import round-trip, both landing paths, preserved Ravi 4/5→5/5, target-width overflow, and keyboard/reduced-motion behavior. All executable verification runs through Compose.

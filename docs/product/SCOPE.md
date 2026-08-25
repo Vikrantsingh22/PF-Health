@@ -45,3 +45,6 @@ Each MAYBE item requires explicit human approval before implementation.
 ## Change control
 
 Any feature outside `MUST` requires explicit human approval. New PF issue codes additionally require an official source entry, rule specification, taxonomy entry, provenance, tests, and a documented product reason.
+# Approved extension: PF Record Laboratory
+
+The laboratory is an approved synthetic-only extension beside the frozen Ravi tutorial. It permits 1–6 generated fictional employments, generated synthetic account groups A–C, workflows `GENERAL_HEALTH` and `TRANSFER`, five presets, versioned JSON scenario import/export, and deterministic `PF_LAB@1` rules R001–R003. It must not accept real identifiers, names, credentials, files other than strict scenario JSON, AI decisions, EPFO connectivity, or external corrections.

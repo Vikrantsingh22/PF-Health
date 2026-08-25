@@ -136,3 +136,6 @@ load member → normalize snapshot → run all rules → build assessment
 ## Deferred architecture
 
 The semantic router, multiple public services, real integrations, generalized workflow catalogs, and distributed services are intentionally deferred. The current `WorkflowContext` supports `GENERAL_HEALTH` and a narrow `TRANSFER` context only so future work is possible without building it now.
+# Two-path application composition
+
+`/guided-ravi` composes the existing demo runtime and frozen five-check contracts. `/laboratory` composes the separate `src/laboratory` strict schema, `PF_LAB@1` evaluator, evidence/plan builders, and process-local session service. Both share only presentation tokens and synthetic/non-affiliation boundaries; laboratory rules never modify tutorial `MemberState` or APIs.

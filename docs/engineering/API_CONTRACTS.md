@@ -163,3 +163,8 @@ Optional. Accepts an issue ID, resolution action code, locale, and explicitly ed
 - Route handlers call application services rather than repositories/rules directly.
 - API schema tests cover success and every stable error code.
 - Contract changes require this file and relevant consumer tests to change together.
+# Laboratory session boundary
+
+Process-local laboratory routes live under `/api/v1/laboratory`. Presets are read-only. Session creation accepts one preset ID or one strict `pf-health-synthetic-scenario@1` document. Draft replacement and runs require `expectedDraftVersion`; confirmed simulations additionally require `expectedSnapshotVersion`. Runs alone create authoritative snapshots, assessments, evidence graphs, actor plans, and run audit events. Scenario JSON excludes session IDs, assessment results, audit events, and confirmation/runtime state.
+
+Routes: `GET /presets`; `POST /sessions`; `GET|PUT /sessions/{sessionId}`; `POST /sessions/{sessionId}/runs`; confirmed `simulate-exit-update` and `simulate-account-link` actions; and `POST /sessions/{sessionId}/reset`.
