@@ -57,6 +57,17 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 **Verification:** Docker `npm run check` passed with 47 tests across nine files and a production build. Docker Playwright passed seven journeys. Impeccable’s six-fix verdict pass scored every item resolved and returned `ship`. Core commit: `7fc79b4`; UI/E2E commit: `436b78c`.
 
+## Mission 12 — Landing case-file tab refinement
+
+**Status:** COMPLETE
+
+- [x] Replace both rounded landing-card tabs with the approved opposing-diagonal SVG silhouette.
+- [x] Keep Guided Ravi’s tab solid deep blue.
+- [x] Give the laboratory’s raised-paper tab an inset deep-blue SVG stroke.
+- [x] Verify the geometry at 877px and 375px without overflow or detached borders.
+- [x] Add E2E assertions for the exact path, fill, and stroke.
+- [x] Remove the obsolete pseudo-tab rule and normalize the remaining radius token.
+
 ## Mission 1 — Bootstrap the application harness
 
 **Status:** COMPLETE

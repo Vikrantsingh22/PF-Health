@@ -183,3 +183,5 @@ Also add a factual entry to `CODEX_LOG.md`. Do not paste chat transcripts or rep
 # Completed phase — PF Record Laboratory (2026-08-26)
 
 The approved synthetic digital-twin phase is implemented and verified. `/` selects Guided Ravi or PF Record Laboratory; `/guided-ravi` preserves the existing 4/5→5/5 component and oracle; `/laboratory` provides five presets, generated employment editing, transfer/general-health workflows, explicit versioned runs, results, evidence trace/graph, actor plans, confirmed simulations, and strict JSON import/export. The separate `PF_LAB@1` model, process-local APIs, version conflicts, audit lifecycle, and responsive UI are complete. Docker verification passes lint, typecheck, 47 tests, production build, and seven E2E journeys at target widths. The unrelated `next-env.d.ts` worktree change remains excluded.
+
+The root path cards now use the same authored opposing-diagonal case-file tab silhouette as Guided Ravi. The laboratory card’s raised-paper tab carries its deep-blue stroke inside the SVG geometry; exact path and semantic colors are protected by E2E assertions.

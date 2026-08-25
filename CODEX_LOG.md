@@ -256,3 +256,7 @@ Implemented the separate `PF_LAB@1` scenario contract and engine, five synthetic
 # 2026-08-26 — Two-path laboratory experience
 
 Moved the unchanged Ravi journey to `/guided-ravi`, added a two-path root, and built the operational `/laboratory` editor/results workbench in the established Calm Case File system. Added preset selection, 1–6 generated employments, workflow/account/date/exit editing, explicit runs, status checks, synchronized graph and text evidence, deterministic actor plans, exact simulation confirmation, revalidation, and scenario-only JSON import/export. Added API and browser coverage, responsive layouts, reduced-motion behavior, clean console verification, Impeccable token hardening, and project/domain/interface documentation. Docker gates pass 47 tests, production build, and seven E2E journeys. Commits: deterministic core `7fc79b4`; landing/laboratory UI and tests `436b78c`. Impeccable’s verdict pass scored all six requested corrections resolved and returned `ship`.
+
+# 2026-08-26 — Landing path-tab geometry
+
+Replaced both root path-card pseudo-tabs with the established authored case-file SVG silhouette. The Guided Ravi tab is solid deep blue; the laboratory tab uses raised paper with a deep-blue stroke inset within the path. Confirmed the joined geometry at desktop and mobile sizes, added exact path/fill/stroke E2E assertions, and removed the obsolete rounded pseudo-tab CSS.
