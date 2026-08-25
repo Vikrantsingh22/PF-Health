@@ -97,9 +97,9 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 
 ## Active mission
 
-Complete the external release gate without adding optional AI.
+The first of two human-requested welcome-screen Case File refinements is complete: the deep-blue top-left tab now protrudes 16px above the welcome-card border and overlaps the surface by 8px. The requested right-side welcome tab is explicitly deferred to the next run.
 
-The focused Impeccable UI repair is complete. Both file tabs are contained by their owning surfaces, the page ground is explicitly painted and clipped, non-interactive row chevrons were removed, and confirmation actions share exact dimensions across supported widths. The Record Sandbox concept is deferred. Deployment is again the next external gate.
+This is a visual-only Impeccable refinement. Product behavior, factual copy, deterministic rules, routes, dependencies, subsequent screens, optional AI, and the Record Sandbox remain unchanged. The existing generated `next-env.d.ts` worktree change is unrelated and must not be included in the mission commit.
 
 ## Verification state
 
@@ -139,6 +139,7 @@ The focused Impeccable UI repair is complete. Both file tabs are contained by th
 - Demo rehearsal: complete UI path reached the activity timeline in 1.9 seconds of interaction time and was reset afterward; spoken delivery remains governed by the under-three-minute runbook
 - Source refresh: SRC-001 official PDF remained reachable; the dead direct FAQ link was replaced with EPFO's working Help page and its narrower role is documented
 - UI repair verification: Impeccable initially identified 24 design-scale drifts and the confirmation pass narrowed this to two compact metadata sizes, which were corrected; rendered geometry checks passed at 375px, 768px, and 1440px with zero browser warnings/errors
+- Welcome top-tab verification: rendered inspection passed at 375px and 1230px with no horizontal overflow; Docker E2E passed all three tests including the new 375px, 768px, and 1440px geometry assertion; the aggregate check passed lint, typecheck, all 32 tests, and production build
 
 Never report an unavailable check as passing.
 

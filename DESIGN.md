@@ -124,6 +124,10 @@ Cards and dossiers use practical 16px corners; buttons use 10px corners. Status 
 
 ## Components
 
+### Welcome Card
+
+The welcome surface introduces the Case File silhouette before Ravi is loaded. Its deep-blue top-left tab protrudes 16px above the card border and overlaps the raised-paper surface by 8px, so it reads as a physical file tab rather than an inset decoration.
+
 ### Buttons
 
 - **Primary:** full-width trustworthy blue, white text, 52px minimum height, and 14px by 20px padding.

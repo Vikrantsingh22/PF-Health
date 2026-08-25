@@ -76,6 +76,25 @@ test("case file remains usable across submission widths and reduced motion", asy
   ]) {
     await page.setViewportSize(viewport);
     await page.goto("/");
+
+    const welcomeGeometry = await page
+      .getByRole("region", { name: "Check a synthetic PF record before it becomes a problem." })
+      .evaluate((welcome) => {
+        const bounds = welcome.getBoundingClientRect();
+        const topTab = getComputedStyle(welcome, "::before");
+        const tabTop = bounds.top + Number.parseFloat(topTab.top);
+        const tabBottom = tabTop + Number.parseFloat(topTab.height);
+        return {
+          overflow: getComputedStyle(welcome).overflow,
+          surfaceTop: bounds.top,
+          tabBottom,
+          tabTop,
+        };
+      });
+    expect(welcomeGeometry.overflow).toBe("visible");
+    expect(welcomeGeometry.tabTop).toBeLessThan(welcomeGeometry.surfaceTop);
+    expect(welcomeGeometry.tabBottom).toBeGreaterThan(welcomeGeometry.surfaceTop);
+
     await page.getByRole("button", { name: "Load Ravi's sample record" }).click();
 
     await expect(page.getByRole("heading", { name: "4 of 5 checks look healthy" })).toBeVisible();

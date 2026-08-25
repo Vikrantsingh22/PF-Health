@@ -232,6 +232,30 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - Do not add AI, PF rules, personas, routes, dependencies, or external integrations.
 - Preserve the Calm Case File identity, one-primary-action flow, and deterministic behavior.
 
+## Mission 8 — Sequential welcome Case File refinements
+
+**Status:** COMPLETE — FIRST REFINEMENT
+
+**Goal:** Apply the human-reported welcome-screen Case File refinements one at a time, preserving the approved visual world and behavior.
+
+### Current action — top-left tab
+
+- [x] Move the deep-blue top-left tab above the welcome-card border instead of clipping it inside the surface.
+- [x] Add responsive geometry coverage at 375px, 768px, and 1440px.
+- [x] Inspect the rendered welcome state at desktop and mobile widths.
+- [x] Run Docker E2E and the aggregate check.
+- [x] Update continuity records and commit only this first refinement.
+
+### Deferred to the next run
+
+- [ ] Add the requested deep-blue right-side welcome-card tab.
+
+### Boundaries
+
+- Do not implement the right-side tab in this run.
+- Do not change product behavior, copy, routes, rules, dependencies, or the subsequent Case File states.
+- Preserve the unrelated generated `next-env.d.ts` worktree change and exclude it from this mission's commit.
+
 ## Active notes
 
 - The calendar schedule in the plan is a prioritization guide; milestone gates and verified dependencies control execution.
