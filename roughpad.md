@@ -105,7 +105,7 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [x] Verify landing and laboratory layouts at mobile and desktop widths.
 - [x] Run Docker checks and E2E, update continuity records, inspect the diff, and commit.
 
-**Verification:** Impeccable's final layout detector returned no findings. Rendered inspection at 549px and 1440px confirmed the evidence-led hero, responsive one/two-column composition, no horizontal overflow, 24px current-section bottom padding, and a 20px section-to-action gap. Docker `npm run check` passed lint, strict typecheck, 51 tests across nine files, and the production build. The isolated Playwright service passed all 12 journeys.
+**Verification:** Impeccable's final layout detector returned no findings. Rendered inspection at 549px and 1440px confirmed the evidence-led hero, responsive one/two-column composition, no horizontal overflow, 24px current-section bottom padding, and a 20px section-to-action gap. Docker `npm run check` passed lint, strict typecheck, 51 tests across nine files, and the production build. The isolated Playwright service passed all 12 journeys. Commit: `8744113`.
 
 ## Mission 1 — Bootstrap the application harness
 
