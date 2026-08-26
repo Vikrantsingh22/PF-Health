@@ -33,7 +33,28 @@ test("landing offers both product paths", async ({ page }) => {
   expect(await laboratoryRail.evaluate((rail) => ({
     background: getComputedStyle(rail).backgroundColor,
     border: getComputedStyle(rail).borderRightColor,
-  }))).toEqual({ background: "rgb(255, 253, 248)", border: "rgb(7, 56, 109)" });
+    borderTopWidth: getComputedStyle(rail).borderTopWidth,
+    borderRightWidth: getComputedStyle(rail).borderRightWidth,
+    borderBottomWidth: getComputedStyle(rail).borderBottomWidth,
+  }))).toEqual({
+    background: "rgb(255, 253, 248)",
+    border: "rgb(7, 56, 109)",
+    borderTopWidth: "0px",
+    borderRightWidth: "2px",
+    borderBottomWidth: "2px",
+  });
+
+  const mobileCardGap = await page.evaluate(() => {
+    const guidedCard = document.querySelector('[data-path-side-tab="guided"]')!.parentElement!.getBoundingClientRect();
+    const laboratoryTab = document.querySelector('[data-path-tab="laboratory"]')!.getBoundingClientRect();
+    const stack = document.querySelector('[data-path-side-tab="guided"]')!.parentElement!.parentElement!;
+    return {
+      authoredGap: getComputedStyle(stack).gap,
+      visibleGap: laboratoryTab.top - guidedCard.bottom,
+    };
+  });
+  expect(mobileCardGap.authoredGap).toBe("64px");
+  expect(mobileCardGap.visibleGap).toBeGreaterThanOrEqual(32);
 
   for (const card of ["guided", "laboratory"]) {
     const geometry = await page.evaluate((name) => {

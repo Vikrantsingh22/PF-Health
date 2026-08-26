@@ -104,7 +104,7 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 
 ## Active mission
 
-No implementation mission is currently active. Mission 18 completed shared route navigation and landing-card rear-layer parity without changing product behavior.
+No implementation mission is currently active. Mission 19 completed mobile landing-card separation, inverse rail continuity, and Guided Ravi evidence-row spacing without changing product behavior.
 
 ## Verification state
 
@@ -119,6 +119,7 @@ No implementation mission is currently active. Mission 18 completed shared route
 - Latest landing/action-spacing verification: the same Docker gates and 12 Playwright journeys pass; rendered 549px/1440px inspection confirms responsive hero composition, no horizontal overflow, 24px bottom padding inside the current record, and a 20px gap before Run assessment
 - Latest chronology verification: Docker lint, strict typecheck, 53 tests, production build, and 13 Playwright journeys pass; identical default previous intervals now return `R002@2` failure and `REVIEW_REQUIRED`, while equality at adjacent boundaries still passes
 - Latest navigation/case-file verification: Docker lint, strict typecheck, 53 tests, production build, and 14 Playwright journeys pass; the Impeccable layout detector reports no findings, and rendered 375px/1440px inspection confirms responsive navigation, exact side-tab/rail joins, inverse Laboratory styling, and no landing overflow
+- Latest mobile rhythm verification: Docker lint, strict typecheck, 53 tests, production build, and 15 Playwright journeys pass; rendered 375px/549px landing and 760px Guided Ravi inspection confirms a deliberate visible gap between cards, a continuous 2px inverse rail outline without a top seam, and a 92px evidence-row cadence; the final Impeccable layout detector reports no findings
 - Implementation plan reconciled and roughpad initialized: yes
 - Verify-before-commit workflow recorded: yes
 - `.gitignore` rules verified with representative generated and secret paths: yes

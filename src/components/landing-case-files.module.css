@@ -65,9 +65,15 @@
 }
 
 .inverse .sideRail {
-  border: 1px solid var(--blue-deep);
+  border: 0 solid var(--blue-deep);
+  border-right-width: 2px;
+  border-bottom-width: 2px;
   border-radius: 0 0 var(--radius-control) 0;
   background: var(--paper-raised);
+}
+
+@media (max-width: 820px) {
+  .pathStack.pathStack { gap: 64px; }
 }
 
 @media (max-width: 520px) {

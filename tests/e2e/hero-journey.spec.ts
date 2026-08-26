@@ -80,6 +80,20 @@ test("hero controls remain keyboard reachable at 375px", async ({ page }) => {
   await expect(page.getByRole("button", { name: "Review what to do next" })).toBeEnabled();
 });
 
+test("evidence disclosure keeps the guidance-row vertical rhythm", async ({ page }) => {
+  await page.setViewportSize({ width: 760, height: 757 });
+  await page.goto("/guided-ravi");
+  await page.getByRole("button", { name: "Load Ravi's sample record" }).click();
+
+  const spacing = await page.getByText("Why we're saying this", { exact: true }).locator("..")
+    .evaluate((summary) => ({
+      paddingTop: getComputedStyle(summary).paddingTop,
+      paddingBottom: getComputedStyle(summary).paddingBottom,
+      height: summary.getBoundingClientRect().height,
+    }));
+  expect(spacing).toEqual({ paddingTop: "22px", paddingBottom: "22px", height: 92 });
+});
+
 test("case file remains usable across submission widths and reduced motion", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
 

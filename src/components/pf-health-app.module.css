@@ -50,7 +50,7 @@
 .guidanceRow h3 { margin: 1px 0 4px; font-size: 1rem; font-weight: 700; }
 .guidanceRow p { margin: 0; color: var(--ink-muted); font-size: 1rem; line-height: 1.55; }
 .evidence { border-top: 1px solid var(--line); }
-.evidence summary { display: grid; min-height: 64px; cursor: pointer; grid-template-columns: 52px minmax(0, 1fr) 24px; gap: 14px; align-items: center; padding: 8px 20px; font-weight: 680; list-style: none; }
+.evidence summary { display: grid; min-height: 64px; cursor: pointer; grid-template-columns: 52px minmax(0, 1fr) 24px; gap: 14px; align-items: center; padding: 18px 20px; font-weight: 680; list-style: none; }
 .evidence summary::-webkit-details-marker { display: none; }
 .evidence[open] .chevron { transform: rotate(90deg); }
 .evidenceBody { padding: 0 20px 20px 86px; color: var(--ink-muted); font-size: .82rem; }
@@ -105,7 +105,7 @@
   .guidanceList { padding: 0 32px; }
   .guidanceRow { grid-template-columns: 60px minmax(0, 1fr); gap: 18px; padding: 22px 0; }
   .guidanceRow p { font-size: 1rem; }
-  .evidence summary { grid-template-columns: 60px minmax(0, 1fr) 24px; padding-right: 32px; padding-left: 32px; }
+  .evidence summary { grid-template-columns: 60px minmax(0, 1fr) 24px; padding: 22px 32px; }
   .evidenceBody { padding-right: 32px; padding-left: 110px; }
   .buttonStack { grid-template-columns: 1fr 1fr; }
 }

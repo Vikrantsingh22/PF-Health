@@ -30,7 +30,7 @@ export default function Home() {
           <h2 id="choose-path-heading">Choose how you want to inspect the record.</h2>
           <p>Start with Ravi’s guided case file, or open the laboratory to alter a fictional employment history and watch the evidence change.</p>
         </div>
-        <div className={styles.pathGrid}>
+        <div className={`${styles.pathGrid} ${caseStyles.pathStack}`}>
           <Link className={`${styles.path} ${caseStyles.casePath}`} href="/guided-ravi">
             <span className={caseStyles.topTab} data-path-tab="guided" aria-hidden="true"><svg viewBox="0 0 145 26" focusable="false"><path d={CASE_FILE_TAB_PATH}/></svg></span>
             <span className={caseStyles.sideTab} data-path-side-tab="guided" aria-hidden="true"><svg preserveAspectRatio="none" viewBox="0 0 18 136" focusable="false"><path d={CASE_FILE_SIDE_PATH}/></svg></span>

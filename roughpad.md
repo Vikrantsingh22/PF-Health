@@ -377,6 +377,26 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - Preserve route behavior, deterministic rules, laboratory state, and Guided Ravi content.
 - Preserve the unrelated generated `next-env.d.ts` worktree change and exclude it from this mission's commit.
 
+## Mission 19 — Mobile Case File separation and rail continuity
+
+**Status:** COMPLETE
+
+**Goal:** Give the stacked landing choices deliberate separation, make the inverse Laboratory tab and rail read as one continuous outlined layer, and align the Guided Ravi evidence disclosure with the guidance-row rhythm.
+
+### Actions
+
+- [x] Reserve a 64px gap between stacked landing Case Files.
+- [x] Match the inverse rail to the tab's paper fill and 2px deep-blue outline.
+- [x] Remove the rail's top border so the tab-to-rail join reads continuously.
+- [x] Match the evidence summary's vertical padding to adjacent guidance rows.
+- [x] Verify mobile and desktop rendering, responsive overflow, keyboard flow, and Docker gates.
+- [x] Update persistent state and log, then commit the verified mission without `next-env.d.ts`.
+
+### Boundaries
+
+- Preserve copy, routes, deterministic behavior, and all Case File interactions.
+- Preserve the unrelated generated `next-env.d.ts` worktree change and exclude it from this mission's commit.
+
 ## Active notes
 
 - The calendar schedule in the plan is a prioritization guide; milestone gates and verified dependencies control execution.
