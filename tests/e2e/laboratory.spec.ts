@@ -9,14 +9,61 @@ test("landing offers both product paths", async ({ page }) => {
 
   const guidedTab = page.locator('[data-path-tab="guided"]');
   const laboratoryTab = page.locator('[data-path-tab="laboratory"]');
+  const guidedSideTab = page.locator('[data-path-side-tab="guided"]');
+  const laboratorySideTab = page.locator('[data-path-side-tab="laboratory"]');
+  const guidedRail = page.locator('[data-path-side-rail="guided"]');
+  const laboratoryRail = page.locator('[data-path-side-rail="laboratory"]');
   const tabPath = "M1 25L10 8C12 3.5 16.5 1 22 1H116C125 1 132 5 137 14L144 25H1Z";
+  const sidePath = "M0 0H8C13.5 0 18 4.5 18 10V116L11 136H0Z";
   await expect(guidedTab.locator("path")).toHaveAttribute("d", tabPath);
   await expect(laboratoryTab.locator("path")).toHaveAttribute("d", tabPath);
+  await expect(guidedSideTab.locator("path")).toHaveAttribute("d", sidePath);
+  await expect(laboratorySideTab.locator("path")).toHaveAttribute("d", sidePath);
   expect(await guidedTab.locator("path").evaluate((path) => getComputedStyle(path).fill)).toBe("rgb(7, 56, 109)");
   expect(await laboratoryTab.locator("path").evaluate((path) => ({
     fill: getComputedStyle(path).fill,
     stroke: getComputedStyle(path).stroke,
   }))).toEqual({ fill: "rgb(255, 253, 248)", stroke: "rgb(7, 56, 109)" });
+  expect(await guidedSideTab.locator("path").evaluate((path) => getComputedStyle(path).fill)).toBe("rgb(7, 56, 109)");
+  expect(await guidedRail.evaluate((rail) => getComputedStyle(rail).backgroundColor)).toBe("rgb(7, 56, 109)");
+  expect(await laboratorySideTab.locator("path").evaluate((path) => ({
+    fill: getComputedStyle(path).fill,
+    stroke: getComputedStyle(path).stroke,
+  }))).toEqual({ fill: "rgb(255, 253, 248)", stroke: "rgb(7, 56, 109)" });
+  expect(await laboratoryRail.evaluate((rail) => ({
+    background: getComputedStyle(rail).backgroundColor,
+    border: getComputedStyle(rail).borderRightColor,
+  }))).toEqual({ background: "rgb(255, 253, 248)", border: "rgb(7, 56, 109)" });
+
+  for (const card of ["guided", "laboratory"]) {
+    const geometry = await page.evaluate((name) => {
+      const side = document.querySelector(`[data-path-side-tab="${name}"]`)!.getBoundingClientRect();
+      const rail = document.querySelector(`[data-path-side-rail="${name}"]`)!.getBoundingClientRect();
+      const caseFile = document.querySelector(`[data-path-side-tab="${name}"]`)!.parentElement!.getBoundingClientRect();
+      const cardStyle = getComputedStyle(document.querySelector(`[data-path-side-tab="${name}"]`)!.parentElement!);
+      return {
+        sideExtends: side.right > caseFile.right,
+        joinGap: rail.top - side.bottom,
+        railBottom: rail.bottom - caseFile.bottom,
+        bottomRightRadius: cardStyle.borderBottomRightRadius,
+      };
+    }, card);
+    expect(geometry).toEqual({ sideExtends: true, joinGap: -1, railBottom: 0, bottomRightRadius: "0px" });
+  }
+
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+});
+
+test("shared navigation connects every product route", async ({ page }) => {
+  for (const route of ["/", "/guided-ravi", "/laboratory"]) {
+    await page.goto(route);
+    const navigation = page.getByRole("navigation", { name: "Primary navigation" });
+    await expect(navigation.getByRole("link", { name: "Home", exact: true })).toHaveAttribute("href", "/");
+    await expect(navigation.getByRole("link", { name: "Guided Ravi", exact: true })).toHaveAttribute("href", "/guided-ravi");
+    await expect(navigation.getByRole("link", { name: "Laboratory", exact: true })).toHaveAttribute("href", "/laboratory");
+    await expect(page.getByRole("link", { name: "PF Health", exact: true })).toHaveAttribute("href", "/");
+    await expect(page.getByText("PF Record Laboratory", { exact: true })).toBeHidden();
+  }
 });
 
 test("every laboratory preset produces its declared outcome", async ({ page }) => {

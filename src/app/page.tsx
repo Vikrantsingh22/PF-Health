@@ -1,14 +1,14 @@
 import Link from "next/link";
 import styles from "@/components/laboratory.module.css";
+import caseStyles from "@/components/landing-case-files.module.css";
+import { SiteHeader } from "@/components/site-header";
 
 const CASE_FILE_TAB_PATH = "M1 25L10 8C12 3.5 16.5 1 22 1H116C125 1 132 5 137 14L144 25H1Z";
+const CASE_FILE_SIDE_PATH = "M0 0H8C13.5 0 18 4.5 18 10V116L11 136H0Z";
 
 export default function Home() {
   return <div className={styles.site}>
-    <header className={styles.header}>
-      <Link href="/" className={styles.brand}>PF Health</Link>
-      <span>Independent prototype</span>
-    </header>
+    <SiteHeader wide />
     <div className={styles.notice}>Synthetic records only · No EPFO connection</div>
     <main className={styles.landing} id="main-content">
       <section className={styles.landingHero}>
@@ -31,14 +31,18 @@ export default function Home() {
           <p>Start with Ravi’s guided case file, or open the laboratory to alter a fictional employment history and watch the evidence change.</p>
         </div>
         <div className={styles.pathGrid}>
-          <Link className={styles.path} href="/guided-ravi">
-            <span className={styles.pathTab} data-path-tab="guided" aria-hidden="true"><svg viewBox="0 0 145 26" focusable="false"><path d={CASE_FILE_TAB_PATH}/></svg></span>
+          <Link className={`${styles.path} ${caseStyles.casePath}`} href="/guided-ravi">
+            <span className={caseStyles.topTab} data-path-tab="guided" aria-hidden="true"><svg viewBox="0 0 145 26" focusable="false"><path d={CASE_FILE_TAB_PATH}/></svg></span>
+            <span className={caseStyles.sideTab} data-path-side-tab="guided" aria-hidden="true"><svg preserveAspectRatio="none" viewBox="0 0 18 136" focusable="false"><path d={CASE_FILE_SIDE_PATH}/></svg></span>
+            <span className={caseStyles.sideRail} data-path-side-rail="guided" aria-hidden="true" />
             <h3>Follow Ravi’s guided case</h3>
             <p>Learn the complete 4 of 5 → correction → 5 of 5 journey.</p>
             <strong>Open Guided Ravi →</strong>
           </Link>
-          <Link className={`${styles.path} ${styles.labPath}`} href="/laboratory">
-            <span className={styles.pathTab} data-path-tab="laboratory" aria-hidden="true"><svg viewBox="0 0 145 26" focusable="false"><path d={CASE_FILE_TAB_PATH}/></svg></span>
+          <Link className={`${styles.path} ${styles.labPath} ${caseStyles.casePath} ${caseStyles.inverse}`} href="/laboratory">
+            <span className={caseStyles.topTab} data-path-tab="laboratory" aria-hidden="true"><svg viewBox="0 0 145 26" focusable="false"><path d={CASE_FILE_TAB_PATH}/></svg></span>
+            <span className={caseStyles.sideTab} data-path-side-tab="laboratory" aria-hidden="true"><svg preserveAspectRatio="none" viewBox="0 0 18 136" focusable="false"><path d={CASE_FILE_SIDE_PATH}/></svg></span>
+            <span className={caseStyles.sideRail} data-path-side-rail="laboratory" aria-hidden="true" />
             <h3>Build a synthetic PF history</h3>
             <p>Edit employments, trigger deterministic outcomes, inspect evidence, and simulate supported corrections.</p>
             <strong>Enter PF Record Laboratory →</strong>

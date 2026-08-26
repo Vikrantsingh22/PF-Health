@@ -69,6 +69,10 @@ test("hero controls remain keyboard reachable at 375px", async ({ page }) => {
   await page.goto("/guided-ravi");
   await page.keyboard.press("Tab");
   await expect(page.getByRole("link", { name: "Skip to main content" })).toBeFocused();
+  for (const linkName of ["PF Health", "Home", "Guided Ravi", "Laboratory"]) {
+    await page.keyboard.press("Tab");
+    await expect(page.getByRole("link", { name: linkName, exact: true })).toBeFocused();
+  }
   await page.keyboard.press("Tab");
   await expect(page.getByRole("button", { name: "Load Ravi's sample record" })).toBeFocused();
   await page.keyboard.press("Enter");

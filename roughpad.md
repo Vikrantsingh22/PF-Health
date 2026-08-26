@@ -357,6 +357,26 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - Do not change product behavior, copy, routes, rules, dependencies, or the subsequent Case File states.
 - Preserve the unrelated generated `next-env.d.ts` worktree change and exclude it from this mission's commit.
 
+## Mission 18 — Shared navigation and landing rear layers
+
+**Status:** COMPLETE
+
+**Goal:** Complete navigation across all product routes and carry the Guided Ravi side-tab/rail chain onto both landing choices with intentional inverse styling.
+
+### Actions
+
+- [x] Add shared Home, Guided Ravi, and Laboratory navigation with a home-linked PF Health brand.
+- [x] Remove the laboratory-specific navbar label from the visible route header.
+- [x] Add the exact Guided Ravi right-side trapezoid and rail geometry to both landing cards.
+- [x] Use deep blue for Guided Ravi and raised paper with a deep-blue outline for Laboratory.
+- [x] Verify responsive geometry and all route links in Docker.
+- [x] Update continuity records and commit only the verified mission files.
+
+### Boundaries
+
+- Preserve route behavior, deterministic rules, laboratory state, and Guided Ravi content.
+- Preserve the unrelated generated `next-env.d.ts` worktree change and exclude it from this mission's commit.
+
 ## Active notes
 
 - The calendar schedule in the plan is a prioritization guide; milestone gates and verified dependencies control execution.

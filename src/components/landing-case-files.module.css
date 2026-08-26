@@ -1,0 +1,75 @@
+.casePath.casePath {
+  isolation: isolate;
+  border-bottom-right-radius: 0;
+}
+
+.casePath > h3,
+.casePath > p {
+  position: relative;
+  z-index: 2;
+}
+
+.casePath > strong { z-index: 2; }
+
+.topTab,
+.sideTab,
+.sideRail {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  pointer-events: none;
+}
+
+.topTab {
+  top: -29px;
+  left: -2px;
+  width: 170px;
+  height: 30px;
+}
+
+.topTab svg,
+.sideTab svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.topTab path,
+.sideTab path {
+  fill: var(--blue-deep);
+}
+
+.sideTab {
+  top: 52px;
+  right: -16px;
+  width: 18px;
+  height: 136px;
+}
+
+.sideRail {
+  top: 187px;
+  right: -9px;
+  bottom: -1px;
+  width: 10px;
+  border-radius: 0 0 var(--radius-control) 0;
+  background: var(--blue-deep);
+}
+
+.inverse .topTab path,
+.inverse .sideTab path {
+  fill: var(--paper-raised);
+  stroke: var(--blue-deep);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.inverse .sideRail {
+  border: 1px solid var(--blue-deep);
+  border-radius: 0 0 var(--radius-control) 0;
+  background: var(--paper-raised);
+}
+
+@media (max-width: 520px) {
+  .casePath.casePath { min-height: 350px; }
+}

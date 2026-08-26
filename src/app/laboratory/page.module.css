@@ -1,0 +1,3 @@
+.application > div > header:first-child {
+  display: none;
+}

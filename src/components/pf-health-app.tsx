@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { ZodType } from "zod";
+import { SiteHeader } from "./site-header";
 
 import {
   apiErrorSchema,
@@ -122,10 +123,7 @@ function CheckRow({ check, index, changed }: { readonly check: HealthCheckResult
 function AppHeader() {
   return (
     <>
-      <header className={styles.header}>
-        <p className={styles.brand}>PF Health</p>
-        <p className={styles.prototype}>Independent prototype</p>
-      </header>
+      <SiteHeader />
       <div className={styles.notice} role="note"><InfoIcon /><span>Synthetic sample · No EPFO connection</span></div>
     </>
   );

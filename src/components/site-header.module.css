@@ -1,0 +1,9 @@
+.header { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; padding: 20px 0 18px; border-bottom: 1px solid var(--line); }
+.wide { width: min(100% - 32px, 1180px); margin: auto; padding-top: 24px; }
+.brand { flex: 0 0 auto; color: var(--ink); font-size: clamp(1.5rem, 6.5vw, 2.25rem); font-weight: 740; letter-spacing: -.03em; text-decoration: none; }
+.navigation { display: flex; align-items: center; justify-content: flex-end; gap: 4px; }
+.navigation a { display: inline-flex; min-height: 44px; align-items: center; padding: 8px 10px; border-radius: var(--radius-control); color: var(--blue-deep); font-size: .85rem; font-weight: 680; text-decoration: none; }
+.navigation a:hover { background: var(--blue-soft); }
+.brand:focus-visible, .navigation a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+@media (max-width: 600px) { .header { align-items: flex-start; flex-direction: column; gap: 8px; } .navigation { width: 100%; justify-content: flex-start; } }
+@media (max-width: 390px) { .navigation { gap: 0; } .navigation a { flex: 1; justify-content: center; padding-inline: 6px; font-size: .78rem; } }
