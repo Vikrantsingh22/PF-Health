@@ -39,7 +39,12 @@ export const simulateExitSchema = z.object({ expectedDraftVersion: z.number().in
 export const simulateAccountLinkSchema = z.object({ expectedDraftVersion: z.number().int().positive(), expectedSnapshotVersion: z.number().int().positive(), targetAccountGroup: z.enum(["A", "B", "C"]), confirmed: z.literal(true) }).strict();
 export const resetLaboratorySchema = z.object({ presetId: z.string().optional() }).strict();
 
-const check = z.object({ ruleId: z.enum(["R001", "R002", "R003"]), ruleVersion: z.literal(1), label: z.string(), status: z.enum(["PASS", "FAIL", "UNKNOWN"]), reasonCode: z.string(), affectedEmploymentIds: z.array(z.string()), sourceIds: z.array(z.string()) }).strict();
+const checkFields = { label: z.string(), status: z.enum(["PASS", "FAIL", "UNKNOWN"]), reasonCode: z.string(), affectedEmploymentIds: z.array(z.string()), sourceIds: z.array(z.string()) };
+const check = z.discriminatedUnion("ruleId", [
+  z.object({ ruleId: z.literal("R001"), ruleVersion: z.literal(1), ...checkFields }).strict(),
+  z.object({ ruleId: z.literal("R002"), ruleVersion: z.literal(2), ...checkFields }).strict(),
+  z.object({ ruleId: z.literal("R003"), ruleVersion: z.literal(1), ...checkFields }).strict(),
+]);
 const issue = z.object({ issueId: z.string(), ruleId: z.enum(["R001", "R002", "R003"]), severity: z.enum(["ATTENTION", "REVIEW_REQUIRED", "BLOCKER"]), title: z.string(), affectedEmploymentIds: z.array(z.string()) }).strict();
 const node = z.object({ id: z.string(), type: z.enum(["EMPLOYMENT", "FACT", "CHECK", "ISSUE", "SOURCE", "ACTOR", "ACTION"]), label: z.string() }).strict();
 const edge = z.object({ id: z.string(), from: z.string(), to: z.string(), type: z.enum(["SUPPLIES_FACT", "EVALUATED_BY", "EMITS", "SUPPORTED_BY", "OWNED_BY", "RESOLVED_BY"]) }).strict();

@@ -107,6 +107,18 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 **Verification:** Impeccable's final layout detector returned no findings. Rendered inspection at 549px and 1440px confirmed the evidence-led hero, responsive one/two-column composition, no horizontal overflow, 24px current-section bottom padding, and a 20px section-to-action gap. Docker `npm run check` passed lint, strict typecheck, 51 tests across nine files, and the production build. The isolated Playwright service passed all 12 journeys. Commit: `8744113`.
 
+## Mission 16 — Pairwise employment-overlap detection
+
+**Status:** COMPLETE
+
+- [x] Reproduce the false pass for two identical previous-employment intervals.
+- [x] Extend R002 to compare every complete employment interval pair.
+- [x] Preserve boundary equality, incomplete-evidence, and current-record ambiguity behavior.
+- [x] Add domain and UI-flow regression coverage.
+- [x] Run Docker checks and E2E, update rule documentation and continuity records, inspect the diff, and commit.
+
+**Verification:** Focused Docker domain coverage passed 14 tests, including identical previous intervals and adjacent-boundary behavior. Docker `npm run check` passed lint, strict typecheck, 53 tests across nine files, and the production build. After restarting only the PF Health app service to clear stale hot-reload modules, the isolated Playwright service passed all 13 journeys, including the exact add-two-default-records → `REVIEW_REQUIRED` regression.
+
 ## Mission 1 — Bootstrap the application harness
 
 **Status:** COMPLETE

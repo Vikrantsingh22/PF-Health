@@ -126,7 +126,7 @@ The evidence supports the date-of-exit requirement for the named online-transfer
 # PF_LAB@1
 
 - `R001@1`: incomplete exit date/reason on a previous employment emits attention.
-- `R002@1`: a previous exit later than the current start emits review-required; boundary equality passes and no date is chosen automatically.
+- `R002@2`: every pair of complete employment intervals is compared. Overlapping previous/previous or previous/current ranges emit review-required; boundary equality passes, incomplete chronology remains unknown, and no date is chosen automatically.
 - `R003@1`: multiple synthetic account groups block only the selected online-transfer workflow; general health remains non-blocking.
 - Outcome precedence is `BLOCKED → NEEDS_ATTENTION → REVIEW_REQUIRED → HEALTHY`.
 

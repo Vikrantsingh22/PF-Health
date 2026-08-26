@@ -24,7 +24,7 @@ export interface LaboratoryScenario {
 
 export interface LaboratoryCheck {
   ruleId: LaboratoryRuleId;
-  ruleVersion: 1;
+  ruleVersion: 1 | 2;
   label: string;
   status: LaboratoryCheckStatus;
   reasonCode: string;

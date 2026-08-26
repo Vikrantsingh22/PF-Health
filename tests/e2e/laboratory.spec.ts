@@ -59,6 +59,15 @@ test("laboratory supports editable fictional labels and has no duplicate control
   await expect(page.getByText("Fictional Workshop North", { exact: true }).first()).toBeVisible();
 });
 
+test("duplicate default previous intervals trigger chronology review", async ({ page }) => {
+  await page.goto("/laboratory");
+  await page.getByRole("button", { name: "+ Add previous employment" }).click();
+  await page.getByRole("button", { name: "+ Add previous employment" }).click();
+  await page.getByRole("button", { name: "Run assessment" }).click();
+  await expect(page.getByText("REVIEW REQUIRED", { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Detected issues/ }).locator("..").getByText("Employment dates overlap and require review", { exact: true })).toBeVisible();
+});
+
 test("mobile hierarchy separates case files and groups employment history", async ({ page }) => {
   await page.setViewportSize({ width: 549, height: 757 });
   await page.goto("/laboratory");

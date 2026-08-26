@@ -15,6 +15,49 @@ describe("PF_LAB@1", () => {
     expect(evaluateLaboratory(preset.scenario, 1).checks[1].status).toBe("PASS");
   });
 
+  it("detects identical intervals across two previous employments", () => {
+    const scenario = laboratoryPreset("clean-history")!.scenario;
+    scenario.employments.splice(1, 0, {
+      employmentId: "lab_emp-c",
+      employerLabel: "Synthetic Employer C",
+      status: "PREVIOUS",
+      startDate: "2017-04-01",
+      exitDate: "2018-03-31",
+      exitReason: "RESIGNATION",
+      accountGroup: "A",
+    }, {
+      employmentId: "lab_emp-d",
+      employerLabel: "Synthetic Employer D",
+      status: "PREVIOUS",
+      startDate: "2017-04-01",
+      exitDate: "2018-03-31",
+      exitReason: "RESIGNATION",
+      accountGroup: "A",
+    });
+    const result = evaluateLaboratory(scenario, 1);
+    expect(result.checks[1]).toMatchObject({
+      ruleVersion: 2,
+      status: "FAIL",
+      reasonCode: "EMPLOYMENT_DATE_RANGES_OVERLAP",
+      affectedEmploymentIds: ["lab_emp-c", "lab_emp-d"],
+    });
+    expect(result.outcome).toBe("REVIEW_REQUIRED");
+  });
+
+  it("allows adjacent previous employment intervals", () => {
+    const scenario = laboratoryPreset("clean-history")!.scenario;
+    scenario.employments.splice(1, 0, {
+      employmentId: "lab_emp-adjacent",
+      employerLabel: "Synthetic Employer C",
+      status: "PREVIOUS",
+      startDate: "2017-04-01",
+      exitDate: scenario.employments[0].startDate,
+      exitReason: "RESIGNATION",
+      accountGroup: "A",
+    });
+    expect(evaluateLaboratory(scenario, 1).checks[1]).toMatchObject({ ruleVersion: 2, status: "PASS" });
+  });
+
   it("makes split accounts transfer-specific", () => {
     const preset = laboratoryPreset("split-accounts")!;
     preset.scenario.workflow = "GENERAL_HEALTH";

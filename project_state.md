@@ -1,6 +1,6 @@
 # PF Health Project State
 
-Last updated: 2026-08-26
+Last updated: 2026-08-27
 
 ## Purpose
 
@@ -92,6 +92,7 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - Hardened PF Record Laboratory with editable bounded fictional labels, one issue/action per missing employment, complete compound-rule reporting, chronology-derived exit proposals, explicit reason confirmation, and authored workbench tab geometry
 - Laboratory hierarchy refinement with an Edit → Run → Trace hero, grouped previous employments, a distinct current anchor record, deliberate mobile case-file spacing, and a fully outlined confirmation surface
 - Evidence-led landing hero that explains record → checks → action before the Guided Ravi and PF Record Laboratory choices, plus deliberate current-record-to-Run spacing
+- `R002@2` pairwise chronology evaluation across every complete previous/previous and previous/current employment interval, with unique affected-record evidence
 - Noto Sans Variable typography, semantic color tokens, authored route/owner/evidence icons, visible file geometry, and a solid check-to-dossier bridge
 - Digest-pinned, non-root Playwright 1.62.1 E2E service with read-only repository mounting and private-network access to the app
 - Scan-mode root `DESIGN.md` and `.impeccable/design.json` documenting the shipped visual system
@@ -102,7 +103,7 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 
 ## Active mission
 
-No implementation mission is currently active. Mission 15 completed the landing hero and laboratory action-spacing refinement without changing either product path, the deterministic rule engine, or synthetic-data boundaries.
+No implementation mission is currently active. Mission 16 corrected R002 so identical or otherwise intersecting previous-employment intervals cannot pass chronology assessment.
 
 ## Verification state
 
@@ -115,6 +116,7 @@ No implementation mission is currently active. Mission 15 completed the landing 
 - Deployment: not configured
 - Latest laboratory verification: Docker lint, strict typecheck, 51 tests, production build, and 12 Playwright journeys pass; Impeccable layout detection reports no findings; rendered 549px inspection confirms 64px hero-to-Editor spacing, 88px Editor-to-Results spacing, and no horizontal overflow
 - Latest landing/action-spacing verification: the same Docker gates and 12 Playwright journeys pass; rendered 549px/1440px inspection confirms responsive hero composition, no horizontal overflow, 24px bottom padding inside the current record, and a 20px gap before Run assessment
+- Latest chronology verification: Docker lint, strict typecheck, 53 tests, production build, and 13 Playwright journeys pass; identical default previous intervals now return `R002@2` failure and `REVIEW_REQUIRED`, while equality at adjacent boundaries still passes
 - Implementation plan reconciled and roughpad initialized: yes
 - Verify-before-commit workflow recorded: yes
 - `.gitignore` rules verified with representative generated and secret paths: yes
