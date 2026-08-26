@@ -57,6 +57,29 @@ test("laboratory supports editable fictional labels and has no duplicate control
   await expect(page.getByText("Fictional Workshop North", { exact: true }).first()).toBeVisible();
 });
 
+test("mobile hierarchy separates case files and groups employment history", async ({ page }) => {
+  await page.setViewportSize({ width: 549, height: 757 });
+  await page.goto("/laboratory");
+  await expect(page.getByRole("list", { name: "Laboratory workflow" })).toBeVisible();
+  const previousGroup = page.locator('[data-employment-group="previous"]');
+  const currentGroup = page.locator('[data-employment-group="current"]');
+  await expect(previousGroup.getByRole("heading", { name: "Previous employments" })).toBeVisible();
+  await expect(currentGroup.getByRole("heading", { name: "Current employment" })).toBeVisible();
+  await page.getByRole("button", { name: "+ Add previous employment" }).click();
+  await expect(previousGroup).toContainText("2 records");
+  await expect(page.getByLabel("Fictional employer label")).toHaveCount(3);
+  expect(await previousGroup.evaluate((element) => element.compareDocumentPosition(document.querySelector('[data-employment-group="current"]')!) & Node.DOCUMENT_POSITION_FOLLOWING)).toBeTruthy();
+
+  const spacing = await page.evaluate(() => {
+    const intro = document.querySelector("main > section")!.getBoundingClientRect();
+    const editor = document.querySelector('[data-case-file="editor"]')!.getBoundingClientRect();
+    const results = document.querySelector('[data-case-file="results"]')!.getBoundingClientRect();
+    return { heroToEditor: editor.top - intro.bottom, betweenFiles: results.top - editor.bottom };
+  });
+  expect(spacing.betweenFiles).toBeGreaterThanOrEqual(80);
+  expect(spacing.betweenFiles).toBeGreaterThan(spacing.heroToEditor);
+});
+
 test("missing-exit confirmation follows edited chronology and requires a reason", async ({ page }) => {
   await page.goto("/laboratory");
   await page.getByRole("combobox", { name: "Load preset" }).selectOption({ label: "Missing exit" });
@@ -75,6 +98,24 @@ test("workspace cards use the authored case-file tab geometry", async ({ page })
     await expect(tab.locator("path")).toHaveAttribute("d", tabPath);
     expect(await tab.locator("path").evaluate((path) => getComputedStyle(path).fill)).toBe("rgb(7, 56, 109)");
   }
+});
+
+test("account-link confirmation has a complete trustworthy-blue outline", async ({ page }) => {
+  await page.goto("/laboratory");
+  await page.getByRole("combobox", { name: "Load preset" }).selectOption({ label: "Split synthetic accounts" });
+  await page.getByRole("button", { name: "Run assessment" }).click();
+  await page.getByRole("button", { name: "Prepare simulated account link" }).click();
+  const outline = await page.locator("[data-confirmation-panel]").evaluate((element) => {
+    const style = getComputedStyle(element);
+    return {
+      color: style.borderTopColor,
+      widths: [style.borderTopWidth, style.borderRightWidth, style.borderBottomWidth, style.borderLeftWidth],
+      radii: [style.borderTopLeftRadius, style.borderTopRightRadius, style.borderBottomRightRadius, style.borderBottomLeftRadius],
+    };
+  });
+  expect(outline.color).toBe("rgb(12, 75, 145)");
+  expect(outline.widths).toEqual(["1px", "1px", "1px", "1px"]);
+  expect(outline.radii.every((radius) => radius !== "0px")).toBe(true);
 });
 
 test("laboratory has no horizontal overflow at target widths", async ({ page }) => {

@@ -82,6 +82,19 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 **Verification:** Docker `npm run check` passed lint, strict typecheck, 51 tests across nine files, and the production build. The dedicated Docker Playwright service passed all 10 browser journeys, including the unchanged Ravi oracle, dynamic chronology proposal, editable labels, tab geometry, and 375px/768px/1440px overflow checks. Impeccable source detection passed after aligning helper copy to the documented type ramp; rendered URL detection was unavailable in the app image because it intentionally has no Chrome binary, so the bounded desktop/mobile browser inspection and dedicated Playwright container supplied rendered verification instead. Commit: `9e94e90`.
 
+## Mission 14 — Laboratory mobile hierarchy and hero
+
+**Status:** COMPLETE
+
+- [x] Strengthen the laboratory hero while preserving synthetic and deterministic boundaries.
+- [x] Establish deliberate mobile rhythm between hero, Editor, and Results case files.
+- [x] Group all previous employments together above one visually distinct current employment.
+- [x] Give the confirmation surface a complete trustworthy-blue outline and rounded corners.
+- [x] Verify responsive hierarchy and existing behavior in Docker.
+- [x] Update persistent state and log, inspect the final diff, and commit.
+
+**Verification:** Docker `npm run check` passed lint, strict typecheck, 51 tests across nine files, and the production build. The isolated Playwright service passed all 12 journeys, including the new 549px hierarchy and full confirmation-outline regressions. Impeccable's final layout detector returned no findings. Rendered inspection confirmed a 64px hero-to-Editor gap, an 88px Editor-to-Results gap, no horizontal overflow, and a complete 1px `#0c4b91` confirmation border at mobile and desktop widths.
+
 ## Mission 1 — Bootstrap the application harness
 
 **Status:** COMPLETE
