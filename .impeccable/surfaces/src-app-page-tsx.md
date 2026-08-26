@@ -11,8 +11,8 @@ related_targets: []
 - **Audience and job:** A judge chooses a guided demonstration or a hands-on synthetic PF record laboratory.
 - **Primary task:** Understand the difference and enter the appropriate path immediately.
 - **Proof and constraints:** Guided Ravi stays frozen; the laboratory is deterministic and synthetic; no real identifiers or connectivity.
-- **Chosen direction:** The Calm Case File, selected from seed `9188a955`. Approved comp: `.impeccable/mocks/approved/pf-health-case-file.png`.
-- **Memorable moment:** Two physical case-file choices make tutorial versus laboratory scope unmistakable.
+- **Chosen direction:** The Calm Case File, selected from seed `9188a955`. A persuasive evidence-led hero explains record → checks → action before the two physical case-file choices. Approved comp: `.impeccable/mocks/approved/pf-health-case-file.png`.
+- **Memorable moment:** The deep-blue evidence route makes the deterministic model legible at a glance, then the two physical case-file choices make tutorial versus laboratory scope unmistakable.
 - **Unresolved decisions:** Exact local font package and final accessible token values are resolved during implementation and documented from the built surface.
 
 ## Comp grammar

@@ -95,6 +95,18 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 **Verification:** Docker `npm run check` passed lint, strict typecheck, 51 tests across nine files, and the production build. The isolated Playwright service passed all 12 journeys, including the new 549px hierarchy and full confirmation-outline regressions. Impeccable's final layout detector returned no findings. Rendered inspection confirmed a 64px hero-to-Editor gap, an 88px Editor-to-Results gap, no horizontal overflow, and a complete 1px `#0c4b91` confirmation border at mobile and desktop widths. Commit: `8af6bed`.
 
+## Mission 15 — Landing hero and laboratory action spacing
+
+**Status:** COMPLETE
+
+- [x] Add a persuasive landing hero that explains PF Health before the two-path choice.
+- [x] Preserve the existing Calm Case File path cards and deterministic/synthetic boundaries.
+- [x] Add deliberate space between the current-employment fields and Run assessment.
+- [x] Verify landing and laboratory layouts at mobile and desktop widths.
+- [x] Run Docker checks and E2E, update continuity records, inspect the diff, and commit.
+
+**Verification:** Impeccable's final layout detector returned no findings. Rendered inspection at 549px and 1440px confirmed the evidence-led hero, responsive one/two-column composition, no horizontal overflow, 24px current-section bottom padding, and a 20px section-to-action gap. Docker `npm run check` passed lint, strict typecheck, 51 tests across nine files, and the production build. The isolated Playwright service passed all 12 journeys.
+
 ## Mission 1 — Bootstrap the application harness
 
 **Status:** COMPLETE

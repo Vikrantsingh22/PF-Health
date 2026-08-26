@@ -2,6 +2,8 @@ import { expect, test } from "@playwright/test";
 
 test("landing offers both product paths", async ({ page }) => {
   await page.goto("/");
+  await expect(page.getByRole("heading", { name: "See the problem. Change the record. Trace the result." })).toBeVisible();
+  await expect(page.getByRole("list", { name: "PF Health evidence route" })).toBeVisible();
   await expect(page.getByRole("link", { name: /Open Guided Ravi/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /Enter PF Record Laboratory/ })).toBeVisible();
 
@@ -74,10 +76,13 @@ test("mobile hierarchy separates case files and groups employment history", asyn
     const intro = document.querySelector("main > section")!.getBoundingClientRect();
     const editor = document.querySelector('[data-case-file="editor"]')!.getBoundingClientRect();
     const results = document.querySelector('[data-case-file="results"]')!.getBoundingClientRect();
-    return { heroToEditor: editor.top - intro.bottom, betweenFiles: results.top - editor.bottom };
+    const current = document.querySelector('[data-employment-group="current"]')!.getBoundingClientRect();
+    const run = document.querySelector("button[class*='runButton']")!.getBoundingClientRect();
+    return { heroToEditor: editor.top - intro.bottom, betweenFiles: results.top - editor.bottom, currentToRun: run.top - current.bottom };
   });
   expect(spacing.betweenFiles).toBeGreaterThanOrEqual(80);
   expect(spacing.betweenFiles).toBeGreaterThan(spacing.heroToEditor);
+  expect(spacing.currentToRun).toBeGreaterThanOrEqual(16);
 });
 
 test("missing-exit confirmation follows edited chronology and requires a reason", async ({ page }) => {
