@@ -117,7 +117,7 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [x] Add domain and UI-flow regression coverage.
 - [x] Run Docker checks and E2E, update rule documentation and continuity records, inspect the diff, and commit.
 
-**Verification:** Focused Docker domain coverage passed 14 tests, including identical previous intervals and adjacent-boundary behavior. Docker `npm run check` passed lint, strict typecheck, 53 tests across nine files, and the production build. After restarting only the PF Health app service to clear stale hot-reload modules, the isolated Playwright service passed all 13 journeys, including the exact add-two-default-records → `REVIEW_REQUIRED` regression.
+**Verification:** Focused Docker domain coverage passed 14 tests, including identical previous intervals and adjacent-boundary behavior. Docker `npm run check` passed lint, strict typecheck, 53 tests across nine files, and the production build. After restarting only the PF Health app service to clear stale hot-reload modules, the isolated Playwright service passed all 13 journeys, including the exact add-two-default-records → `REVIEW_REQUIRED` regression. Commit: `08039bc`.
 
 ## Mission 1 — Bootstrap the application harness
 
