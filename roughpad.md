@@ -93,7 +93,7 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [x] Verify responsive hierarchy and existing behavior in Docker.
 - [x] Update persistent state and log, inspect the final diff, and commit.
 
-**Verification:** Docker `npm run check` passed lint, strict typecheck, 51 tests across nine files, and the production build. The isolated Playwright service passed all 12 journeys, including the new 549px hierarchy and full confirmation-outline regressions. Impeccable's final layout detector returned no findings. Rendered inspection confirmed a 64px hero-to-Editor gap, an 88px Editor-to-Results gap, no horizontal overflow, and a complete 1px `#0c4b91` confirmation border at mobile and desktop widths.
+**Verification:** Docker `npm run check` passed lint, strict typecheck, 51 tests across nine files, and the production build. The isolated Playwright service passed all 12 journeys, including the new 549px hierarchy and full confirmation-outline regressions. Impeccable's final layout detector returned no findings. Rendered inspection confirmed a 64px hero-to-Editor gap, an 88px Editor-to-Results gap, no horizontal overflow, and a complete 1px `#0c4b91` confirmation border at mobile and desktop widths. Commit: `8af6bed`.
 
 ## Mission 1 — Bootstrap the application harness
 
