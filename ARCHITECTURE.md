@@ -7,7 +7,7 @@ Build a small modular monolith in which deterministic PF health evaluation is in
 The submission-ready visual is available at [`docs/finalist/architecture.svg`](docs/finalist/architecture.svg).
 
 ```text
-UI / Route Handlers ← Supabase Auth (email OTP + secure cookies)
+UI / Route Handlers ← Supabase Auth (Google OAuth PKCE + secure cookies)
         |
         v
 Application Services ---------------- Audit Log
@@ -101,7 +101,7 @@ Maps a known issue code to supported owners and resolution actions. It never inf
 
 Persistence uses two user-owned JSON aggregates in Supabase Postgres: one row per Guided Ravi run and one row per Laboratory session. Each row has an immutable `owner_user_id` referencing `auth.users`, an optimistic revision, indexed timestamps, and a validated aggregate payload. Domain records do not depend on storage-specific IDs or decorators. The in-memory adapters remain deterministic assembly tools used to evaluate one hydrated aggregate at a time.
 
-Supabase Auth uses passwordless email OTP and cookie-based SSR sessions. Stateful pages and APIs resolve the verified Supabase user server-side; request bodies and URLs never supply ownership. RLS independently restricts every select, insert, update, and delete operation to `auth.uid() = owner_user_id`.
+Supabase Auth uses Google OAuth with PKCE and cookie-based SSR sessions. The browser starts OAuth through Supabase, and `/auth/callback` exchanges the returned authorization code server-side. PF Health requests no Google API scopes beyond the identity scopes Supabase requires and does not read or persist Google provider tokens in application storage. Stateful pages and APIs resolve the verified Supabase user server-side; request bodies and URLs never supply ownership. RLS independently restricts every select, insert, update, and delete operation to `auth.uid() = owner_user_id`.
 
 ## AI layer
 

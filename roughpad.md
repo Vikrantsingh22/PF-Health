@@ -59,7 +59,21 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 **Environment readiness:** `.env.local` exists and defines `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `DATABASE_URL`, and `DIRECT_DATABASE_URL`; values were not printed or copied.
 
-**Verification:** The idempotent migration reapplied successfully. Live anonymous RLS verification passed. Docker `npm run check` passed lint, strict typecheck, 59 tests across 12 files, and the production build. Submission verification scanned 94 files, the production dependency audit reported zero vulnerabilities, and Docker Playwright passed the two public/auth-boundary journeys while explicitly skipping 13 OTP-authenticated journeys because no storage state was supplied. In-app browser inspection confirmed the landing page and `/laboratory` → `/login?next=%2Flaboratory` redirect with no console errors. Implementation commit: `96d00d2`.
+**Verification:** The idempotent migration reapplied successfully. Live anonymous RLS verification passed. Docker `npm run check` passed lint, strict typecheck, 59 tests across 12 files, and the production build. Submission verification scanned 94 files, the production dependency audit reported zero vulnerabilities, and Docker Playwright passed the two public/auth-boundary journeys while explicitly skipping 13 authenticated journeys because no storage state was supplied. In-app browser inspection confirmed the landing page and `/laboratory` → `/login?next=%2Flaboratory` redirect with no console errors. Implementation commit: `96d00d2`.
+
+## Mission 21 — Google OAuth migration
+
+**Status:** COMPLETE LOCALLY; GOOGLE/SUPABASE PROVIDER CONFIGURATION PENDING
+
+**Goal:** Replace rate-limited Supabase email OTP sign-in with Supabase Google OAuth while preserving SSR cookies, Auth UUID ownership, RLS, private history, and protected-route redirects.
+
+- [x] Replace the email/code form with one Google OAuth action.
+- [x] Exchange the PKCE authorization code in a safe server callback.
+- [x] Update auth tests, browser assertions, security/contracts, deployment guidance, and continuity records.
+- [x] Run Docker checks, browser boundary coverage, submission/security gates, and production build.
+- [x] Inspect and commit only the verified migration.
+
+**Verification:** Docker `npm run check` passed lint, strict typecheck, 62 tests across 13 files, and the production build with `/auth/callback`. Live anonymous RLS verification passed, submission verification scanned 95 files, and the production audit reported zero vulnerabilities. Docker Playwright passed the two public/auth-boundary journeys and explicitly skipped 13 journeys requiring authenticated storage state. In-app browser inspection confirmed the Google login surface and protected-route redirect with no console errors. A real Google consent/persistence smoke remains blocked only on account-owner provider configuration and sign-in.
 
 ## Mission 11 — PF Record Laboratory
 

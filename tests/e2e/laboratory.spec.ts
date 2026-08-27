@@ -88,7 +88,8 @@ test("shared navigation and authentication boundaries connect every product rout
   for (const route of ["/guided-ravi", "/laboratory", "/history"]) {
     await page.goto(route);
     await expect(page).toHaveURL(`/login?next=${encodeURIComponent(route)}`);
-    await expect(page.getByRole("heading", { name: "Sign in with your email." })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Continue securely with Google." })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Continue with Google" })).toBeVisible();
   }
 });
 

@@ -19,7 +19,7 @@ The hero scenario uses a fictional member, Ravi Sharma:
 
 ## Repository status
 
-The repository contains the deterministic hackathon product: a Docker-isolated Next.js/TypeScript application, passwordless Supabase authentication, owner-isolated persistent history, strict `/api/v1` routes, the Ravi health and resolution engines, PF Record Laboratory, and the polished Calm Case File UI. Optional AI and real EPFO integration are intentionally not included.
+The repository contains the deterministic hackathon product: a Docker-isolated Next.js/TypeScript application, Supabase Google authentication, owner-isolated persistent history, strict `/api/v1` routes, the Ravi health and resolution engines, PF Record Laboratory, and the polished Calm Case File UI. Optional AI and real EPFO integration are intentionally not included.
 
 All development, dependency installation, application execution, testing, and builds must run inside the repository-defined Docker environment. Do not run project package-manager or application commands directly on the host. Host access is limited to files inside this repository, repository-scoped Git operations, and PF Health-scoped Docker/Compose commands.
 
@@ -86,6 +86,8 @@ docker compose --profile migration run --rm migrate
 docker compose run --rm app npm run verify:supabase-security
 ```
 
+For Google sign-in, enable the Google provider in Supabase Auth and place the Google OAuth client ID and secret there—not in this repository or Vercel. In Google Auth Platform, use the Supabase callback URI shown by the provider configuration. In Supabase URL Configuration, allow both the local callback (`http://localhost:3000/auth/callback`, plus `127.0.0.1` if used) and the production callback (`https://<your-vercel-domain>/auth/callback`). See the official [Google provider guide](https://supabase.com/docs/guides/auth/social-login/auth-google) and [redirect URL guide](https://supabase.com/docs/guides/auth/redirect-urls).
+
 The application stores private Guided Ravi runs and Laboratory sessions in Supabase. The authenticated Data API and database RLS both enforce the owner boundary. The `e2e` service uses a digest-pinned Playwright image, the private Compose network, the shared dependency volume, a read-only repository mount, and no published port.
 
 The default E2E run always verifies the public landing page and unauthenticated redirects. Private Guided Ravi and Laboratory journeys require an ignored Playwright storage-state file from a test account:
@@ -104,7 +106,7 @@ Never commit `.auth/`; it can contain live Supabase session tokens.
 4. Resolution, simulated correction, revalidation, and audit events
 5. Validated API and polished end-to-end Case File UI
 6. Accessibility, responsive, privacy, security, and submission hardening
-7. Supabase passwordless authentication and durable private history
+7. Supabase Google OAuth and durable private history
 
 Optional bounded AI remains deferred because it is not needed for the complete deterministic journey. Vercel is the intended public deployment target; project creation and environment assignment remain account-owner actions.
 
@@ -114,5 +116,5 @@ See [`docs/product/DEMO.md`](docs/product/DEMO.md) for the three-minute presenta
 - `/` — choose Guided Ravi or PF Record Laboratory.
 - `/guided-ravi` — frozen deterministic 4/5 → 5/5 tutorial.
 - `/laboratory` — construct and assess strict synthetic PF histories.
-- `/login` — passwordless email OTP sign-in.
+- `/login` — Google OAuth sign-in through Supabase.
 - `/history` — private Guided Ravi and Laboratory history.

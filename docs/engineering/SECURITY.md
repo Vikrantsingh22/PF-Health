@@ -2,7 +2,7 @@
 
 ## Security posture
 
-PF Health is a synthetic-record prototype with private cloud history. Its strongest PF-data privacy control remains refusing to collect or integrate real member data. The only real personal datum accepted is the email address managed by Supabase Auth for passwordless account access; application history is keyed by the immutable Auth user UUID and does not duplicate email.
+PF Health is a synthetic-record prototype with private cloud history. Its strongest PF-data privacy control remains refusing to collect or integrate real member data. The only real personal datum accepted is the Google-verified email identity managed by Supabase Auth; application history is keyed by the immutable Auth user UUID and does not duplicate email.
 
 ## Development sandbox boundary
 
@@ -25,7 +25,8 @@ If Docker is unavailable or a task requires access outside this boundary, stop a
 
 - Clearly fictional names, employers, dates, identifiers, and documents
 - Rule IDs, source IDs, assessment results, and safe audit metadata
-- A verified email identity held in Supabase Auth solely for sign-in and ownership
+- A Google-verified email identity held in Supabase Auth solely for sign-in and ownership
+- Standard Google identity scopes required by Supabase (`openid`, email, and profile); no Google API access is requested and provider tokens are not read or persisted in application storage
 - Local developer configuration without secrets
 
 ### Prohibited

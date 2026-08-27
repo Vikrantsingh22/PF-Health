@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import { createClient } from "@/lib/supabase/client";
 import styles from "./login.module.css";
@@ -11,61 +10,39 @@ function safeNext(value: string): string {
 }
 
 export function LoginForm({ nextPath }: { readonly nextPath: string }) {
-  const [email, setEmail] = useState("");
-  const [token, setToken] = useState("");
-  const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
-  const router = useRouter();
 
-  async function requestCode(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function signInWithGoogle() {
     setBusy(true);
     setMessage("");
-    const { error } = await createClient().auth.signInWithOtp({
-      email,
-      options: { shouldCreateUser: true },
+
+    const callback = new URL("/auth/callback", window.location.origin);
+    callback.searchParams.set("next", safeNext(nextPath));
+    const { error } = await createClient().auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: callback.toString() },
     });
-    setBusy(false);
-    if (error) {
-      setMessage(error.message);
-      return;
-    }
-    setSent(true);
-    setMessage("A six-digit sign-in code has been sent to your email.");
-  }
 
-  async function verifyCode(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setBusy(true);
-    setMessage("");
-    const { error } = await createClient().auth.verifyOtp({ email, token, type: "email" });
-    setBusy(false);
     if (error) {
-      setMessage(error.message);
+      setBusy(false);
+      setMessage("Google sign-in could not start. Please try again.");
       return;
     }
-    router.replace(safeNext(nextPath));
-    router.refresh();
   }
 
   return (
     <div className={styles.authPanel}>
-      {!sent ? (
-        <form onSubmit={requestCode}>
-          <label htmlFor="auth-email">Email address</label>
-          <input autoComplete="email" id="auth-email" name="email" onChange={(event) => setEmail(event.target.value)} required type="email" value={email} />
-          <button disabled={busy} type="submit">{busy ? "Sending…" : "Send sign-in code"}</button>
-        </form>
-      ) : (
-        <form onSubmit={verifyCode}>
-          <p className={styles.destination}>Code sent to <strong>{email}</strong></p>
-          <label htmlFor="auth-token">Six-digit code</label>
-          <input autoComplete="one-time-code" id="auth-token" inputMode="numeric" maxLength={6} minLength={6} name="token" onChange={(event) => setToken(event.target.value.replace(/\D/g, ""))} pattern="[0-9]{6}" required value={token} />
-          <button disabled={busy || token.length !== 6} type="submit">{busy ? "Verifying…" : "Verify and continue"}</button>
-          <button className={styles.textButton} onClick={() => { setSent(false); setToken(""); setMessage(""); }} type="button">Use another email</button>
-        </form>
-      )}
+      <button className={styles.googleButton} disabled={busy} onClick={signInWithGoogle} type="button">
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M21.6 12.23c0-.71-.06-1.4-.18-2.07H12v3.92h5.38a4.6 4.6 0 0 1-2 3.02v2.54h3.24c1.9-1.75 2.98-4.33 2.98-7.41Z" fill="#4285F4" />
+          <path d="M12 22c2.7 0 4.98-.9 6.63-2.36l-3.24-2.54c-.9.6-2.05.96-3.39.96-2.61 0-4.82-1.76-5.61-4.13H3.04v2.62A10 10 0 0 0 12 22Z" fill="#34A853" />
+          <path d="M6.39 13.93A6.02 6.02 0 0 1 6.08 12c0-.67.11-1.32.31-1.93V7.45H3.04A10 10 0 0 0 2 12c0 1.61.38 3.14 1.04 4.55l3.35-2.62Z" fill="#FBBC05" />
+          <path d="M12 5.94c1.47 0 2.79.5 3.83 1.5l2.87-2.87A9.62 9.62 0 0 0 12 2a10 10 0 0 0-8.96 5.45l3.35 2.62C7.18 7.7 9.39 5.94 12 5.94Z" fill="#EA4335" />
+        </svg>
+        {busy ? "Opening Google…" : "Continue with Google"}
+      </button>
+      <p className={styles.providerNote}>Google verifies your email. PF Health receives only the Supabase account identity needed to keep your synthetic history private.</p>
       {message && <p aria-live="polite" className={styles.message}>{message}</p>}
     </div>
   );

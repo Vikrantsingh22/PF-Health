@@ -30,7 +30,7 @@ Milestone 4 — local submission hardening: **COMPLETE; PUBLIC DEPLOYMENT PENDIN
 
 Milestone 5 — PF Record Laboratory and interaction hardening: **COMPLETE**
 
-Milestone 6 — Supabase authentication and durable private history: **COMPLETE LOCALLY; VERCEL CONFIGURATION AND OTP SMOKE PENDING**
+Milestone 6 — Supabase authentication and durable private history: **GOOGLE OAUTH COMPLETE LOCALLY; PROVIDER CONFIGURATION AND CONSENT SMOKE PENDING**
 
 The repository now contains a verified Docker-isolated application harness, the pure-domain Ravi oracle, the complete framework-independent reset → assess → confirm → synthetic correction → automatic revalidation lifecycle, its validated `/api/v1` boundary, and the polished Calm Case File UI with Docker-only browser E2E coverage.
 
@@ -103,11 +103,11 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 - Production-aware security headers and escaped direction-contract rendering with no unsafe HTML API
 - Deterministic `verify:submission` guard for sensitive-value patterns, visibly synthetic fixtures, required artifacts, and no external runtime fetches
 - Impeccable Case File repair with contained tab geometry, continuous paper ground, artifact-free check rows, unified 52px confirmation actions, and synchronized design context
-- Supabase passwordless email authentication, SSR cookie refresh, owner-scoped Guided Ravi and Laboratory aggregates, complete table RLS, optimistic revisions, private history/resume/deletion, and live anonymous-isolation verification
+- Supabase Google OAuth, SSR cookie refresh, owner-scoped Guided Ravi and Laboratory aggregates, complete table RLS, optimistic revisions, private history/resume/deletion, and live anonymous-isolation verification
 
 ## Active mission
 
-Mission 20 is complete locally in commit `96d00d2`. The landing page remains public; stateful routes and APIs require an authenticated user, and ownership is keyed by the immutable Supabase Auth user UUID rather than email. The next bounded task is Vercel environment/Auth URL configuration followed by a real email-OTP, persistence, resume, and sign-out smoke test.
+Mission 21 is complete locally: rate-limited email OTP has been replaced with Supabase Google OAuth and a safe server-side PKCE code exchange. Stateful routes, Auth UUID ownership, RLS, persistence, and history behavior remain unchanged. Supabase/Google provider configuration and the final consent-screen/persistence smoke remain account-owner steps.
 
 ## Verification state
 
@@ -123,7 +123,8 @@ Mission 20 is complete locally in commit `96d00d2`. The landing page remains pub
 - Latest chronology verification: Docker lint, strict typecheck, 53 tests, production build, and 13 Playwright journeys pass; identical default previous intervals now return `R002@2` failure and `REVIEW_REQUIRED`, while equality at adjacent boundaries still passes
 - Latest navigation/case-file verification: Docker lint, strict typecheck, 53 tests, production build, and 14 Playwright journeys pass; the Impeccable layout detector reports no findings, and rendered 375px/1440px inspection confirms responsive navigation, exact side-tab/rail joins, inverse Laboratory styling, and no landing overflow
 - Latest mobile rhythm verification: Docker lint, strict typecheck, 53 tests, production build, and 15 Playwright journeys pass; rendered 375px/549px landing and 760px Guided Ravi inspection confirms a deliberate visible gap between cards, a continuous 2px inverse rail outline without a top seam, and a 92px evidence-row cadence; the final Impeccable layout detector reports no findings
-- Latest Supabase verification: the remote migration reapplied idempotently; live anonymous reads/writes are isolated; Docker `npm run check` passed lint, strict typecheck, all 59 tests, and the production build; submission verification scanned 94 files; production audit found zero vulnerabilities; Docker Playwright passed two public/auth-boundary journeys and explicitly skipped 13 journeys requiring an OTP-authenticated storage state
+- Latest Supabase verification before the Google migration: the remote migration reapplied idempotently; live anonymous reads/writes are isolated; Docker `npm run check` passed lint, strict typecheck, all 59 tests, and the production build; submission verification scanned 94 files; production audit found zero vulnerabilities; Docker Playwright passed two public/auth-boundary journeys and explicitly skipped 13 journeys requiring an authenticated storage state
+- Latest Google OAuth verification: Docker `npm run check` passed lint, strict typecheck, 62 tests, and the production build; callback tests cover successful PKCE exchange, invalid code, and external redirect rejection; live RLS verification passed; submission verification scanned 95 files; production audit found zero vulnerabilities; Docker Playwright passed two public/auth-boundary journeys and explicitly skipped 13 authenticated journeys without storage state; rendered login inspection had no console errors
 - Implementation plan reconciled and roughpad initialized: yes
 - Verify-before-commit workflow recorded: yes
 - `.gitignore` rules verified with representative generated and secret paths: yes
@@ -164,7 +165,7 @@ Never report an unavailable check as passing.
 
 ## Open implementation decisions
 
-- Vercel project environment variables, Supabase production redirect URLs, and optional custom SMTP remain account-owner configuration tasks
+- Google OAuth client/provider configuration, Vercel environment variables, Supabase production redirect URLs, and consent branding remain account-owner configuration tasks
 - Whether optional AI work is approved after Milestone 3
 - Whether to proceed later with the approved concept direction: keep Ravi as a guided tutorial and add an interactive synthetic PF Record Sandbox
 

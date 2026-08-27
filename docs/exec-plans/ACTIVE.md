@@ -130,12 +130,13 @@ The approved synthetic digital-twin plan is complete. The frozen Ravi tutorial i
 
 # Active: Supabase authentication and durable history
 
-**Status:** LOCAL IMPLEMENTATION COMPLETE; VERCEL CONFIGURATION AND OTP SMOKE PENDING
+**Status:** LOCAL GOOGLE OAUTH IMPLEMENTATION COMPLETE; PROVIDER CONFIGURATION PENDING
 
-- [x] Approve passwordless email OTP and authenticated private history.
+- [x] Approve Google OAuth and authenticated private history after email OTP rate limiting.
 - [x] Add Supabase SSR/browser clients and secure cookie refresh proxy.
 - [x] Add owner-scoped Guided Ravi and Laboratory aggregate tables with complete RLS policies.
 - [x] Replace process-local route state with authenticated Supabase Data API stores and optimistic aggregate revisions.
 - [x] Add `/login`, authenticated navigation, `/history`, Laboratory resume, and history deletion.
 - [x] Complete API auth-boundary, RLS isolation, persistence round-trip, public browser, regression, submission, and production-build verification.
-- [ ] Configure Vercel environment variables, production Auth URLs, and custom SMTP, then verify public/incognito access.
+- [x] Replace email OTP with Google OAuth and a safe PKCE callback while preserving owner-scoped persistence.
+- [ ] Configure the Google provider, Supabase/Vercel redirect URLs, and consent branding, then verify public/incognito access.

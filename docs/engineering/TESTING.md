@@ -86,7 +86,7 @@ Every rule test names which documented condition it proves.
 - Cross-user IDs return `NOT_FOUND` without revealing whether another user owns the row.
 - History lists only the authenticated user's recent runs/sessions; individual and all-history deletion remain owner scoped.
 - Public navigation, the login surface, and protected-route redirects run without credentials. Authenticated Guided Ravi, Laboratory, history, session refresh, and sign-out journeys require an ignored Playwright storage state supplied through `E2E_AUTH_STORAGE_STATE`.
-- Completion reports must state the exact browser pass/skip split; an OTP-gated journey is never reported as passing when no authenticated state was supplied.
+- Completion reports must state the exact browser pass/skip split; an OAuth-gated journey is never reported as passing when no authenticated state was supplied.
 
 ### Component tests
 

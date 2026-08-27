@@ -19,9 +19,9 @@ export default async function LoginPage({ searchParams }: { readonly searchParam
       <SiteHeader wide />
       <main className={styles.main} id="main-content">
         <p className={styles.eyebrow}>Private synthetic workspace</p>
-        <h1>Sign in with your email.</h1>
-        <p className={styles.intro}>No password is required. Your email keeps your fictional PF sessions and deterministic assessment history private to you.</p>
-        {parameters.error && <p className={styles.error}>That sign-in link is invalid or expired. Request a new code.</p>}
+        <h1>Continue securely with Google.</h1>
+        <p className={styles.intro}>Use a Google account to keep your fictional PF sessions and deterministic assessment history private to you. PF Health never receives your Google password.</p>
+        {parameters.error && <p className={styles.error}>Google sign-in could not be completed. Please try again.</p>}
         <LoginForm nextPath={nextPath} />
         <p className={styles.boundary}>Never enter a UAN, Aadhaar number, bank detail, credential, or real employment information.</p>
       </main>

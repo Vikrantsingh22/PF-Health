@@ -303,3 +303,11 @@ Started Mission 20 after the human confirmed the recommended authentication beha
 # 2026-08-27 — Supabase authentication and durable history completed locally
 
 Added passwordless Supabase Auth with SSR cookie refresh, protected stateful routes/APIs, owner-scoped Postgres aggregates with complete RLS, optimistic persistence for Guided Ravi and Laboratory, private history/resume/deletion, and an idempotent Docker migration path. The live anonymous-isolation probe passed; Docker `npm run check` passed lint, strict typecheck, 59 tests, and production build; submission verification scanned 94 files; production audit found zero vulnerabilities. Docker Playwright passed two public/auth-boundary journeys and explicitly skipped 13 private journeys because no OTP-authenticated storage state was supplied. Browser inspection confirmed the public landing and protected Laboratory redirect without console errors. Implementation commit: `96d00d2`; Vercel/Auth URL configuration and a real OTP smoke remain account-owner deployment steps.
+
+# 2026-08-27 — Google OAuth migration started
+
+Started Mission 21 after email OTP delivery became rate-limited. The bounded change replaces only the sign-in entry and callback with Supabase Google OAuth/PKCE; owner-scoped persistence, RLS, deterministic outcomes, and private history remain unchanged. Google provider credentials stay in Supabase/Google configuration and will not enter the repository or Vercel application environment.
+
+# 2026-08-27 — Google OAuth migration completed locally
+
+Replaced the email/code form and token-hash route with one Google OAuth action and `/auth/callback` PKCE exchange. The callback preserves only safe relative destinations, handles Vercel forwarding, and ignores provider tokens; persistence remains keyed by the Supabase Auth UUID under existing RLS. Docker `npm run check` passed lint, strict typecheck, 62 tests, and production build. Live RLS verification passed, submission verification scanned 95 files, production audit found zero vulnerabilities, and Docker Playwright passed two public/auth-boundary journeys while explicitly skipping 13 journeys requiring authenticated state. Browser inspection confirmed the rendered Google login boundary without console errors. Google/Supabase provider configuration and a real consent/persistence smoke remain account-owner steps.
