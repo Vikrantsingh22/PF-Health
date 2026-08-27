@@ -73,7 +73,7 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [x] Run Docker checks, browser boundary coverage, submission/security gates, and production build.
 - [x] Inspect and commit only the verified migration.
 
-**Verification:** Docker `npm run check` passed lint, strict typecheck, 62 tests across 13 files, and the production build with `/auth/callback`. Live anonymous RLS verification passed, submission verification scanned 95 files, and the production audit reported zero vulnerabilities. Docker Playwright passed the two public/auth-boundary journeys and explicitly skipped 13 journeys requiring authenticated storage state. In-app browser inspection confirmed the Google login surface and protected-route redirect with no console errors. A real Google consent/persistence smoke remains blocked only on account-owner provider configuration and sign-in.
+**Verification:** Docker `npm run check` passed lint, strict typecheck, 62 tests across 13 files, and the production build with `/auth/callback`. Live anonymous RLS verification passed, submission verification scanned 95 files, and the production audit reported zero vulnerabilities. Docker Playwright passed the two public/auth-boundary journeys and explicitly skipped 13 journeys requiring authenticated storage state. In-app browser inspection confirmed the Google login surface and protected-route redirect with no console errors. A real Google consent/persistence smoke remains blocked only on account-owner provider configuration and sign-in. Commit: `c6ca5cd`.
 
 ## Mission 11 — PF Record Laboratory
 

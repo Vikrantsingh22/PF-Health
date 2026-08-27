@@ -107,7 +107,7 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 
 ## Active mission
 
-Mission 21 is complete locally: rate-limited email OTP has been replaced with Supabase Google OAuth and a safe server-side PKCE code exchange. Stateful routes, Auth UUID ownership, RLS, persistence, and history behavior remain unchanged. Supabase/Google provider configuration and the final consent-screen/persistence smoke remain account-owner steps.
+Mission 21 is complete locally in commit `c6ca5cd`: rate-limited email OTP has been replaced with Supabase Google OAuth and a safe server-side PKCE code exchange. Stateful routes, Auth UUID ownership, RLS, persistence, and history behavior remain unchanged. Supabase/Google provider configuration and the final consent-screen/persistence smoke remain account-owner steps.
 
 ## Verification state
 
