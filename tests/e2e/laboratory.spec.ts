@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+const authenticatedTest = process.env.E2E_AUTH_STORAGE_STATE ? test : test.skip;
+
 test("landing offers both product paths", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "See the problem. Change the record. Trace the result." })).toBeVisible();
@@ -75,19 +77,22 @@ test("landing offers both product paths", async ({ page }) => {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 });
 
-test("shared navigation connects every product route", async ({ page }) => {
-  for (const route of ["/", "/guided-ravi", "/laboratory"]) {
+test("shared navigation and authentication boundaries connect every product route", async ({ page }) => {
+  await page.goto("/");
+  const navigation = page.getByRole("navigation", { name: "Primary navigation" });
+  await expect(navigation.getByRole("link", { name: "Home", exact: true })).toHaveAttribute("href", "/");
+  await expect(navigation.getByRole("link", { name: "Guided Ravi", exact: true })).toHaveAttribute("href", "/guided-ravi");
+  await expect(navigation.getByRole("link", { name: "Laboratory", exact: true })).toHaveAttribute("href", "/laboratory");
+  await expect(page.getByRole("link", { name: "PF Health", exact: true })).toHaveAttribute("href", "/");
+
+  for (const route of ["/guided-ravi", "/laboratory", "/history"]) {
     await page.goto(route);
-    const navigation = page.getByRole("navigation", { name: "Primary navigation" });
-    await expect(navigation.getByRole("link", { name: "Home", exact: true })).toHaveAttribute("href", "/");
-    await expect(navigation.getByRole("link", { name: "Guided Ravi", exact: true })).toHaveAttribute("href", "/guided-ravi");
-    await expect(navigation.getByRole("link", { name: "Laboratory", exact: true })).toHaveAttribute("href", "/laboratory");
-    await expect(page.getByRole("link", { name: "PF Health", exact: true })).toHaveAttribute("href", "/");
-    await expect(page.getByText("PF Record Laboratory", { exact: true })).toBeHidden();
+    await expect(page).toHaveURL(`/login?next=${encodeURIComponent(route)}`);
+    await expect(page.getByRole("heading", { name: "Sign in with your email." })).toBeVisible();
   }
 });
 
-test("every laboratory preset produces its declared outcome", async ({ page }) => {
+authenticatedTest("every laboratory preset produces its declared outcome", async ({ page }) => {
   await page.goto("/laboratory");
   const preset = page.getByRole("combobox", { name: "Load preset" });
   for (const [label, outcome] of [
@@ -103,7 +108,7 @@ test("every laboratory preset produces its declared outcome", async ({ page }) =
   }
 });
 
-test("judge edits a record, inspects evidence, and applies a supported fix", async ({ page }) => {
+authenticatedTest("judge edits a record, inspects evidence, and applies a supported fix", async ({ page }) => {
   await page.goto("/laboratory");
   await page.getByRole("combobox", { name: "Load preset" }).selectOption({ label: "Missing exit" });
   await page.getByRole("button", { name: "Run assessment" }).click();
@@ -118,7 +123,7 @@ test("judge edits a record, inspects evidence, and applies a supported fix", asy
   await expect(page.getByText("No correction plan is needed.")).toBeVisible();
 });
 
-test("laboratory supports editable fictional labels and has no duplicate control", async ({ page }) => {
+authenticatedTest("laboratory supports editable fictional labels and has no duplicate control", async ({ page }) => {
   await page.goto("/laboratory");
   await expect(page.getByRole("button", { name: "Duplicate" })).toHaveCount(0);
   const labels = page.getByLabel("Fictional employer label");
@@ -127,7 +132,7 @@ test("laboratory supports editable fictional labels and has no duplicate control
   await expect(page.getByText("Fictional Workshop North", { exact: true }).first()).toBeVisible();
 });
 
-test("duplicate default previous intervals trigger chronology review", async ({ page }) => {
+authenticatedTest("duplicate default previous intervals trigger chronology review", async ({ page }) => {
   await page.goto("/laboratory");
   await page.getByRole("button", { name: "+ Add previous employment" }).click();
   await page.getByRole("button", { name: "+ Add previous employment" }).click();
@@ -136,7 +141,7 @@ test("duplicate default previous intervals trigger chronology review", async ({ 
   await expect(page.getByRole("heading", { name: /Detected issues/ }).locator("..").getByText("Employment dates overlap and require review", { exact: true })).toBeVisible();
 });
 
-test("mobile hierarchy separates case files and groups employment history", async ({ page }) => {
+authenticatedTest("mobile hierarchy separates case files and groups employment history", async ({ page }) => {
   await page.setViewportSize({ width: 549, height: 757 });
   await page.goto("/laboratory");
   await expect(page.getByRole("list", { name: "Laboratory workflow" })).toBeVisible();
@@ -162,7 +167,7 @@ test("mobile hierarchy separates case files and groups employment history", asyn
   expect(spacing.currentToRun).toBeGreaterThanOrEqual(16);
 });
 
-test("missing-exit confirmation follows edited chronology and requires a reason", async ({ page }) => {
+authenticatedTest("missing-exit confirmation follows edited chronology and requires a reason", async ({ page }) => {
   await page.goto("/laboratory");
   await page.getByRole("combobox", { name: "Load preset" }).selectOption({ label: "Missing exit" });
   await page.getByLabel("Start date").last().fill("2021-02-02");
@@ -172,7 +177,7 @@ test("missing-exit confirmation follows edited chronology and requires a reason"
   await expect(page.getByRole("button", { name: "Apply simulated change" })).toBeDisabled();
 });
 
-test("workspace cards use the authored case-file tab geometry", async ({ page }) => {
+authenticatedTest("workspace cards use the authored case-file tab geometry", async ({ page }) => {
   await page.goto("/laboratory");
   const tabPath = "M1 25L10 8C12 3.5 16.5 1 22 1H116C125 1 132 5 137 14L144 25H1Z";
   for (const name of ["editor", "results"]) {
@@ -182,7 +187,7 @@ test("workspace cards use the authored case-file tab geometry", async ({ page })
   }
 });
 
-test("account-link confirmation has a complete trustworthy-blue outline", async ({ page }) => {
+authenticatedTest("account-link confirmation has a complete trustworthy-blue outline", async ({ page }) => {
   await page.goto("/laboratory");
   await page.getByRole("combobox", { name: "Load preset" }).selectOption({ label: "Split synthetic accounts" });
   await page.getByRole("button", { name: "Run assessment" }).click();
@@ -200,7 +205,7 @@ test("account-link confirmation has a complete trustworthy-blue outline", async 
   expect(outline.radii.every((radius) => radius !== "0px")).toBe(true);
 });
 
-test("laboratory has no horizontal overflow at target widths", async ({ page }) => {
+authenticatedTest("laboratory has no horizontal overflow at target widths", async ({ page }) => {
   for (const width of [375, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/laboratory");

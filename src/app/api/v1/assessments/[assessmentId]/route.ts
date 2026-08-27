@@ -1,6 +1,7 @@
 import { assessmentResponseSchema } from "@/application/api/schemas";
-import { getDemoApplication } from "@/application/demo/demo-runtime";
 import { respond } from "@/app/api/v1/_lib/api-response";
+import { requireApiUser } from "@/lib/auth/current-user";
+import { withLatestGuidedRun } from "@/persistence/guided-run-store";
 
 interface AssessmentRouteContext {
   readonly params: Promise<{ assessmentId: string }>;
@@ -12,6 +13,7 @@ export async function GET(
 ): Promise<Response> {
   return respond(assessmentResponseSchema, async () => {
     const { assessmentId } = await context.params;
-    return { assessment: getDemoApplication().getAssessment(assessmentId) };
+    const user = await requireApiUser();
+    return withLatestGuidedRun(user.id, (application) => ({ assessment: application.getAssessment(assessmentId) }));
   });
 }

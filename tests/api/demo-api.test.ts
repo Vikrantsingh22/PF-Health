@@ -1,4 +1,18 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import type { DemoResolutionService } from "@/application/resolution/demo-resolution-service";
+
+vi.mock("@/lib/auth/current-user", () => ({ requireApiUser: async () => ({ id: "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee" }) }));
+vi.mock("@/persistence/guided-run-store", async () => {
+  const { createDemoApplication } = await import("@/application/demo/create-demo-application");
+  let application = createDemoApplication();
+  return {
+    createGuidedRun: async <T>(_ownerUserId: string, action: (value: DemoResolutionService) => T) => {
+      application = createDemoApplication();
+      return action(application);
+    },
+    withLatestGuidedRun: async <T>(_ownerUserId: string, action: (value: DemoResolutionService) => T) => action(application),
+  };
+});
 
 import { POST as assess } from "@/app/api/v1/assessments/route";
 import { GET as getAssessment } from "@/app/api/v1/assessments/[assessmentId]/route";

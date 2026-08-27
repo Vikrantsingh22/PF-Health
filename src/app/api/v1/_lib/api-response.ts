@@ -14,6 +14,8 @@ function requestId(): string {
 
 function statusFor(code: ApplicationError["code"] | "INTERNAL_ERROR"): number {
   switch (code) {
+    case "UNAUTHENTICATED":
+      return 401;
     case "VALIDATION_ERROR":
       return 400;
     case "NOT_FOUND":

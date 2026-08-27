@@ -7,7 +7,7 @@ Build a small modular monolith in which deterministic PF health evaluation is in
 The submission-ready visual is available at [`docs/finalist/architecture.svg`](docs/finalist/architecture.svg).
 
 ```text
-UI / Route Handlers
+UI / Route Handlers ← Supabase Auth (email OTP + secure cookies)
         |
         v
 Application Services ---------------- Audit Log
@@ -18,7 +18,7 @@ Application Services ---------------- Audit Log
  Health Engine  Resolution Engine     Repository Ports
         |           |                      |
         +-----------+                      v
-        |                           Local/Synthetic Storage
+        |                           Supabase Postgres + owner RLS
         v
 Domain Model + Rule Registry
         |
@@ -56,7 +56,7 @@ src/
     resolution/           ownership and action definitions
   adapters/
     epfo/                  MockEPFOAdapter only for MVP
-    persistence/           in-memory/local implementations
+    persistence/           Supabase aggregate stores and persisted schemas
     ai/                    validated model gateway
   components/             presentational UI components
   lib/                    boundary utilities, IDs, time abstractions
@@ -99,7 +99,9 @@ Maps a known issue code to supported owners and resolution actions. It never inf
 
 `MemberRecordPort` provides member snapshots and accepts explicit synthetic correction commands. `MockEPFOAdapter` is the only MVP external-system implementation. It must perform no government network requests.
 
-Persistence starts local and replaceable. Domain records must not depend on storage-specific IDs or ORM decorators.
+Persistence uses two user-owned JSON aggregates in Supabase Postgres: one row per Guided Ravi run and one row per Laboratory session. Each row has an immutable `owner_user_id` referencing `auth.users`, an optimistic revision, indexed timestamps, and a validated aggregate payload. Domain records do not depend on storage-specific IDs or decorators. The in-memory adapters remain deterministic assembly tools used to evaluate one hydrated aggregate at a time.
+
+Supabase Auth uses passwordless email OTP and cookie-based SSR sessions. Stateful pages and APIs resolve the verified Supabase user server-side; request bodies and URLs never supply ownership. RLS independently restricts every select, insert, update, and delete operation to `auth.uid() = owner_user_id`.
 
 ## AI layer
 
@@ -128,6 +130,7 @@ load member → normalize snapshot → run all rules → build assessment
 
 - Invalid input: structured `VALIDATION_ERROR`.
 - Missing member: `NOT_FOUND`.
+- Missing or invalid user session: `UNAUTHENTICATED`.
 - Stale mutation: `CONFLICT`.
 - Missing evidence: a rule-level `UNKNOWN`, not a server error.
 - Unsupported action: `UNSUPPORTED_ACTION` or `REVIEW_REQUIRED`.
@@ -138,4 +141,4 @@ load member → normalize snapshot → run all rules → build assessment
 The semantic router, multiple public services, real integrations, generalized workflow catalogs, and distributed services are intentionally deferred. The current `WorkflowContext` supports `GENERAL_HEALTH` and a narrow `TRANSFER` context only so future work is possible without building it now.
 # Two-path application composition
 
-`/guided-ravi` composes the existing demo runtime and frozen five-check contracts. `/laboratory` composes the separate `src/laboratory` strict schema, `PF_LAB@1` evaluator, evidence/plan builders, and process-local session service. Both share only presentation tokens and synthetic/non-affiliation boundaries; laboratory rules never modify tutorial `MemberState` or APIs.
+`/guided-ravi` hydrates one private Guided Ravi run into the frozen five-check application service. `/laboratory` hydrates one private Laboratory aggregate into the separate strict schema, `PF_LAB@1` evaluator, evidence/plan builders, and versioned session service. `/history` lists only the authenticated user's runs and sessions; Laboratory sessions are resumable and Guided Ravi runs remain historical evidence. Both paths share authentication, persistence, presentation tokens, and synthetic/non-affiliation boundaries, but Laboratory rules never modify tutorial `MemberState` or APIs.

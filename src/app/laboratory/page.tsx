@@ -1,12 +1,15 @@
 import { LaboratoryApp } from "@/components/laboratory-app";
 import { SiteHeader } from "@/components/site-header";
+import { requirePageUser } from "@/lib/auth/current-user";
 import styles from "./page.module.css";
 
-export default function LaboratoryPage() {
+export default async function LaboratoryPage({ searchParams }: { readonly searchParams: Promise<{ session?: string }> }) {
+  await requirePageUser("/laboratory");
+  const { session } = await searchParams;
   return (
     <>
       <SiteHeader wide />
-      <div className={styles.application}><LaboratoryApp /></div>
+      <div className={styles.application}><LaboratoryApp initialSessionId={session} /></div>
     </>
   );
 }

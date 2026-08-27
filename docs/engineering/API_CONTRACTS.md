@@ -158,6 +158,9 @@ Optional. Accepts an issue ID, resolution action code, locale, and explicitly ed
 
 ## Contract safeguards
 
+- Every stateful route requires a verified Supabase session and otherwise returns `UNAUTHENTICATED` with HTTP 401.
+- Ownership is derived from the verified Auth user UUID, never accepted from client JSON.
+- Cross-owner aggregate IDs are represented as `NOT_FOUND`; APIs do not disclose their existence.
 - No open-ended proxy endpoint to a model.
 - No endpoint accepts real identifiers, credentials, OTPs, or arbitrary government URLs.
 - Route handlers call application services rather than repositories/rules directly.
@@ -165,6 +168,10 @@ Optional. Accepts an issue ID, resolution action code, locale, and explicitly ed
 - Contract changes require this file and relevant consumer tests to change together.
 # Laboratory session boundary
 
-Process-local laboratory routes live under `/api/v1/laboratory`. Presets are read-only. Session creation accepts one preset ID or one strict `pf-health-synthetic-scenario@1` document. Draft replacement and runs require `expectedDraftVersion`; confirmed simulations additionally require `expectedSnapshotVersion`. Runs alone create authoritative snapshots, assessments, evidence graphs, actor plans, and run audit events. Scenario JSON excludes session IDs, assessment results, audit events, and confirmation/runtime state.
+Authenticated laboratory routes live under `/api/v1/laboratory`. Presets are read-only and public-safe; every session route requires authentication and is owner-isolated by both query predicates and RLS. Session creation accepts one preset ID or one strict `pf-health-synthetic-scenario@1` document. Draft replacement and runs require `expectedDraftVersion`; confirmed simulations additionally require `expectedSnapshotVersion`. A persisted aggregate revision prevents concurrent request loss. Runs alone create authoritative snapshots, assessments, evidence graphs, actor plans, and run audit events. Scenario JSON excludes user IDs, session IDs, assessment results, audit events, and confirmation/runtime state.
 
 Routes: `GET /presets`; `POST /sessions`; `GET|PUT /sessions/{sessionId}`; `POST /sessions/{sessionId}/runs`; confirmed `simulate-exit-update` and `simulate-account-link` actions; and `POST /sessions/{sessionId}/reset`.
+
+# Authentication and history boundary
+
+Supabase Auth performs passwordless email OTP. Browser and server clients use the publishable key; sessions are rotated through secure SSR cookies. `/login` requests and verifies the OTP, `/auth/confirm` supports token-hash email links, and sign-out clears the Supabase session. `/history` is a server-rendered private page rather than a public JSON endpoint. It lists up to 50 recent Guided Ravi runs and 50 Laboratory sessions, permits Laboratory resume, and exposes owner-scoped deletion actions.

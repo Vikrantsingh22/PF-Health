@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { ZodType } from "zod";
-import { SiteHeader } from "./site-header";
 
 import {
   apiErrorSchema,
@@ -121,12 +120,7 @@ function CheckRow({ check, index, changed }: { readonly check: HealthCheckResult
 }
 
 function AppHeader() {
-  return (
-    <>
-      <SiteHeader />
-      <div className={styles.notice} role="note"><InfoIcon /><span>Synthetic sample · No EPFO connection</span></div>
-    </>
-  );
+  return <div className={styles.notice} role="note"><InfoIcon /><span>Synthetic sample · No EPFO connection</span></div>;
 }
 
 function PrimaryButton({ children, onClick, disabled }: { readonly children: ReactNode; readonly onClick: () => void; readonly disabled?: boolean }) {

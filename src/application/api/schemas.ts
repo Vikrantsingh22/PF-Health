@@ -230,6 +230,7 @@ export const apiErrorSchema = z
     error: z
       .object({
         code: z.enum([
+          "UNAUTHENTICATED",
           "VALIDATION_ERROR",
           "NOT_FOUND",
           "CONFLICT",

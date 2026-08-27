@@ -12,4 +12,5 @@ export interface MemberRecordPort {
   loadMember(memberId: string): MemberState | null;
   reset(): MemberState;
   applySyntheticExitUpdate(update: SyntheticExitUpdate): MemberState;
+  snapshot(): MemberState;
 }

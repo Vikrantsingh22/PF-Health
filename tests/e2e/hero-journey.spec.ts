@@ -1,6 +1,8 @@
 import { expect, test } from "@playwright/test";
 
-test("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
+const authenticatedTest = process.env.E2E_AUTH_STORAGE_STATE ? test : test.skip;
+
+authenticatedTest("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
   const response = await page.goto("/guided-ravi");
   expect(response).not.toBeNull();
   expect(response?.headers()["content-security-policy"]).toContain("default-src 'self'");
@@ -65,7 +67,7 @@ test("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Check a synthetic PF record before it becomes a problem." })).toBeVisible();
 });
 
-test("hero controls remain keyboard reachable at 375px", async ({ page }) => {
+authenticatedTest("hero controls remain keyboard reachable at 375px", async ({ page }) => {
   await page.goto("/guided-ravi");
   await page.keyboard.press("Tab");
   await expect(page.getByRole("link", { name: "Skip to main content" })).toBeFocused();
@@ -80,7 +82,7 @@ test("hero controls remain keyboard reachable at 375px", async ({ page }) => {
   await expect(page.getByRole("button", { name: "Review what to do next" })).toBeEnabled();
 });
 
-test("evidence disclosure keeps the guidance-row vertical rhythm", async ({ page }) => {
+authenticatedTest("evidence disclosure keeps the guidance-row vertical rhythm", async ({ page }) => {
   await page.setViewportSize({ width: 760, height: 757 });
   await page.goto("/guided-ravi");
   await page.getByRole("button", { name: "Load Ravi's sample record" }).click();
@@ -94,7 +96,7 @@ test("evidence disclosure keeps the guidance-row vertical rhythm", async ({ page
   expect(spacing).toEqual({ paddingTop: "22px", paddingBottom: "22px", height: 92 });
 });
 
-test("case file remains usable across submission widths and reduced motion", async ({ page }) => {
+authenticatedTest("case file remains usable across submission widths and reduced motion", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
 
   for (const viewport of [

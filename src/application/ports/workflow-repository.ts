@@ -4,6 +4,13 @@ import type {
   ResolutionCase,
 } from "@/domain/model/types";
 
+export interface WorkflowRepositoryState {
+  readonly assessments: readonly HealthAssessment[];
+  readonly resolutions: readonly ResolutionCase[];
+  readonly confirmations: readonly SimulationConfirmation[];
+  readonly auditEvents: readonly AuditEvent[];
+}
+
 export interface SimulationConfirmation {
   readonly token: string;
   readonly resolutionId: string;
@@ -30,4 +37,5 @@ export interface WorkflowRepository {
   consumeConfirmation(token: string, usedAt: string): void;
   appendAudit(event: AuditEvent): void;
   listAudit(memberId: string): readonly AuditEvent[];
+  snapshot(): WorkflowRepositoryState;
 }

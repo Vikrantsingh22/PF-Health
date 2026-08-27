@@ -104,7 +104,7 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 
 ## Active mission
 
-No implementation mission is currently active. Mission 19 completed mobile landing-card separation, inverse rail continuity, and Guided Ravi evidence-row spacing without changing product behavior.
+Mission 20 is active: add Supabase passwordless email authentication, durable user-owned Guided Ravi and Laboratory state, and a private history experience suitable for Vercel. The landing page remains public; stateful routes and APIs will require an authenticated user. Ownership is keyed by the immutable Supabase Auth user UUID rather than email. All database and authentication work remains synthetic-only and must preserve the deterministic rule engines.
 
 ## Verification state
 

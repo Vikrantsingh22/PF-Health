@@ -10,6 +10,7 @@ export default defineConfig({
   reporter: "line",
   use: {
     baseURL: process.env.PLAYWRIGHT_BASE_URL ?? "http://pf-health-web:3000",
+    storageState: process.env.E2E_AUTH_STORAGE_STATE || undefined,
     screenshot: "only-on-failure",
     trace: "retain-on-failure",
     video: "off",

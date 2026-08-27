@@ -344,6 +344,13 @@ export class DemoResolutionService {
     return this.workflow.listAudit(memberId);
   }
 
+  snapshot() {
+    return Object.freeze({
+      member: this.members.snapshot(),
+      workflow: this.workflow.snapshot(),
+    });
+  }
+
   private assessMember(
     member: MemberState,
     workflowType: WorkflowType,

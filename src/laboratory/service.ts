@@ -9,6 +9,12 @@ function event(type: LaboratoryAuditEvent["type"], detail: string): LaboratoryAu
 export class LaboratoryService {
   private readonly sessions = new Map<string, LaboratorySession>();
 
+  constructor(initialSessions: readonly LaboratorySession[] = []) {
+    for (const session of initialSessions) {
+      this.sessions.set(session.sessionId, structuredClone(session));
+    }
+  }
+
   create(input: { presetId?: string; scenario?: LaboratoryScenario }): LaboratorySession {
     const preset = input.scenario ? undefined : laboratoryPreset(input.presetId);
     if (!input.scenario && !preset) throw new ApplicationError("NOT_FOUND", "Laboratory preset not found");

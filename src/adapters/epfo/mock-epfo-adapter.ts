@@ -8,7 +8,11 @@ import type { MemberState } from "@/domain/model/types";
 import { raviBeforeCorrection } from "@/fixtures/ravi";
 
 export class MockEPFOAdapter implements MemberRecordPort {
-  private member: MemberState = raviBeforeCorrection;
+  private member: MemberState;
+
+  constructor(initialMember: MemberState = raviBeforeCorrection) {
+    this.member = freezeMemberState(initialMember);
+  }
 
   loadMember(memberId: string): MemberState | null {
     return memberId === this.member.memberId ? this.member : null;
@@ -57,6 +61,10 @@ export class MockEPFOAdapter implements MemberRecordPort {
       ),
     });
 
+    return this.member;
+  }
+
+  snapshot(): MemberState {
     return this.member;
   }
 }

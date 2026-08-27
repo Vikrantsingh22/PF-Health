@@ -18,6 +18,7 @@ After bootstrap:
 docker compose run --rm app npm run lint
 docker compose run --rm app npm run typecheck
 docker compose run --rm app npm run test
+docker compose run --rm app npm run verify:supabase-security
 docker compose run --rm e2e
 docker compose run --rm app npm run check
 ```
@@ -74,6 +75,18 @@ Every rule test names which documented condition it proves.
 - 404, validation, conflict, unsupported-action, and internal-error mapping
 - No unexpected fields or sensitive values
 - AI routes return deterministic fallback on provider failure
+
+### Authentication and persistence tests
+
+- Missing or invalid sessions return `UNAUTHENTICATED` and never reach a repository mutation.
+- Guided Ravi and Laboratory aggregates survive serialize/rehydrate round trips without changing deterministic outcomes.
+- Persisted aggregate revisions reject concurrent stale writes.
+- RLS permits each authenticated user to select, insert, update, and delete only rows whose `owner_user_id` equals `auth.uid()`.
+- Anonymous reads return no rows and anonymous writes fail.
+- Cross-user IDs return `NOT_FOUND` without revealing whether another user owns the row.
+- History lists only the authenticated user's recent runs/sessions; individual and all-history deletion remain owner scoped.
+- Public navigation, the login surface, and protected-route redirects run without credentials. Authenticated Guided Ravi, Laboratory, history, session refresh, and sign-out journeys require an ignored Playwright storage state supplied through `E2E_AUTH_STORAGE_STATE`.
+- Completion reports must state the exact browser pass/skip split; an OTP-gated journey is never reported as passing when no authenticated state was supplied.
 
 ### Component tests
 

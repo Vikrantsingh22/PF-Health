@@ -1,4 +1,26 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import type { LaboratoryService } from "@/laboratory/service";
+import type { LaboratorySession } from "@/laboratory/types";
+
+vi.mock("@/lib/auth/current-user", () => ({ requireApiUser: async () => ({ id: "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee" }) }));
+vi.mock("@/persistence/laboratory-session-store", async () => {
+  const { LaboratoryService: Service } = await import("@/laboratory/service");
+  const sessions = new Map<string, LaboratorySession>();
+  return {
+    createLaboratorySession: async (_ownerUserId: string, input: Parameters<LaboratoryService["create"]>[0]) => {
+      const session = new Service().create(input);
+      sessions.set(session.sessionId, session);
+      return session;
+    },
+    mutateLaboratorySession: async (_ownerUserId: string, sessionId: string, action: (service: LaboratoryService) => LaboratorySession) => {
+      const existing = sessions.get(sessionId);
+      if (!existing) throw new Error("Missing test session");
+      const session = action(new Service([existing]));
+      sessions.set(sessionId, session);
+      return session;
+    },
+  };
+});
 import { GET as presets } from "@/app/api/v1/laboratory/presets/route";
 import { POST as create } from "@/app/api/v1/laboratory/sessions/route";
 import { POST as run } from "@/app/api/v1/laboratory/sessions/[sessionId]/runs/route";

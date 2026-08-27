@@ -2,6 +2,14 @@
 
 This is the logical TypeScript model. Persistence representation may differ behind repositories, but public domain values and invariants remain stable. All IDs are opaque internal strings; examples are synthetic.
 
+## Persistent ownership envelope
+
+Supabase Auth owns the real email identity. Application tables store only `owner_user_id`, a foreign key to the immutable `auth.users.id`; they do not copy the email address.
+
+`guided_runs` stores one complete Guided Ravi aggregate per tutorial run: current synthetic member snapshot, assessments, resolutions, short-lived confirmations, and audit events. `laboratory_sessions` stores one complete versioned Laboratory session: draft, latest assessment/evidence/plan, and audit events. Both rows include an optimistic `revision`, outcome projection, creation/update timestamps, and owner index. Persisted JSON is parsed through strict Zod schemas before domain hydration.
+
+All four row operations are subject to `auth.uid() = owner_user_id` RLS policies. Deleting an Auth user cascades to both history tables. Laboratory scenario export remains owner-free and contains only the strict synthetic scenario document.
+
 ## Enums
 
 ```ts

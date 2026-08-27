@@ -2,6 +2,7 @@ import { ApplicationError } from "@/application/errors/application-error";
 import type {
   SimulationConfirmation,
   WorkflowRepository,
+  WorkflowRepositoryState,
 } from "@/application/ports/workflow-repository";
 import type {
   AuditEvent,
@@ -15,6 +16,20 @@ export class InMemoryWorkflowRepository implements WorkflowRepository {
   private readonly resolutions = new Map<string, ResolutionCase>();
   private readonly confirmations = new Map<string, SimulationConfirmation>();
   private readonly audits: AuditEvent[] = [];
+
+  constructor(initialState?: WorkflowRepositoryState) {
+    for (const assessment of initialState?.assessments ?? []) {
+      this.assessments.set(assessment.assessmentId, assessment);
+      this.latestAssessmentIds.set(assessment.memberId, assessment.assessmentId);
+    }
+    for (const resolution of initialState?.resolutions ?? []) {
+      this.resolutions.set(resolution.resolutionId, resolution);
+    }
+    for (const confirmation of initialState?.confirmations ?? []) {
+      this.confirmations.set(confirmation.token, confirmation);
+    }
+    this.audits.push(...(initialState?.auditEvents ?? []));
+  }
 
   reset(): void {
     this.assessments.clear();
@@ -79,5 +94,14 @@ export class InMemoryWorkflowRepository implements WorkflowRepository {
 
   listAudit(memberId: string): readonly AuditEvent[] {
     return Object.freeze(this.audits.filter((event) => event.memberId === memberId));
+  }
+
+  snapshot(): WorkflowRepositoryState {
+    return Object.freeze({
+      assessments: Object.freeze([...this.assessments.values()]),
+      resolutions: Object.freeze([...this.resolutions.values()]),
+      confirmations: Object.freeze([...this.confirmations.values()]),
+      auditEvents: Object.freeze([...this.audits]),
+    });
   }
 }

@@ -1,6 +1,6 @@
 # PF Health Working Roughpad
 
-Last updated: 2026-08-26
+Last updated: 2026-08-27
 
 ## Purpose
 
@@ -39,6 +39,25 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 - [x] Convert the plan into ordered implementation missions below.
 - [x] Record the start of implementation planning in `project_state.md` and `CODEX_LOG.md`.
 - [x] Adopt verify-before-commit as the repository workflow.
+
+## Mission 20 — Supabase authentication and durable history
+
+**Status:** IN PROGRESS
+
+**Goal:** Replace process-local workflow state with user-owned Supabase persistence, add passwordless email OTP authentication, and let each authenticated user privately revisit their Guided Ravi and Laboratory history on Vercel.
+
+- [-] Validate repository instructions, source-of-truth documents, and required environment-variable names without exposing values.
+- [ ] Record and verify current package release/download eligibility before installing Supabase and database dependencies.
+- [ ] Add reproducible database migrations for user-owned Guided Ravi state, Laboratory sessions, and append-only history.
+- [ ] Add cookie-based Supabase SSR authentication and protect stateful pages and APIs.
+- [ ] Replace Guided Ravi and Laboratory process-local stores with owner-scoped persistent repositories and optimistic concurrency.
+- [ ] Add passwordless email OTP, sign-out, shared authenticated navigation, and private `/history` views.
+- [ ] Add ownership-isolation, persistence, auth, history, and regression tests.
+- [ ] Run migrations, lint, typecheck, tests, E2E, submission verification, and production build inside Docker.
+- [ ] Update architecture, contracts, security, operational docs, persistent state, and Codex log.
+- [ ] Inspect the final diff and create focused verified commits.
+
+**Environment readiness:** `.env.local` exists and defines `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `DATABASE_URL`, and `DIRECT_DATABASE_URL`; values were not printed or copied.
 
 ## Mission 11 — PF Record Laboratory
 

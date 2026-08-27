@@ -39,7 +39,7 @@ Each MAYBE item requires explicit human approval before implementation.
 - Employer dashboard
 - Semantic service router
 - Multiple public services
-- Production authentication, billing, or analytics
+- Billing or analytics
 - Guarantee of claim, transfer, correction, or eligibility outcome
 
 ## Change control
@@ -48,3 +48,7 @@ Any feature outside `MUST` requires explicit human approval. New PF issue codes 
 # Approved extension: PF Record Laboratory
 
 The laboratory is an approved synthetic-only extension beside the frozen Ravi tutorial. It permits 1–6 generated fictional employments, generated synthetic account groups A–C, workflows `GENERAL_HEALTH` and `TRANSFER`, five presets, versioned JSON scenario import/export, and deterministic `PF_LAB@1` rules R001–R003. It must not accept real identifiers, names, credentials, files other than strict scenario JSON, AI decisions, EPFO connectivity, or external corrections.
+
+# Approved extension: private Supabase history
+
+Passwordless Supabase email OTP authentication and durable user-owned history are explicitly approved for Vercel deployment. Email is the only accepted real personal datum and is managed by Supabase Auth; application tables reference the immutable Auth user UUID and do not duplicate email. The landing page remains public. Guided Ravi, Laboratory, and history require authentication. Users may list and delete only their own runs and sessions. This approval does not permit real PF identifiers, employers, member records, government credentials, analytics, or external corrections.

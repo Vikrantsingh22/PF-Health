@@ -1,6 +1,7 @@
 import { appliedSimulationResponseSchema, applySimulationRequestSchema } from "@/application/api/schemas";
-import { getDemoApplication } from "@/application/demo/demo-runtime";
 import { parseJson, respond } from "@/app/api/v1/_lib/api-response";
+import { requireApiUser } from "@/lib/auth/current-user";
+import { withLatestGuidedRun } from "@/persistence/guided-run-store";
 
 interface ResolutionRouteContext {
   readonly params: Promise<{ resolutionId: string }>;
@@ -13,6 +14,7 @@ export async function POST(
   return respond(appliedSimulationResponseSchema, async () => {
     const { resolutionId } = await context.params;
     const input = await parseJson(request, applySimulationRequestSchema);
-    return getDemoApplication().applySimulation({ resolutionId, ...input });
+    const user = await requireApiUser();
+    return withLatestGuidedRun(user.id, (application) => application.applySimulation({ resolutionId, ...input }));
   });
 }
