@@ -311,3 +311,7 @@ Started Mission 21 after email OTP delivery became rate-limited. The bounded cha
 # 2026-08-27 — Google OAuth migration completed locally
 
 Replaced the email/code form and token-hash route with one Google OAuth action and `/auth/callback` PKCE exchange. The callback preserves only safe relative destinations, handles Vercel forwarding, and ignores provider tokens; persistence remains keyed by the Supabase Auth UUID under existing RLS. Docker `npm run check` passed lint, strict typecheck, 62 tests, and production build. Live RLS verification passed, submission verification scanned 95 files, production audit found zero vulnerabilities, and Docker Playwright passed two public/auth-boundary journeys while explicitly skipping 13 journeys requiring authenticated state. Browser inspection confirmed the rendered Google login boundary without console errors. Google/Supabase provider configuration and a real consent/persistence smoke remain account-owner steps. Commit: `c6ca5cd`.
+
+# 2026-08-28 — Google provider configuration smoke
+
+Retested the local sign-in after the account owner configured Google and Supabase redirect settings. `Continue with Google` reached Google's account-access boundary through Supabase, confirming active provider routing. Automated control stopped before account selection; the account owner must complete the Google consent flow and confirm return to `/laboratory`, durable history, and sign-out.

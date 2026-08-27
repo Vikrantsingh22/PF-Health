@@ -75,6 +75,8 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 **Verification:** Docker `npm run check` passed lint, strict typecheck, 62 tests across 13 files, and the production build with `/auth/callback`. Live anonymous RLS verification passed, submission verification scanned 95 files, and the production audit reported zero vulnerabilities. Docker Playwright passed the two public/auth-boundary journeys and explicitly skipped 13 journeys requiring authenticated storage state. In-app browser inspection confirmed the Google login surface and protected-route redirect with no console errors. A real Google consent/persistence smoke remains blocked only on account-owner provider configuration and sign-in. Commit: `c6ca5cd`.
 
+**Provider follow-up (2026-08-28):** After dashboard configuration, local OAuth initiation reached Google's account-access boundary through Supabase. Manual account selection remains required before verifying callback return, persistence, and sign-out.
+
 ## Mission 11 — PF Record Laboratory
 
 **Status:** COMPLETE
