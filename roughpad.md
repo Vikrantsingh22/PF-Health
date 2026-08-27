@@ -42,22 +42,24 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 ## Mission 20 — Supabase authentication and durable history
 
-**Status:** IN PROGRESS
+**Status:** COMPLETE LOCALLY; VERCEL CONFIGURATION PENDING
 
 **Goal:** Replace process-local workflow state with user-owned Supabase persistence, add passwordless email OTP authentication, and let each authenticated user privately revisit their Guided Ravi and Laboratory history on Vercel.
 
-- [-] Validate repository instructions, source-of-truth documents, and required environment-variable names without exposing values.
-- [ ] Record and verify current package release/download eligibility before installing Supabase and database dependencies.
-- [ ] Add reproducible database migrations for user-owned Guided Ravi state, Laboratory sessions, and append-only history.
-- [ ] Add cookie-based Supabase SSR authentication and protect stateful pages and APIs.
-- [ ] Replace Guided Ravi and Laboratory process-local stores with owner-scoped persistent repositories and optimistic concurrency.
-- [ ] Add passwordless email OTP, sign-out, shared authenticated navigation, and private `/history` views.
-- [ ] Add ownership-isolation, persistence, auth, history, and regression tests.
-- [ ] Run migrations, lint, typecheck, tests, E2E, submission verification, and production build inside Docker.
-- [ ] Update architecture, contracts, security, operational docs, persistent state, and Codex log.
-- [ ] Inspect the final diff and create focused verified commits.
+- [x] Validate repository instructions, source-of-truth documents, and required environment-variable names without exposing values.
+- [x] Record and verify current package release/download eligibility before installing Supabase dependencies.
+- [x] Add reproducible database migrations for user-owned Guided Ravi state, Laboratory sessions, and history.
+- [x] Add cookie-based Supabase SSR authentication and protect stateful pages and APIs.
+- [x] Replace Guided Ravi and Laboratory process-local stores with owner-scoped persistent repositories and optimistic concurrency.
+- [x] Add passwordless email OTP, sign-out, shared authenticated navigation, and private `/history` views.
+- [x] Add ownership-isolation, persistence, auth, history, and regression tests.
+- [x] Run migrations, lint, typecheck, tests, E2E, submission verification, and production build inside Docker.
+- [x] Update architecture, contracts, security, operational docs, persistent state, and Codex log.
+- [x] Inspect the final diff and create focused verified commits.
 
 **Environment readiness:** `.env.local` exists and defines `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `DATABASE_URL`, and `DIRECT_DATABASE_URL`; values were not printed or copied.
+
+**Verification:** The idempotent migration reapplied successfully. Live anonymous RLS verification passed. Docker `npm run check` passed lint, strict typecheck, 59 tests across 12 files, and the production build. Submission verification scanned 94 files, the production dependency audit reported zero vulnerabilities, and Docker Playwright passed the two public/auth-boundary journeys while explicitly skipping 13 OTP-authenticated journeys because no storage state was supplied. In-app browser inspection confirmed the landing page and `/laboratory` → `/login?next=%2Flaboratory` redirect with no console errors. Implementation commit: `96d00d2`.
 
 ## Mission 11 — PF Record Laboratory
 

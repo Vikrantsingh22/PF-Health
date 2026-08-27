@@ -130,12 +130,12 @@ The approved synthetic digital-twin plan is complete. The frozen Ravi tutorial i
 
 # Active: Supabase authentication and durable history
 
-**Status:** IN PROGRESS; schema applied, final Docker verification pending
+**Status:** LOCAL IMPLEMENTATION COMPLETE; VERCEL CONFIGURATION AND OTP SMOKE PENDING
 
 - [x] Approve passwordless email OTP and authenticated private history.
 - [x] Add Supabase SSR/browser clients and secure cookie refresh proxy.
 - [x] Add owner-scoped Guided Ravi and Laboratory aggregate tables with complete RLS policies.
 - [x] Replace process-local route state with authenticated Supabase Data API stores and optimistic aggregate revisions.
 - [x] Add `/login`, authenticated navigation, `/history`, Laboratory resume, and history deletion.
-- [ ] Complete authenticated API, RLS isolation, responsive browser, regression, and production-build verification.
+- [x] Complete API auth-boundary, RLS isolation, persistence round-trip, public browser, regression, submission, and production-build verification.
 - [ ] Configure Vercel environment variables, production Auth URLs, and custom SMTP, then verify public/incognito access.
