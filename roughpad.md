@@ -77,6 +77,21 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 **Provider follow-up (2026-08-28):** After dashboard configuration, local OAuth initiation reached Google's account-access boundary through Supabase. Manual account selection remains required before verifying callback return, persistence, and sign-out.
 
+## Mission 22 — Authenticated end-to-end acceptance
+
+**Status:** COMPLETE
+
+**Goal:** Verify the configured Google OAuth flow, owner-scoped Laboratory and Guided Ravi persistence, private history/resume, reload survival, sign-out, and protected-route redirect in the browser.
+
+- [x] Complete Google sign-in through the configured Supabase provider.
+- [x] Run and persist a Laboratory assessment, then verify history and resume after reload.
+- [x] Complete Guided Ravi from 4/5 through confirmed correction, 5/5 revalidation, and the eight-event activity timeline.
+- [x] Reload private history and verify both Laboratory and Guided Ravi records remain owner-scoped and resumable.
+- [x] Sign out and verify `/history` redirects to `/login?next=%2Fhistory`.
+- [x] Record exact evidence and commit the continuity update.
+
+**Verification:** Real Google OAuth returned to the requested Laboratory route with an authenticated Supabase session. The Missing exit preset produced Snapshot 1 with `NEEDS ATTENTION`, R001 failure, evidence, and an actor plan; private history survived reload and resumed the same session. Guided Ravi persisted Snapshot 2, two assessments, and eight events after the deterministic 4/5 → 5/5 journey. Sign-out returned home and direct access to `/history` redirected to `/login?next=%2Fhistory`. Docker `npm run check` passed lint, strict typecheck, 62 tests across 13 files, and the production build. Live anonymous RLS verification passed, submission verification scanned 95 files, and Docker Playwright passed two public/auth-boundary journeys while explicitly skipping 13 journeys that require authenticated storage state and were exercised manually.
+
 ## Mission 11 — PF Record Laboratory
 
 **Status:** COMPLETE

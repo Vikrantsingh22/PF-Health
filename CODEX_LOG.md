@@ -315,3 +315,11 @@ Replaced the email/code form and token-hash route with one Google OAuth action a
 # 2026-08-28 — Google provider configuration smoke
 
 Retested the local sign-in after the account owner configured Google and Supabase redirect settings. `Continue with Google` reached Google's account-access boundary through Supabase, confirming active provider routing. Automated control stopped before account selection; the account owner must complete the Google consent flow and confirm return to `/laboratory`, durable history, and sign-out.
+
+# 2026-08-28 — Authenticated E2E acceptance started
+
+Started Mission 22 to verify the real configured flow through Google OAuth, Supabase session cookies, owner-scoped Laboratory and Guided Ravi persistence, private history/resume, reload survival, sign-out, and protected-route enforcement. Account selection will be performed only after explicit confirmation because it shares the user's Google identity with Supabase/PF Health.
+
+# 2026-08-28 — Authenticated E2E acceptance completed
+
+Completed real-provider acceptance with the account owner's confirmed Google sign-in. OAuth returned to the requested Laboratory route with `My History` and `Sign out` available. The Missing exit preset created Snapshot 1 with `NEEDS ATTENTION`, R001 failure, evidence, and an actor plan; private history survived reload and resumed the same session. Guided Ravi completed the deterministic 4/5 → confirmed synthetic correction → 5/5 path and persisted Snapshot 2, two assessments, and eight timeline events. Sign-out returned to the landing page, and direct access to `/history` redirected to `/login?next=%2Fhistory`. No application defect was found; the initial Ravi confirmation wait was a browser timing mismatch. Final Docker verification passed lint, strict typecheck, 62 tests across 13 files, production build, live anonymous RLS isolation, and a 95-file submission scan. Docker Playwright passed its two public/auth-boundary journeys and skipped 13 storage-state journeys by design; those protected paths were covered manually with the real authenticated session.
