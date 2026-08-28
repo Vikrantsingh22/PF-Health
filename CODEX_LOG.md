@@ -28,6 +28,8 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 
 **Remaining risks:** GitHub will not reveal the repository to unauthorised reviewers while it remains private.
 
+**Implementation commit:** `96b6674`
+
 ## 2026-08-22 — Repository documentation harness
 
 **Task:** Create the repository structure and populate its source-of-truth documentation from the supplied PF Health operating brief.

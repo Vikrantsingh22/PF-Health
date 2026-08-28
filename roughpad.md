@@ -535,7 +535,7 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 
 **Boundary:** The repository may remain private through the submission deadline. Reviewers without GitHub access will be able to open it only after it is made public or they are granted collaborator access.
 
-**Verification:** Docker `npm run check` passed lint, strict typecheck, 70 tests across 17 files, and the production build. Docker Playwright passed all four public journeys at 375px, 768px, and 1440px; 14 authenticated storage-state journeys were skipped by design. Submission verification passed across 105 files. Browser inspection confirmed the `/codex` hero source CTA on desktop and the stacked landing proof actions on mobile with no visible overflow.
+**Verification:** Docker `npm run check` passed lint, strict typecheck, 70 tests across 17 files, and the production build. Docker Playwright passed all four public journeys at 375px, 768px, and 1440px; 14 authenticated storage-state journeys were skipped by design. Submission verification passed across 105 files. Browser inspection confirmed the `/codex` hero source CTA on desktop and the stacked landing proof actions on mobile with no visible overflow. Implementation commit: `96b6674`.
 
 ## Mission 9 — Assessment Case File silhouette parity
 
