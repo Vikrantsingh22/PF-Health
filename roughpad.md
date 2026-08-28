@@ -1,6 +1,6 @@
 # PF Health Working Roughpad
 
-Last updated: 2026-08-28
+Last updated: 2026-08-29
 
 ## Purpose
 
@@ -521,6 +521,21 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 **Verification:** Docker `npm run check` passed lint, strict typecheck, 70 tests across 17 files, and the production build with `/codex` present. Docker Playwright passed all four public journeys and skipped 14 authenticated storage-state journeys; the new route and landing CTA passed at 375px, 768px, and 1440px with no overflow or actionable console errors. Browser inspection confirmed the CTA is visible in a 1280×720 landing viewport and the Codex hero exposes its explanation and verification loop in the first viewport. The Vercel-mode build passed and its `/codex` NFT trace explicitly includes `CODEX_LOG.md`.
 
 **Boundary:** Codex is presented as the implementation and verification collaborator. Human product direction and deterministic, evidence-backed PF rules remain authoritative.
+
+## Mission 27 — Reviewer-facing source repository link
+
+**Status:** COMPLETE
+
+- [x] Add a clear external GitHub source action to the landing-page build proof.
+- [x] Add the same source action to the public Codex Build Journey hero.
+- [x] Open links in a separate tab with `noopener noreferrer` isolation.
+- [x] Add browser regressions for URL and external-link attributes.
+- [x] Run Docker checks and responsive browser inspection.
+- [x] Update continuity records and commit the verified change.
+
+**Boundary:** The repository may remain private through the submission deadline. Reviewers without GitHub access will be able to open it only after it is made public or they are granted collaborator access.
+
+**Verification:** Docker `npm run check` passed lint, strict typecheck, 70 tests across 17 files, and the production build. Docker Playwright passed all four public journeys at 375px, 768px, and 1440px; 14 authenticated storage-state journeys were skipped by design. Submission verification passed across 105 files. Browser inspection confirmed the `/codex` hero source CTA on desktop and the stacked landing proof actions on mobile with no visible overflow.
 
 ## Mission 9 — Assessment Case File silhouette parity
 

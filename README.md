@@ -21,6 +21,8 @@ The hero scenario uses a fictional member, Ravi Sharma:
 
 ## Repository status
 
+Source repository: [Vikrantsingh22/PF-Health](https://github.com/Vikrantsingh22/PF-Health)
+
 The repository contains the deterministic hackathon product: a Docker-isolated Next.js/TypeScript application, Supabase Google authentication, owner-isolated persistent history, strict `/api/v1` routes, the Ravi health and resolution engines, PF Record Laboratory, and the polished Calm Case File UI. Optional AI and real EPFO integration are intentionally not included.
 
 All development, dependency installation, application execution, testing, and builds must run inside the repository-defined Docker environment. Do not run project package-manager or application commands directly on the host. Host access is limited to files inside this repository, repository-scoped Git operations, and PF Health-scoped Docker/Compose commands.

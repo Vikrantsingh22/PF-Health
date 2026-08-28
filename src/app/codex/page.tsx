@@ -33,6 +33,9 @@ export default async function CodexPage() {
         <p className={styles.eyebrow}>Built with Codex</p>
         <h1>The build process is part of the proof.</h1>
         <p className={styles.lede}>PF Health was directed by a human and built in a continuous Codex collaboration. Product judgments stayed explicit; Codex helped turn them into working code, tests, evidence, and a deployable system.</p>
+        <div className={styles.heroActions}>
+          <a href="https://github.com/Vikrantsingh22/PF-Health" rel="noopener noreferrer" target="_blank">View source on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
         <div className={styles.proofLine} aria-label="PF Health build method">
           <span>Human direction</span><i aria-hidden="true">→</i><span>Codex execution loop</span><i aria-hidden="true">→</i><span>Verified commits</span>
         </div>

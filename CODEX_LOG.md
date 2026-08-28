@@ -2,6 +2,32 @@
 
 Record meaningful missions factually. Include the task, Codex contribution, human decisions, artifacts, verification, and unresolved risks. Do not use marketing language and do not claim checks that were not run.
 
+## 2026-08-29 — Reviewer-facing GitHub source link started
+
+**Task:** Expose the PF Health source repository from the submitted website so reviewers can inspect the implementation after repository publication.
+
+**Codex contribution:** Added source actions to the landing-page build proof and the public Codex Build Journey hero, isolated the new-tab navigation with `noopener noreferrer`, and added URL/attribute browser regressions.
+
+**Human decisions:** Use `https://github.com/Vikrantsingh22/PF-Health` as the canonical source URL and keep the repository private until after the deadline.
+
+**Verification:** Docker checks and responsive browser inspection are pending.
+
+**Remaining risks:** The link cannot expose a private repository to reviewers who are not collaborators. The repository must be made public, or reviewer access granted, when inspection is intended.
+
+## 2026-08-29 — Reviewer-facing GitHub source link completed
+
+**Task:** Verify and publish the canonical source-repository path from PF Health's public product surfaces.
+
+**Codex contribution:** Finished responsive CTA styling, added the source link to repository documentation, verified exact external-link behavior, inspected the rendered desktop/mobile surfaces, and ran the complete Docker and submission gates.
+
+**Human decisions:** Keep the GitHub repository private through the deadline and publish it when reviewer inspection is intended.
+
+**Artifacts:** Landing build-proof actions, `/codex` hero source CTA, responsive styles, browser regressions, and the README source reference.
+
+**Verification:** Docker `npm run check` passed lint, strict typecheck, 70 tests across 17 files, and production build. Docker Playwright passed four public journeys at 375px, 768px, and 1440px while 14 authenticated storage-state journeys were skipped by design. Submission verification passed across 105 files. Rendered inspection confirmed both source actions without visible overflow.
+
+**Remaining risks:** GitHub will not reveal the repository to unauthorised reviewers while it remains private.
+
 ## 2026-08-22 — Repository documentation harness
 
 **Task:** Create the repository structure and populate its source-of-truth documentation from the supplied PF Health operating brief.

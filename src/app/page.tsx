@@ -58,7 +58,10 @@ export default function Home() {
         </div>
         <div>
           <p>See how human product direction became deterministic rules, responsive interfaces, security boundaries, Docker verification, authentication, and a deployed submission.</p>
-          <Link href="/codex">Explore the Codex build journey →</Link>
+          <div className={styles.codexProofActions}>
+            <Link href="/codex">Explore the Codex build journey →</Link>
+            <a href="https://github.com/Vikrantsingh22/PF-Health" rel="noopener noreferrer" target="_blank">View source on GitHub ↗</a>
+          </div>
         </div>
       </section>
       <p className={styles.boundary}>No UAN, Aadhaar, bank details, credentials, personal names, or real employer information are accepted.</p>
