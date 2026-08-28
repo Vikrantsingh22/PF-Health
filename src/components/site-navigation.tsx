@@ -11,6 +11,7 @@ const ROUTES = [
   { href: "/", label: "Home" },
   { href: "/guided-ravi", label: "Guided Ravi" },
   { href: "/laboratory", label: "Laboratory" },
+  { href: "/codex", label: "Codex Build Journey" },
 ] as const;
 
 export function SiteNavigation({ authenticated }: { readonly authenticated: boolean }) {

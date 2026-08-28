@@ -8,6 +8,8 @@ test("landing offers both product paths", async ({ page }) => {
   await expect(page.getByRole("list", { name: "PF Health evidence route" })).toBeVisible();
   await expect(page.getByRole("link", { name: /Open Guided Ravi/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /Enter PF Record Laboratory/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: "See how I built PF Health with Codex" })).toHaveAttribute("href", "/codex");
+  await expect(page.getByRole("link", { name: "Explore the Codex build journey →" })).toHaveAttribute("href", "/codex");
 
   const guidedTab = page.locator('[data-path-tab="guided"]');
   const laboratoryTab = page.locator('[data-path-tab="laboratory"]');
@@ -86,6 +88,7 @@ test("shared navigation and authentication boundaries connect every product rout
   await expect(navigation.getByRole("link", { name: "Home", exact: true })).toHaveAttribute("href", "/");
   await expect(navigation.getByRole("link", { name: "Guided Ravi", exact: true })).toHaveAttribute("href", "/guided-ravi");
   await expect(navigation.getByRole("link", { name: "Laboratory", exact: true })).toHaveAttribute("href", "/laboratory");
+  await expect(navigation.getByRole("link", { name: "Codex Build Journey", exact: true })).toHaveAttribute("href", "/codex");
   await expect(navigation.getByRole("link", { name: "Sign in", exact: true })).toHaveAttribute("href", "/login?next=%2F");
   await expect(page.getByRole("link", { name: "PF Health", exact: true })).toHaveAttribute("href", "/");
 
@@ -96,6 +99,34 @@ test("shared navigation and authentication boundaries connect every product rout
     await expect(page.getByRole("heading", { name: "Continue securely with Google." })).toBeVisible();
     await expect(page.getByRole("button", { name: "Continue with Google" })).toBeVisible();
   }
+});
+
+test("public Codex page exposes the curated build ledger without overflow", async ({ page }) => {
+  const consoleErrors: string[] = [];
+  page.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });
+
+  for (const viewport of [
+    { width: 375, height: 812 },
+    { width: 768, height: 900 },
+    { width: 1440, height: 1000 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.goto("/");
+    await expect(page.getByRole("link", { name: "See how I built PF Health with Codex" })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)).toBe(false);
+
+    await page.goto("/codex");
+    await expect(page.getByRole("heading", { name: "The build process is part of the proof." })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Complete build journal" })).toBeVisible();
+    await expect(page.getByText("Repository documentation harness", { exact: false })).toBeVisible();
+    await expect(page.getByText("Raw private chats, credentials, provider tokens, and secret values are never published.", { exact: false })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)).toBe(false);
+  }
+
+  const actionableErrors = consoleErrors.filter((message) => !message.includes(
+    "The Cross-Origin-Opener-Policy header has been ignored, because the URL's origin was untrustworthy.",
+  ));
+  expect(actionableErrors).toEqual([]);
 });
 
 test("signed-out navigation stays intentional at responsive widths", async ({ page }) => {

@@ -502,6 +502,26 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - Host-side work is limited to repository edits, repository Git operations, and PF Health-scoped Docker/Compose commands.
 - Local submission hardening added security headers, prohibited-data verification, three-width E2E, a clean production smoke test, refreshed official-source metadata, and final submission/architecture artifacts.
 
+## Mission 26 — Public Codex build story and contribution ledger
+
+**Status:** COMPLETE
+
+- [x] Add a clear Built with Codex disclosure to the landing page.
+- [x] Add a primary landing-hero CTA for the Codex build journey.
+- [x] Add a public `/codex` route explaining the human/Codex collaboration.
+- [x] Render every dated entry from the curated `CODEX_LOG.md` ledger without unsafe HTML.
+- [x] State that raw private chats, credentials, provider tokens, and secret values are excluded.
+- [x] Add the descriptive Codex Build Journey route to shared navigation.
+- [x] Add parser and public-route browser regressions.
+- [x] Run Docker lint, typecheck, tests, production build, and Playwright.
+- [x] Inspect the route at mobile and desktop widths with no overflow or actionable console errors.
+- [x] Verify Vercel-mode output traces the complete curated ledger into the `/codex` server function.
+- [x] Update final verification records and commit the verified mission.
+
+**Verification:** Docker `npm run check` passed lint, strict typecheck, 70 tests across 17 files, and the production build with `/codex` present. Docker Playwright passed all four public journeys and skipped 14 authenticated storage-state journeys; the new route and landing CTA passed at 375px, 768px, and 1440px with no overflow or actionable console errors. Browser inspection confirmed the CTA is visible in a 1280×720 landing viewport and the Codex hero exposes its explanation and verification loop in the first viewport. The Vercel-mode build passed and its `/codex` NFT trace explicitly includes `CODEX_LOG.md`.
+
+**Boundary:** Codex is presented as the implementation and verification collaborator. Human product direction and deterministic, evidence-backed PF rules remain authoritative.
+
 ## Mission 9 — Assessment Case File silhouette parity
 
 **Status:** COMPLETE

@@ -16,6 +16,7 @@ export default function Home() {
         <div className={styles.landingHeroCopy}>
           <h1>See the problem. Change the record. Trace the result.</h1>
           <p>Explore PF Health through a guided case or take control of a fictional employment history. Every outcome stays deterministic, inspectable, and safely synthetic.</p>
+          <Link className={styles.heroCodexCta} href="/codex">See how I built PF Health with Codex <span aria-hidden="true">→</span></Link>
         </div>
         <aside className={styles.landingRoute} aria-labelledby="evidence-route-heading">
           <h2 id="evidence-route-heading">Every path keeps the evidence visible.</h2>
@@ -48,6 +49,16 @@ export default function Home() {
             <p>Edit employments, trigger deterministic outcomes, inspect evidence, and simulate supported corrections.</p>
             <strong>Enter PF Record Laboratory →</strong>
           </Link>
+        </div>
+      </section>
+      <section className={styles.codexProof} aria-labelledby="codex-proof-heading">
+        <div>
+          <p>Built with Codex</p>
+          <h2 id="codex-proof-heading">The collaboration is documented, not hidden.</h2>
+        </div>
+        <div>
+          <p>See how human product direction became deterministic rules, responsive interfaces, security boundaries, Docker verification, authentication, and a deployed submission.</p>
+          <Link href="/codex">Explore the Codex build journey →</Link>
         </div>
       </section>
       <p className={styles.boundary}>No UAN, Aadhaar, bank details, credentials, personal names, or real employer information are accepted.</p>

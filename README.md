@@ -2,6 +2,8 @@
 
 PF Health is a synthetic-data hackathon prototype for checking whether known PF record conditions may interfere with a future workflow. It detects supported issues deterministically, explains them in plain language, identifies the next actor, simulates a correction, and revalidates the record.
 
+PF Health was built through a human-directed collaboration with OpenAI Codex. The public `/codex` route explains that workflow and renders the repository's complete curated contribution ledger; private prompts, credentials, and provider tokens are intentionally excluded.
+
 > PF Health is independent, unofficial, and not connected to EPFO or any government system. It does not submit claims, determine legal eligibility, or guarantee outcomes.
 
 ## Core demo
@@ -122,3 +124,4 @@ See [`docs/product/DEMO.md`](docs/product/DEMO.md) for the three-minute presenta
 - `/laboratory` — construct and assess strict synthetic PF histories.
 - `/login` — Google OAuth sign-in through Supabase.
 - `/history` — private Guided Ravi and Laboratory history.
+- `/codex` — public Codex build story and verified contribution ledger.
