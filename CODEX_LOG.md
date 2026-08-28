@@ -30,6 +30,18 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 
 **Implementation commit:** `96b6674`
 
+## 2026-08-29 — GitHub source icon refinement
+
+**Task:** Replace the generic outbound arrows on the new source-repository actions with the GitHub icon.
+
+**Codex contribution:** Added a reusable current-color GitHub SVG to the existing icon module, used it on the Landing and `/codex` source actions, kept it hidden from assistive technology, and updated the browser selector to protect the plain accessible link name.
+
+**Human decisions:** Use the GitHub brand mark rather than an outbound arrow.
+
+**Verification:** Docker `npm run check` passed lint, strict typecheck, 70 tests, and production build. Docker Playwright passed four public journeys across 375px, 768px, and 1440px while 14 authenticated journeys were skipped by design. Rendered browser inspection confirmed the icon alignment in the `/codex` hero CTA.
+
+**Remaining risks:** Repository visibility remains unchanged; unauthorised reviewers cannot inspect it until publication or explicit access.
+
 ## 2026-08-22 — Repository documentation harness
 
 **Task:** Create the repository structure and populate its source-of-truth documentation from the supplied PF Health operating brief.

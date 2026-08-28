@@ -3,6 +3,7 @@ import styles from "@/components/laboratory.module.css";
 import caseStyles from "@/components/landing-case-files.module.css";
 import { SiteHeader } from "@/components/site-header";
 import { SyntheticNotice } from "@/components/synthetic-notice";
+import { GitHubIcon } from "@/components/icons";
 
 const CASE_FILE_TAB_PATH = "M1 25L10 8C12 3.5 16.5 1 22 1H116C125 1 132 5 137 14L144 25H1Z";
 const CASE_FILE_SIDE_PATH = "M0 0H8C13.5 0 18 4.5 18 10V116L11 136H0Z";
@@ -60,7 +61,7 @@ export default function Home() {
           <p>See how human product direction became deterministic rules, responsive interfaces, security boundaries, Docker verification, authentication, and a deployed submission.</p>
           <div className={styles.codexProofActions}>
             <Link href="/codex">Explore the Codex build journey →</Link>
-            <a href="https://github.com/Vikrantsingh22/PF-Health" rel="noopener noreferrer" target="_blank">View source on GitHub ↗</a>
+            <a href="https://github.com/Vikrantsingh22/PF-Health" rel="noopener noreferrer" target="_blank">View source on GitHub <GitHubIcon height={19} width={19} /></a>
           </div>
         </div>
       </section>

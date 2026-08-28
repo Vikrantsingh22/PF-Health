@@ -10,7 +10,7 @@ test("landing offers both product paths", async ({ page }) => {
   await expect(page.getByRole("link", { name: /Enter PF Record Laboratory/ })).toBeVisible();
   await expect(page.getByRole("link", { name: "See how I built PF Health with Codex" })).toHaveAttribute("href", "/codex");
   await expect(page.getByRole("link", { name: "Explore the Codex build journey →" })).toHaveAttribute("href", "/codex");
-  const landingSourceLink = page.getByRole("link", { name: "View source on GitHub ↗" });
+  const landingSourceLink = page.getByRole("link", { name: "View source on GitHub" });
   await expect(landingSourceLink).toHaveAttribute("href", "https://github.com/Vikrantsingh22/PF-Health");
   await expect(landingSourceLink).toHaveAttribute("target", "_blank");
   await expect(landingSourceLink).toHaveAttribute("rel", "noopener noreferrer");

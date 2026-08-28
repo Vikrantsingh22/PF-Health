@@ -537,6 +537,18 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 
 **Verification:** Docker `npm run check` passed lint, strict typecheck, 70 tests across 17 files, and the production build. Docker Playwright passed all four public journeys at 375px, 768px, and 1440px; 14 authenticated storage-state journeys were skipped by design. Submission verification passed across 105 files. Browser inspection confirmed the `/codex` hero source CTA on desktop and the stacked landing proof actions on mobile with no visible overflow. Implementation commit: `96b6674`.
 
+## Mission 28 — GitHub source icon refinement
+
+**Status:** COMPLETE
+
+- [x] Add one reusable, decorative GitHub brand icon to the project icon module.
+- [x] Replace the source-link arrows on Landing and `/codex` with the icon.
+- [x] Preserve the plain accessible link name and secure external-tab behavior.
+- [x] Run Docker lint, typecheck, tests, build, and responsive Playwright coverage.
+- [x] Inspect the rendered `/codex` hero source action.
+
+**Verification:** Docker `npm run check` passed lint, strict typecheck, 70 tests across 17 files, and production build. Docker Playwright passed four public journeys across 375px, 768px, and 1440px; 14 authenticated journeys were skipped by design. Browser inspection confirmed the 20px GitHub icon is aligned and legible in the `/codex` hero CTA.
+
 ## Mission 9 — Assessment Case File silhouette parity
 
 **Status:** COMPLETE
