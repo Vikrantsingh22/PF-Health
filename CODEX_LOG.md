@@ -347,3 +347,9 @@ Replaced the mobile/tablet link grid with a 44px icon-only hamburger that expose
 Browser inspection at 375px, 768px, 877px, and 1440px confirmed one ribbon per route, correct mobile/desktop navigation modes, intentional editor/history spacing, and no horizontal overflow. Docker `npm run check` passed lint, strict typecheck, 67 tests across 15 files, and the production build. Docker Playwright passed three public/auth-boundary journeys and skipped 14 storage-state journeys; the authenticated Guided Ravi, Laboratory, and History shells were inspected through the active browser session.
 
 Implementation commit: `b17227b`.
+
+# 2026-08-28 — Vercel standalone-output compatibility repair
+
+Diagnosed the failed Vercel `onBuildComplete` step as the Next.js 16.3 adapter/standalone trace regression: Vercel's adapter suppresses `.next/next-server.js.nft.json`, while the standalone finalizer still tries to read it. Made output deployment-aware so `VERCEL=1` uses Vercel-native output and non-Vercel builds retain standalone output for the Docker production image. Added regression tests for both modes and documented the deployment behavior.
+
+The simulated Vercel build passed and omitted `.next/standalone`. The normal Docker aggregate check passed lint, strict typecheck, 69 tests across 16 files, and production build; `.next/standalone/server.js` was confirmed afterward. Public redeployment remains the final acceptance step.

@@ -1,6 +1,6 @@
 # PF Health Working Roughpad
 
-Last updated: 2026-08-27
+Last updated: 2026-08-28
 
 ## Purpose
 
@@ -478,6 +478,19 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - [x] Update persistent state and log, inspect the final diff, and commit the verified mission.
 
 **Verification:** Browser inspection at 375px, 768px, 877px, and 1440px confirmed one full-width safety ribbon on Landing, Guided Ravi, Laboratory, Login, and History; icon-only collapsed navigation through 960px; normal desktop navigation above that breakpoint; and no horizontal overflow. The Laboratory legacy ribbon is hidden with its legacy header. Docker `npm run check` passed lint, strict typecheck, 67 tests across 15 files, and production build. Docker Playwright passed three public/auth-boundary journeys and skipped 14 authenticated storage-state journeys; their responsive route shells were inspected with the active authenticated browser session. Implementation commit: `b17227b`.
+
+## Mission 25 — Vercel adapter and standalone-output compatibility
+
+**Status:** COMPLETE; REDEPLOYMENT PENDING
+
+- [x] Reproduce the reported Next.js 16.3/Vercel adapter trace failure from its exact error signature.
+- [x] Keep `output: "standalone"` for Docker while leaving output unset under `VERCEL=1`.
+- [x] Add regression coverage for both deployment modes.
+- [x] Verify a Vercel-mode build and confirm it produces native output without `.next/standalone`.
+- [x] Run the full Docker check and confirm the normal build still produces `.next/standalone/server.js`.
+- [x] Update deployment guidance and continuity records.
+
+**Verification:** `VERCEL=1 npm run build` passed in Docker and omitted `.next/standalone`. The normal Docker `npm run check` passed lint, strict typecheck, 69 tests across 16 files, and production build; `.next/standalone/server.js` remained present for the production image. A public Vercel redeployment is the remaining acceptance step.
 
 ## Active notes
 

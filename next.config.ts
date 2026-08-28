@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const isDevelopment = process.env.NODE_ENV === "development";
+
+export function deploymentOutput(vercel: string | undefined): NextConfig["output"] {
+  return vercel === "1" ? undefined : "standalone";
+}
 const supabaseOrigin = (() => {
   try {
     return process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -38,7 +42,7 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["127.0.0.1", "pf-health-web"],
   devIndicators: false,
-  output: "standalone",
+  output: deploymentOutput(process.env.VERCEL),
   async headers() {
     return [
       {
