@@ -345,3 +345,5 @@ Started Mission 24 to replace the mobile navigation link pile with an accessible
 Replaced the mobile/tablet link grid with a 44px icon-only hamburger that exposes one-column navigation, reports expanded state, closes on route selection or Escape, and preserves desktop links above 960px. Added one shared edge-to-edge synthetic-record/no-EPFO ribbon to Landing, Login, Guided Ravi, Laboratory, and History; removed the Guided Ravi embedded notice and hid Laboratory's legacy header/notice pair. Active-route styling and sign-in destination preservation remain intact.
 
 Browser inspection at 375px, 768px, 877px, and 1440px confirmed one ribbon per route, correct mobile/desktop navigation modes, intentional editor/history spacing, and no horizontal overflow. Docker `npm run check` passed lint, strict typecheck, 67 tests across 15 files, and the production build. Docker Playwright passed three public/auth-boundary journeys and skipped 14 storage-state journeys; the authenticated Guided Ravi, Laboratory, and History shells were inspected through the active browser session.
+
+Implementation commit: `b17227b`.

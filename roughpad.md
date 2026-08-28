@@ -477,7 +477,7 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - [x] Run Docker lint, typecheck, tests, build, and Playwright verification.
 - [x] Update persistent state and log, inspect the final diff, and commit the verified mission.
 
-**Verification:** Browser inspection at 375px, 768px, 877px, and 1440px confirmed one full-width safety ribbon on Landing, Guided Ravi, Laboratory, Login, and History; icon-only collapsed navigation through 960px; normal desktop navigation above that breakpoint; and no horizontal overflow. The Laboratory legacy ribbon is hidden with its legacy header. Docker `npm run check` passed lint, strict typecheck, 67 tests across 15 files, and production build. Docker Playwright passed three public/auth-boundary journeys and skipped 14 authenticated storage-state journeys; their responsive route shells were inspected with the active authenticated browser session.
+**Verification:** Browser inspection at 375px, 768px, 877px, and 1440px confirmed one full-width safety ribbon on Landing, Guided Ravi, Laboratory, Login, and History; icon-only collapsed navigation through 960px; normal desktop navigation above that breakpoint; and no horizontal overflow. The Laboratory legacy ribbon is hidden with its legacy header. Docker `npm run check` passed lint, strict typecheck, 67 tests across 15 files, and production build. Docker Playwright passed three public/auth-boundary journeys and skipped 14 authenticated storage-state journeys; their responsive route shells were inspected with the active authenticated browser session. Implementation commit: `b17227b`.
 
 ## Active notes
 
