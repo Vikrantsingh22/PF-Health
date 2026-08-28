@@ -42,6 +42,8 @@ Record meaningful missions factually. Include the task, Codex contribution, huma
 
 **Remaining risks:** Repository visibility remains unchanged; unauthorised reviewers cannot inspect it until publication or explicit access.
 
+**Implementation commit:** `968b848`
+
 ## 2026-08-22 — Repository documentation harness
 
 **Task:** Create the repository structure and populate its source-of-truth documentation from the supplied PF Health operating brief.

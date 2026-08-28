@@ -547,7 +547,7 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - [x] Run Docker lint, typecheck, tests, build, and responsive Playwright coverage.
 - [x] Inspect the rendered `/codex` hero source action.
 
-**Verification:** Docker `npm run check` passed lint, strict typecheck, 70 tests across 17 files, and production build. Docker Playwright passed four public journeys across 375px, 768px, and 1440px; 14 authenticated journeys were skipped by design. Browser inspection confirmed the 20px GitHub icon is aligned and legible in the `/codex` hero CTA.
+**Verification:** Docker `npm run check` passed lint, strict typecheck, 70 tests across 17 files, and production build. Docker Playwright passed four public journeys across 375px, 768px, and 1440px; 14 authenticated journeys were skipped by design. Browser inspection confirmed the 20px GitHub icon is aligned and legible in the `/codex` hero CTA. Implementation commit: `968b848`.
 
 ## Mission 9 — Assessment Case File silhouette parity
 
