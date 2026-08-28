@@ -26,7 +26,6 @@ import {
   CheckIcon,
   ClockIcon,
   EvidenceIcon,
-  InfoIcon,
   OwnerIcon,
   RefreshIcon,
   RouteIcon,
@@ -118,10 +117,6 @@ function CheckRow({ check, index, changed }: { readonly check: HealthCheckResult
       </span>
     </li>
   );
-}
-
-function AppHeader() {
-  return <div className={styles.notice} role="note"><InfoIcon /><span>Synthetic sample · No EPFO connection</span></div>;
 }
 
 function PrimaryButton({ children, onClick, disabled }: { readonly children: ReactNode; readonly onClick: () => void; readonly disabled?: boolean }) {
@@ -318,5 +313,5 @@ export function PFHealthApp({ previouslyCompleted = false }: { readonly previous
     content = <section aria-labelledby="error-title" className={`${styles.statusPanel} ${styles.errorPanel}`}><h1 id="error-title">We couldn&apos;t complete the sample journey.</h1><p>{appError?.message ?? "Reset the sample record and try again."}</p>{appError?.requestId ? <p className={styles.errorReference}>Reference: {appError.requestId}</p> : null}<PrimaryButton onClick={loadSample}>Reset and try again</PrimaryButton></section>;
   }
 
-  return <div className={styles.app}><div className={styles.shell}><a className={styles.srOnly} href="#main-content">Skip to main content</a><AppHeader /><main className={styles.main} id="main-content" ref={mainRef} tabIndex={-1}>{content}</main></div></div>;
+  return <div className={styles.app}><div className={styles.shell}><a className={styles.srOnly} href="#main-content">Skip to main content</a><main className={styles.main} id="main-content" ref={mainRef} tabIndex={-1}>{content}</main></div></div>;
 }

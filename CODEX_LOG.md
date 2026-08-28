@@ -335,3 +335,13 @@ Canonicalized explicit local `0.0.0.0` requests to `localhost` before PKCE start
 Real clean-session acceptance proved one Continue-with-Google action returned directly to `/laboratory`, and a separate sign-out cycle returned directly to `/guided-ravi`. Authenticated navigation was contained with no overlap or horizontal overflow at 375px, 600px, and 720px. History hid `NOT RUN` drafts, the completed/reset gate behaved correctly, and a fresh browser tab reported no warnings or errors. The browser was signed out at the protected Laboratory login boundary afterward. Docker `npm run check` passed lint, strict typecheck, 67 tests across 15 files, and production build. Docker Playwright passed three public/auth-boundary journeys and skipped 14 storage-state journeys covered by the real authenticated run. Live anonymous RLS isolation passed, and submission verification scanned 97 files.
 
 Implementation commit: `ab4f613`.
+
+# 2026-08-28 — Responsive navigation and safety-ribbon repair started
+
+Started Mission 24 to replace the mobile navigation link pile with an accessible icon-only hamburger menu, standardize the synthetic-record/no-EPFO notice as a full-width shared ribbon on every product route, and inspect the route family for spacing, focus, wrapping, and horizontal-overflow defects. Authentication, persistence, deterministic outcomes, and existing Case File behavior remain unchanged; execution and verification stay inside the Docker harness.
+
+# 2026-08-28 — Responsive navigation and safety-ribbon repair completed
+
+Replaced the mobile/tablet link grid with a 44px icon-only hamburger that exposes one-column navigation, reports expanded state, closes on route selection or Escape, and preserves desktop links above 960px. Added one shared edge-to-edge synthetic-record/no-EPFO ribbon to Landing, Login, Guided Ravi, Laboratory, and History; removed the Guided Ravi embedded notice and hid Laboratory's legacy header/notice pair. Active-route styling and sign-in destination preservation remain intact.
+
+Browser inspection at 375px, 768px, 877px, and 1440px confirmed one ribbon per route, correct mobile/desktop navigation modes, intentional editor/history spacing, and no horizontal overflow. Docker `npm run check` passed lint, strict typecheck, 67 tests across 15 files, and the production build. Docker Playwright passed three public/auth-boundary journeys and skipped 14 storage-state journeys; the authenticated Guided Ravi, Laboratory, and History shells were inspected through the active browser session.

@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "@/components/laboratory.module.css";
 import caseStyles from "@/components/landing-case-files.module.css";
 import { SiteHeader } from "@/components/site-header";
+import { SyntheticNotice } from "@/components/synthetic-notice";
 
 const CASE_FILE_TAB_PATH = "M1 25L10 8C12 3.5 16.5 1 22 1H116C125 1 132 5 137 14L144 25H1Z";
 const CASE_FILE_SIDE_PATH = "M0 0H8C13.5 0 18 4.5 18 10V116L11 136H0Z";
@@ -9,7 +10,7 @@ const CASE_FILE_SIDE_PATH = "M0 0H8C13.5 0 18 4.5 18 10V116L11 136H0Z";
 export default function Home() {
   return <div className={styles.site}>
     <SiteHeader wide />
-    <div className={styles.notice}>Synthetic records only · No EPFO connection</div>
+    <SyntheticNotice />
     <main className={styles.landing} id="main-content">
       <section className={styles.landingHero}>
         <div className={styles.landingHeroCopy}>

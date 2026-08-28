@@ -11,7 +11,7 @@ authenticatedTest("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
   expect(response?.headers()["x-content-type-options"]).toBe("nosniff");
   expect(response?.headers()["x-frame-options"]).toBe("DENY");
 
-  await expect(page.getByText("Synthetic sample · No EPFO connection")).toBeVisible();
+  await expect(page.getByText("Synthetic records only · No EPFO connection")).toBeVisible();
   const completedHeading = page.getByRole("heading", { name: "You have already completed Guided Ravi." });
   if (await completedHeading.isVisible()) {
     await expect(page.getByRole("link", { name: "View completed history" })).toBeVisible();

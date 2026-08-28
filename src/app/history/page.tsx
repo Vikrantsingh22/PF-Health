@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
+import { SyntheticNotice } from "@/components/synthetic-notice";
 import { requirePageUser } from "@/lib/auth/current-user";
 import { listGuidedRuns } from "@/persistence/guided-run-store";
 import { listLaboratorySessions } from "@/persistence/laboratory-session-store";
@@ -22,6 +23,7 @@ export default async function HistoryPage() {
   return (
     <div className={styles.page}>
       <SiteHeader wide />
+      <SyntheticNotice />
       <main className={styles.main} id="main-content">
         <header className={styles.hero}>
           <div><p className={styles.eyebrow}>Private synthetic history</p><h1>Your record experiments, kept together.</h1><p>Signed in as {user.email}. Only your account can retrieve these Guided Ravi runs and Laboratory sessions.</p></div>

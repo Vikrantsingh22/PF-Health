@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { SiteHeader } from "@/components/site-header";
+import { SyntheticNotice } from "@/components/synthetic-notice";
 import { currentUser } from "@/lib/auth/current-user";
 import { LoginForm } from "./login-form";
 import styles from "./login.module.css";
@@ -17,6 +18,7 @@ export default async function LoginPage({ searchParams }: { readonly searchParam
   return (
     <div className={styles.page}>
       <SiteHeader wide />
+      <SyntheticNotice />
       <main className={styles.main} id="main-content">
         <p className={styles.eyebrow}>Private synthetic workspace</p>
         <h1>Continue securely with Google.</h1>

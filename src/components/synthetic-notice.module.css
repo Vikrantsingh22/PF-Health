@@ -1,0 +1,4 @@
+.ribbon { width: 100%; min-height: 54px; border-bottom: 1px solid var(--line-blue); background: var(--blue-soft); color: var(--blue-deep); }
+.content { display: flex; width: min(100% - 32px, 1180px); min-height: 54px; align-items: center; gap: 12px; margin: 0 auto; font-size: .95rem; font-weight: 650; }
+.content svg { width: 24px; height: 24px; flex: 0 0 auto; }
+@media (max-width: 420px) { .content { gap: 10px; font-size: .82rem; } }

@@ -465,6 +465,20 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - Preserve copy, routes, deterministic behavior, and all Case File interactions.
 - Preserve the unrelated generated `next-env.d.ts` worktree change and exclude it from this mission's commit.
 
+## Mission 24 — Responsive hamburger navigation and shared safety ribbon
+
+**Status:** COMPLETE
+
+- [x] Inspect the shared header, route-level ribbons, and responsive layouts.
+- [x] Implement a keyboard-accessible icon-only mobile menu through tablet widths.
+- [x] Replace route-specific notices with one shared full-width safety ribbon.
+- [x] Inspect landing, login, Guided Ravi, Laboratory, and History at mobile and desktop widths.
+- [x] Fix discovered spacing, wrapping, focus, and horizontal-overflow defects.
+- [x] Run Docker lint, typecheck, tests, build, and Playwright verification.
+- [x] Update persistent state and log, inspect the final diff, and commit the verified mission.
+
+**Verification:** Browser inspection at 375px, 768px, 877px, and 1440px confirmed one full-width safety ribbon on Landing, Guided Ravi, Laboratory, Login, and History; icon-only collapsed navigation through 960px; normal desktop navigation above that breakpoint; and no horizontal overflow. The Laboratory legacy ribbon is hidden with its legacy header. Docker `npm run check` passed lint, strict typecheck, 67 tests across 15 files, and production build. Docker Playwright passed three public/auth-boundary journeys and skipped 14 authenticated storage-state journeys; their responsive route shells were inspected with the active authenticated browser session.
+
 ## Active notes
 
 - The calendar schedule in the plan is a prioritization guide; milestone gates and verified dependencies control execution.

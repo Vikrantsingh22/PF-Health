@@ -79,6 +79,9 @@ test("landing offers both product paths", async ({ page }) => {
 
 test("shared navigation and authentication boundaries connect every product route", async ({ page }) => {
   await page.goto("/");
+  await expect(page.getByText("Synthetic records only · No EPFO connection")).toBeVisible();
+  expect(await page.locator('[role="note"]').evaluate((notice) => { const bounds = notice.getBoundingClientRect(); return { left: bounds.left, right: bounds.right, viewport: document.documentElement.clientWidth }; })).toEqual({ left: 0, right: 375, viewport: 375 });
+  await page.getByRole("button", { name: "Open navigation menu" }).click();
   const navigation = page.getByRole("navigation", { name: "Primary navigation" });
   await expect(navigation.getByRole("link", { name: "Home", exact: true })).toHaveAttribute("href", "/");
   await expect(navigation.getByRole("link", { name: "Guided Ravi", exact: true })).toHaveAttribute("href", "/guided-ravi");
@@ -89,15 +92,21 @@ test("shared navigation and authentication boundaries connect every product rout
   for (const route of ["/guided-ravi", "/laboratory", "/history"]) {
     await page.goto(route);
     await expect(page).toHaveURL(`/login?next=${encodeURIComponent(route)}`);
+    await expect(page.getByText("Synthetic records only · No EPFO connection")).toBeVisible();
     await expect(page.getByRole("heading", { name: "Continue securely with Google." })).toBeVisible();
     await expect(page.getByRole("button", { name: "Continue with Google" })).toBeVisible();
   }
 });
 
 test("signed-out navigation stays intentional at responsive widths", async ({ page }) => {
-  for (const width of [375, 600, 720]) {
+  for (const width of [375, 600, 720, 768, 877, 960]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/login?next=%2Fguided-ravi");
+    const menuButton = page.getByRole("button", { name: "Open navigation menu" });
+    await expect(menuButton).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Primary navigation" })).toBeHidden();
+    await menuButton.click();
+    await expect(page.getByRole("button", { name: "Close navigation menu" })).toHaveAttribute("aria-expanded", "true");
     const geometry = await page.getByRole("navigation", { name: "Primary navigation" }).evaluate((navigation) => {
       const bounds = navigation.getBoundingClientRect();
       const items = Array.from(navigation.querySelectorAll("a, button")).map((item) => item.getBoundingClientRect());
@@ -111,13 +120,16 @@ test("signed-out navigation stays intentional at responsive widths", async ({ pa
       };
     });
     expect(geometry).toEqual({ contained: true, horizontalOverflow: false, overlaps: false });
+    await page.keyboard.press("Escape");
+    await expect(page.getByRole("navigation", { name: "Primary navigation" })).toBeHidden();
   }
 });
 
 authenticatedTest("authenticated navigation stays intentional on Guided Ravi", async ({ page }) => {
-  for (const width of [375, 600, 720]) {
+  for (const width of [375, 600, 720, 768, 877, 960]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/guided-ravi");
+    await page.getByRole("button", { name: "Open navigation menu" }).click();
     const navigation = page.getByRole("navigation", { name: "Primary navigation" });
     await expect(navigation.getByRole("link", { name: "My History" })).toBeVisible();
     await expect(navigation.getByRole("button", { name: "Sign out" })).toBeVisible();
