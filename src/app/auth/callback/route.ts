@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
 function safeNext(value: string | null): string {
-  return value?.startsWith("/") && !value.startsWith("//") ? value : "/history";
+  return value?.startsWith("/") && !value.startsWith("//") ? value : "/";
 }
 
 function applicationOrigin(request: Request, requestUrl: URL): string {
@@ -23,10 +23,14 @@ export async function GET(request: Request) {
   const origin = applicationOrigin(request, url);
 
   if (code) {
-    const supabase = await createClient();
+    const successResponse = NextResponse.redirect(new URL(next, origin));
+    const supabase = await createClient(successResponse);
     const { error } = await supabase.auth.exchangeCodeForSession(code);
-    if (!error) return NextResponse.redirect(new URL(next, origin));
+    if (!error) return successResponse;
   }
 
-  return NextResponse.redirect(new URL("/login?error=oauth_failed", origin));
+  const retry = new URL("/login", origin);
+  retry.searchParams.set("error", "oauth_failed");
+  retry.searchParams.set("next", next);
+  return NextResponse.redirect(retry);
 }

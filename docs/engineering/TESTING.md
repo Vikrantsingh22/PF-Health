@@ -85,6 +85,9 @@ Every rule test names which documented condition it proves.
 - Anonymous reads return no rows and anonymous writes fail.
 - Cross-user IDs return `NOT_FOUND` without revealing whether another user owns the row.
 - History lists only the authenticated user's recent runs/sessions; individual and all-history deletion remain owner scoped.
+- One Continue-with-Google action must establish the SSR session and restore `/guided-ravi` or `/laboratory`; callback cookies and the safe `next` destination are regression tested.
+- Local `0.0.0.0` requests canonicalize to `localhost` before OAuth while internal `127.0.0.1` health checks remain on the refresh path.
+- History excludes unassessed Laboratory drafts and incomplete Guided Ravi starts; the latest healthy tutorial shows an explicit completed/reset boundary.
 - Public navigation, the login surface, and protected-route redirects run without credentials. Authenticated Guided Ravi, Laboratory, history, session refresh, and sign-out journeys require an ignored Playwright storage state supplied through `E2E_AUTH_STORAGE_STATE`.
 - Completion reports must state the exact browser pass/skip split; an OAuth-gated journey is never reported as passing when no authenticated state was supplied.
 

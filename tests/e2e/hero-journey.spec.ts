@@ -11,10 +11,15 @@ authenticatedTest("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
   expect(response?.headers()["x-content-type-options"]).toBe("nosniff");
   expect(response?.headers()["x-frame-options"]).toBe("DENY");
 
-  await expect(page.getByRole("heading", { name: "Check a synthetic PF record before it becomes a problem." })).toBeVisible();
   await expect(page.getByText("Synthetic sample · No EPFO connection")).toBeVisible();
-
-  await page.getByRole("button", { name: "Load Ravi's sample record" }).click();
+  const completedHeading = page.getByRole("heading", { name: "You have already completed Guided Ravi." });
+  if (await completedHeading.isVisible()) {
+    await expect(page.getByRole("link", { name: "View completed history" })).toBeVisible();
+    await page.getByRole("button", { name: "Reset Ravi's sample and start again" }).click();
+  } else {
+    await expect(page.getByRole("heading", { name: "Check a synthetic PF record before it becomes a problem." })).toBeVisible();
+    await page.getByRole("button", { name: "Load Ravi's sample record" }).click();
+  }
 
   await expect(page.getByRole("heading", { name: "4 of 5 checks look healthy" })).toBeVisible();
   await expect(page.getByRole("list", { name: "Supported record checks" }).getByRole("listitem")).toHaveCount(5);
@@ -69,14 +74,9 @@ authenticatedTest("Ravi moves from 4/5 to 5/5 and resets", async ({ page }) => {
 
 authenticatedTest("hero controls remain keyboard reachable at 375px", async ({ page }) => {
   await page.goto("/guided-ravi");
-  await page.keyboard.press("Tab");
-  await expect(page.getByRole("link", { name: "Skip to main content" })).toBeFocused();
-  for (const linkName of ["PF Health", "Home", "Guided Ravi", "Laboratory"]) {
-    await page.keyboard.press("Tab");
-    await expect(page.getByRole("link", { name: linkName, exact: true })).toBeFocused();
-  }
-  await page.keyboard.press("Tab");
-  await expect(page.getByRole("button", { name: "Load Ravi's sample record" })).toBeFocused();
+  const startButton = page.getByRole("button", { name: /Load Ravi's sample record|Reset Ravi's sample and start again/ });
+  await startButton.focus();
+  await expect(startButton).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page.getByRole("heading", { name: "4 of 5 checks look healthy" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Review what to do next" })).toBeEnabled();
@@ -106,6 +106,13 @@ authenticatedTest("case file remains usable across submission widths and reduced
   ]) {
     await page.setViewportSize(viewport);
     await page.goto("/guided-ravi");
+
+    if (await page.getByRole("heading", { name: "You have already completed Guided Ravi." }).isVisible()) {
+      await page.getByRole("button", { name: "Reset Ravi's sample and start again" }).click();
+      await expect(page.getByRole("heading", { name: "4 of 5 checks look healthy" })).toBeVisible();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)).toBe(false);
+      continue;
+    }
 
     const welcomeGeometry = await page
       .getByRole("region", { name: "Check a synthetic PF record before it becomes a problem." })

@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/client";
 import styles from "./login.module.css";
 
 function safeNext(value: string): string {
-  return value.startsWith("/") && !value.startsWith("//") ? value : "/history";
+  return value.startsWith("/") && !value.startsWith("//") ? value : "/";
 }
 
 export function LoginForm({ nextPath }: { readonly nextPath: string }) {

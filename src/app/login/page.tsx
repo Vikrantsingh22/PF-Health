@@ -6,7 +6,7 @@ import { LoginForm } from "./login-form";
 import styles from "./login.module.css";
 
 function safeNext(value: string | undefined): string {
-  return value?.startsWith("/") && !value.startsWith("//") ? value : "/history";
+  return value?.startsWith("/") && !value.startsWith("//") ? value : "/";
 }
 
 export default async function LoginPage({ searchParams }: { readonly searchParams: Promise<{ next?: string; error?: string }> }) {

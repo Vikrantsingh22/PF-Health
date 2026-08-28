@@ -83,6 +83,7 @@ test("shared navigation and authentication boundaries connect every product rout
   await expect(navigation.getByRole("link", { name: "Home", exact: true })).toHaveAttribute("href", "/");
   await expect(navigation.getByRole("link", { name: "Guided Ravi", exact: true })).toHaveAttribute("href", "/guided-ravi");
   await expect(navigation.getByRole("link", { name: "Laboratory", exact: true })).toHaveAttribute("href", "/laboratory");
+  await expect(navigation.getByRole("link", { name: "Sign in", exact: true })).toHaveAttribute("href", "/login?next=%2F");
   await expect(page.getByRole("link", { name: "PF Health", exact: true })).toHaveAttribute("href", "/");
 
   for (const route of ["/guided-ravi", "/laboratory", "/history"]) {
@@ -90,6 +91,37 @@ test("shared navigation and authentication boundaries connect every product rout
     await expect(page).toHaveURL(`/login?next=${encodeURIComponent(route)}`);
     await expect(page.getByRole("heading", { name: "Continue securely with Google." })).toBeVisible();
     await expect(page.getByRole("button", { name: "Continue with Google" })).toBeVisible();
+  }
+});
+
+test("signed-out navigation stays intentional at responsive widths", async ({ page }) => {
+  for (const width of [375, 600, 720]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/login?next=%2Fguided-ravi");
+    const geometry = await page.getByRole("navigation", { name: "Primary navigation" }).evaluate((navigation) => {
+      const bounds = navigation.getBoundingClientRect();
+      const items = Array.from(navigation.querySelectorAll("a, button")).map((item) => item.getBoundingClientRect());
+      const overlaps = items.some((item, index) => items.slice(index + 1).some((other) => (
+        item.left < other.right && item.right > other.left && item.top < other.bottom && item.bottom > other.top
+      )));
+      return {
+        contained: items.every((item) => item.left >= bounds.left && item.right <= bounds.right),
+        horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+        overlaps,
+      };
+    });
+    expect(geometry).toEqual({ contained: true, horizontalOverflow: false, overlaps: false });
+  }
+});
+
+authenticatedTest("authenticated navigation stays intentional on Guided Ravi", async ({ page }) => {
+  for (const width of [375, 600, 720]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/guided-ravi");
+    const navigation = page.getByRole("navigation", { name: "Primary navigation" });
+    await expect(navigation.getByRole("link", { name: "My History" })).toBeVisible();
+    await expect(navigation.getByRole("button", { name: "Sign out" })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)).toBe(false);
   }
 });
 

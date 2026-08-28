@@ -1,6 +1,6 @@
 # PF Health Project State
 
-Last updated: 2026-08-27
+Last updated: 2026-08-28
 
 ## Purpose
 
@@ -30,7 +30,7 @@ Milestone 4 — local submission hardening: **COMPLETE; PUBLIC DEPLOYMENT PENDIN
 
 Milestone 5 — PF Record Laboratory and interaction hardening: **COMPLETE**
 
-Milestone 6 — Supabase authentication and durable private history: **GOOGLE OAUTH COMPLETE LOCALLY; PROVIDER CONFIGURATION AND CONSENT SMOKE PENDING**
+Milestone 6 — Supabase authentication and durable private history: **COMPLETE LOCALLY; VERCEL DEPLOYMENT PENDING**
 
 The repository now contains a verified Docker-isolated application harness, the pure-domain Ravi oracle, the complete framework-independent reset → assess → confirm → synthetic correction → automatic revalidation lifecycle, its validated `/api/v1` boundary, and the polished Calm Case File UI with Docker-only browser E2E coverage.
 
@@ -107,7 +107,7 @@ If this summary conflicts with a dedicated source-of-truth document, stop, ident
 
 ## Active mission
 
-No mission is active. Mission 22 completed the real authenticated browser acceptance after Google/Supabase provider configuration.
+No mission is active. Mission 23 completed the one-attempt OAuth continuity, responsive navigation, meaningful-history filtering, and Guided Ravi completed/reset repair.
 
 ## Verification state
 
@@ -124,6 +124,7 @@ No mission is active. Mission 22 completed the real authenticated browser accept
 - Latest navigation/case-file verification: Docker lint, strict typecheck, 53 tests, production build, and 14 Playwright journeys pass; the Impeccable layout detector reports no findings, and rendered 375px/1440px inspection confirms responsive navigation, exact side-tab/rail joins, inverse Laboratory styling, and no landing overflow
 - Latest mobile rhythm verification: Docker lint, strict typecheck, 53 tests, production build, and 15 Playwright journeys pass; rendered 375px/549px landing and 760px Guided Ravi inspection confirms a deliberate visible gap between cards, a continuous 2px inverse rail outline without a top seam, and a 92px evidence-row cadence; the final Impeccable layout detector reports no findings
 - Latest authenticated acceptance: real Google OAuth returned to `/laboratory`; a Missing exit run persisted and resumed after history reload; Guided Ravi completed 4/5 → confirmed correction → 5/5 with Snapshot 2, two assessments, and eight timeline events; sign-out returned home and `/history` redirected to `/login?next=%2Fhistory`. Final Docker checks passed lint, strict typecheck, 62 tests, production build, anonymous RLS verification, a 95-file submission scan, and the two public/auth-boundary Playwright journeys; 13 storage-state journeys were skipped by design and covered with the real authenticated browser session.
+- Latest authentication-continuity verification: cleared localhost session; one Google action restored `/laboratory`, then a separate clean cycle restored `/guided-ravi`; authenticated navigation had no overlap or overflow at 375px, 600px, and 720px; History omitted unassessed drafts; completed Ravi exposed View History and Reset; Reset returned to 4/5; a fresh tab had no browser warnings/errors; final state signed out at `/login?next=%2Flaboratory`. Docker checks passed 67 tests across 15 files and production build; Playwright passed 3 and skipped 14 authenticated storage-state journeys covered manually; anonymous RLS passed; submission scan covered 97 files.
 - Latest Supabase verification before the Google migration: the remote migration reapplied idempotently; live anonymous reads/writes are isolated; Docker `npm run check` passed lint, strict typecheck, all 59 tests, and the production build; submission verification scanned 94 files; production audit found zero vulnerabilities; Docker Playwright passed two public/auth-boundary journeys and explicitly skipped 13 journeys requiring an authenticated storage state
 - Latest Google OAuth verification: Docker `npm run check` passed lint, strict typecheck, 62 tests, and the production build; callback tests cover successful PKCE exchange, invalid code, and external redirect rejection; live RLS verification passed; submission verification scanned 95 files; production audit found zero vulnerabilities; Docker Playwright passed two public/auth-boundary journeys and explicitly skipped 13 authenticated journeys without storage state; rendered login inspection had no console errors
 - Latest provider-configuration smoke: the local `Continue with Google` action reached the Google account-access boundary through Supabase, confirming that OAuth initiation and provider routing are active. Automated control stopped before account selection; the account owner must complete sign-in and confirm return to `/laboratory`, history persistence, and sign-out.
@@ -167,7 +168,7 @@ Never report an unavailable check as passing.
 
 ## Open implementation decisions
 
-- Google OAuth client/provider configuration, Vercel environment variables, Supabase production redirect URLs, and consent branding remain account-owner configuration tasks
+- Vercel environment variables, Supabase production redirect URLs, and final consent branding remain account-owner deployment tasks; local Google/Supabase provider configuration is verified
 - Whether optional AI work is approved after Milestone 3
 - Whether to proceed later with the approved concept direction: keep Ravi as a guided tutorial and add an interactive synthetic PF Record Sandbox
 

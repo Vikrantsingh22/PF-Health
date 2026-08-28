@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { ZodType } from "zod";
 
@@ -61,7 +62,7 @@ const PROPOSED_CHANGE = Object.freeze({
   exitReason: "CESSATION_SHORT_SERVICE",
 });
 
-type Screen = "welcome" | "loading" | "summary" | "confirmation" | "revalidating" | "healthy" | "timeline" | "error";
+type Screen = "completed" | "welcome" | "loading" | "summary" | "confirmation" | "revalidating" | "healthy" | "timeline" | "error";
 
 interface AppError {
   readonly message: string;
@@ -204,8 +205,8 @@ function IssueDossier({ detail }: { readonly detail: IssueDetailResponse }) {
   );
 }
 
-export function PFHealthApp() {
-  const [screen, setScreen] = useState<Screen>("welcome");
+export function PFHealthApp({ previouslyCompleted = false }: { readonly previouslyCompleted?: boolean }) {
+  const [screen, setScreen] = useState<Screen>(previouslyCompleted ? "completed" : "welcome");
   const [demo, setDemo] = useState<ResetResponse | null>(null);
   const [issueDetail, setIssueDetail] = useState<IssueDetailResponse | null>(null);
   const [confirmation, setConfirmation] = useState<ConfirmationResponse["confirmation"] | null>(null);
@@ -275,17 +276,23 @@ export function PFHealthApp() {
   }
 
   async function resetToWelcome() {
-    try {
-      await apiFetch("/api/v1/demo/reset", resetResponseSchema, { method: "POST" });
-      setDemo(null); setIssueDetail(null); setConfirmation(null); setResolutionId(null); setApplied(null); setEvents([]); setScreen("welcome");
-    } catch (error) {
-      setAppError(errorFrom(error));
-      setScreen("error");
-    }
+    setDemo(null); setIssueDetail(null); setConfirmation(null); setResolutionId(null); setApplied(null); setEvents([]); setScreen("welcome");
   }
 
   let content: ReactNode;
-  if (screen === "welcome") {
+  if (screen === "completed") {
+    content = (
+      <section aria-labelledby="completed-title" className={styles.statusPanel}>
+        <p className={styles.recordName}>Completed guided case</p>
+        <h1 id="completed-title">You have already completed Guided Ravi.</h1>
+        <p>Your healthy result remains in My History. Reset the fictional sample only when you want to run the tutorial again from 4 of 5 checks.</p>
+        <div className={styles.buttonStack}>
+          <Link className={styles.secondaryButton} href="/history">View completed history</Link>
+          <PrimaryButton onClick={loadSample}>Reset Ravi&apos;s sample and start again</PrimaryButton>
+        </div>
+      </section>
+    );
+  } else if (screen === "welcome") {
     content = (
       <section aria-labelledby="welcome-title" className={styles.welcome}>
         <FileDecorations />

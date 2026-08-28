@@ -12,7 +12,7 @@ export async function SiteHeader({ wide = false }: { readonly wide?: boolean }) 
         <Link href="/">Home</Link>
         <Link href="/guided-ravi">Guided Ravi</Link>
         <Link href="/laboratory">Laboratory</Link>
-        {user ? <Link href="/history">My History</Link> : <Link href="/login">Sign in</Link>}
+        {user ? <Link href="/history">My History</Link> : <Link href="/login?next=%2F">Sign in</Link>}
         {user && <form action={signOut}><button type="submit">Sign out</button></form>}
       </nav>
     </header>

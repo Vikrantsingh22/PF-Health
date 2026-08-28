@@ -92,6 +92,22 @@ This file is not a product or architecture authority. If it conflicts with `AGEN
 
 **Verification:** Real Google OAuth returned to the requested Laboratory route with an authenticated Supabase session. The Missing exit preset produced Snapshot 1 with `NEEDS ATTENTION`, R001 failure, evidence, and an actor plan; private history survived reload and resumed the same session. Guided Ravi persisted Snapshot 2, two assessments, and eight events after the deterministic 4/5 → 5/5 journey. Sign-out returned home and direct access to `/history` redirected to `/login?next=%2Fhistory`. Docker `npm run check` passed lint, strict typecheck, 62 tests across 13 files, and the production build. Live anonymous RLS verification passed, submission verification scanned 95 files, and Docker Playwright passed two public/auth-boundary journeys while explicitly skipping 13 journeys that require authenticated storage state and were exercised manually.
 
+## Mission 23 — Authentication continuity and responsive navigation repair
+
+**Status:** COMPLETE
+
+**Goal:** Make Google OAuth complete in one attempt with the requested protected destination restored, keep navigation stable across responsive widths and auth states, prevent stale/foreign history presentation, and make completed Guided Ravi runs explicitly resumable or resettable.
+
+- [x] Reproduce all reported failures from a cleared localhost session.
+- [x] Fix OAuth callback/session continuity and safe `next` restoration for Laboratory, Guided Ravi, and direct sign-in.
+- [x] Repair shared navigation layout at mobile and intermediate widths.
+- [x] Verify private history empty/loading/owned-data behavior from a fresh authenticated account state.
+- [x] Show a completed-run choice before replaying Guided Ravi, including an explicit reset path.
+- [x] Add regression tests and complete Docker plus clean-session browser verification.
+- [x] Update continuity records and commit focused verified changes.
+
+**Verification:** After Supabase sign-out cleared the localhost auth session, one Continue-with-Google action returned directly to `/laboratory`; a second clean cycle returned directly to `/guided-ravi`. Both destinations immediately rendered authenticated navigation. The header had five contained, non-overlapping actions and no horizontal overflow at 375px, 600px, and 720px. History excluded unassessed `NOT RUN` Laboratory drafts while retaining the assessed session and healthy Guided Ravi evidence. The latest completed tutorial showed View History and explicit Reset actions; Reset created one fresh run and returned to 4/5. A fresh browser tab had no warnings or errors, and the final state was signed out at `/login?next=%2Flaboratory`. Docker `npm run check` passed lint, strict typecheck, 67 tests across 15 files, and production build. Docker Playwright passed three public/auth-boundary journeys and explicitly skipped 14 storage-state journeys covered by the real authenticated browser run. Live anonymous RLS verification passed, and submission verification scanned 97 files.
+
 ## Mission 11 — PF Record Laboratory
 
 **Status:** COMPLETE

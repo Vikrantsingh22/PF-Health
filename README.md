@@ -88,6 +88,8 @@ docker compose run --rm app npm run verify:supabase-security
 
 For Google sign-in, enable the Google provider in Supabase Auth and place the Google OAuth client ID and secret there—not in this repository or Vercel. In Google Auth Platform, use the Supabase callback URI shown by the provider configuration. In Supabase URL Configuration, allow both the local callback (`http://localhost:3000/auth/callback`, plus `127.0.0.1` if used) and the production callback (`https://<your-vercel-domain>/auth/callback`). See the official [Google provider guide](https://supabase.com/docs/guides/auth/social-login/auth-google) and [redirect URL guide](https://supabase.com/docs/guides/auth/redirect-urls).
 
+Open the local app through `http://localhost:3000`. Requests made to the Docker bind address `http://0.0.0.0:3000` are redirected to `localhost` before authentication so Google PKCE cookies and the callback use one host.
+
 The application stores private Guided Ravi runs and Laboratory sessions in Supabase. The authenticated Data API and database RLS both enforce the owner boundary. The `e2e` service uses a digest-pinned Playwright image, the private Compose network, the shared dependency volume, a read-only repository mount, and no published port.
 
 The default E2E run always verifies the public landing page and unauthenticated redirects. Private Guided Ravi and Laboratory journeys require an ignored Playwright storage-state file from a test account:

@@ -101,10 +101,24 @@ export async function listGuidedRuns(ownerUserId: string): Promise<readonly Guid
     .from("guided_runs")
     .select("*")
     .eq("owner_user_id", ownerUserId)
+    .eq("outcome", "HEALTHY")
     .order("updated_at", { ascending: false })
     .limit(50);
   if (error) throw persistenceFailure();
   return guidedRunRowSchema.array().parse(data);
+}
+
+export async function hasCompletedGuidedRun(ownerUserId: string): Promise<boolean> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("guided_runs")
+    .select("outcome")
+    .eq("owner_user_id", ownerUserId)
+    .order("updated_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (error) throw persistenceFailure();
+  return data?.outcome === "HEALTHY";
 }
 
 export async function deleteGuidedRun(ownerUserId: string, runId: string): Promise<void> {

@@ -1,9 +1,10 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import type { NextResponse } from "next/server";
 
 import { publicSupabaseEnvironment } from "@/lib/supabase/environment";
 
-export async function createClient() {
+export async function createClient(response?: NextResponse) {
   const cookieStore = await cookies();
   const environment = publicSupabaseEnvironment();
 
@@ -14,12 +15,16 @@ export async function createClient() {
       cookies: {
         getAll: () => cookieStore.getAll(),
         setAll(cookiesToSet) {
-          try {
-            for (const { name, value, options } of cookiesToSet) {
-              cookieStore.set(name, value, options);
+          for (const { name, value, options } of cookiesToSet) {
+            if (response) {
+              response.cookies.set(name, value, options);
+              continue;
             }
-          } catch {
-            // Server Components cannot write cookies; the proxy refresh path does.
+            try {
+              cookieStore.set(name, value, options);
+            } catch {
+              // Server Components cannot write cookies; the proxy refresh path does.
+            }
           }
         },
       },

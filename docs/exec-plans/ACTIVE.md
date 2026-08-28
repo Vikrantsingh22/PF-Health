@@ -139,4 +139,5 @@ The approved synthetic digital-twin plan is complete. The frozen Ravi tutorial i
 - [x] Add `/login`, authenticated navigation, `/history`, Laboratory resume, and history deletion.
 - [x] Complete API auth-boundary, RLS isolation, persistence round-trip, public browser, regression, submission, and production-build verification.
 - [x] Replace email OTP with Google OAuth and a safe PKCE callback while preserving owner-scoped persistence.
-- [ ] Configure the Google provider, Supabase/Vercel redirect URLs, and consent branding, then verify public/incognito access.
+- [x] Configure the Google provider and local Supabase redirect URLs; verify one-attempt clean-session access to both protected product routes.
+- [ ] Configure the final Vercel redirect URL/environment and consent branding, then verify public/incognito production access.

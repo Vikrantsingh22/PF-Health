@@ -76,6 +76,7 @@ export async function listLaboratorySessions(ownerUserId: string): Promise<reado
     .from("laboratory_sessions")
     .select("*")
     .eq("owner_user_id", ownerUserId)
+    .gt("snapshot_version", 0)
     .order("updated_at", { ascending: false })
     .limit(50);
   if (error) throw persistenceFailure();

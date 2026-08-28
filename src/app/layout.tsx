@@ -21,7 +21,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 -->`;
 
   return (
-    <html lang="en">
+    <html data-scroll-behavior="smooth" lang="en">
       <body>
         <div aria-hidden="true" className="direction-contract">
           {directionContract}

@@ -74,3 +74,7 @@ The visual centerpiece is the transition from **4 of 5 checks look healthy** to 
 - Touch targets should be at least 44×44px where practical.
 - Do not hide essential content in hover-only interactions.
 - Use direct, descriptive action labels.
+
+## Shared navigation
+
+The shared header stays bounded to the same wide content rail on every route. Above 720px, links remain a compact horizontal group. At 720px and below, authenticated and signed-out actions use a two-column grid with equal touch targets, no overlap, and no horizontal overflow. Guided Ravi uses the same wide header contract as the landing page, Laboratory, login, and history.
