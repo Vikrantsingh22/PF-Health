@@ -352,4 +352,4 @@ Implementation commit: `b17227b`.
 
 Diagnosed the failed Vercel `onBuildComplete` step as the Next.js 16.3 adapter/standalone trace regression: Vercel's adapter suppresses `.next/next-server.js.nft.json`, while the standalone finalizer still tries to read it. Made output deployment-aware so `VERCEL=1` uses Vercel-native output and non-Vercel builds retain standalone output for the Docker production image. Added regression tests for both modes and documented the deployment behavior.
 
-The simulated Vercel build passed and omitted `.next/standalone`. The normal Docker aggregate check passed lint, strict typecheck, 69 tests across 16 files, and production build; `.next/standalone/server.js` was confirmed afterward. Public redeployment remains the final acceptance step.
+The simulated Vercel build passed and omitted `.next/standalone`. The normal Docker aggregate check passed lint, strict typecheck, 69 tests across 16 files, and production build; `.next/standalone/server.js` was confirmed afterward. Implementation commit: `410be54`. Public redeployment remains the final acceptance step.

@@ -490,7 +490,7 @@ Return to deployment selection. Optional AI and the Record Sandbox remain separa
 - [x] Run the full Docker check and confirm the normal build still produces `.next/standalone/server.js`.
 - [x] Update deployment guidance and continuity records.
 
-**Verification:** `VERCEL=1 npm run build` passed in Docker and omitted `.next/standalone`. The normal Docker `npm run check` passed lint, strict typecheck, 69 tests across 16 files, and production build; `.next/standalone/server.js` remained present for the production image. A public Vercel redeployment is the remaining acceptance step.
+**Verification:** `VERCEL=1 npm run build` passed in Docker and omitted `.next/standalone`. The normal Docker `npm run check` passed lint, strict typecheck, 69 tests across 16 files, and production build; `.next/standalone/server.js` remained present for the production image. Implementation commit: `410be54`. A public Vercel redeployment is the remaining acceptance step.
 
 ## Active notes
 
